@@ -34,11 +34,4 @@ RSpec.describe User, type: :model do
     user.valid?
     expect(user.errors[:email]).to include("has already been taken")
   end
-
-  # パスワードがなければ無効であること
-  it "is invalid without an password_digest" do
-    user = FactoryBot.build(:user, password_digest: nil)
-    user.valid?
-    expect(user.errors[:password_digest]).to include("can't be blank")
-  end
 end
