@@ -10,6 +10,7 @@
 
           <div class="thirteen wide column">
             <h1 class="center aligned">新規登録をしてください</h1>
+
             <div class="ui form">
               <div class="field">
                 <%= f.label :name, 'ユーザー名' %>
@@ -49,7 +50,9 @@
               <div class="five wide column"></div>
 
               <div class="seven wide column">
-                <%= f.submit '新規登録', class: 'ui massive blue submit button' %>
+                <%= button_tag :type => "submit", :class =>"ui massive blue submit button" do %>
+                  <i class="pencil alternate icon"></i>新規登録
+                <% end %>
               </div>
 
               <div class="four wide column"></div>
