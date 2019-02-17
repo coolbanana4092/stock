@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_url
     else
-      render :new
+      redirect_to signup_url
     end
   end
 

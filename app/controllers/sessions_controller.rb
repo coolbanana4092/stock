@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  include SessionsHelper
   def new
   end
 
@@ -29,7 +30,7 @@ class SessionsController < ApplicationController
 
       if @user && @user.authenticate(password)
         session[:user_id] = @user.id
-        remember user
+        remember(@user)
         return true
       else
         return false
