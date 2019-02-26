@@ -34,4 +34,12 @@ RSpec.describe User, type: :model do
     user.valid?
     expect(user.errors[:email]).to include("has already been taken")
   end
+
+  # remember me 機能における2つのバグのテスト2
+  describe "authenticated? should return false for a user with nil digest" do
+    # ダイジェストが存在しない場合のauthenticated?のテスト
+    it "is invalid without remember_digest" do
+      expect(FactoryBot.create(:user).authenticated?('')).to eq false
+    end
+  end
 end
