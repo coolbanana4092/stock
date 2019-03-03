@@ -9,7 +9,7 @@ RSpec.describe UserMailer, type: :mailer do
     # メール送信のテスト
     it "renders the headers" do
       user.reset_token = User.new_token
-      expect(mail.to).to eq ["m-fukaya1@gmail.com"]
+      expect(mail.to).to eq ["m-fukaya@gmail.com"]
       expect(mail.from).to eq ["from@example.com"]
       expect(mail.subject).to eq "Password reset"
     end
