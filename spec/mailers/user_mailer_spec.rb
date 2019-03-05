@@ -1,11 +1,9 @@
 require "rails_helper"
 
 RSpec.describe UserMailer, type: :mailer do
-  let(:user) { FactoryBot.create(:user) }
+  let(:mail) { UserMailer.password_reset(user) }
 
-  describe "password_reset" do
-    let(:mail) { UserMailer.password_reset(user) }
-
+  context "password_reset" do
     # メール送信のテスト
     it "renders the headers" do
       user.reset_token = User.new_token
