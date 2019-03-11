@@ -25,13 +25,17 @@ class PasswordResetsController < ApplicationController
       render 'edit'
     elsif @user.update_attributes(user_params)
       log_in @user
-      redirect_to @user
+      redirect_to root_url
     else
       render 'edit'
     end
   end
 
   private
+  
+    def log_in(user)
+      session[:user_id] = user.id
+    end
 
     def user_params
       params.require(:user).permit(:password, :password_confirmation)
