@@ -1,18 +1,22 @@
 require "rails_helper"
 
 RSpec.describe UserMailer, type: :mailer do
-  describe "password_reset" do
-    let(:mail) { UserMailer.password_reset }
+  let(:mail) { UserMailer.password_reset(user) }
 
+  context "password_reset" do
+    # メール送信のテスト
     it "renders the headers" do
-      expect(mail.subject).to eq("Password reset")
-      expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      user.reset_token = User.new_token
+      expect(mail.to).to eq ["m-fukaya@gmail.com"]
+      expect(mail.from).to eq ["from@example.com"]
+      expect(mail.subject).to eq "Password reset"
     end
 
+    # メールプレビューのテスト
     it "renders the body" do
-      expect(mail.body.encoded).to match("Hi")
+      user.reset_token = User.new_token
+      expect(mail.body.encoded).to match user.reset_token
+      expect(mail.body.encoded).to match CGI.escape(user.email)
     end
   end
-
 end

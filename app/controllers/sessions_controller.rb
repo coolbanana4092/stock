@@ -20,8 +20,9 @@ class SessionsController < ApplicationController
       forget(current_user)
       session[:user_id] = nil
       @current_user = nil
-      redirect_to root_url
     end
+    
+    redirect_to root_url
   end
 
   private
@@ -31,7 +32,7 @@ class SessionsController < ApplicationController
 
       if @user && @user.authenticate(password)
         session[:user_id] = @user.id
-        remember(@user)
+        params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
         return true
       else
         return false
