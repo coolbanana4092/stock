@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   get 'signup', to: 'users#new'
 
+  get 'inquiry/input' => 'inquiry#input'
+  post 'inquiry/thanks' => 'inquiry#thanks'
+
   resources :users, only: [:new, :create, :edit, :update]
   resources :password_resets, only: [:new, :create, :edit, :update]
 end
