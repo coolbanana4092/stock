@@ -1,0 +1,22 @@
+<h1>お問い合わせ</h1>
+
+<div class="inquiry_input">
+  <%= form_for @inquiry, :url => inquiry_thanks_path do |f| %>
+    <% if @inquiry.errors.any? %>
+      <div>入力内容にエラーがあります</div>
+      <ul>
+        <% @inquiry.errors.each do |attr, msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+      <div>名前 (必須)</div>
+      <div><%= f.text_field :name %></div>
+      <div>メールアドレス (必須)</div>
+      <div><%= f.text_field :email %></div>
+      <div>お問い合わせ内容 (必須)</div>
+      <div><%= f.text_area :message %></div>
+
+      <%= f.submit '送信する' %>
+  <% end %>
+</div>
