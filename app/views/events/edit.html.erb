@@ -1,0 +1,36 @@
+<h1>お問い合わせ</h1>
+
+<div class="edit_event">
+  <%= form_for(@event) do |f| %>
+    <% if @event.errors.any? %>
+      <div>入力内容にエラーがあります</div>
+      <ul>
+        <% @event.errors.each do |attr, msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+      <div>イベント名</div>
+      <div><%= f.text_field :name %></div>
+      <div>ジャンル</div>
+      <div><%= f.text_field :genre %></div>
+      <div>主催者</div>
+      <div><%= f.text_field :organizer %></div>
+      <div>開催場所</div>
+      <div><%= f.text_field :place %></div>
+      <div>チケット名</div>
+      <div><%= f.text_field :ticket_name %></div>
+      <div>料金</div>
+      <div><%= f.text_field :price %></div>
+      <div>開始時間</div>
+      <div><%= f.text_field :starting_time %></div>
+      <div>終了時間</div>
+      <div><%= f.text_field :ending_time %></div>
+      <div>イベント内容</div>
+      <div><%= f.text_area :content %></div>
+      <div>注意点</div>
+      <div><%= f.text_area :cautionary_note %></div>
+
+      <%= f.submit '送信する' %>
+  <% end %>
+</div>

@@ -22,5 +22,8 @@ module Stock
       routing_specs: false,
       controller_specs: false
     end
+
+    # タイムスタンプを日本時間に修正する
+    config.time_zone = 'Tokyo'
   end
 end
