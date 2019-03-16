@@ -1,4 +1,4 @@
-class InquiryController < ApplicationController
+class InquiriesController < ApplicationController
   def input
     @inquiry = Inquiry.new
 
