@@ -1,0 +1,24 @@
+<h1>イベントの詳細</h1>
+
+<ul>
+  <li>
+    <p>投稿日：<%= @event.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+    <p>更新日：<%= @event.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
+    <p>イベント名：<%= @event.name %></p>
+    <p>ジャンル：<%= @event.genre %></p>
+    <p>主催者：<%= @event.organizer %></p>
+    <p>開催場所：<%= @event.place %></p>
+    <p>チケット名：<%= @event.ticket_name %></p>
+    <p>料金：<%= @event.price %></p>
+    <p>開始時間：<%= @event.starting_time %></p>
+    <p>終了時間：<%= @event.ending_time %></p>
+    <p>イベント内容：<%= @event.content %></p>
+    <p>注意点：<%= @event.cautionary_note %></p>
+
+    <%= link_to 'イベント一覧', events_path %>
+    <%= link_to 'イベント編集', edit_event_path(@event) %>
+    <% if current_user == @event.user %>
+      <%= link_to "イベント削除", @event, method: :delete, data: { confirm: "本当に削除しても大丈夫ですか?" } %>
+    <% end %>
+  </li>
+</ul>

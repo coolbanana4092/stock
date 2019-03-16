@@ -1,0 +1,25 @@
+<h1>イベント一覧</h1>
+
+<% @all_events.each do |event| %>
+  <ul>
+    <li><%= link_to event.content, event %></li>
+  </ul>
+<% end %>
+
+<%= paginate @all_events %>
+
+<h1>自分の投稿したイベント</h1>
+
+<% if @current_user_events.empty? then %>
+  <p>あなたが投稿したイベントはまだ存在していません。</p>
+<% else %>
+  <% @current_user_events.each do |event| %>
+    <ul>
+      <li><%= link_to event.content, event %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+<%= paginate @current_user_events %>
+
+<%= link_to "トップページへ戻る", root_path %>
