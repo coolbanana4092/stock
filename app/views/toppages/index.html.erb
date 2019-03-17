@@ -25,46 +25,64 @@
   var marker = [];
   var infoWindow = [];
   var currentInfoWindow = null;
-  <% @events.each do |event| %>
-    var markerData = [
-      {
-        name: '<%= event.name %>',
-        place: '<%= event.place %>',
-        lat: 35.681236,
-        lng: 139.767125,
-      }
-    ];
-  <% end %>
+  var geocoder = new google.maps.Geocoder();
+  var markerDataArray = [];
 
   function initMap() {
-    // マップの緯度経度のデータ作成
-    var mapLatLng = new google.maps.LatLng(35.681236,139.767125);
+    <% @events.each do |event| %>
+      geocoder.geocode(
+        {
+          'address': '<%= event.place %>',
+          'region': 'jp'   //地域を日本に設定
+        },
+          function (results, status) {
+            if (status === 'OK' && results[0]){
+              var mapLatLng = new google.maps.LatLng(35.681236,139.767125);   // マップの中心の緯度経度のデータ作成
+              var pos = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+              var markerData = [
+                {
+                  name: '<%= event.name %>',
+                  place: '<%= event.place %>',
+                  lat: pos.lat(),
+                  lng: pos.lng(),
+                }
+              ];
 
-    // 'div#map'に地図を埋め込む
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: mapLatLng,
-      zoom: 10
-    });
+              // 'div#map'に地図を埋め込む
+              map = new google.maps.Map(document.getElementById('map'), {
+                center: mapLatLng,
+                zoom: 10
+              });
 
-    // マーカー毎の処理
-    for (var i = 0; i < markerData.length; i++) {
-      // マーカーの緯度経度のデータ作成
-      markerLatLng = new google.maps.LatLng({lat: markerData[i]['lat'], lng: markerData[i]['lng']});
+              // markerDataの数を数えるために、markerDataをmarkerDataArrayの中に入れる
+              markerDataArray.push(markerData);
 
-      // マーカーの追加
-      marker[i] = new google.maps.Marker({
-        map: map,
-        position: markerLatLng
-      });
+              // マーカー毎の処理
+              for (var i = 0; i < markerDataArray.length; i++) {
+                // マーカーの緯度経度のデータ作成
+                markerLatLng = new google.maps.LatLng({lat: markerDataArray[i][0].lat, lng: markerDataArray[i][0].lng});
 
-      // 吹き出しの追加
-      infoWindow[i] = new google.maps.InfoWindow({
-        content: '<div class="marker_name">' + markerData[i]['name'] + '</div>'
-                  + '<div class="marker_place">' + markerData[i]['place'] + '</div>'
-      });
+                // マーカーの追加
+                marker[i] = new google.maps.Marker({
+                  map: map,
+                  position: markerLatLng
+                });
 
-      markerEvent(i);
-    }
+                // 吹き出しの追加
+                infoWindow[i] = new google.maps.InfoWindow({
+                  content: '<div class="marker_name">' + markerDataArray[i][0].name + '</div>'
+                            + '<div class="marker_place">' + markerDataArray[i][0].place + '</div>'
+                });
+
+                markerEvent(i);
+              }
+
+            }else{
+              alert('失敗しました。理由: ' + status);
+            }
+          }
+      );
+    <% end %>
   }
 
   // マーカーをクリックした時に1件のみ吹き出しを表示する
@@ -81,7 +99,6 @@
 
   // 検索ボタンを押すと、住所から緯度と経度を算出する。
   $('#search').click(function () {
-    var geocoder = new google.maps.Geocoder();   //Geocoderオブジェクト生成
     var address = $('[name = address]').val();
 
     geocoder.geocode(
@@ -90,7 +107,7 @@
         'region': 'jp'   //地域を日本に設定
       },
       function (results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
+        if (status === 'OK' && results[0]) {
           var pos = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
 
           //取得した座標をマップに反映
