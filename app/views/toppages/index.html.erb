@@ -12,6 +12,12 @@
 <% end %>
 
 <div id="map"></div>
+<div>
+  緯度：<input type="text" name="lat" readonly>
+  経度：<input type="text" name="lng" readonly><br>
+  住所：<input type="text" name="address">
+  <input type="button" id="search" value="検索">
+</div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh_J3NoIMD5Kv4oB7HX_XXuqRhJFtXNFA"></script>
 <script>
@@ -72,6 +78,33 @@
       currentInfoWindow = infoWindow[i];
     });
   }
+
+  // 検索ボタンを押すと、住所から緯度と経度を算出する。
+  $('#search').click(function () {
+    var geocoder = new google.maps.Geocoder();   //Geocoderオブジェクト生成
+    var address = $('[name = address]').val();
+
+    geocoder.geocode(
+      {
+        'address': address,
+        'region': 'jp'   //地域を日本に設定
+      },
+      function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          var pos = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+
+          //取得した座標をマップに反映
+          map.setCenter(results[0].geometry.location);
+
+          //取得した座標を表示
+          $('[name=lat]').val(pos.lat());
+          $('[name=lng]').val(pos.lng());
+        } else {
+          alert('住所検索に失敗しました。住所が正しいか確認してください');
+        }
+      }
+    );
+  });
 
   window.onload = initMap();
 </script>
