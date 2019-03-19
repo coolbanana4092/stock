@@ -10,27 +10,29 @@
         <% end %>
       </ul>
     <% end %>
-      <div>イベント名</div>
+      <div><%= f.label :name, 'イベント名' %></div>
       <div><%= f.text_field :name %></div>
-      <div>ジャンル</div>
+      <div><%= f.label :genre, 'ジャンル' %></div>
       <div><%= f.text_field :genre %></div>
-      <div>主催者</div>
+      <div><%= f.label :organizer, '主催者' %></div>
       <div><%= f.text_field :organizer %></div>
-      <div>開催場所</div>
+      <div><%= f.label :place, '開催場所' %></div>
       <div><%= f.text_field :place %></div>
-      <div>チケット名</div>
+      <div><%= f.label :ticket_name, 'チケット名' %></div>
       <div><%= f.text_field :ticket_name %></div>
-      <div>料金</div>
+      <div><%= f.label :price, '料金' %></div>
       <div><%= f.text_field :price %></div>
-      <div>開始時間</div>
+      <div><%= f.label :date, '日付' %></div>
+      <div><%= f.text_field :date %></div>
+      <div><%= f.label :starting_time, '開始時間' %></div>
       <div><%= f.text_field :starting_time %></div>
-      <div>終了時間</div>
+      <div><%= f.label :ending_time, '終了時間' %></div>
       <div><%= f.text_field :ending_time %></div>
-      <div>イベント内容</div>
+      <div><%= f.label :content, 'イベント内容' %></div>
       <div><%= f.text_area :content %></div>
-      <div>注意点</div>
+      <div><%= f.label :cautionary_note, '注意点' %></div>
       <div><%= f.text_area :cautionary_note %></div>
 
-      <%= f.submit '送信する' %>
+      <%= f.submit '投稿する' %>
   <% end %>
 </div>
