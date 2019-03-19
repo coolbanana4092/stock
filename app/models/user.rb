@@ -7,6 +7,8 @@ class User < ApplicationRecord
   before_save { self.email.downcase! }
   has_secure_password
 
+  has_many :events
+
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

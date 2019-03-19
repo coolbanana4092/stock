@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_12_082930) do
+ActiveRecord::Schema.define(version: 2019_03_18_111856) do
+
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.string "genre"
+    t.string "organizer"
+    t.string "place"
+    t.string "ticket_name"
+    t.string "price"
+    t.string "date"
+    t.string "starting_time"
+    t.string "ending_time"
+    t.string "content"
+    t.string "cautionary_note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
 
   create_table "inquiries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -31,4 +49,5 @@ ActiveRecord::Schema.define(version: 2019_03_12_082930) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "events", "users"
 end
