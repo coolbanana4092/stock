@@ -22,7 +22,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to root_url
     else
-      render 'edit'
+      redirect_to new_event_url
     end
   end
 
@@ -34,9 +34,9 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if @event.update(event_params)
-      redirect_to @event
+      redirect_to root_url
     else
-      render :edit
+      redirect_to edit_event_url
     end
   end
 
@@ -49,7 +49,7 @@ class EventsController < ApplicationController
 
     def event_params
       params.require(:event).permit(:name, :genre, :organizer, :place, :ticket_name, :price,
-                                    :starting_time, :ending_time, :content, :cautionary_note)
+                                    :starting_time, :date, :ending_time, :content, :cautionary_note)
     end
 
     def correct_user
