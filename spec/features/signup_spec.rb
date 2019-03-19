@@ -20,7 +20,7 @@ RSpec.feature "SignUp", type: :feature do
     end
 
     # 新規登録に失敗する
-    it "user failed to sign up" do
+    it "user fails to sign up" do
       visit root_path
       click_link "新規登録"
 
