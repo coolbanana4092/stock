@@ -30,4 +30,13 @@ class Event < ApplicationRecord
   before_save { self.ending_minute.downcase! }
 
   belongs_to :user, optional: true
+
+
+  def self.search(search) #ここでのself.はEvent.を意味する
+    if search
+      where(['name LIKE ?', "%#{search}%"]) #検索した単語と部分一致するイベントを表示。Event.は省略
+    else
+      all #全てのイベントを表示。Event.は省略
+    end
+  end
 end
