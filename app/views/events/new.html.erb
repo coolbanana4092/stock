@@ -1,4 +1,4 @@
-<h1>お問い合わせ</h1>
+<h1>イベントの投稿</h1>
 
 <div class="new_event">
   <%= form_for(@event) do |f| %>
@@ -22,16 +22,31 @@
       <div><%= f.text_field :ticket_name %></div>
       <div><%= f.label :price, '料金' %></div>
       <div><%= f.text_field :price %></div>
-      <div><%= f.label :date, '日付' %></div>
-      <div><%= f.text_field :date %></div>
-      <div><%= f.label :starting_time, '開始時間' %></div>
-      <div><%= f.text_field :starting_time %></div>
-      <div><%= f.label :ending_time, '終了時間' %></div>
-      <div><%= f.text_field :ending_time %></div>
+      <div><%= f.label :starting_year, '年' %></div>
+      <div><%= f.text_field :starting_year %></div>
+      <div><%= f.label :starting_month, '月' %></div>
+      <div><%= f.text_field :starting_month %></div>
+      <div><%= f.label :starting_day, '日' %></div>
+      <div><%= f.text_field :starting_day %></div>
+      <div><%= f.label :starting_hour, '時' %></div>
+      <div><%= f.text_field :starting_hour %></div>
+      <div><%= f.label :starting_minute, '分' %></div>
+      <div><%= f.text_field :starting_minute %></div>
+      <div><%= f.label :ending_year, '年' %></div>
+      <div><%= f.text_field :ending_year %></div>
+      <div><%= f.label :ending_month, '月' %></div>
+      <div><%= f.text_field :ending_month %></div>
+      <div><%= f.label :ending_day, '日' %></div>
+      <div><%= f.text_field :ending_day %></div>
+      <div><%= f.label :ending_hour, '時' %></div>
+      <div><%= f.text_field :ending_hour %></div>
+      <div><%= f.label :ending_minute, '分' %></div>
+      <div><%= f.text_field :ending_minute %></div>
       <div><%= f.label :content, 'イベント内容' %></div>
       <div><%= f.text_area :content %></div>
       <div><%= f.label :cautionary_note, '注意点' %></div>
       <div><%= f.text_area :cautionary_note %></div>
+
 
       <%= f.submit '投稿する' %>
   <% end %>

@@ -10,9 +10,10 @@
     <p>開催場所：<%= @event.place %></p>
     <p>チケット名：<%= @event.ticket_name %></p>
     <p>料金：<%= @event.price %></p>
-    <p>日付：<%= @event.date %></p>
-    <p>開始時間：<%= @event.starting_time %></p>
-    <p>終了時間：<%= @event.ending_time %></p>
+    <p>開始日：<%= @event.starting_year %>年<%= @event.starting_month %>月<%= @event.starting_day %>日</p>
+    <p>開始時間：<%= @event.starting_hour %>時<%= @event.starting_minute %>分</p>
+    <p>終了日：<%= @event.ending_year %>年<%= @event.ending_month %>月<%= @event.ending_day %>日</p>
+    <p>終了時間：<%= @event.ending_hour %>時<%= @event.ending_minute %>分</p>
     <p>イベント内容：<%= @event.content %></p>
     <p>注意点：<%= @event.cautionary_note %></p>
 
