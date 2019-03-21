@@ -1,9 +1,13 @@
 <h1>イベント一覧</h1>
 
-<% @all_events.each do |event| %>
-  <ul>
-    <li><%= link_to event.content, event %></li>
-  </ul>
+<% if @all_events.empty? then %>
+  <p>投稿されたイベントはまだ存在していません。</p>
+<% else %>
+  <% @all_events.each do |event| %>
+    <ul>
+      <li><%= link_to event.name, event %></li>
+    </ul>
+  <% end %>
 <% end %>
 
 <%= paginate @all_events %>
@@ -15,11 +19,118 @@
 <% else %>
   <% @current_user_events.each do |event| %>
     <ul>
-      <li><%= link_to event.content, event %></li>
+      <li><%= link_to event.name, event %></li>
     </ul>
   <% end %>
 <% end %>
 
 <%= paginate @current_user_events %>
 
+<h1>既に終了したイベント</h1>
+<ul id="before_event"></ul>
+
+<h1>現在開催中のイベント</h1>
+<ul id="event_is_being_held"></ul>
+
+<h1>今後開催されるイベント</h1>
+<ul id="after_event"></ul>
+
 <%= link_to "トップページへ戻る", root_path %>
+
+<script>
+  // イベントを時間によって分類する
+  function ClassifyEventsByTime() {
+    <% @all_events.each do |event| %>
+      var currentTime = new Date();
+
+      var startingYear = '<%= event.starting_year %>';
+      var startingMonth = '<%= event.starting_month %>';
+      var startingDay = '<%= event.starting_day %>';
+      var startingTimeHour = '<%= event.starting_hour %>';
+      var startingTimeMinute = '<%= event.starting_minute %>';
+
+      var endingYear = '<%= event.ending_year %>';
+      var endingMonth = '<%= event.ending_month %>';
+      var endingDay = '<%= event.ending_day %>';
+      var endingTimeHour = '<%= event.ending_hour %>';
+      var endingTimeMinute = '<%= event.ending_minute %>';
+
+      var startingDateTime = new Date(startingYear + "/" + startingMonth + "/" + startingDay
+                                      + " " + startingTimeHour + ":" + startingTimeMinute);
+      var endingDateTime = new Date(endingYear + "/" + endingMonth + "/" + endingDay
+                                      + " " + endingTimeHour + ":" + endingTimeMinute);
+
+      // 追加されるそれぞれの親要素
+      var beforeEvent = document.getElementById('before_event');
+      var eventIsBeingHeld = document.getElementById('event_is_being_held');
+      var afterEvent = document.getElementById('after_event');
+
+      // 追加するそれぞれの子要素とその中身
+      var liEvent = document.createElement('li');
+      liEvent.innerHTML = '<%= link_to event.name, event_path(event) %>';
+
+      // 既に終了したイベントを表示
+      if (endingDateTime.getTime() < currentTime.getTime()) {
+        // 親要素の最後尾に子要素を追加
+        beforeEvent.insertBefore(liEvent, beforeEvent.children[0]);
+      }
+
+      // 現在開催中のイベントを表示
+      if (startingDateTime.getTime() < currentTime.getTime() && currentTime.getTime() < endingDateTime.getTime()) {
+        //親要素の最後尾に子要素を追加
+        eventIsBeingHeld.insertBefore(liEvent, eventIsBeingHeld.children[0]);
+      }
+
+      // 今後開催されるイベントを表示
+      if (currentTime.getTime() < startingDateTime.getTime()) {
+        // 親要素の最後尾に子要素を追加
+        afterEvent.insertBefore(liEvent, afterEvent.children[0]);
+      }
+    <% end %>
+
+    // 追加されるそれぞれの親要素
+    var beforeEvent = document.getElementById('before_event');
+    var eventIsBeingHeld = document.getElementById('event_is_being_held');
+    var afterEvent = document.getElementById('after_event');
+
+    // 追加するそれぞれの子要素とその中身
+    var liEventBefore = document.createElement('li');
+    var liEventHeld = document.createElement('li');
+    var liEventAfter = document.createElement('li');
+    liEventBefore.innerHTML = '既に終了したイベントはまだ存在していません。';
+    liEventHeld.innerHTML = '現在開催中のイベントはまだ存在していません。';
+    liEventAfter.innerHTML = '今後開催されるイベントはまだ存在していません。';
+
+    // 追加する子要素の数をそれぞれ数える
+    var beforeEventCount = beforeEvent.childElementCount;
+    var eventIsBeingHeldCount = eventIsBeingHeld.childElementCount;
+    var afterEventCount = afterEvent.childElementCount;
+
+    // 既に終了したイベントが存在しない場合
+    if(!!beforeEventCount == false) {
+      beforeEvent.insertBefore(liEventBefore, beforeEvent.children[0]);
+    }
+
+    // 現在開催中のイベントが存在しない場合
+    if(!!eventIsBeingHeldCount == false) {
+      eventIsBeingHeld.insertBefore(liEventHeld, eventIsBeingHeld.children[0]);
+    }
+
+    // 今後開催されるイベントが存在しない場合
+    if(!!afterEventCount == false) {
+      afterEvent.insertBefore(liEventAfter, afterEvent.children[0]);
+    }
+
+    // 現在表示されているページをリロードする
+    // 別のページに遷移した後に、再度このページに遷移すると、時間によって分類したイベントが増殖してしまうのを防ぐため。
+    // リロードが無限に繰り返されてしまうので、1度だけリロードする様にする。
+    if (window.name != "events"){
+    	location.reload();
+    	window.name = "events";
+    }else {
+      window.name = "";
+    }
+  }
+
+  window.onload = ClassifyEventsByTime()
+</script>
