@@ -4,8 +4,8 @@ class EventsController < ApplicationController
   include SessionsHelper
 
   def index
-    @all_events = Event.all.order(created_at: :desc).page(params[:page]).per(10)
-    @current_user_events = current_user.events.order(created_at: :desc).page(params[:page]).per(10)
+    @all_events = Event.all.order(created_at: :desc).page(params[:page]).per(10).search(params[:search])
+    @current_user_events = current_user.events.order(created_at: :desc).page(params[:page]).per(10).search(params[:search])
   end
 
   def show
