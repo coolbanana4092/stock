@@ -1,0 +1,10 @@
+footer{
+  background-color: #42b9d0;
+  height: 80px;
+}
+
+// heightとline-heightの値を揃えることでsocial-mediasを縦方向に中央に揃える
+#social-medias{
+  height: 50px;
+  line-height: 50px;
+}
