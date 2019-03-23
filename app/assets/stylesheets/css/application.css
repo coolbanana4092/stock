@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,9 +14,238 @@
  *= require_tree .
  *= require_self
  */
+li {
+  list-style: none;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+header {
+  background-color: #42b9d0;
+  height: 80px;
+}
+
+#header-title {
+  margin-top: 14px;
+}
+
+/*================================*/
+/* ハンバーガーメニュー */
+/*================================*/
+/*================================*/
+/* mobileとpcの共通のハンバーガーメニューの設定 */
+/*================================*/
+#wrapper {
+  font-size: 1.2rem;
+  font-weight: 900;
+  width: 100%;
+  text-align: center;
+}
+
+#contents {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(0);
+  transition: .4s transform;
+}
+
+#contents {
+  height: 1000px;
+  background-color: #ddd;
+}
+
+#nav-btn {
+  display: none;
+  outline: none;
+}
+
+.menu ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 70px;
+  background: #eaf2f4;
+  padding: 0;
+}
+.menu ul li {
+  padding: 0 20px;
+  transition: all .5s;
+}
+.menu ul li a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+}
+.menu ul li a:after {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #333;
+  transform: scale(0, 1);
+  transform-origin: left top;
+  transition: transform .3s;
+}
+.menu ul li a:hover::after {
+  transform: scale(1, 1);
+}
+
+/*================================*/
+/* mobile特有のハンバーガーメニューの設定 */
+/*================================*/
+@media screen and (max-width: 768px) {
+  #nav-btn {
+    display: block;
+    position: fixed;
+    z-index: 11;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+  }
+
+  .hamburger {
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 44px;
+  }
+  .hamburger .bdr {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background: #000;
+    transition: all .5s;
+  }
+  .hamburger .bdr:nth-child(1) {
+    top: 0;
+  }
+  .hamburger .bdr:nth-child(2) {
+    top: 20px;
+  }
+  .hamburger .bdr:nth-child(3) {
+    bottom: 0;
+  }
+  .hamburger.is-active .bdr {
+    background: #000;
+  }
+  .hamburger.is-active .bdr:nth-child(1) {
+    transform: translateY(20px) rotate(-45deg);
+  }
+  .hamburger.is-active .bdr:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.is-active .bdr:nth-child(3) {
+    transform: translateY(-20px) rotate(45deg);
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 100%;
+    padding-top: 70px;
+    text-align: left;
+    font-size: 13px;
+    background: #eaf2f4;
+    z-index: 1;
+    transform: translateX(150px);
+    transition: .4s all;
+  }
+  .menu ul {
+    display: block;
+    width: 150px;
+    line-height: 70px;
+    background: none;
+    color: #000;
+    text-align: center;
+  }
+  .menu ul li {
+    transition: all .5s;
+  }
+  .menu ul li:hover {
+    background: #fff;
+  }
+  .menu ul li a:after {
+    display: none;
+  }
+
+  .nav-open .menu {
+    transform: translateX(0);
+  }
+  .nav-open #contents {
+    transform: translateX(-150px);
+  }
+}
+footer {
+  background-color: #42b9d0;
+  height: 80px;
+}
+
+#social-medias {
+  height: 50px;
+  line-height: 50px;
+}
+
+#toppage-image {
+  width: 100%;
+}
+
+.explanation-of-application {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+#divider-above-characteristic {
+  margin-top: 60px;
+}
+
+.characteristics-of-application {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.one-of-the-characteristics {
+  margin-bottom: 50px;
+}
+
+#divider-above-use-for-trial {
+  margin-top: 60px;
+}
+
+.use-for-trial {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.lets-search {
+  margin-bottom: 30px;
+}
+
 #map {
-  width: 300px;
+  width: 80%;
   height: 300px;
+  margin: auto;
+}
+
+#search-field {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.map-explanation {
+  margin-top: 40px;
+  margin-bottom: 50px;
 }
 
 /*# sourceMappingURL=application.css.map */
