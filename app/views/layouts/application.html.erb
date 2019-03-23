@@ -8,18 +8,20 @@
     <title>Stock</title>
     <%= csrf_meta_tags %>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <%= stylesheet_link_tag  'css/application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>
-
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh_J3NoIMD5Kv4oB7HX_XXuqRhJFtXNFA"></script>
-
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
+
     <%= yield %>
+
+    <%= render 'layouts/footer' %>
   </body>
 </html>
