@@ -16,46 +16,31 @@
 
 /** カルーセル **********/
 
-// カルーセルの画像の左右の矢印ボタンを非表示にする
 #frame-of-carousel-image{
   .carousel-image{
     margin-bottom: 0px;
 
+    .slick-list{
+      height: 200px;
+    }
+
     .operation-image{
-      height: 320px;
-    }
-
-    .slick-prev{
-      left: 0px;
-    }
-
-    .slick-next {
-      right: 0px;
+      height: 200px;
     }
   }
 }
 
-// カルーセルの文章の左右の矢印ボタンを非表示にする
 .ui.modal.scrolling{
   .ui.grid{
     margin-top: 10px;
     .carousel-explanation{
       padding-top: 0px;
-
-      .slick-prev{
-        left: 0px;
-      }
-
-      .slick-next {
-        right: 0px;
-      }
     }
   }
 
   .slick-dotted{
     .slick-dots{
-      position: relative;
-      bottom: 5px;
+      position: static;
     }
   }
 }
