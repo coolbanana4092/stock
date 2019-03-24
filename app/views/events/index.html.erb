@@ -177,24 +177,33 @@
 
   ClassifyEventsByTime()
 
-  //このページを全て読み込んだ後にチュートリアルを表示
+  //このページを全て読み込んだ後にチュートリアルを初回アクセス時のみ表示する
   window.onload = function() {
-    $('.ui.modal')
-      .modal('show')
-    ;
+    // 初回アクセスならモーダルウィンドウを表示させ、そうでなければモーダルウィンドウを非表示にする
+    if($.cookie('btnFlg') !== 'on') {
+      $('.ui.modal')
+        .modal('show')
+      ;
+    }
 
-    // モーダルウィンドウ内でカルーセルを使用する
-    $(document).ready(function(){
-      $('.carousel-image').slick({
-        asNavFor: '.carousel-explanation',
-        dots: true,
-        appendDots:$("#original-dots"),
-      });
+    // モーダルウィンドウの中のOKボタンをクリックしたら、cookieを保存する
+    $(".actions .ui.grid .column .button").click(function(){
+      $.cookie('btnFlg', 'on', { expires: 30,path: '/' });
+    });
 
-      $('.carousel-explanation').slick({
-        asNavFor: '.carousel-image',
-        fade: true,
-      });
+    // モーダルウィンドウ内のカルーセルで画像を表示する
+    $('.carousel-image').slick({
+      asNavFor: '.carousel-explanation',
+      dots: true,
+      arrows: false,
+      appendDots:$("#original-dots"),
+    });
+
+    // モーダルウィンドウ内でカルーセルで文章を表示する
+    $('.carousel-explanation').slick({
+      asNavFor: '.carousel-image',
+      arrows: false,
+      fade: true,
     });
   };
 </script>

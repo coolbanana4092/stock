@@ -264,14 +264,11 @@ footer {
 #frame-of-carousel-image .carousel-image {
   margin-bottom: 0px;
 }
+#frame-of-carousel-image .carousel-image .slick-list {
+  height: 200px;
+}
 #frame-of-carousel-image .carousel-image .operation-image {
-  height: 320px;
-}
-#frame-of-carousel-image .carousel-image .slick-prev {
-  left: 0px;
-}
-#frame-of-carousel-image .carousel-image .slick-next {
-  right: 0px;
+  height: 200px;
 }
 
 .ui.modal.scrolling .ui.grid {
@@ -280,15 +277,8 @@ footer {
 .ui.modal.scrolling .ui.grid .carousel-explanation {
   padding-top: 0px;
 }
-.ui.modal.scrolling .ui.grid .carousel-explanation .slick-prev {
-  left: 0px;
-}
-.ui.modal.scrolling .ui.grid .carousel-explanation .slick-next {
-  right: 0px;
-}
 .ui.modal.scrolling .slick-dotted .slick-dots {
-  position: relative;
-  bottom: 5px;
+  position: static;
 }
 
 /*# sourceMappingURL=application.css.map */
