@@ -23,6 +23,9 @@ a {
   text-decoration: none;
 }
 
+/********************************
+  ヘッダー自体
+********************************/
 header {
   background-color: #42b9d0;
   height: 80px;
@@ -32,12 +35,10 @@ header {
   margin-top: 14px;
 }
 
-/*================================*/
-/* ハンバーガーメニュー */
-/*================================*/
-/*================================*/
-/* mobileとpcの共通のハンバーガーメニューの設定 */
-/*================================*/
+/********************************
+  ハンバーガーメニュー
+********************************/
+/** mobileとpcの共通の設定 *****/
 #wrapper {
   font-size: 1.2rem;
   font-weight: 900;
@@ -97,9 +98,7 @@ header {
   transform: scale(1, 1);
 }
 
-/*================================*/
-/* mobile特有のハンバーガーメニューの設定 */
-/*================================*/
+/** mobile特有の設定 ***********/
 @media screen and (max-width: 768px) {
   #nav-btn {
     display: block;
@@ -246,6 +245,40 @@ footer {
 .map-explanation {
   margin-top: 40px;
   margin-bottom: 50px;
+}
+
+/********************************
+	チュートリアル
+********************************/
+/** モーダルウィンドウ **********/
+.modal {
+  background-color: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.modal #modal-header {
+  text-align: center;
+}
+
+/** カルーセル **********/
+#frame-of-carousel-image .carousel-image {
+  margin-bottom: 0px;
+}
+#frame-of-carousel-image .carousel-image .slick-list {
+  height: 200px;
+}
+#frame-of-carousel-image .carousel-image .operation-image {
+  height: 200px;
+}
+
+.ui.modal.scrolling .ui.grid {
+  margin-top: 10px;
+}
+.ui.modal.scrolling .ui.grid .carousel-explanation {
+  padding-top: 0px;
+}
+.ui.modal.scrolling .slick-dotted .slick-dots {
+  position: static;
 }
 
 /*# sourceMappingURL=application.css.map */
