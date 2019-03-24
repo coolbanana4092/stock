@@ -1,3 +1,41 @@
+<div class="ui modal">
+  <div id="modal-header" class="header">このアプリの使い方</div>
+
+  <div id="frame-of-carousel-image" class="ui center aligned grid">
+    <div class="carousel-image content center aligned fourteen wide column">
+      <img class="operation-image" src="/img/events/event1.jpg"/>
+      <img class="operation-image" src="/img/events/event2.jpg"/>
+      <img class="operation-image" src="/img/events/event1.jpg"/>
+      <img class="operation-image" src="/img/events/event2.jpg"/>
+      <img class="operation-image" src="/img/events/event1.jpg"/>
+    </div>
+  </div>
+
+  <div class="ui center aligned grid">
+    <div class="carousel-explanation content left aligned fourteen wide column">
+      <p>〇〇をタップして〇〇画面に移動します。</p>
+      <p>イベントの情報を入力します。</p>
+      <p>投稿ボタンを押してイベントを投稿します。</p>
+      <p>地図中のマーカーをタップまたはクリックすると、そのイベントの名前と場所が表示されます。</p>
+      <p>もし、そのイベントの詳細情報を知りたい場合は、吹き出しをタップまたはクリックします。</p>
+    </div>
+  </div>
+
+  <div class="ui center aligned slick-dotted">
+    <ul class="slick-dots" id="original-dots"></ul>
+  </div>
+
+  <div class="actions">
+    <div class="ui center aligned grid">
+      <div class="center aligned seven wide column">
+        <button class="ui fluid red button">
+          OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%= form_tag(events_path, :method => 'get' ) do %>
   <%= text_field_tag :search %>
   <%= submit_tag 'Search', :name => nil %>
@@ -137,5 +175,35 @@
     }
   }
 
-  window.onload = ClassifyEventsByTime()
+  ClassifyEventsByTime()
+
+  //このページを全て読み込んだ後にチュートリアルを初回アクセス時のみ表示する
+  window.onload = function() {
+    // 初回アクセスならモーダルウィンドウを表示させ、そうでなければモーダルウィンドウを非表示にする
+    if($.cookie('btnFlg') !== 'on') {
+      $('.ui.modal')
+        .modal('show')
+      ;
+    }
+
+    // モーダルウィンドウの中のOKボタンをクリックしたら、cookieを保存する
+    $(".actions .ui.grid .column .button").click(function(){
+      $.cookie('btnFlg', 'on', { expires: 30,path: '/' });
+    });
+
+    // モーダルウィンドウ内のカルーセルで画像を表示する
+    $('.carousel-image').slick({
+      asNavFor: '.carousel-explanation',
+      dots: true,
+      arrows: false,
+      appendDots:$("#original-dots"),
+    });
+
+    // モーダルウィンドウ内でカルーセルで文章を表示する
+    $('.carousel-explanation').slick({
+      asNavFor: '.carousel-image',
+      arrows: false,
+      fade: true,
+    });
+  };
 </script>

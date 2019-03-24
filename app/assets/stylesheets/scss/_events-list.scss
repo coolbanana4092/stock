@@ -1,0 +1,46 @@
+/********************************
+	チュートリアル
+********************************/
+
+/** モーダルウィンドウ **********/
+
+.modal{
+  background-color: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  #modal-header{
+    text-align: center;
+  }
+}
+
+/** カルーセル **********/
+
+#frame-of-carousel-image{
+  .carousel-image{
+    margin-bottom: 0px;
+
+    .slick-list{
+      height: 200px;
+    }
+
+    .operation-image{
+      height: 200px;
+    }
+  }
+}
+
+.ui.modal.scrolling{
+  .ui.grid{
+    margin-top: 10px;
+    .carousel-explanation{
+      padding-top: 0px;
+    }
+  }
+
+  .slick-dotted{
+    .slick-dots{
+      position: static;
+    }
+  }
+}

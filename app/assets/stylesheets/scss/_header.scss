@@ -1,3 +1,6 @@
+/********************************
+  ヘッダー自体
+********************************/
 header{
   background-color: #42b9d0;
   height: 80px;
@@ -7,13 +10,11 @@ header{
   margin-top: 14px;
 }
 
-/*================================*/
-/* ハンバーガーメニュー */
-/*================================*/
+/********************************
+  ハンバーガーメニュー
+********************************/
 
-/*================================*/
-/* mobileとpcの共通のハンバーガーメニューの設定 */
-/*================================*/
+/** mobileとpcの共通の設定 *****/
 
 #wrapper {
   font-size: 1.2rem;
@@ -49,9 +50,11 @@ header{
     height: 70px;
     background: #eaf2f4;
     padding: 0;
+
     li {
       padding: 0 20px;
       transition: all .5s;
+
       a {
         position: relative;
         display: inline-block;
@@ -76,9 +79,7 @@ header{
   }
 }
 
-/*================================*/
-/* mobile特有のハンバーガーメニューの設定 */
-/*================================*/
+/** mobile特有の設定 ***********/
 
 @include mobile {
   #nav-btn {
@@ -90,11 +91,13 @@ header{
     background: transparent;
     border: none;
   }
+
   .hamburger {
     position: relative;
     display: block;
     width: 50px;
     height: 44px;
+
     .bdr {
       position: absolute;
       left: 0;
@@ -113,6 +116,7 @@ header{
         bottom: 0;
       }
     }
+
     &.is-active {
       .bdr {
         background: #000;
@@ -128,6 +132,7 @@ header{
       }
     }
   }
+
   .menu{
     position: fixed;
     top: 0;
@@ -141,6 +146,7 @@ header{
     z-index: 1;
     transform: translateX(150px);
     transition: .4s all;
+
     ul {
       display: block;
       width: 150px;
@@ -148,11 +154,13 @@ header{
       background: none;
       color: #000;
       text-align: center;
+
       li {
         transition: all .5s;
         &:hover {
           background: #fff;
         }
+
         a {
           &:after {
             display: none;
@@ -161,10 +169,12 @@ header{
       }
     }
   }
+
   .nav-open {
     .menu{
     transform: translateX(0);
     }
+
     #contents{
       transform: translateX(-150px);
     }
