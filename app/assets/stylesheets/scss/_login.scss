@@ -1,7 +1,7 @@
 form{
   .ui.grid{
     .fourteen.wide.column{
-      #please-register-new{
+      #please-login{
         font-weight: bolder;
         font-size: 20px;
         margin: 30px;
@@ -10,14 +10,18 @@ form{
       .ui.form{
         .field{
           margin-bottom: 15px;
+
+          #always-login{
+            padding-top: 10px;
+          }
         }
 
-        #signup-page-frame-of-signup{
+        #login-page-frame-of-login{
           margin: 40px;
           margin-bottom: 30px;
         }
 
-        #signup-page-frame-of-login{
+        #login-page-frame-of-signup{
           margin-top: 30px;
           margin-bottom: 60px;
         }
