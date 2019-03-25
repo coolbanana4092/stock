@@ -281,4 +281,21 @@ footer {
   position: static;
 }
 
+form .ui.grid .column #please-register-new {
+  font-weight: bolder;
+  font-size: 20px;
+  margin: 30px;
+}
+form .ui.grid .column .ui.form .field {
+  margin-bottom: 15px;
+}
+form .ui.grid .column .ui.form #frame-of-signup {
+  margin: 40px;
+  margin-bottom: 30px;
+}
+form .ui.grid .column .ui.form #frame-of-login {
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+
 /*# sourceMappingURL=application.css.map */
