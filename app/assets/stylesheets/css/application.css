@@ -318,4 +318,17 @@ form .ui.grid .fourteen.wide.column .ui.form #login-page-frame-of-signup {
   margin-bottom: 60px;
 }
 
+form .ui.grid .fourteen.wide.column #please-update-user-information {
+  font-weight: bolder;
+  font-size: 20px;
+  margin: 30px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field {
+  margin-bottom: 15px;
+}
+form .ui.grid .fourteen.wide.column .ui.form #user-update-page-frame-of-update {
+  margin: 40px;
+  margin-bottom: 60px;
+}
+
 /*# sourceMappingURL=application.css.map */
