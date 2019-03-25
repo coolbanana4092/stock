@@ -1,0 +1,22 @@
+form{
+  .ui.grid{
+    .fourteen.wide.column{
+      #please-update-user-information{
+        font-weight: bolder;
+        font-size: 20px;
+        margin: 30px;
+      }
+
+      .ui.form{
+        .field{
+          margin-bottom: 15px;
+        }
+
+        #user-update-page-frame-of-update{
+          margin: 40px;
+          margin-bottom: 60px;
+        }
+      }
+    }
+  }
+}
