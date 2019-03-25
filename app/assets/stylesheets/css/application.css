@@ -281,19 +281,39 @@ footer {
   position: static;
 }
 
-form .ui.grid .column #please-register-new {
+form .ui.grid .fourteen.wide.column #please-register-new {
   font-weight: bolder;
   font-size: 20px;
   margin: 30px;
 }
-form .ui.grid .column .ui.form .field {
+form .ui.grid .fourteen.wide.column .ui.form .field {
   margin-bottom: 15px;
 }
-form .ui.grid .column .ui.form #frame-of-signup {
+form .ui.grid .fourteen.wide.column .ui.form #signup-page-frame-of-signup {
   margin: 40px;
   margin-bottom: 30px;
 }
-form .ui.grid .column .ui.form #frame-of-login {
+form .ui.grid .fourteen.wide.column .ui.form #signup-page-frame-of-login {
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+
+form .ui.grid .fourteen.wide.column #please-login {
+  font-weight: bolder;
+  font-size: 20px;
+  margin: 30px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field {
+  margin-bottom: 15px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field #always-login {
+  padding-top: 10px;
+}
+form .ui.grid .fourteen.wide.column .ui.form #login-page-frame-of-login {
+  margin: 40px;
+  margin-bottom: 30px;
+}
+form .ui.grid .fourteen.wide.column .ui.form #login-page-frame-of-signup {
   margin-top: 30px;
   margin-bottom: 60px;
 }
