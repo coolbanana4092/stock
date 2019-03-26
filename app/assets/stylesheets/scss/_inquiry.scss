@@ -1,0 +1,22 @@
+form{
+  .ui.grid{
+    .fourteen.wide.column{
+      #please-inquire{
+        font-weight: bolder;
+        font-size: 20px;
+        margin: 30px;
+      }
+
+      .ui.form{
+        .field{
+          margin-bottom: 15px;
+        }
+
+        #inquiry-page-frame-of-submit{
+          margin: 40px;
+          margin-bottom: 60px;
+        }
+      }
+    }
+  }
+}
