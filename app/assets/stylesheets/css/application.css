@@ -392,4 +392,17 @@ form .ui.grid .fourteen.wide.column .ui.form #password-reset-page-frame-of-updat
   margin-bottom: 60px;
 }
 
+form .ui.grid .fourteen.wide.column #please-inquire {
+  font-weight: bolder;
+  font-size: 20px;
+  margin: 30px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field {
+  margin-bottom: 15px;
+}
+form .ui.grid .fourteen.wide.column .ui.form #inquiry-page-frame-of-submit {
+  margin: 40px;
+  margin-bottom: 60px;
+}
+
 /*# sourceMappingURL=application.css.map */

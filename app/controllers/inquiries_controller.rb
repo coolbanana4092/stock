@@ -7,10 +7,13 @@ class InquiriesController < ApplicationController
 
   def thanks
     @inquiry = Inquiry.new(inquiry_params)
-    @inquiry.save
-
-    InquiryMailer.send_email(@inquiry).deliver
-    redirect_to root_url
+    
+    if @inquiry.save
+      InquiryMailer.send_email(@inquiry).deliver
+      redirect_to root_url
+    else
+      redirect_to inquiry_input_url
+    end
   end
 
   private
