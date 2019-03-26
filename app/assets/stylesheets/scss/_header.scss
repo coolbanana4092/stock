@@ -4,10 +4,13 @@
 header{
   background-color: #42b9d0;
   height: 80px;
+  width: 100%;
+  position: absolute;
+  top: 0;
 }
 
 #header-title{
-  margin-top: 14px;
+  margin-top: 20px;
 }
 
 /********************************
@@ -40,6 +43,7 @@ header{
 #nav-btn {
   display: none;
   outline: none;
+  margin-top: 7px;
 }
 
 .menu {
