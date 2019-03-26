@@ -6,10 +6,22 @@
       <div class="ui center aligned grid message">
         <div class="left aligned fourteen wide column">
           <p id="procedure-of-password-reset">手順</p>
-          <p>1. まずは、以下のフォームにこのアプリに登録したメールアドレスを入力し、送信してください。</p>
-          <p>2. すると、そのメールアドレス宛にパスワードを更新するためのメールが届きます。</p>
-          <p>3. 届いたメール内のURLをクリックすると、パスワードを更新するためのページが開かれます。</p>
-          <p>4. そのページ内のフォームに新しいパスワードを入力し送信すると、そのパスワードがあなたの新しいパスワードになります。</p>
+          <div id="step1-of-password-reset" class="step-of-password-reset">
+            <p>step1.</p>
+            <p>まずは、以下のフォームにこのアプリに登録したメールアドレスを入力し、送信してください。</p>
+          </div>
+          <div class="step-of-password-reset">
+            <p>step2.</p>
+            <p>そのメールアドレス宛にパスワードを更新するためのメールが届きます。</p>
+          </div>
+          <div class="step-of-password-reset">
+            <p>step3.</p>
+            <p>届いたメール内のURLをクリックすると、パスワードを更新するためのページが開かれます。</p>
+          </div>
+          <div id="step4-of-password-reset" class="step-of-password-reset">
+            <p>step4.</p>
+            <p>そのページ内のフォームに新しいパスワードを入力し送信すると、そのパスワードがあなたの新しいパスワードになります。</p>
+          </div>
         </div>
       </div>
 
@@ -20,15 +32,14 @@
               <%= f.label :email, '登録したメールアドレス' %>
             </div>
           </div>
-          <div class="ui left icon huge input">
+          <div class="ui huge input">
             <%= f.email_field :email, :placeholder => "例：case@example.com" %>
-            <i class="mail icon"></i>
           </div>
         </div>
 
         <div class="ui center aligned grid">
           <%= button_tag :type => "submit", :id => "password-reset-page-frame-of-submit", :class =>"ui blue submit button ten wide column" do %>
-            <i class="pencil alternate icon"></i>
+            <i class="mail icon"></i>
             送信する
           <% end %>
         </div>
