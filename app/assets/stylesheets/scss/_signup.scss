@@ -1,0 +1,27 @@
+form{
+  .ui.grid{
+    .fourteen.wide.column{
+      #please-register-new{
+        font-weight: bolder;
+        font-size: 20px;
+        margin: 30px;
+      }
+
+      .ui.form{
+        .field{
+          margin-bottom: 15px;
+        }
+
+        #signup-page-frame-of-signup{
+          margin: 40px;
+          margin-bottom: 30px;
+        }
+
+        #signup-page-frame-of-login{
+          margin-top: 30px;
+          margin-bottom: 60px;
+        }
+      }
+    }
+  }
+}

@@ -23,11 +23,11 @@ class Event < ApplicationRecord
   before_save { self.starting_day.downcase! }
   before_save { self.starting_hour.downcase! }
   before_save { self.starting_minute.downcase! }
-  before_save { self.ending_year.downcase! }
-  before_save { self.ending_month.downcase! }
-  before_save { self.ending_day.downcase! }
-  before_save { self.ending_hour.downcase! }
-  before_save { self.ending_minute.downcase! }
+  # before_save { self.ending_year.downcase! }
+  # before_save { self.ending_month.downcase! }
+  # before_save { self.ending_day.downcase! }
+  # before_save { self.ending_hour.downcase! }
+  # before_save { self.ending_minute.downcase! }
 
   belongs_to :user, optional: true
 
