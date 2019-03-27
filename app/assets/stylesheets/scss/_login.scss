@@ -1,0 +1,31 @@
+form{
+  .ui.grid{
+    .fourteen.wide.column{
+      #please-login{
+        font-weight: bolder;
+        font-size: 20px;
+        margin: 30px;
+      }
+
+      .ui.form{
+        .field{
+          margin-bottom: 15px;
+
+          #always-login{
+            padding-top: 10px;
+          }
+        }
+
+        #login-page-frame-of-login{
+          margin: 40px;
+          margin-bottom: 30px;
+        }
+
+        #login-page-frame-of-signup{
+          margin-top: 30px;
+          margin-bottom: 60px;
+        }
+      }
+    }
+  }
+}
