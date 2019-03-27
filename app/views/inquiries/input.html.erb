@@ -1,22 +1,60 @@
-<h1>お問い合わせ</h1>
+<%= form_for @inquiry, :url => inquiry_thanks_path do |f| %>
+  <div class="ui center aligned grid">
+    <div class="fourteen wide column">
+      <% if @inquiry.errors.any? %>
+        <div>入力内容にエラーがあります</div>
+        <ul>
+          <% @inquiry.errors.each do |attr, msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
 
-<div class="inquiry_input">
-  <%= form_for @inquiry, :url => inquiry_thanks_path do |f| %>
-    <% if @inquiry.errors.any? %>
-      <div>入力内容にエラーがあります</div>
-      <ul>
-        <% @inquiry.errors.each do |attr, msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    <% end %>
-      <div>名前 (必須)</div>
-      <div><%= f.text_field :name %></div>
-      <div>メールアドレス (必須)</div>
-      <div><%= f.text_field :email %></div>
-      <div>お問い合わせ内容 (必須)</div>
-      <div><%= f.text_area :message %></div>
+      <div id="please-inquire" class="center aligned">お問い合わせ</div>
 
-      <%= f.submit '送信する' %>
-  <% end %>
-</div>
+      <div class="ui form">
+        <div class="field">
+          <div class="ui left aligned grid">
+            <div class="sixteen wide column">
+              <%= f.label :name, 'ユーザー名' %>
+            </div>
+          </div>
+          <div class="ui left icon huge input">
+            <%= f.text_field :name, :placeholder => "例：taro" %>
+            <i class="user icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui left aligned grid">
+            <div class="sixteen wide column">
+              <%= f.label :email, 'メールアドレス' %>
+            </div>
+          </div>
+          <div class="ui left icon huge input">
+            <%= f.email_field :email, :placeholder => "例：case@example.com" %>
+            <i class="mail icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui left aligned grid">
+            <div class="sixteen wide column">
+              <%= f.label :message, 'お問い合わせ内容 (必須)' %>
+            </div>
+          </div>
+          <div class="ui huge input">
+            <%= f.text_area :message, :placeholder => "例：イベントの投稿方法が分からないので教えていただきたいです。" %>
+          </div>
+        </div>
+
+        <div class="ui center aligned grid">
+          <%= button_tag :type => "submit", :id => "inquiry-page-frame-of-submit", :class =>"ui blue submit button ten wide column" do %>
+            <i class="mail icon"></i>
+            送信する
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

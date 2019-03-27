@@ -31,10 +31,14 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <div id="container">
+      <%= render 'layouts/header' %>
 
-    <%= yield %>
+      <div id="main-content">
+        <%= yield %>
+      </div>
 
-    <%= render 'layouts/footer' %>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

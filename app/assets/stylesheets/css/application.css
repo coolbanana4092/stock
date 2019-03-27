@@ -14,6 +14,20 @@
  *= require_tree .
  *= require_self
  */
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+html body #container {
+  position: relative;
+  min-height: 100%;
+}
+html body #container #main-content {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
 li {
   list-style: none;
 }
@@ -29,10 +43,13 @@ a {
 header {
   background-color: #42b9d0;
   height: 80px;
+  width: 100%;
+  position: absolute;
+  top: 0;
 }
 
 #header-title {
-  margin-top: 14px;
+  margin-top: 20px;
 }
 
 /********************************
@@ -63,6 +80,7 @@ header {
 #nav-btn {
   display: none;
   outline: none;
+  margin-top: 7px;
 }
 
 .menu ul {
@@ -189,11 +207,18 @@ header {
 footer {
   background-color: #42b9d0;
   height: 80px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 
 #social-medias {
-  height: 50px;
-  line-height: 50px;
+  line-height: 100px;
+}
+#social-medias .one-of-the-social-medias {
+  margin-top: 5px;
+  padding: 0px;
+  height: 20px;
 }
 
 #toppage-image {
@@ -279,6 +304,179 @@ footer {
 }
 .ui.modal.scrolling .slick-dotted .slick-dots {
   position: static;
+}
+
+form .ui.grid .fourteen.wide.column #please-register-new {
+  font-weight: bolder;
+  font-size: 20px;
+  margin: 30px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field {
+  margin-bottom: 15px;
+}
+form .ui.grid .fourteen.wide.column .ui.form #signup-page-frame-of-signup {
+  margin: 40px;
+  margin-bottom: 30px;
+}
+form .ui.grid .fourteen.wide.column .ui.form #signup-page-frame-of-login {
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+
+form .ui.grid .fourteen.wide.column #please-login {
+  font-weight: bolder;
+  font-size: 20px;
+  margin: 30px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field {
+  margin-bottom: 15px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field #always-login {
+  padding-top: 10px;
+}
+form .ui.grid .fourteen.wide.column .ui.form #login-page-frame-of-login {
+  margin: 40px;
+  margin-bottom: 30px;
+}
+form .ui.grid .fourteen.wide.column .ui.form #login-page-frame-of-signup {
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+
+form .ui.grid .fourteen.wide.column #please-update-user-information {
+  font-weight: bolder;
+  font-size: 20px;
+  margin: 30px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field {
+  margin-bottom: 15px;
+}
+form .ui.grid .fourteen.wide.column .ui.form #user-update-page-frame-of-update {
+  margin: 40px;
+  margin-bottom: 60px;
+}
+
+form .ui.grid .fourteen.wide.column #please-password-reset {
+  font-weight: bolder;
+  font-size: 20px;
+  margin: 30px;
+}
+form .ui.grid .fourteen.wide.column .ui.grid .column #procedure-of-password-reset {
+  font-weight: bolder;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+form .ui.grid .fourteen.wide.column .ui.grid .column .step-of-password-reset {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+form .ui.grid .fourteen.wide.column .ui.form {
+  margin-top: 40px;
+}
+form .ui.grid .fourteen.wide.column .ui.form #password-reset-page-frame-of-submit {
+  margin: 40px;
+  margin-bottom: 60px;
+}
+
+form .ui.grid .fourteen.wide.column #please-password-update {
+  font-weight: bolder;
+  font-size: 20px;
+  margin: 30px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field {
+  margin-bottom: 15px;
+}
+form .ui.grid .fourteen.wide.column .ui.form #password-reset-page-frame-of-update {
+  margin: 40px;
+  margin-bottom: 60px;
+}
+
+form .ui.grid .fourteen.wide.column #please-inquire {
+  font-weight: bolder;
+  font-size: 20px;
+  margin: 30px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field {
+  margin-bottom: 15px;
+}
+form .ui.grid .fourteen.wide.column .ui.form #inquiry-page-frame-of-submit {
+  margin: 40px;
+  margin-bottom: 60px;
+}
+
+.field .ui.grid #frame-of-price {
+  padding-bottom: 0px;
+}
+.field .ui.grid .frame-of-input-price {
+  padding: 0px !important;
+  padding-left: 14px !important;
+}
+.field .ui.grid .yen-in-japanese {
+  padding: 0px !important;
+  padding-left: 10px !important;
+}
+.field .ui.grid .frame-of-input-year {
+  padding: 0px !important;
+}
+.field .ui.grid .frame-of-input-year .input-year {
+  padding: 5px;
+  padding-left: 14px;
+}
+.field .ui.grid .frame-of-input-year .input-year #event_starting_year {
+  padding: 10px;
+}
+.field .ui.grid .year-in-japanese {
+  padding: 0px !important;
+}
+.field .ui.grid .frame-of-input-month {
+  padding: 0px !important;
+}
+.field .ui.grid .frame-of-input-month .input-month {
+  padding: 5px;
+}
+.field .ui.grid .frame-of-input-month .input-month #event_starting_month {
+  padding: 10px;
+}
+.field .ui.grid .month-in-japanese {
+  padding: 0px !important;
+}
+.field .ui.grid .frame-of-input-day {
+  padding: 0px !important;
+}
+.field .ui.grid .frame-of-input-day .input-day {
+  padding: 5px;
+}
+.field .ui.grid .frame-of-input-day .input-day #event_starting_day {
+  padding: 10px;
+}
+.field .ui.grid .day-in-japanese {
+  padding: 0px !important;
+}
+.field .ui.grid .frame-of-input-hour {
+  padding: 0px !important;
+}
+.field .ui.grid .frame-of-input-hour .input-hour {
+  padding: 5px;
+  padding-left: 14px;
+}
+.field .ui.grid .frame-of-input-hour .input-hour #event_starting_hour {
+  padding: 10px;
+}
+.field .ui.grid .hour-in-japanese {
+  padding: 0px !important;
+}
+.field .ui.grid .frame-of-input-minute {
+  padding: 0px !important;
+}
+.field .ui.grid .frame-of-input-minute .input-minute {
+  padding: 5px;
+}
+.field .ui.grid .frame-of-input-minute .input-minute #event_starting_minute {
+  padding: 10px;
+}
+.field .ui.grid .minute-in-japanese {
+  padding: 0px !important;
 }
 
 /*# sourceMappingURL=application.css.map */
