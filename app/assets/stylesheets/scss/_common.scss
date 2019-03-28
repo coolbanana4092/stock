@@ -19,6 +19,7 @@ html{
     #container {
       position: relative;
       min-height: 100%;
+      overflow: hidden;
 
       #main-content {
         padding-top: 80px;
