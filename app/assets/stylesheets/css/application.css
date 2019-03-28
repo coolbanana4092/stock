@@ -22,6 +22,7 @@ html {
 html body #container {
   position: relative;
   min-height: 100%;
+  overflow: hidden;
 }
 html body #container #main-content {
   padding-top: 80px;
