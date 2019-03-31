@@ -1,4 +1,4 @@
-<img id="toppage-image" src="/img/events/event1.jpg" width="300" height="300" alt="イラスト1">
+<img id="toppage-image" src="/img/events/event1.jpg" width="300" height="300">
 
 <div class="explanation-of-application">
   <div class="ui center aligned grid">
@@ -169,7 +169,7 @@
               // マーカー毎の処理
               for (var i = 0; i < markerDataArray.length; i++) {
                 // マーカーの緯度経度のデータ作成
-                markerLatLng = new google.maps.LatLng({lat: markerDataArray[i][0].lat, lng: markerDataArray[i][0].lng});
+                var markerLatLng = new google.maps.LatLng({lat: markerDataArray[i][0].lat, lng: markerDataArray[i][0].lng});
 
                 // マーカーの追加
                 marker[i] = new google.maps.Marker({
