@@ -480,4 +480,73 @@ form .ui.grid .fourteen.wide.column .ui.form #inquiry-page-frame-of-submit {
   padding: 0px !important;
 }
 
+.ui.grid .fourteen.wide.column #event-details-image {
+  width: 100%;
+  padding: 5px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+.ui.grid .fourteen.wide.column #event-name {
+  font-size: 20px;
+  font-weight: bolder;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.ui.grid .fourteen.wide.column #event-created-or-updated-date {
+  margin-bottom: 5px;
+}
+.ui.grid .fourteen.wide.column #event-content-in-japanese {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.ui.grid .fourteen.wide.column #event-date-in-japanese {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.ui.grid .fourteen.wide.column #event-place-in-japanese {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.ui.grid .fourteen.wide.column #event-place {
+  margin-bottom: 20px;
+}
+.ui.grid .fourteen.wide.column #event-price-in-japanese {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.ui.grid .fourteen.wide.column #event-price {
+  margin-bottom: 20px;
+}
+.ui.grid .fourteen.wide.column #event-organizer-in-japanese {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.ui.grid .fourteen.wide.column #event-cautionary-note-in-japanese {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.frame-of-button-to-event-page {
+  margin-top: 25px;
+  margin-bottom: 35px;
+}
+.frame-of-button-to-event-page .ui.grid #button-to-events-list {
+  margin-bottom: 15px;
+}
+.frame-of-button-to-event-page .ui.grid #button-to-events-list a {
+  color: gray;
+}
+.frame-of-button-to-event-page .ui.grid #button-to-edit-event {
+  margin-bottom: 15px;
+}
+.frame-of-button-to-event-page .ui.grid #button-to-edit-event a {
+  color: gray;
+}
+.frame-of-button-to-event-page .ui.grid #button-to-delete-event {
+  margin-bottom: 15px;
+}
+.frame-of-button-to-event-page .ui.grid #button-to-delete-event a {
+  color: white;
+}
+
 /*# sourceMappingURL=application.css.map */
