@@ -1,5 +1,9 @@
+<% before_events_array = [] %>
+<% current_events_array = [] %>
+<% after_events_array = [] %>
+
 <div class="ui modal">
-  <div id="modal-header" class="header">このアプリの使い方</div>
+  <div id="modal-header">このアプリの使い方</div>
 
   <div id="frame-of-carousel-image" class="ui center aligned grid">
     <div class="carousel-image content center aligned fourteen wide column">
@@ -36,146 +40,318 @@
   </div>
 </div>
 
-<%= form_tag(events_path, :method => 'get' ) do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :name => nil %>
-<% end %>
+<div class="ui center aligned grid animated bounce">
+  <div class="fourteen wide column">
+    <div id="events-list-in-japanese">イベント一覧</div>
+  </div>
+</div>
 
-<h1>イベント一覧</h1>
+<div class="ui center aligned grid animated bounce" id="search-events">
+  <div class="fourteen wide columm">
+    <div class="item">
+      <form action="/events" accept-charset="UTF-8" method="get">
+        <div class="ui icon input">
+          <input name="utf8" type="hidden" value="✓">
+          <input type="text" name="search" placeholder="例：サッカー">
+          <i class="search link icon"></i>
+          <input type="submit" value="検索">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
-<% if @all_events.empty? then %>
-  <p>投稿されたイベントはまだ存在していません。</p>
-<% else %>
+<div class="ui center aligned grid">
+  <div id="select-box" class="right aligned fourteen wide column animated bounce">
+    <select class="select-box-show-events">
+      <option value="all-events">イベント一覧</option>
+      <option value="my-events">自分の投稿したイベント</option>
+      <option value="before-events">既に終了したイベント</option>
+      <option value="current-events">現在開催中のイベント</option>
+      <option value="after-events">今後開催されるイベント</option>
+    </select>
+  </div>
+</div>
+
+<div class="various-events-list">
+  <div class="all-events animated bounce">
+    <% if @all_events.empty? then %>
+      <div class="ui center aligned grid">
+        <div class="ten wide column">
+          投稿されたイベントはまだ存在していません。
+        </div>
+      </div>
+    <% else %>
+      <% @all_events.each do |event| %>
+        <div class="ui center aligned grid">
+          <div class="fourteen wide column">
+            <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
+              <div class="ui left aligned raised segment">
+                <img id="toppage-image" src="/img/events/event1.jpg" width="200" height="200">
+                <li class="event-name"><%= event.name %></li>
+                <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
+                <li class="event-organizer">
+                  <i class="user icon"></i>
+                  <%= event.organizer %>
+                </li>
+                <li class="event-place">
+                  <i class="map marker alternate icon"></i>
+                  <%= event.place %>
+                </li>
+                <li class="date">
+                  <i class="clock outline icon"></i>
+                  <%= event.starting_year %>/<%= event.starting_month %>/<%= event.starting_day %> <%= event.starting_hour %>:<%= event.starting_minute %> 〜 <%= event.ending_year %>/<%= event.ending_month %>/<%= event.ending_day %> <%= event.ending_hour %>:<%= event.ending_minute %>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <%= paginate @all_events %>
+  </div>
+
+  <div class="my-events animated bounce">
+    <% if @current_user_events.empty? then %>
+      <div class="ui center aligned grid">
+        <div class="ten wide column">
+          あなたが投稿したイベントはまだ存在していません。
+        </div>
+      </div>
+    <% else %>
+      <% @current_user_events.each do |event| %>
+        <div class="ui center aligned grid">
+          <div class="fourteen wide column">
+            <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
+              <div class="ui left aligned raised segment">
+                <img id="toppage-image" src="/img/events/event1.jpg" width="200" height="200">
+                <li class="event-name"><%= event.name %></li>
+                <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
+                <li class="event-organizer">
+                  <i class="user icon"></i>
+                  <%= event.organizer %>
+                </li>
+                <li class="event-place">
+                  <i class="map marker alternate icon"></i>
+                  <%= event.place %>
+                </li>
+                <li class="date">
+                  <i class="clock outline icon"></i>
+                  <%= event.starting_year %>/<%= event.starting_month %>/<%= event.starting_day %> <%= event.starting_hour %>:<%= event.starting_minute %> 〜 <%= event.ending_year %>/<%= event.ending_month %>/<%= event.ending_day %> <%= event.ending_hour %>:<%= event.ending_minute %>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <%= paginate @current_user_events %>
+  </div>
+
+  <%# 全イベントが1つも存在しない場合 %>
+  <% if @all_events.empty? then %>
+    <div class="ui center aligned grid">
+      <div class="ten wide column">
+        <div class="before-events animated bounce">
+          既に終了したイベントはまだ存在していません。
+        </div>
+
+        <div class="current-events animated bounce">
+          現在開催中のイベントはまだ存在していません。
+        </div>
+
+        <div class="after-events animated bounce">
+          今後開催されるイベントはまだ存在していません。
+        </div>
+      </div>
+    </div>
+  <% end %>
+
   <% @all_events.each do |event| %>
-    <ul>
-      <li><%= link_to event.name, event %></li>
-    </ul>
-  <% end %>
-<% end %>
+    <% current_time = Time.now %>
 
-<%= paginate @all_events %>
+    <% starting_year = event.starting_year %>
+    <% starting_month = event.starting_month %>
+    <% starting_day = event.starting_day %>
+    <% starting_hour = event.starting_hour %>
+    <% starting_minute = event.starting_minute %>
 
-<h1>自分の投稿したイベント</h1>
+    <% ending_year = event.ending_year %>
+    <% ending_month = event.ending_month %>
+    <% ending_day = event.ending_day %>
+    <% ending_hour = event.ending_hour %>
+    <% ending_minute = event.ending_minute %>
 
-<% if @current_user_events.empty? then %>
-  <p>あなたが投稿したイベントはまだ存在していません。</p>
-<% else %>
-  <% @current_user_events.each do |event| %>
-    <ul>
-      <li><%= link_to event.name, event %></li>
-    </ul>
-  <% end %>
-<% end %>
+    <% starting_date_time = Time.new(starting_year, starting_month, starting_day, starting_hour, starting_minute) %>
+    <% ending_date_time = Time.new(ending_year, ending_month, ending_day, ending_hour, ending_minute) %>
 
-<%= paginate @current_user_events %>
-
-<h1>既に終了したイベント</h1>
-<ul id="before_event"></ul>
-
-<h1>現在開催中のイベント</h1>
-<ul id="event_is_being_held"></ul>
-
-<h1>今後開催されるイベント</h1>
-<ul id="after_event"></ul>
-
-<%= link_to "トップページへ戻る", root_path %>
-
-<script>
-  // イベントを時間によって分類する
-  function ClassifyEventsByTime() {
-    <% @all_events.each do |event| %>
-      var currentTime = new Date();
-
-      var startingYear = '<%= event.starting_year %>';
-      var startingMonth = '<%= event.starting_month %>';
-      var startingDay = '<%= event.starting_day %>';
-      var startingTimeHour = '<%= event.starting_hour %>';
-      var startingTimeMinute = '<%= event.starting_minute %>';
-
-      var endingYear = '<%= event.ending_year %>';
-      var endingMonth = '<%= event.ending_month %>';
-      var endingDay = '<%= event.ending_day %>';
-      var endingTimeHour = '<%= event.ending_hour %>';
-      var endingTimeMinute = '<%= event.ending_minute %>';
-
-      var startingDateTime = new Date(startingYear + "/" + startingMonth + "/" + startingDay
-                                      + " " + startingTimeHour + ":" + startingTimeMinute);
-      var endingDateTime = new Date(endingYear + "/" + endingMonth + "/" + endingDay
-                                      + " " + endingTimeHour + ":" + endingTimeMinute);
-
-      // 追加されるそれぞれの親要素
-      var beforeEvent = document.getElementById('before_event');
-      var eventIsBeingHeld = document.getElementById('event_is_being_held');
-      var afterEvent = document.getElementById('after_event');
-
-      // 追加するそれぞれの子要素とその中身
-      var liEvent = document.createElement('li');
-      liEvent.innerHTML = '<%= link_to event.name, event_path(event) %>';
-
-      // 既に終了したイベントを表示
-      if (endingDateTime.getTime() < currentTime.getTime()) {
-        // 親要素の最後尾に子要素を追加
-        beforeEvent.insertBefore(liEvent, beforeEvent.children[0]);
-      }
-
-      // 現在開催中のイベントを表示
-      if (startingDateTime.getTime() < currentTime.getTime() && currentTime.getTime() < endingDateTime.getTime()) {
-        //親要素の最後尾に子要素を追加
-        eventIsBeingHeld.insertBefore(liEvent, eventIsBeingHeld.children[0]);
-      }
-
-      // 今後開催されるイベントを表示
-      if (currentTime.getTime() < startingDateTime.getTime()) {
-        // 親要素の最後尾に子要素を追加
-        afterEvent.insertBefore(liEvent, afterEvent.children[0]);
-      }
+    <% if ending_date_time < current_time then %>
+      <% before_events_array.push(event) %>
+    <% elsif starting_date_time < current_time && current_time < ending_date_time then %>
+      <% current_events_array.push(event) %>
+    <% elsif current_time < starting_date_time then %>
+      <% after_events_array.push(event) %>
     <% end %>
 
-    // 追加されるそれぞれの親要素
-    var beforeEvent = document.getElementById('before_event');
-    var eventIsBeingHeld = document.getElementById('event_is_being_held');
-    var afterEvent = document.getElementById('after_event');
+    <%# 既に終了したイベントを表示 %>
+    <div id="frame-of-before-events" class="before-events animated bounce">
+      <% if ending_date_time < current_time then %>
+        <div class="ui center aligned grid">
+          <div class="fourteen wide column">
+            <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
+              <div class="ui left aligned raised segment">
+                <img id="toppage-image" src="/img/events/event1.jpg" width="200" height="200">
+                <li class="event-name"><%= event.name %></li>
+                <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
+                <li class="event-organizer">
+                  <i class="user icon"></i>
+                  <%= event.organizer %>
+                </li>
+                <li class="event-place">
+                  <i class="map marker alternate icon"></i>
+                  <%= event.place %>
+                </li>
+                <li class="date">
+                  <i class="clock outline icon"></i>
+                  <%= event.starting_year %>/<%= event.starting_month %>/<%= event.starting_day %> <%= event.starting_hour %>:<%= event.starting_minute %> 〜 <%= event.ending_year %>/<%= event.ending_month %>/<%= event.ending_day %> <%= event.ending_hour %>:<%= event.ending_minute %>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
-    // 追加するそれぞれの子要素とその中身
-    var liEventBefore = document.createElement('li');
-    var liEventHeld = document.createElement('li');
-    var liEventAfter = document.createElement('li');
-    liEventBefore.innerHTML = '既に終了したイベントはまだ存在していません。';
-    liEventHeld.innerHTML = '現在開催中のイベントはまだ存在していません。';
-    liEventAfter.innerHTML = '今後開催されるイベントはまだ存在していません。';
+    <%# 現在開催中のイベントを表示 %>
+    <div id="frame-of-current-events" class="current-events animated bounce">
+      <% if starting_date_time < current_time && current_time < ending_date_time then %>
+        <div class="ui center aligned grid">
+          <div class="fourteen wide column">
+            <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
+              <div class="ui left aligned raised segment">
+                <img id="toppage-image" src="/img/events/event1.jpg" width="200" height="200">
+                <li class="event-name"><%= event.name %></li>
+                <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
+                <li class="event-organizer">
+                  <i class="user icon"></i>
+                  <%= event.organizer %>
+                </li>
+                <li class="event-place">
+                  <i class="map marker alternate icon"></i>
+                  <%= event.place %>
+                </li>
+                <li class="date">
+                  <i class="clock outline icon"></i>
+                  <%= event.starting_year %>/<%= event.starting_month %>/<%= event.starting_day %> <%= event.starting_hour %>:<%= event.starting_minute %> 〜 <%= event.ending_year %>/<%= event.ending_month %>/<%= event.ending_day %> <%= event.ending_hour %>:<%= event.ending_minute %>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
-    // 追加する子要素の数をそれぞれ数える
-    var beforeEventCount = beforeEvent.childElementCount;
-    var eventIsBeingHeldCount = eventIsBeingHeld.childElementCount;
-    var afterEventCount = afterEvent.childElementCount;
+    <%# 今後開催されるイベントを表示 %>
+    <div id="frame-of-after-events" class="after-events animated bounce">
+      <% if current_time < starting_date_time then %>
+        <div class="ui center aligned grid">
+          <div class="fourteen wide column">
+            <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
+              <div class="ui left aligned raised segment">
+                <img id="toppage-image" src="/img/events/event1.jpg" width="200" height="200">
+                <li class="event-name"><%= event.name %></li>
+                <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
+                <li class="event-organizer">
+                  <i class="user icon"></i>
+                  <%= event.organizer %>
+                </li>
+                <li class="event-place">
+                  <i class="map marker alternate icon"></i>
+                  <%= event.place %>
+                </li>
+                <li class="date">
+                  <i class="clock outline icon"></i>
+                  <%= event.starting_year %>/<%= event.starting_month %>/<%= event.starting_day %> <%= event.starting_hour %>:<%= event.starting_minute %> 〜 <%= event.ending_year %>/<%= event.ending_month %>/<%= event.ending_day %> <%= event.ending_hour %>:<%= event.ending_minute %>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 
-    // 既に終了したイベントが存在しない場合
-    if(!!beforeEventCount == false) {
-      beforeEvent.insertBefore(liEventBefore, beforeEvent.children[0]);
-    }
+  <%# イベントは存在しているが、各イベントが存在しない場合 %>
+  <% if before_events_array.empty? then %>
+    <div class="before-events ui center aligned grid">
+      <div class="ten wide column">
+        <div class="animated bounce">
+          既に終了したイベントはまだ存在していません。
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% if current_events_array.empty? then %>
+    <div class="current-events ui center aligned grid">
+      <div class="ten wide column">
+        <div class="animated bounce">
+          現在開催中のイベントはまだ存在していません。
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% if after_events_array.empty? then %>
+    <div class="after-events ui center aligned grid">
+      <div class="ten wide column">
+        <div class="animated bounce">
+          今後開催されるイベントはまだ存在していません。
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-    // 現在開催中のイベントが存在しない場合
-    if(!!eventIsBeingHeldCount == false) {
-      eventIsBeingHeld.insertBefore(liEventHeld, eventIsBeingHeld.children[0]);
-    }
+<a href="#" class="back-to-top">▲</a>
 
-    // 今後開催されるイベントが存在しない場合
-    if(!!afterEventCount == false) {
-      afterEvent.insertBefore(liEventAfter, afterEvent.children[0]);
-    }
+<script>
+  // イベントのセグメントをクリックしたら、そのイベントの詳細ページに遷移する
+  <% @all_events.each do |event| %>
+    $(".frame-of-segment-"+"<%= event.id %>").click(function() {
+      location.href = "/events/" + "<%= event.id %>"
+    });
+  <% end %>
 
-    // 現在表示されているページをリロードする
-    // 別のページに遷移した後に、再度このページに遷移すると、時間によって分類したイベントが増殖してしまうのを防ぐため。
-    // リロードが無限に繰り返されてしまうので、1度だけリロードする様にする。
-    if (window.name != "events"){
-    	location.reload();
-    	window.name = "events";
-    }else {
-      window.name = "";
+  // ページトップにスクロールするボタンの表示・非表示を切り替える関数
+  function updateButton() {
+    // 300px以上スクロールされたらボタンを表示
+    if ($(this).scrollTop() >= 300) {
+      $(".back-to-top").fadeIn();
+    } else {
+      $(".back-to-top").fadeOut();
     }
   }
 
-  ClassifyEventsByTime()
+  // ページトップにスクロールするボタンの表示・非表示を切り替える
+  $(document).ready(function() {
+    updateButton();
+
+    // スクロールされる度にupdateButtonを実行
+    $(window).scroll(updateButton);
+
+    // ボタンをクリックしたらページトップにスクロールする
+    $(".back-to-top").click(function() {
+      // 0.6秒かけてトップに戻る
+      $("html, body").animate(
+        {
+          scrollTop: 0
+        },
+        600
+      );
+
+      // ボタンのhrefに遷移しない
+      return false;
+    });
+  });
 
   //このページを全て読み込んだ後にチュートリアルを初回アクセス時のみ表示する
   window.onload = function() {
@@ -206,4 +382,67 @@
       fade: true,
     });
   };
+
+  // スクロール時にイベントをふわっと出す
+  $(document).ready(function() {
+    // animatedクラスの付いた要素にwaypointを登録
+    $(".animated").waypoint({
+      handler: function(direction) {
+        // 要素が画面内に少しでも入ったら以下が実行される
+        if (direction === "down") { // 下方向のスクロール
+          $(this.element).addClass("fadeInUp");
+
+          // waypointを削除することで、この要素に対してはこれ以降handlerが呼ばれなくなる
+          this.destroy();
+        }
+      },
+
+      // 要素が画面内に少しでも入ったらhandlerを実行
+      offset: "100%"
+    });
+  });
+
+  // セレクトボックスで選択している値によって表示する内容を変更する
+  $(".select-box-show-events").change(function() {
+    var selectBoxVal = $(".select-box-show-events").val();
+
+    if(selectBoxVal == "all-events") {
+      $('.all-events').css('display', 'block');
+      $('.my-events').css('display', 'none');
+      $('.before-events').css('display', 'none');
+      $('.current-events').css('display', 'none');
+      $('.after-events').css('display', 'none');
+    }else if(selectBoxVal == "my-events") {
+      $('.all-events').css('display', 'none');
+      $('.my-events').css('display', 'block');
+      $('.before-events').css('display', 'none');
+      $('.current-events').css('display', 'none');
+      $('.after-events').css('display', 'none');
+    }else if(selectBoxVal == "before-events") {
+      $('.all-events').css('display', 'none');
+      $('.my-events').css('display', 'none');
+      $('.before-events').css('display', 'block');
+      $('.current-events').css('display', 'none');
+      $('.after-events').css('display', 'none');
+    }else if(selectBoxVal == "current-events") {
+      $('.all-events').css('display', 'none');
+      $('.my-events').css('display', 'none');
+      $('.before-events').css('display', 'none');
+      $('.current-events').css('display', 'block');
+      $('.after-events').css('display', 'none');
+    }else if(selectBoxVal == "after-events") {
+      $('.all-events').css('display', 'none');
+      $('.my-events').css('display', 'none');
+      $('.before-events').css('display', 'none');
+      $('.current-events').css('display', 'none');
+      $('.after-events').css('display', 'block');
+    }
+  });
+
+  // 遷移直後にイベント一覧のみを表示する
+  $('.all-events').css('display', 'block');
+  $('.my-events').css('display', 'none');
+  $('.before-events').css('display', 'none');
+  $('.current-events').css('display', 'none');
+  $('.after-events').css('display', 'none');
 </script>
