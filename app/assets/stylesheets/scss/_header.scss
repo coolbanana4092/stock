@@ -59,6 +59,8 @@ header{
 }
 
 .menu {
+  z-index: 2 !important;
+
   ul {
     display: flex;
     justify-content: flex-end;
