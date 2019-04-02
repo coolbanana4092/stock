@@ -2,7 +2,7 @@
 	チュートリアル
 ********************************/
 
-/** モーダルウィンドウ **********/
+/** モーダルウィンドウ *********/
 
 .modal{
   background-color: #ffffff;
@@ -14,7 +14,7 @@
   }
 }
 
-/** カルーセル **********/
+/** カルーセル *****************/
 
 #frame-of-carousel-image{
   .carousel-image{
@@ -42,5 +42,93 @@
     .slick-dots{
       position: static;
     }
+  }
+}
+
+/********************************
+	イベント一覧
+********************************/
+
+/** イベント *****************/
+
+#events-list-in-japanese{
+  font-weight: bolder;
+  font-size: 20px;
+  margin: 30px;
+}
+
+#search-events{
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.various-events-list{
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.frame-of-segment{
+  padding-left: 0px;
+  margin: 0px;
+
+  .segment{
+    font-size: 12px;
+
+    .event-name{
+      font-size: 16px;
+      font-weight: bolder;
+    }
+
+    .event-created-at{
+      text-align: right;
+      margin-top: 10px;
+    }
+
+    .event-organizer{
+      margin-top: 15px;
+    }
+  }
+}
+
+.before-events,
+.current-events,
+.after-events{
+  padding: 0px;
+}
+
+/** イベントをふわっと出す *****/
+
+.animated {
+  /* 最初は非表示 */
+  opacity: 0;
+}
+
+/** ページトップへ戻るボタン ***/
+
+.back-to-top {
+  // ボタンの表示位置と色を決める
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #f0f0f0;
+
+  // ボタン内の三角形の大きさと位置と色を決める
+  display: none;
+  text-align: center;
+  text-decoration: none;
+  width: 60px;
+  height: 60px;
+  font-size: 2rem;
+  line-height: 60px;
+  color: #333;
+
+  // ボタンとボタン内の三角形の透明度
+  opacity: 0.6;
+
+  // ボタンとボタン内の三角形の透明度をふわっと変える演出
+  transition: opacity 2.5s;
+
+  &:hover {
+    opacity: 1;
   }
 }
