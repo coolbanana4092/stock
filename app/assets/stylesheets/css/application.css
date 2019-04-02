@@ -84,6 +84,9 @@ header {
   margin-top: 7px;
 }
 
+.menu {
+  z-index: 2 !important;
+}
 .menu ul {
   display: flex;
   justify-content: flex-end;
@@ -263,7 +266,7 @@ footer {
   margin: auto;
 }
 
-#search-field {
+#search-address {
   margin-top: 30px;
   margin-bottom: 30px;
 }
@@ -276,7 +279,7 @@ footer {
 /********************************
 	チュートリアル
 ********************************/
-/** モーダルウィンドウ **********/
+/** モーダルウィンドウ *********/
 .modal {
   background-color: #ffffff;
   padding-top: 20px;
@@ -286,7 +289,7 @@ footer {
   text-align: center;
 }
 
-/** カルーセル **********/
+/** カルーセル *****************/
 #frame-of-carousel-image .carousel-image {
   margin-bottom: 0px;
 }
@@ -305,6 +308,78 @@ footer {
 }
 .ui.modal.scrolling .slick-dotted .slick-dots {
   position: static;
+}
+
+/********************************
+	イベント一覧
+********************************/
+/** イベント *****************/
+#events-list-in-japanese {
+  font-weight: bolder;
+  font-size: 20px;
+  margin: 30px;
+}
+
+#search-events {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.various-events-list {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.frame-of-segment {
+  padding-left: 0px;
+  margin: 0px;
+}
+.frame-of-segment .segment {
+  font-size: 12px;
+}
+.frame-of-segment .segment .event-name {
+  font-size: 16px;
+  font-weight: bolder;
+}
+.frame-of-segment .segment .event-created-at {
+  text-align: right;
+  margin-top: 10px;
+}
+.frame-of-segment .segment .event-organizer {
+  margin-top: 15px;
+}
+
+.before-events,
+.current-events,
+.after-events {
+  padding: 0px;
+}
+
+/** イベントをふわっと出す *****/
+.animated {
+  /* 最初は非表示 */
+  opacity: 0;
+}
+
+/** ページトップへ戻るボタン ***/
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #f0f0f0;
+  display: none;
+  text-align: center;
+  text-decoration: none;
+  width: 60px;
+  height: 60px;
+  font-size: 2rem;
+  line-height: 60px;
+  color: #333;
+  opacity: 0.6;
+  transition: opacity 2.5s;
+}
+.back-to-top:hover {
+  opacity: 1;
 }
 
 form .ui.grid .fourteen.wide.column #please-register-new {
@@ -427,6 +502,9 @@ form .ui.grid .fourteen.wide.column .ui.form #inquiry-page-frame-of-submit {
 .field .ui.grid .frame-of-input-year .input-year #event_starting_year {
   padding: 10px;
 }
+.field .ui.grid .frame-of-input-year .input-year #event_ending_year {
+  padding: 10px;
+}
 .field .ui.grid .year-in-japanese {
   padding: 0px !important;
 }
@@ -439,6 +517,9 @@ form .ui.grid .fourteen.wide.column .ui.form #inquiry-page-frame-of-submit {
 .field .ui.grid .frame-of-input-month .input-month #event_starting_month {
   padding: 10px;
 }
+.field .ui.grid .frame-of-input-month .input-month #event_ending_month {
+  padding: 10px;
+}
 .field .ui.grid .month-in-japanese {
   padding: 0px !important;
 }
@@ -449,6 +530,9 @@ form .ui.grid .fourteen.wide.column .ui.form #inquiry-page-frame-of-submit {
   padding: 5px;
 }
 .field .ui.grid .frame-of-input-day .input-day #event_starting_day {
+  padding: 10px;
+}
+.field .ui.grid .frame-of-input-day .input-day #event_ending_day {
   padding: 10px;
 }
 .field .ui.grid .day-in-japanese {
@@ -464,6 +548,9 @@ form .ui.grid .fourteen.wide.column .ui.form #inquiry-page-frame-of-submit {
 .field .ui.grid .frame-of-input-hour .input-hour #event_starting_hour {
   padding: 10px;
 }
+.field .ui.grid .frame-of-input-hour .input-hour #event_ending_hour {
+  padding: 10px;
+}
 .field .ui.grid .hour-in-japanese {
   padding: 0px !important;
 }
@@ -474,6 +561,9 @@ form .ui.grid .fourteen.wide.column .ui.form #inquiry-page-frame-of-submit {
   padding: 5px;
 }
 .field .ui.grid .frame-of-input-minute .input-minute #event_starting_minute {
+  padding: 10px;
+}
+.field .ui.grid .frame-of-input-minute .input-minute #event_ending_minute {
   padding: 10px;
 }
 .field .ui.grid .minute-in-japanese {
