@@ -1,3 +1,15 @@
+@mixin mobile {
+  @media screen and (max-width : 768px) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media screen and (min-width: 769px) {
+    @content;
+  }
+}
+
 form{
   .ui.grid{
     .fourteen.wide.column{
@@ -10,10 +22,64 @@ form{
       .ui.form{
         .field{
           margin-bottom: 15px;
-        }
 
-        #inquiry-page-frame-of-submit{
-          margin: 40px;
+          .ui.grid{
+            .inquiry-page-frame-of-name-label{
+              padding-bottom: 0px;
+            }
+
+            .inquiry-page-frame-of-name-input{
+              padding-top: 5px;
+            }
+
+            .inquiry-page-frame-of-email-label{
+              padding-bottom: 0px;
+            }
+
+            .inquiry-page-frame-of-email-input{
+              padding-top: 5px;
+            }
+
+            .inquiry-page-frame-of-message-label{
+              padding-bottom: 0px;
+            }
+
+            .inquiry-page-frame-of-message-input{
+              padding-top: 5px;
+            }
+
+            #inquiry-page-frame-of-submit{
+              margin-top: 30px;
+              margin-bottom: 60px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .mobile{
+    display: block;
+  }
+  .pc{
+    display: none;
+  }
+}
+
+@include pc {
+  .pc{
+    display: block;
+  }
+  .mobile{
+    display: none;
+  }
+
+  form{
+    .ui.grid{
+      .fourteen.wide.column{
+        #please-inquire{
           margin-bottom: 60px;
         }
       }
