@@ -476,11 +476,51 @@ form .ui.grid .fourteen.wide.column #please-inquire {
 form .ui.grid .fourteen.wide.column .ui.form .field {
   margin-bottom: 15px;
 }
-form .ui.grid .fourteen.wide.column .ui.form #inquiry-page-frame-of-submit {
-  margin: 40px;
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-name-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-name-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-email-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-email-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-message-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-message-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #inquiry-page-frame-of-submit {
+  margin-top: 30px;
   margin-bottom: 60px;
 }
 
+@media screen and (max-width: 768px) {
+  .mobile {
+    display: block;
+  }
+
+  .pc {
+    display: none;
+  }
+}
+@media screen and (min-width: 769px) {
+  .pc {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  form .ui.grid .fourteen.wide.column #please-inquire {
+    margin-bottom: 60px;
+  }
+}
 .field .ui.grid #frame-of-price {
   padding-bottom: 0px;
 }
