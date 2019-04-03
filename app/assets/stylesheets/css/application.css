@@ -390,15 +390,61 @@ form .ui.grid .fourteen.wide.column #please-register-new {
 form .ui.grid .fourteen.wide.column .ui.form .field {
   margin-bottom: 15px;
 }
-form .ui.grid .fourteen.wide.column .ui.form #signup-page-frame-of-signup {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-name-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-name-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-email-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-email-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-password-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-password-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-password-confirmation-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-password-confirmation-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #signup-page-frame-of-signup {
   margin: 40px;
   margin-bottom: 30px;
 }
-form .ui.grid .fourteen.wide.column .ui.form #signup-page-frame-of-login {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #signup-page-frame-of-login {
   margin-top: 30px;
   margin-bottom: 60px;
 }
 
+@media screen and (max-width: 768px) {
+  .mobile {
+    display: block;
+  }
+
+  .pc {
+    display: none;
+  }
+}
+@media screen and (min-width: 769px) {
+  .pc {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  form .ui.grid .fourteen.wide.column #please-register-new {
+    margin-bottom: 60px;
+  }
+}
 form .ui.grid .fourteen.wide.column #please-login {
   font-weight: bolder;
   font-size: 20px;
