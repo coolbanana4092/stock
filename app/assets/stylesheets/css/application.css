@@ -453,7 +453,19 @@ form .ui.grid .fourteen.wide.column #please-login {
 form .ui.grid .fourteen.wide.column .ui.form .field {
   margin-bottom: 15px;
 }
-form .ui.grid .fourteen.wide.column .ui.form .field #always-login {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .login-page-frame-of-email-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .login-page-frame-of-email-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .login-page-frame-of-password-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .login-page-frame-of-password-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #always-login {
   padding-top: 10px;
 }
 form .ui.grid .fourteen.wide.column .ui.form #login-page-frame-of-login {
@@ -465,6 +477,31 @@ form .ui.grid .fourteen.wide.column .ui.form #login-page-frame-of-signup {
   margin-bottom: 60px;
 }
 
+@media screen and (max-width: 768px) {
+  .mobile {
+    display: block;
+  }
+
+  .pc {
+    display: none;
+  }
+}
+@media screen and (min-width: 769px) {
+  .pc {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  form .ui.grid .fourteen.wide.column #please-login {
+    margin-bottom: 60px;
+  }
+  form .ui.grid .fourteen.wide.column #always-login {
+    padding-top: 0px;
+  }
+}
 form .ui.grid .fourteen.wide.column #please-update-user-information {
   font-weight: bolder;
   font-size: 20px;
