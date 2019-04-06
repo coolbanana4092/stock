@@ -57,19 +57,19 @@ form{
 
 @include mobile {
   .mobile{
-    display: block;
+    display: block !important;
   }
   .pc{
-    display: none;
+    display: none !important;
   }
 }
 
 @include pc {
   .pc{
-    display: block;
+    display: block !important;
   }
   .mobile{
-    display: none;
+    display: none !important;
   }
 
   form{
