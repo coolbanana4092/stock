@@ -12,8 +12,8 @@
 
       <div id="please-inquire" class="center aligned">お問い合わせ</div>
 
-      <div class="ui form">
-        <div class="mobile field">
+      <div class="depend-on-device ui form">
+        <div class="field">
           <div class="ui left aligned grid">
             <div class="inquiry-page-frame-of-name-label sixteen wide column">
               <%= f.label :name, 'ユーザー名' %>
@@ -26,21 +26,8 @@
             </div>
           </div>
         </div>
-        <div class="pc field">
-          <div class="ui center aligned grid">
-            <div class="inquiry-page-frame-of-name-label left aligned twelve wide column">
-              <%= f.label :name, 'ユーザー名' %>
-            </div>
-            <div class="inquiry-page-frame-of-name-input left aligned twelve wide column">
-              <div class="ui left icon huge input">
-                <%= f.text_field :name, :placeholder => "例：taro" %>
-                <i class="user icon"></i>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="mobile field">
+        <div class="field">
           <div class="ui left aligned grid">
             <div class="inquiry-page-frame-of-email-label sixteen wide column">
               <%= f.label :email, 'メールアドレス' %>
@@ -53,21 +40,8 @@
             </div>
           </div>
         </div>
-        <div class="pc field">
-          <div class="ui center aligned grid">
-            <div class="inquiry-page-frame-of-email-label left aligned twelve wide column">
-              <%= f.label :email, 'メールアドレス' %>
-            </div>
-            <div class="inquiry-page-frame-of-email-input left aligned twelve wide column">
-              <div class="ui left icon huge input">
-                <%= f.email_field :email, :placeholder => "例：case@example.com" %>
-                <i class="mail icon"></i>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="mobile field">
+        <div class="field">
           <div class="ui left aligned grid">
             <div class="inquiry-page-frame-of-message-label sixteen wide column">
               <%= f.label :message, 'お問い合わせ内容 (必須)' %>
@@ -79,28 +53,8 @@
             </div>
           </div>
         </div>
-        <div class="pc field">
-          <div class="ui center aligned grid">
-            <div class="inquiry-page-frame-of-message-label left aligned twelve wide column">
-              <%= f.label :message, 'お問い合わせ内容 (必須)' %>
-            </div>
-            <div class="inquiry-page-frame-of-message-input left aligned twelve wide column">
-              <div class="ui left icon huge input">
-                <%= f.text_area :message, :placeholder => "例：イベントの投稿方法が分からないので教えていただきたいです。" %>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="mobile field">
-          <div class="ui center aligned grid">
-            <%= button_tag :type => "submit", :id => "inquiry-page-frame-of-submit", :class =>"ui blue submit button ten wide column" do %>
-              <i class="mail icon"></i>
-              送信する
-            <% end %>
-          </div>
-        </div>
-        <div class="pc field">
+        <div class="field">
           <div class="ui center aligned grid">
             <%= button_tag :type => "submit", :id => "inquiry-page-frame-of-submit", :class =>"ui blue submit button eight wide column" do %>
               <i class="mail icon"></i>
