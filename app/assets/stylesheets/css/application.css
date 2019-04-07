@@ -424,25 +424,17 @@ form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #signup-page-frame-
 }
 
 @media screen and (max-width: 768px) {
-  .mobile {
-    display: block !important;
-  }
-
-  .pc {
-    display: none !important;
+  .depend-on-device {
+    width: 100%;
   }
 }
 @media screen and (min-width: 769px) {
-  .pc {
-    display: block !important;
-  }
-
-  .mobile {
-    display: none !important;
-  }
-
   form .ui.grid .fourteen.wide.column #please-register-new {
     margin-bottom: 60px;
+  }
+  form .ui.grid .fourteen.wide.column .depend-on-device {
+    width: 75%;
+    margin: auto;
   }
 }
 form .ui.grid .fourteen.wide.column #please-login {
@@ -478,25 +470,17 @@ form .ui.grid .fourteen.wide.column .ui.form #login-page-frame-of-signup {
 }
 
 @media screen and (max-width: 768px) {
-  .mobile {
-    display: block !important;
-  }
-
-  .pc {
-    display: none !important;
+  .depend-on-device {
+    width: 100%;
   }
 }
 @media screen and (min-width: 769px) {
-  .pc {
-    display: block !important;
-  }
-
-  .mobile {
-    display: none !important;
-  }
-
   form .ui.grid .fourteen.wide.column #please-login {
     margin-bottom: 60px;
+  }
+  form .ui.grid .fourteen.wide.column .depend-on-device {
+    width: 75%;
+    margin: auto;
   }
   form .ui.grid .fourteen.wide.column #always-login {
     padding-top: 0px;
@@ -540,25 +524,17 @@ form .ui.grid .fourteen.wide.column .ui.form #user-update-page-frame-of-update {
 }
 
 @media screen and (max-width: 768px) {
-  .mobile {
-    display: block !important;
-  }
-
-  .pc {
-    display: none !important;
+  .depend-on-device {
+    width: 100%;
   }
 }
 @media screen and (min-width: 769px) {
-  .pc {
-    display: block !important;
-  }
-
-  .mobile {
-    display: none !important;
-  }
-
   form .ui.grid .fourteen.wide.column #please-update-user-information {
     margin-bottom: 60px;
+  }
+  form .ui.grid .fourteen.wide.column .depend-on-device {
+    width: 75%;
+    margin: auto;
   }
 }
 form .ui.grid .fourteen.wide.column #please-password-reset {
@@ -629,25 +605,17 @@ form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #inquiry-page-frame
 }
 
 @media screen and (max-width: 768px) {
-  .mobile {
-    display: block !important;
-  }
-
-  .pc {
-    display: none !important;
+  .depend-on-device {
+    width: 100%;
   }
 }
 @media screen and (min-width: 769px) {
-  .pc {
-    display: block !important;
-  }
-
-  .mobile {
-    display: none !important;
-  }
-
   form .ui.grid .fourteen.wide.column #please-inquire {
     margin-bottom: 60px;
+  }
+  form .ui.grid .fourteen.wide.column .depend-on-device {
+    width: 75%;
+    margin: auto;
   }
 }
 .field .ui.grid #frame-of-price {

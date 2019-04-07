@@ -56,29 +56,22 @@ form{
 }
 
 @include mobile {
-  .mobile{
-    display: block !important;
-  }
-  .pc{
-    display: none !important;
+  .depend-on-device{
+    width: 100%;
   }
 }
 
 @include pc {
-  .pc{
-    display: block !important;
-  }
-  .mobile{
-    display: none !important;
-  }
-
   form{
     .ui.grid{
       .fourteen.wide.column{
         #please-login{
           margin-bottom: 60px;
         }
-
+        .depend-on-device{
+          width: 75%;
+          margin: auto;
+        }
         #always-login{
           padding-top: 0px;
         }
