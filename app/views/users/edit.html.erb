@@ -1,62 +1,72 @@
 <%= form_for(@user) do |f| %>
   <div class="ui center aligned grid">
     <div class="fourteen wide column">
-      <div id="please-update-user-information" class="center aligned">登録情報の更新</div>
+      <div id="please-update-user-information">登録情報の更新</div>
 
-      <div class="ui form">
+      <div class="depend-on-device ui form">
         <div class="field">
           <div class="ui left aligned grid">
-            <div class="sixteen wide column">
+            <div class="user-update-page-frame-of-name-label sixteen wide column">
               <%= f.label :name, 'ユーザー名' %>
             </div>
-          </div>
-          <div class="ui left icon huge input">
-            <%= f.text_field :name, :placeholder => "例：taro" %>
-            <i class="user icon"></i>
+            <div class="user-update-page-frame-of-name-input sixteen wide column">
+              <div class="ui left icon huge input">
+                <%= f.text_field :name, :placeholder => "例：taro" %>
+                <i class="user icon"></i>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="field">
           <div class="ui left aligned grid">
-            <div class="sixteen wide column">
+            <div class="user-update-page-frame-of-email-label sixteen wide column">
               <%= f.label :email, 'メールアドレス' %>
             </div>
-          </div>
-          <div class="ui left icon huge input">
-            <%= f.email_field :email, :placeholder => "例：case@example.com" %>
-            <i class="mail icon"></i>
+            <div class="user-update-page-frame-of-email-input sixteen wide column">
+              <div class="ui left icon huge input">
+                <%= f.email_field :email, :placeholder => "例：case@example.com" %>
+                <i class="mail icon"></i>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="field">
           <div class="ui left aligned grid">
-            <div class="sixteen wide column">
+            <div class="user-update-page-frame-of-password-label sixteen wide column">
               <%= f.label :password, 'パスワード' %>
             </div>
-          </div>
-          <div class="ui left icon huge input">
-            <%= f.password_field :password, :placeholder => "例：1234asdf" %>
-            <i class="lock icon"></i>
+            <div class="user-update-page-frame-of-password-input sixteen wide column">
+              <div class="ui left icon huge input">
+                <%= f.password_field :password, :placeholder => "例：1234asdf" %>
+                <i class="lock icon"></i>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="field">
           <div class="ui left aligned grid">
-            <div class="sixteen wide column">
+            <div class="user-update-page-frame-of-password-confirmation-label sixteen wide column">
               <%= f.label :password_confirmation, 'パスワード (確認)' %>
             </div>
-          </div>
-          <div class="ui left icon huge input">
-            <%= f.password_field :password_confirmation, :placeholder => "例：1234asdf" %>
-            <i class="lock icon"></i>
+            <div class="user-update-page-frame-of-password-confirmation-input sixteen wide column">
+              <div class="ui left icon huge input">
+                <%= f.password_field :password_confirmation, :placeholder => "例：1234asdf" %>
+                <i class="lock icon"></i>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="ui center aligned grid">
-          <%= button_tag :type => "submit", :id => "user-update-page-frame-of-update", :class =>"ui blue huge submit button ten wide column" do %>
-            <i class="undo alternate icon"></i>
-            更新する
-          <% end %>
+        <div class="field">
+          <div class="ui center aligned grid">
+            <%= button_tag :type => "submit", :id => "user-update-page-frame-of-update", :class =>"ui blue huge submit button ten wide column" do %>
+              <i class="undo alternate icon"></i>
+              更新する
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

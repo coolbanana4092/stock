@@ -1,3 +1,15 @@
+@mixin mobile {
+  @media screen and (max-width : 768px) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media screen and (min-width: 769px) {
+    @content;
+  }
+}
+
 form{
   .ui.grid{
     .fourteen.wide.column{
@@ -10,16 +22,63 @@ form{
       .ui.form{
         .field{
           margin-bottom: 15px;
-        }
 
-        #signup-page-frame-of-signup{
-          margin: 40px;
-          margin-bottom: 30px;
+          .ui.grid{
+            .signup-page-frame-of-name-label{
+              padding-bottom: 0px;
+            }
+            .signup-page-frame-of-name-input{
+              padding-top: 5px;
+            }
+            .signup-page-frame-of-email-label{
+              padding-bottom: 0px;
+            }
+            .signup-page-frame-of-email-input{
+              padding-top: 5px;
+            }
+            .signup-page-frame-of-password-label{
+              padding-bottom: 0px;
+            }
+            .signup-page-frame-of-password-input{
+              padding-top: 5px;
+            }
+            .signup-page-frame-of-password-confirmation-label{
+              padding-bottom: 0px;
+            }
+            .signup-page-frame-of-password-confirmation-input{
+              padding-top: 5px;
+            }
+            #signup-page-frame-of-signup{
+              margin: 40px;
+              margin-bottom: 30px;
+            }
+            #signup-page-frame-of-login{
+              margin-top: 30px;
+              margin-bottom: 60px;
+            }
+          }
         }
+      }
+    }
+  }
+}
 
-        #signup-page-frame-of-login{
-          margin-top: 30px;
+@include mobile {
+  .depend-on-device{
+    width: 100%;
+  }
+}
+
+@include pc {
+  form{
+    .ui.grid{
+      .fourteen.wide.column{
+        #please-register-new{
           margin-bottom: 60px;
+        }
+        .depend-on-device{
+          width: 75%;
+          margin: auto;
         }
       }
     }
