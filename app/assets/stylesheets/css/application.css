@@ -560,6 +560,20 @@ form .ui.grid .fourteen.wide.column .ui.form #password-reset-page-frame-of-submi
   margin-bottom: 60px;
 }
 
+@media screen and (max-width: 768px) {
+  .depend-on-device {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 769px) {
+  form .ui.grid .fourteen.wide.column #please-password-reset {
+    margin-bottom: 60px;
+  }
+  form .ui.grid .fourteen.wide.column .depend-on-device {
+    width: 75%;
+    margin: auto;
+  }
+}
 form .ui.grid .fourteen.wide.column #please-password-update {
   font-weight: bolder;
   font-size: 20px;
