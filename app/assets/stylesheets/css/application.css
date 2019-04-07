@@ -390,15 +390,53 @@ form .ui.grid .fourteen.wide.column #please-register-new {
 form .ui.grid .fourteen.wide.column .ui.form .field {
   margin-bottom: 15px;
 }
-form .ui.grid .fourteen.wide.column .ui.form #signup-page-frame-of-signup {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-name-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-name-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-email-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-email-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-password-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-password-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-password-confirmation-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-password-confirmation-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #signup-page-frame-of-signup {
   margin: 40px;
   margin-bottom: 30px;
 }
-form .ui.grid .fourteen.wide.column .ui.form #signup-page-frame-of-login {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #signup-page-frame-of-login {
   margin-top: 30px;
   margin-bottom: 60px;
 }
 
+@media screen and (max-width: 768px) {
+  .depend-on-device {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 769px) {
+  form .ui.grid .fourteen.wide.column #please-register-new {
+    margin-bottom: 60px;
+  }
+  form .ui.grid .fourteen.wide.column .depend-on-device {
+    width: 75%;
+    margin: auto;
+  }
+}
 form .ui.grid .fourteen.wide.column #please-login {
   font-weight: bolder;
   font-size: 20px;
@@ -407,7 +445,19 @@ form .ui.grid .fourteen.wide.column #please-login {
 form .ui.grid .fourteen.wide.column .ui.form .field {
   margin-bottom: 15px;
 }
-form .ui.grid .fourteen.wide.column .ui.form .field #always-login {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .login-page-frame-of-email-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .login-page-frame-of-email-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .login-page-frame-of-password-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .login-page-frame-of-password-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #always-login {
   padding-top: 10px;
 }
 form .ui.grid .fourteen.wide.column .ui.form #login-page-frame-of-login {
@@ -419,6 +469,23 @@ form .ui.grid .fourteen.wide.column .ui.form #login-page-frame-of-signup {
   margin-bottom: 60px;
 }
 
+@media screen and (max-width: 768px) {
+  .depend-on-device {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 769px) {
+  form .ui.grid .fourteen.wide.column #please-login {
+    margin-bottom: 60px;
+  }
+  form .ui.grid .fourteen.wide.column .depend-on-device {
+    width: 75%;
+    margin: auto;
+  }
+  form .ui.grid .fourteen.wide.column #always-login {
+    padding-top: 0px;
+  }
+}
 form .ui.grid .fourteen.wide.column #please-update-user-information {
   font-weight: bolder;
   font-size: 20px;
@@ -427,11 +494,49 @@ form .ui.grid .fourteen.wide.column #please-update-user-information {
 form .ui.grid .fourteen.wide.column .ui.form .field {
   margin-bottom: 15px;
 }
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-name-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-name-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-email-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-email-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-password-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-password-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-password-confirmation-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-password-confirmation-input {
+  padding-top: 5px;
+}
 form .ui.grid .fourteen.wide.column .ui.form #user-update-page-frame-of-update {
   margin: 40px;
   margin-bottom: 60px;
 }
 
+@media screen and (max-width: 768px) {
+  .depend-on-device {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 769px) {
+  form .ui.grid .fourteen.wide.column #please-update-user-information {
+    margin-bottom: 60px;
+  }
+  form .ui.grid .fourteen.wide.column .depend-on-device {
+    width: 75%;
+    margin: auto;
+  }
+}
 form .ui.grid .fourteen.wide.column #please-password-reset {
   font-weight: bolder;
   font-size: 20px;
@@ -455,6 +560,20 @@ form .ui.grid .fourteen.wide.column .ui.form #password-reset-page-frame-of-submi
   margin-bottom: 60px;
 }
 
+@media screen and (max-width: 768px) {
+  .depend-on-device {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 769px) {
+  form .ui.grid .fourteen.wide.column #please-password-reset {
+    margin-bottom: 60px;
+  }
+  form .ui.grid .fourteen.wide.column .depend-on-device {
+    width: 75%;
+    margin: auto;
+  }
+}
 form .ui.grid .fourteen.wide.column #please-password-update {
   font-weight: bolder;
   font-size: 20px;
@@ -468,6 +587,20 @@ form .ui.grid .fourteen.wide.column .ui.form #password-reset-page-frame-of-updat
   margin-bottom: 60px;
 }
 
+@media screen and (max-width: 768px) {
+  .password-update-form-depend-on-device {
+    width: 100% !important;
+  }
+}
+@media screen and (min-width: 769px) {
+  form .ui.grid .fourteen.wide.column #please-password-update {
+    margin-bottom: 60px;
+  }
+  form .ui.grid .fourteen.wide.column .password-update-form-depend-on-device {
+    width: 50% !important;
+    margin: auto;
+  }
+}
 form .ui.grid .fourteen.wide.column #please-inquire {
   font-weight: bolder;
   font-size: 20px;
@@ -476,100 +609,155 @@ form .ui.grid .fourteen.wide.column #please-inquire {
 form .ui.grid .fourteen.wide.column .ui.form .field {
   margin-bottom: 15px;
 }
-form .ui.grid .fourteen.wide.column .ui.form #inquiry-page-frame-of-submit {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-name-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-name-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-email-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-email-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-message-label {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-message-input {
+  padding-top: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #inquiry-page-frame-of-submit {
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+
+@media screen and (max-width: 768px) {
+  .depend-on-device {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 769px) {
+  form .ui.grid .fourteen.wide.column #please-inquire {
+    margin-bottom: 60px;
+  }
+  form .ui.grid .fourteen.wide.column .depend-on-device {
+    width: 75%;
+    margin: auto;
+  }
+}
+form .ui.grid .fourteen.wide.column #please-post-or-update-event {
+  font-weight: bolder;
+  font-size: 20px;
+  margin: 30px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #frame-of-price {
+  padding-bottom: 0px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-price {
+  padding: 0px !important;
+  padding-left: 14px !important;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .yen-in-japanese {
+  padding: 0px !important;
+  padding-left: 10px !important;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year {
+  padding: 0px !important;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year {
+  padding: 5px;
+  padding-left: 14px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year #event_starting_year {
+  padding: 10px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year #event_ending_year {
+  padding: 10px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .year-in-japanese {
+  padding: 0px !important;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month {
+  padding: 0px !important;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month {
+  padding: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month #event_starting_month {
+  padding: 10px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month #event_ending_month {
+  padding: 10px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .month-in-japanese {
+  padding: 0px !important;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day {
+  padding: 0px !important;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day {
+  padding: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day #event_starting_day {
+  padding: 10px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day #event_ending_day {
+  padding: 10px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .day-in-japanese {
+  padding: 0px !important;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour {
+  padding: 0px !important;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour {
+  padding: 5px;
+  padding-left: 14px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour #event_starting_hour {
+  padding: 10px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour #event_ending_hour {
+  padding: 10px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .hour-in-japanese {
+  padding: 0px !important;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute {
+  padding: 0px !important;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute {
+  padding: 5px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute #event_starting_minute {
+  padding: 10px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute #event_ending_minute {
+  padding: 10px;
+}
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .minute-in-japanese {
+  padding: 0px !important;
+}
+form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-of-submit {
   margin: 40px;
   margin-bottom: 60px;
 }
 
-.field .ui.grid #frame-of-price {
-  padding-bottom: 0px;
+@media screen and (max-width: 768px) {
+  .depend-on-device {
+    width: 100%;
+  }
 }
-.field .ui.grid .frame-of-input-price {
-  padding: 0px !important;
-  padding-left: 14px !important;
+@media screen and (min-width: 769px) {
+  form .ui.grid .fourteen.wide.column #please-post-event {
+    margin-bottom: 60px;
+  }
+  form .ui.grid .fourteen.wide.column .depend-on-device {
+    width: 50%;
+    margin: auto;
+  }
 }
-.field .ui.grid .yen-in-japanese {
-  padding: 0px !important;
-  padding-left: 10px !important;
-}
-.field .ui.grid .frame-of-input-year {
-  padding: 0px !important;
-}
-.field .ui.grid .frame-of-input-year .input-year {
-  padding: 5px;
-  padding-left: 14px;
-}
-.field .ui.grid .frame-of-input-year .input-year #event_starting_year {
-  padding: 10px;
-}
-.field .ui.grid .frame-of-input-year .input-year #event_ending_year {
-  padding: 10px;
-}
-.field .ui.grid .year-in-japanese {
-  padding: 0px !important;
-}
-.field .ui.grid .frame-of-input-month {
-  padding: 0px !important;
-}
-.field .ui.grid .frame-of-input-month .input-month {
-  padding: 5px;
-}
-.field .ui.grid .frame-of-input-month .input-month #event_starting_month {
-  padding: 10px;
-}
-.field .ui.grid .frame-of-input-month .input-month #event_ending_month {
-  padding: 10px;
-}
-.field .ui.grid .month-in-japanese {
-  padding: 0px !important;
-}
-.field .ui.grid .frame-of-input-day {
-  padding: 0px !important;
-}
-.field .ui.grid .frame-of-input-day .input-day {
-  padding: 5px;
-}
-.field .ui.grid .frame-of-input-day .input-day #event_starting_day {
-  padding: 10px;
-}
-.field .ui.grid .frame-of-input-day .input-day #event_ending_day {
-  padding: 10px;
-}
-.field .ui.grid .day-in-japanese {
-  padding: 0px !important;
-}
-.field .ui.grid .frame-of-input-hour {
-  padding: 0px !important;
-}
-.field .ui.grid .frame-of-input-hour .input-hour {
-  padding: 5px;
-  padding-left: 14px;
-}
-.field .ui.grid .frame-of-input-hour .input-hour #event_starting_hour {
-  padding: 10px;
-}
-.field .ui.grid .frame-of-input-hour .input-hour #event_ending_hour {
-  padding: 10px;
-}
-.field .ui.grid .hour-in-japanese {
-  padding: 0px !important;
-}
-.field .ui.grid .frame-of-input-minute {
-  padding: 0px !important;
-}
-.field .ui.grid .frame-of-input-minute .input-minute {
-  padding: 5px;
-}
-.field .ui.grid .frame-of-input-minute .input-minute #event_starting_minute {
-  padding: 10px;
-}
-.field .ui.grid .frame-of-input-minute .input-minute #event_ending_minute {
-  padding: 10px;
-}
-.field .ui.grid .minute-in-japanese {
-  padding: 0px !important;
-}
-
 .ui.grid .fourteen.wide.column #event-details-image {
   width: 100%;
   padding: 5px;

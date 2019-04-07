@@ -1,3 +1,15 @@
+@mixin mobile {
+  @media screen and (max-width : 768px) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media screen and (min-width: 769px) {
+    @content;
+  }
+}
+
 form{
   .ui.grid{
     .fourteen.wide.column{
@@ -11,8 +23,22 @@ form{
         .field{
           margin-bottom: 15px;
 
-          #always-login{
-            padding-top: 10px;
+          .ui.grid{
+            .login-page-frame-of-email-label{
+              padding-bottom: 0px;
+            }
+            .login-page-frame-of-email-input{
+              padding-top: 5px;
+            }
+            .login-page-frame-of-password-label{
+              padding-bottom: 0px;
+            }
+            .login-page-frame-of-password-input{
+              padding-top: 5px;
+            }
+            #always-login{
+              padding-top: 10px;
+            }
           }
         }
 
@@ -20,10 +46,34 @@ form{
           margin: 40px;
           margin-bottom: 30px;
         }
-
         #login-page-frame-of-signup{
           margin-top: 30px;
           margin-bottom: 60px;
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .depend-on-device{
+    width: 100%;
+  }
+}
+
+@include pc {
+  form{
+    .ui.grid{
+      .fourteen.wide.column{
+        #please-login{
+          margin-bottom: 60px;
+        }
+        .depend-on-device{
+          width: 75%;
+          margin: auto;
+        }
+        #always-login{
+          padding-top: 0px;
         }
       }
     }
