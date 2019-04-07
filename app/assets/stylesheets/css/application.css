@@ -587,6 +587,20 @@ form .ui.grid .fourteen.wide.column .ui.form #password-reset-page-frame-of-updat
   margin-bottom: 60px;
 }
 
+@media screen and (max-width: 768px) {
+  .password-update-form-depend-on-device {
+    width: 100% !important;
+  }
+}
+@media screen and (min-width: 769px) {
+  form .ui.grid .fourteen.wide.column #please-password-update {
+    margin-bottom: 60px;
+  }
+  form .ui.grid .fourteen.wide.column .password-update-form-depend-on-device {
+    width: 50% !important;
+    margin: auto;
+  }
+}
 form .ui.grid .fourteen.wide.column #please-inquire {
   font-weight: bolder;
   font-size: 20px;
