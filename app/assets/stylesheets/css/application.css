@@ -646,101 +646,100 @@ form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #inquiry-page-frame
     margin: auto;
   }
 }
-#please-post-event {
+form .ui.grid .fourteen.wide.column #please-post-or-update-event {
   font-weight: bolder;
   font-size: 20px;
   margin: 30px;
 }
-
-.ui.form .field .ui.grid #frame-of-price {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #frame-of-price {
   padding-bottom: 0px;
 }
-.ui.form .field .ui.grid .frame-of-input-price {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-price {
   padding: 0px !important;
   padding-left: 14px !important;
 }
-.ui.form .field .ui.grid .yen-in-japanese {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .yen-in-japanese {
   padding: 0px !important;
   padding-left: 10px !important;
 }
-.ui.form .field .ui.grid .frame-of-input-year {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year {
   padding: 0px !important;
 }
-.ui.form .field .ui.grid .frame-of-input-year .input-year {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year {
   padding: 5px;
   padding-left: 14px;
 }
-.ui.form .field .ui.grid .frame-of-input-year .input-year #event_starting_year {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year #event_starting_year {
   padding: 10px;
 }
-.ui.form .field .ui.grid .frame-of-input-year .input-year #event_ending_year {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year #event_ending_year {
   padding: 10px;
 }
-.ui.form .field .ui.grid .year-in-japanese {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .year-in-japanese {
   padding: 0px !important;
 }
-.ui.form .field .ui.grid .frame-of-input-month {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month {
   padding: 0px !important;
 }
-.ui.form .field .ui.grid .frame-of-input-month .input-month {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month {
   padding: 5px;
 }
-.ui.form .field .ui.grid .frame-of-input-month .input-month #event_starting_month {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month #event_starting_month {
   padding: 10px;
 }
-.ui.form .field .ui.grid .frame-of-input-month .input-month #event_ending_month {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month #event_ending_month {
   padding: 10px;
 }
-.ui.form .field .ui.grid .month-in-japanese {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .month-in-japanese {
   padding: 0px !important;
 }
-.ui.form .field .ui.grid .frame-of-input-day {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day {
   padding: 0px !important;
 }
-.ui.form .field .ui.grid .frame-of-input-day .input-day {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day {
   padding: 5px;
 }
-.ui.form .field .ui.grid .frame-of-input-day .input-day #event_starting_day {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day #event_starting_day {
   padding: 10px;
 }
-.ui.form .field .ui.grid .frame-of-input-day .input-day #event_ending_day {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day #event_ending_day {
   padding: 10px;
 }
-.ui.form .field .ui.grid .day-in-japanese {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .day-in-japanese {
   padding: 0px !important;
 }
-.ui.form .field .ui.grid .frame-of-input-hour {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour {
   padding: 0px !important;
 }
-.ui.form .field .ui.grid .frame-of-input-hour .input-hour {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour {
   padding: 5px;
   padding-left: 14px;
 }
-.ui.form .field .ui.grid .frame-of-input-hour .input-hour #event_starting_hour {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour #event_starting_hour {
   padding: 10px;
 }
-.ui.form .field .ui.grid .frame-of-input-hour .input-hour #event_ending_hour {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour #event_ending_hour {
   padding: 10px;
 }
-.ui.form .field .ui.grid .hour-in-japanese {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .hour-in-japanese {
   padding: 0px !important;
 }
-.ui.form .field .ui.grid .frame-of-input-minute {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute {
   padding: 0px !important;
 }
-.ui.form .field .ui.grid .frame-of-input-minute .input-minute {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute {
   padding: 5px;
 }
-.ui.form .field .ui.grid .frame-of-input-minute .input-minute #event_starting_minute {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute #event_starting_minute {
   padding: 10px;
 }
-.ui.form .field .ui.grid .frame-of-input-minute .input-minute #event_ending_minute {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute #event_ending_minute {
   padding: 10px;
 }
-.ui.form .field .ui.grid .minute-in-japanese {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .minute-in-japanese {
   padding: 0px !important;
 }
-.ui.form .ui.grid #event-update-page-frame-of-submit {
+form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-of-submit {
   margin: 40px;
   margin-bottom: 60px;
 }
