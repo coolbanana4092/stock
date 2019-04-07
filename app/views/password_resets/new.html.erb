@@ -3,10 +3,10 @@
     <div class="fourteen wide column">
       <div id="please-password-reset" class="center aligned">パスワードを更新する</div>
 
-      <div class="ui center aligned grid message">
+      <div class="depend-on-device ui center aligned grid message">
         <div class="left aligned fourteen wide column">
           <p id="procedure-of-password-reset">手順</p>
-          <div id="step1-of-password-reset" class="step-of-password-reset">
+          <div class="step-of-password-reset">
             <p>step1.</p>
             <p>まずは、以下のフォームにこのアプリに登録したメールアドレスを入力し、送信してください。</p>
           </div>
@@ -18,30 +18,35 @@
             <p>step3.</p>
             <p>届いたメール内のURLをクリックすると、パスワードを更新するためのページが開かれます。</p>
           </div>
-          <div id="step4-of-password-reset" class="step-of-password-reset">
+          <div class="step-of-password-reset">
             <p>step4.</p>
             <p>そのページ内のフォームに新しいパスワードを入力し送信すると、そのパスワードがあなたの新しいパスワードになります。</p>
           </div>
         </div>
       </div>
 
-      <div class="ui form">
+      <div class="depend-on-device ui form">
         <div class="field">
           <div class="ui left aligned grid">
-            <div class="sixteen wide column">
-              <%= f.label :email, '登録したメールアドレス' %>
+            <div class="signup-page-frame-of-email-label sixteen wide column">
+              <%= f.label :email, 'メールアドレス' %>
             </div>
-          </div>
-          <div class="ui huge input">
-            <%= f.email_field :email, :placeholder => "例：case@example.com" %>
+            <div class="signup-page-frame-of-email-input sixteen wide column">
+              <div class="ui left icon huge input">
+                <%= f.email_field :email, :placeholder => "例：case@example.com" %>
+                <i class="mail icon"></i>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="ui center aligned grid">
-          <%= button_tag :type => "submit", :id => "password-reset-page-frame-of-submit", :class =>"ui blue submit button ten wide column" do %>
-            <i class="mail icon"></i>
-            送信する
-          <% end %>
+        <div class="field">
+          <div class="ui center aligned grid">
+            <%= button_tag :type => "submit", :id => "password-reset-page-frame-of-submit", :class =>"ui blue submit button ten wide column" do %>
+              <i class="mail icon"></i>
+              送信する
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
