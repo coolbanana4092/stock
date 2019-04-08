@@ -1,50 +1,84 @@
 #toppage-image{
-  width: 100%;
+  width: 87.5%;
+  height: auto;
 }
-
-.explanation-of-application{
+#what-is-this-application-in-japanese{
   margin-top: 50px;
   margin-bottom: 30px;
 }
-
 #divider-above-characteristic{
   margin-top: 60px;
 }
-
 .characteristics-of-application{
   margin-top: 50px;
   margin-bottom: 30px;
 }
-
 .one-of-the-characteristics{
   margin-bottom: 50px;
 }
-
 #divider-above-use-for-trial{
   margin-top: 60px;
 }
-
 .use-for-trial{
   margin-top: 50px;
   margin-bottom: 20px;
 }
-
-.lets-search{
+#frame-of-lets-search{
   margin-bottom: 30px;
 }
-
 #map {
   width: 80%;
   height: 300px;
   margin: auto;
 }
-
 #search-address{
   margin-top: 30px;
   margin-bottom: 30px;
 }
-
-.map-explanation{
+#frame-of-map-explanation{
   margin-top: 40px;
   margin-bottom: 50px;
+}
+
+@media screen and (min-width: 769px) {
+  .ui.grid{
+    #explanation-of-application{
+      width: 62.5% !important;
+      margin: auto !important;
+    }
+  }
+  #major-characteristics{
+    width: 87.5%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+
+    .one-of-the-characteristics{
+      width: 33.3%;
+      float: left;
+    }
+  }
+  #divider-above-use-for-trial{
+    margin-top: 0px;
+  }
+  #lets-search{
+    width: 62.5% !important;
+    margin: auto !important;
+  }
+  #map {
+    width: 50%;
+    height: 300px;
+    margin: auto;
+  }
+  #frame-of-map-explanation{
+    .ui.grid{
+      #map-explanation{
+        width: 62.5% !important;
+        margin: auto !important;
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+    }
+  }
 }
