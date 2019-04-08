@@ -14,6 +14,24 @@
  *= require_tree .
  *= require_self
  */
+@media screen and (max-width: 768px) {
+  .pc {
+    display: none !important;
+  }
+
+  .mobile {
+    display: block !important;
+  }
+}
+@media screen and (min-width: 769px) {
+  .pc {
+    display: block !important;
+  }
+
+  .mobile {
+    display: none !important;
+  }
+}
 html {
   margin: 0;
   padding: 0;
@@ -226,10 +244,11 @@ footer {
 }
 
 #toppage-image {
-  width: 100%;
+  width: 87.5%;
+  height: auto;
 }
 
-.explanation-of-application {
+#what-is-this-application-in-japanese {
   margin-top: 50px;
   margin-bottom: 30px;
 }
@@ -256,7 +275,7 @@ footer {
   margin-bottom: 20px;
 }
 
-.lets-search {
+#frame-of-lets-search {
   margin-bottom: 30px;
 }
 
@@ -271,11 +290,51 @@ footer {
   margin-bottom: 30px;
 }
 
-.map-explanation {
+#frame-of-map-explanation {
   margin-top: 40px;
   margin-bottom: 50px;
 }
 
+@media screen and (min-width: 769px) {
+  .ui.grid #explanation-of-application {
+    width: 62.5% !important;
+    margin: auto !important;
+  }
+
+  #major-characteristics {
+    width: 87.5%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+  }
+  #major-characteristics .one-of-the-characteristics {
+    width: 33.3%;
+    float: left;
+  }
+
+  #divider-above-use-for-trial {
+    margin-top: 0px;
+  }
+
+  #lets-search {
+    width: 62.5% !important;
+    margin: auto !important;
+  }
+
+  #map {
+    width: 50%;
+    height: 300px;
+    margin: auto;
+  }
+
+  #frame-of-map-explanation .ui.grid #map-explanation {
+    width: 62.5% !important;
+    margin: auto !important;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
 /********************************
 	チュートリアル
 ********************************/

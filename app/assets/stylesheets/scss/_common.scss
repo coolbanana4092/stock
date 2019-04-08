@@ -1,3 +1,20 @@
+@media screen and (max-width : 768px) {
+  .pc{
+    display: none !important;
+  }
+  .mobile{
+    display: block !important;
+  }
+}
+@media screen and (min-width: 769px) {
+  .pc{
+    display: block !important;
+  }
+  .mobile{
+    display: none !important;
+  }
+}
+
 html{
   margin: 0;
   padding: 0;
@@ -20,7 +37,6 @@ html{
 li {
   list-style: none;
 }
-
 a {
   color: #000;
   text-decoration: none;
