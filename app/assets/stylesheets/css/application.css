@@ -886,4 +886,14 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
   color: white;
 }
 
+@media screen and (min-width: 769px) {
+  .ui.grid .fourteen.wide.column #event-details-image {
+    width: 50%;
+  }
+
+  .map-an-event {
+    margin-bottom: 10px !important;
+  }
+}
+
 /*# sourceMappingURL=application.css.map */
