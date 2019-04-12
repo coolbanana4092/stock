@@ -40,13 +40,13 @@
   </div>
 </div>
 
-<div class="ui center aligned grid animated bounce">
+<div class="ui center aligned grid">
   <div class="fourteen wide column">
     <div id="events-list-in-japanese">イベント一覧</div>
   </div>
 </div>
 
-<div class="ui center aligned grid animated bounce" id="search-events">
+<div class="ui center aligned grid" id="search-events">
   <div class="fourteen wide columm">
     <div class="item">
       <form action="/events" accept-charset="UTF-8" method="get">
@@ -62,7 +62,7 @@
 </div>
 
 <div class="ui center aligned grid">
-  <div id="select-box" class="right aligned fourteen wide column animated bounce">
+  <div id="select-box" class="right aligned fourteen wide column">
     <select class="select-box-show-events">
       <option value="all-events">イベント一覧</option>
       <option value="my-events">自分の投稿したイベント</option>
@@ -83,11 +83,11 @@
       </div>
     <% else %>
       <% @all_events.each do |event| %>
-        <div class="ui center aligned grid">
+        <div class="each-event ui center aligned grid">
           <div class="fourteen wide column">
             <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
               <div class="ui left aligned raised segment">
-                <img id="toppage-image" src="/img/events/event1.jpg" width="200" height="200">
+                <img class="events-list-image" src="/img/events/event1.jpg">
                 <li class="event-name"><%= event.name %></li>
                 <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
                 <li class="event-organizer">
@@ -108,7 +108,6 @@
         </div>
       <% end %>
     <% end %>
-    <%= paginate @all_events %>
   </div>
 
   <div class="my-events animated bounce">
@@ -120,11 +119,11 @@
       </div>
     <% else %>
       <% @current_user_events.each do |event| %>
-        <div class="ui center aligned grid">
+        <div class="each-event ui center aligned grid">
           <div class="fourteen wide column">
             <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
               <div class="ui left aligned raised segment">
-                <img id="toppage-image" src="/img/events/event1.jpg" width="200" height="200">
+                <img class="events-list-image" src="/img/events/event1.jpg">
                 <li class="event-name"><%= event.name %></li>
                 <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
                 <li class="event-organizer">
@@ -145,62 +144,42 @@
         </div>
       <% end %>
     <% end %>
-    <%= paginate @current_user_events %>
   </div>
 
-  <%# 全イベントが1つも存在しない場合 %>
-  <% if @all_events.empty? then %>
-    <div class="ui center aligned grid">
-      <div class="ten wide column">
-        <div class="before-events animated bounce">
-          既に終了したイベントはまだ存在していません。
-        </div>
+  <%# 既に終了したイベントを表示 %>
+  <div id="frame-of-before-events" class="before-events animated bounce">
+    <% @all_events.each do |event| %>
+      <% current_time = Time.now %>
 
-        <div class="current-events animated bounce">
-          現在開催中のイベントはまだ存在していません。
-        </div>
+      <% starting_year = event.starting_year %>
+      <% starting_month = event.starting_month %>
+      <% starting_day = event.starting_day %>
+      <% starting_hour = event.starting_hour %>
+      <% starting_minute = event.starting_minute %>
 
-        <div class="after-events animated bounce">
-          今後開催されるイベントはまだ存在していません。
-        </div>
-      </div>
-    </div>
-  <% end %>
+      <% ending_year = event.ending_year %>
+      <% ending_month = event.ending_month %>
+      <% ending_day = event.ending_day %>
+      <% ending_hour = event.ending_hour %>
+      <% ending_minute = event.ending_minute %>
 
-  <% @all_events.each do |event| %>
-    <% current_time = Time.now %>
+      <% starting_date_time = Time.new(starting_year, starting_month, starting_day, starting_hour, starting_minute) %>
+      <% ending_date_time = Time.new(ending_year, ending_month, ending_day, ending_hour, ending_minute) %>
 
-    <% starting_year = event.starting_year %>
-    <% starting_month = event.starting_month %>
-    <% starting_day = event.starting_day %>
-    <% starting_hour = event.starting_hour %>
-    <% starting_minute = event.starting_minute %>
-
-    <% ending_year = event.ending_year %>
-    <% ending_month = event.ending_month %>
-    <% ending_day = event.ending_day %>
-    <% ending_hour = event.ending_hour %>
-    <% ending_minute = event.ending_minute %>
-
-    <% starting_date_time = Time.new(starting_year, starting_month, starting_day, starting_hour, starting_minute) %>
-    <% ending_date_time = Time.new(ending_year, ending_month, ending_day, ending_hour, ending_minute) %>
-
-    <% if ending_date_time < current_time then %>
-      <% before_events_array.push(event) %>
-    <% elsif starting_date_time < current_time && current_time < ending_date_time then %>
-      <% current_events_array.push(event) %>
-    <% elsif current_time < starting_date_time then %>
-      <% after_events_array.push(event) %>
-    <% end %>
-
-    <%# 既に終了したイベントを表示 %>
-    <div id="frame-of-before-events" class="before-events animated bounce">
       <% if ending_date_time < current_time then %>
-        <div class="ui center aligned grid">
+        <% before_events_array.push(event) %>
+      <% elsif starting_date_time < current_time && current_time < ending_date_time then %>
+        <% current_events_array.push(event) %>
+      <% elsif current_time < starting_date_time then %>
+        <% after_events_array.push(event) %>
+      <% end %>
+
+      <% if ending_date_time < current_time then %>
+        <div class="each-event ui center aligned grid">
           <div class="fourteen wide column">
             <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
               <div class="ui left aligned raised segment">
-                <img id="toppage-image" src="/img/events/event1.jpg" width="200" height="200">
+                <img class="events-list-image" src="/img/events/event1.jpg">
                 <li class="event-name"><%= event.name %></li>
                 <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
                 <li class="event-organizer">
@@ -220,16 +199,43 @@
           </div>
         </div>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 
-    <%# 現在開催中のイベントを表示 %>
-    <div id="frame-of-current-events" class="current-events animated bounce">
+  <%# 現在開催中のイベントを表示 %>
+  <div id="frame-of-current-events" class="current-events animated bounce">
+    <% @all_events.each do |event| %>
+      <% current_time = Time.now %>
+
+      <% starting_year = event.starting_year %>
+      <% starting_month = event.starting_month %>
+      <% starting_day = event.starting_day %>
+      <% starting_hour = event.starting_hour %>
+      <% starting_minute = event.starting_minute %>
+
+      <% ending_year = event.ending_year %>
+      <% ending_month = event.ending_month %>
+      <% ending_day = event.ending_day %>
+      <% ending_hour = event.ending_hour %>
+      <% ending_minute = event.ending_minute %>
+
+      <% starting_date_time = Time.new(starting_year, starting_month, starting_day, starting_hour, starting_minute) %>
+      <% ending_date_time = Time.new(ending_year, ending_month, ending_day, ending_hour, ending_minute) %>
+
+      <% if ending_date_time < current_time then %>
+        <% before_events_array.push(event) %>
+      <% elsif starting_date_time < current_time && current_time < ending_date_time then %>
+        <% current_events_array.push(event) %>
+      <% elsif current_time < starting_date_time then %>
+        <% after_events_array.push(event) %>
+      <% end %>
+
       <% if starting_date_time < current_time && current_time < ending_date_time then %>
-        <div class="ui center aligned grid">
+        <div class="each-event ui center aligned grid">
           <div class="fourteen wide column">
             <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
               <div class="ui left aligned raised segment">
-                <img id="toppage-image" src="/img/events/event1.jpg" width="200" height="200">
+                <img class="events-list-image" src="/img/events/event1.jpg">
                 <li class="event-name"><%= event.name %></li>
                 <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
                 <li class="event-organizer">
@@ -249,16 +255,43 @@
           </div>
         </div>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 
-    <%# 今後開催されるイベントを表示 %>
-    <div id="frame-of-after-events" class="after-events animated bounce">
+  <%# 今後開催されるイベントを表示 %>
+  <div id="frame-of-after-events" class="after-events animated bounce">
+    <% @all_events.each do |event| %>
+      <% current_time = Time.now %>
+
+      <% starting_year = event.starting_year %>
+      <% starting_month = event.starting_month %>
+      <% starting_day = event.starting_day %>
+      <% starting_hour = event.starting_hour %>
+      <% starting_minute = event.starting_minute %>
+
+      <% ending_year = event.ending_year %>
+      <% ending_month = event.ending_month %>
+      <% ending_day = event.ending_day %>
+      <% ending_hour = event.ending_hour %>
+      <% ending_minute = event.ending_minute %>
+
+      <% starting_date_time = Time.new(starting_year, starting_month, starting_day, starting_hour, starting_minute) %>
+      <% ending_date_time = Time.new(ending_year, ending_month, ending_day, ending_hour, ending_minute) %>
+
+      <% if ending_date_time < current_time then %>
+        <% before_events_array.push(event) %>
+      <% elsif starting_date_time < current_time && current_time < ending_date_time then %>
+        <% current_events_array.push(event) %>
+      <% elsif current_time < starting_date_time then %>
+        <% after_events_array.push(event) %>
+      <% end %>
+
       <% if current_time < starting_date_time then %>
-        <div class="ui center aligned grid">
+        <div class="each-event ui center aligned grid">
           <div class="fourteen wide column">
             <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
               <div class="ui left aligned raised segment">
-                <img id="toppage-image" src="/img/events/event1.jpg" width="200" height="200">
+                <img class="events-list-image" src="/img/events/event1.jpg">
                 <li class="event-name"><%= event.name %></li>
                 <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
                 <li class="event-organizer">
@@ -278,13 +311,12 @@
           </div>
         </div>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 
-  <%# イベントは存在しているが、各イベントが存在しない場合 %>
   <% if before_events_array.empty? then %>
     <div class="before-events ui center aligned grid">
-      <div class="ten wide column">
+      <div class="center aligned ten wide column">
         <div class="animated bounce">
           既に終了したイベントはまだ存在していません。
         </div>
@@ -293,8 +325,8 @@
   <% end %>
   <% if current_events_array.empty? then %>
     <div class="current-events ui center aligned grid">
-      <div class="ten wide column">
-        <div class="animated bounce">
+      <div class="center aligned ten wide column">
+        <div class="center aligned animated bounce">
           現在開催中のイベントはまだ存在していません。
         </div>
       </div>
