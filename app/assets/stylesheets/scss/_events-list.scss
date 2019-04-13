@@ -5,9 +5,11 @@
 /** モーダルウィンドウ *********/
 
 .modal{
-  background-color: #ffffff;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: {
+    top: 20px;
+    bottom: 20px;
+  }
+  background-color: #fff;
 
   #modal-header{
     text-align: center;
@@ -18,7 +20,7 @@
 
 #frame-of-carousel-image{
   .carousel-image{
-    margin-bottom: 0px;
+    margin-bottom: 0;
 
     .slick-list{
       height: 200px;
@@ -34,7 +36,7 @@
     margin-top: 10px;
 
     .carousel-explanation{
-      padding-top: 0px;
+      padding-top: 0;
     }
   }
 
@@ -52,31 +54,42 @@
 /** イベント *****************/
 
 #events-list-in-japanese{
-  font-weight: bolder;
-  font-size: 20px;
   margin: 30px;
+  font: {
+    weight: bolder;
+    size: 20px;
+  }
 }
+
 #search-events{
-  margin-top: 0px;
-  margin-bottom: 10px;
+  margin: {
+    top: 0;
+    bottom: 10px;
+  }
 }
+
 .various-events-list{
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin: {
+    top: 20px;
+    bottom: 40px;
+  }
 }
+
 .frame-of-segment{
-  padding-left: 0px;
-  margin: 0px;
+  padding-left: 0;
+  margin: 0;
 
   .segment{
     font-size: 12px;
-    
+
     .events-list-image{
       width: 100%;
     }
     .event-name{
-      font-size: 16px;
-      font-weight: bolder;
+      font: {
+        size: 16px;
+        weight: bolder;
+      }
     }
     .event-created-at{
       text-align: right;
@@ -87,16 +100,18 @@
     }
   }
 }
+
 .before-events,
 .current-events,
 .after-events{
-  padding: 0px;
+  padding: 0;
 }
 
 @media screen and (min-width: 769px) {
   #events-list-in-japanese{
     margin-bottom: 60px;
   }
+
   .various-events-list{
     .all-events,
     .my-events,
@@ -104,16 +119,20 @@
     .current-events,
     .after-events{
       width: 87.5%;
-      margin-left: auto !important;
-      margin-right: auto !important;
+      margin: {
+        left: auto !important;
+        right: auto !important;
+      }
       overflow: hidden;
 
       .each-event{
-        margin-top: 14px;
-        margin-left: auto;
-        margin-right: auto;
-        width: 33%;
         float: left;
+        width: 33%;
+        margin: {
+          top: 14px;
+          left: auto;
+          right: auto;
+        }
       }
     }
   }
@@ -122,34 +141,26 @@
 /** イベントをふわっと出す *****/
 
 .animated {
-  /* 最初は非表示 */
-  opacity: 0;
+  opacity: 0;     // 最初は非表示
 }
 
 /** ページトップへ戻るボタン ***/
 
 .back-to-top {
-  // ボタンの表示位置と色を決める
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #f0f0f0;
-
-  // ボタン内の三角形の大きさと位置と色を決める
   display: none;
-  text-align: center;
-  text-decoration: none;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
   width: 60px;
   height: 60px;
+  background-color: #f0f0f0;
+  text-align: center;
+  text-decoration: none;
   font-size: 2rem;
   line-height: 60px;
   color: #333;
-
-  // ボタンとボタン内の三角形の透明度
   opacity: 0.6;
-
-  // ボタンとボタン内の三角形の透明度をふわっと変える演出
-  transition: opacity 2.5s;
+  transition: opacity 2.5s;     // ボタンとボタン内の三角形の透明度をふわっと変える演出
 
   &:hover {
     opacity: 1;
