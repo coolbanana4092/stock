@@ -1,22 +1,12 @@
-@mixin mobile {
-  @media screen and (max-width : 768px) {
-    @content;
-  }
-}
-
-@mixin pc {
-  @media screen and (min-width: 769px) {
-    @content;
-  }
-}
-
 form{
   .ui.grid{
     .fourteen.wide.column{
       #please-login{
-        font-weight: bolder;
-        font-size: 20px;
         margin: 30px;
+        font: {
+          weight: bolder;
+          size: 20px;
+        }
       }
 
       .ui.form{
@@ -24,15 +14,11 @@ form{
           margin-bottom: 15px;
 
           .ui.grid{
-            .login-page-frame-of-email-label{
-              padding-bottom: 0px;
-            }
-            .login-page-frame-of-email-input{
-              padding-top: 5px;
-            }
+            .login-page-frame-of-email-label,
             .login-page-frame-of-password-label{
-              padding-bottom: 0px;
+              padding-bottom: 0;
             }
+            .login-page-frame-of-email-input,
             .login-page-frame-of-password-input{
               padding-top: 5px;
             }
@@ -41,27 +27,32 @@ form{
             }
           }
         }
-
         #login-page-frame-of-login{
-          margin: 40px;
-          margin-bottom: 30px;
+          margin: {
+            top: 40px;
+            right: 40px;
+            bottom: 30px;
+            left: 40px;
+          }
         }
         #login-page-frame-of-signup{
-          margin-top: 30px;
-          margin-bottom: 60px;
+          margin: {
+            top: 30px;
+            bottom: 60px;
+          }
         }
       }
     }
   }
 }
 
-@include mobile {
+@media screen and (max-width : 768px) {
   .depend-on-device{
     width: 100%;
   }
 }
 
-@include pc {
+@media screen and (min-width: 769px) {
   form{
     .ui.grid{
       .fourteen.wide.column{
