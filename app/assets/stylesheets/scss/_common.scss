@@ -1,43 +1,29 @@
-@media screen and (max-width : 768px) {
-  .pc{
-    display: none !important;
-  }
-  .mobile{
-    display: block !important;
-  }
-}
-@media screen and (min-width: 769px) {
-  .pc{
-    display: block !important;
-  }
-  .mobile{
-    display: none !important;
-  }
-}
-
 html{
+  height: 100%;
   margin: 0;
   padding: 0;
-  height: 100%;
 
   body{
-    #container {
+    #container{
       position: relative;
       min-height: 100%;
       overflow: hidden;
 
-      #main-content {
-        padding-top: 80px;
-        padding-bottom: 80px;
+      #main-content{
+        padding: {
+          top: 80px;
+          bottom: 80px;
+        }
       }
     }
   }
 }
 
-li {
-  list-style: none;
-}
-a {
+a{
   color: #000;
   text-decoration: none;
+}
+
+li{
+  list-style: none;
 }

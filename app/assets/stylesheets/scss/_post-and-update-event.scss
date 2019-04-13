@@ -1,129 +1,86 @@
-@mixin mobile {
-  @media screen and (max-width : 768px) {
-    @content;
-  }
-}
-
-@mixin pc {
-  @media screen and (min-width: 769px) {
-    @content;
-  }
-}
-
 form{
   .ui.grid{
     .fourteen.wide.column{
       #please-post-or-update-event{
-        font-weight: bolder;
-        font-size: 20px;
         margin: 30px;
+        font: {
+          weight: bolder;
+          size: 20px;
+        }
       }
+
       .ui.form{
         .field{
           .ui.grid{
+            .frame-of-input-price,
+            .frame-of-input-year,
+            .frame-of-input-month,
+            .frame-of-input-day,
+            .frame-of-input-hour,
+            .frame-of-input-minute{
+              padding: 0 !important;
+            }
+            .yen-in-japanese,
+            .year-in-japanese,
+            .month-in-japanese,
+            .day-in-japanese,
+            .hour-in-japanese,
+            .minute-in-japanese{
+              padding: 0 !important;
+            }
             #frame-of-price{
-              padding-bottom: 0px;
+              padding-bottom: 0;
             }
             .frame-of-input-price{
-              padding: 0px !important;
               padding-left: 14px !important;
             }
             .yen-in-japanese{
-              padding: 0px !important;
               padding-left: 10px !important;
             }
-            .frame-of-input-year{
-              padding: 0px !important;
-
-              .input-year{
-                padding: 5px;
-                padding-left: 14px;
-                #event_starting_year{
-                  padding: 10px;
-                }
-                #event_ending_year{
-                  padding: 10px;
-                }
-              }
-            }
-            .year-in-japanese{
-              padding: 0px !important;
-            }
-            .frame-of-input-month{
-              padding: 0px !important;
-
-              .input-month{
-                padding: 5px;
-
-                #event_starting_month{
-                  padding: 10px;
-                }
-                #event_ending_month{
-                  padding: 10px;
-                }
-              }
-            }
-            .month-in-japanese{
-              padding: 0px !important;
-            }
-            .frame-of-input-day{
-              padding: 0px !important;
-
-              .input-day{
-                padding: 5px;
-                #event_starting_day{
-                  padding: 10px;
-                }
-                #event_ending_day{
-                  padding: 10px;
-                }
-              }
-            }
-            .day-in-japanese{
-              padding: 0px !important;
-            }
-            .frame-of-input-hour{
-              padding: 0px !important;
-
-              .input-hour{
-                padding: 5px;
-                padding-left: 14px;
-
-                #event_starting_hour{
-                  padding: 10px;
-                }
-                #event_ending_hour{
-                  padding: 10px;
-                }
-              }
-            }
-            .hour-in-japanese{
-              padding: 0px !important;
-            }
+            .frame-of-input-year,
+            .frame-of-input-hour,
+            .frame-of-input-month,
+            .frame-of-input-day,
             .frame-of-input-minute{
-              padding: 0px !important;
-
+              .input-year,
+              .input-hour,
+              .input-month,
+              .input-day,
               .input-minute{
                 padding: 5px;
 
-                #event_starting_minute{
-                  padding: 10px;
-                }
+                #event_starting_year,
+                #event_ending_year,
+                #event_starting_hour,
+                #event_ending_hour,
+                #event_starting_month,
+                #event_ending_month,
+                #event_starting_day,
+                #event_ending_day,
+                #event_starting_minute,
                 #event_ending_minute{
                   padding: 10px;
                 }
               }
             }
-            .minute-in-japanese{
-              padding: 0px !important;
+            .frame-of-input-year,
+            .frame-of-input-hour,{
+              .input-year,
+              .input-hour,{
+                padding-left: 14px;
+              }
             }
           }
         }
 
         .ui.grid{
           #event-update-page-frame-of-submit{
-            margin: 40px;
-            margin-bottom: 60px;
+            margin: {
+              top: 40px;
+              right: 40px;
+              bottom: 60px;
+              left: 40px;
+            }
           }
         }
       }
@@ -131,13 +88,13 @@ form{
   }
 }
 
-@include mobile {
+@media screen and (max-width : 768px) {
   .depend-on-device{
     width: 100%;
   }
 }
 
-@include pc {
+@media screen and (min-width: 769px) {
   form{
     .ui.grid{
       .fourteen.wide.column{

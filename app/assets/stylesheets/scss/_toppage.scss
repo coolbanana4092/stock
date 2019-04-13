@@ -3,15 +3,19 @@
   height: auto;
 }
 #what-is-this-application-in-japanese{
-  margin-top: 50px;
-  margin-bottom: 30px;
+  margin: {
+    top: 50px;
+    bottom: 30px;
+  }
 }
 #divider-above-characteristic{
   margin-top: 60px;
 }
 .characteristics-of-application{
-  margin-top: 50px;
-  margin-bottom: 30px;
+  margin: {
+    top: 50px;
+    bottom: 30px;
+  }
 }
 .one-of-the-characteristics{
   margin-bottom: 50px;
@@ -20,8 +24,10 @@
   margin-top: 60px;
 }
 .use-for-trial{
-  margin-top: 50px;
-  margin-bottom: 20px;
+  margin: {
+    top: 50px;
+    bottom: 20px;
+  }
 }
 #frame-of-lets-search{
   margin-bottom: 30px;
@@ -32,12 +38,16 @@
   margin: auto;
 }
 #search-address{
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin: {
+    top: 30px;
+    bottom: 30px;
+  }
 }
 #frame-of-map-explanation{
-  margin-top: 40px;
-  margin-bottom: 50px;
+  margin: {
+    top: 40px;
+    bottom: 50px;
+  }
 }
 
 @media screen and (min-width: 769px) {
@@ -49,18 +59,20 @@
   }
   #major-characteristics{
     width: 87.5%;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: {
+      top: 50px;
+      right: auto;
+      left: auto;
+    }
     overflow: hidden;
 
     .one-of-the-characteristics{
-      width: 33.3%;
       float: left;
+      width: 33.3%;
     }
   }
   #divider-above-use-for-trial{
-    margin-top: 0px;
+    margin-top: 0;
   }
   #lets-search{
     width: 62.5% !important;
@@ -76,8 +88,10 @@
       #map-explanation{
         width: 62.5% !important;
         margin: auto !important;
-        margin-top: 50px;
-        margin-bottom: 50px;
+        margin: {
+          top: 50px;
+          bottom: 50px;
+        }
       }
     }
   }
