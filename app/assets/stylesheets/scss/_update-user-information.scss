@@ -14,16 +14,10 @@ form{
           margin-bottom: 15px;
 
           .ui.grid{
-            .user-update-page-frame-of-name-label,
-            .user-update-page-frame-of-email-label,
-            .user-update-page-frame-of-password-label,
-            .user-update-page-frame-of-password-confirmation-label{
+            .user-update-page-frame-of-label{
               padding-bottom: 0;
             }
-            .user-update-page-frame-of-name-input,
-            .user-update-page-frame-of-email-input,
-            .user-update-page-frame-of-password-input,
-            .user-update-page-frame-of-password-confirmation-input{
+            .user-update-page-frame-of-input{
               padding-top: 5px;
             }
           }

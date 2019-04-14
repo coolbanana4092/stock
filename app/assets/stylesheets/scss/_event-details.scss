@@ -21,20 +21,15 @@
     #event-created-or-updated-date{
       margin-bottom: 5px;
     }
-    #event-content-in-japanese,
-    #event-date-in-japanese,
-    #event-place-in-japanese,
-    #event-price-in-japanese,
-    #event-organizer-in-japanese,
-    #event-cautionary-note-in-japanese{
-      margin-bottom: 10px;
-      font-size: 18px;
-    }
     #event-place{
       margin-bottom: 20px;
     }
     #event-price{
       margin-bottom: 20px;
+    }
+    .subheading-of-event-details{
+      margin-bottom: 10px;
+      font-size: 18px;
     }
   }
 }
@@ -72,7 +67,7 @@
       }
     }
   }
-  
+
   .map-an-event{
     margin-bottom: 10px !important;
   }
