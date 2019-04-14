@@ -146,7 +146,6 @@
     <% end %>
   </div>
 
-  <%# 既に終了したイベントを表示 %>
   <div id="frame-of-before-events" class="before-events animated bounce">
     <% @all_events.each do |event| %>
       <% current_time = Time.now %>
@@ -202,7 +201,6 @@
     <% end %>
   </div>
 
-  <%# 現在開催中のイベントを表示 %>
   <div id="frame-of-current-events" class="current-events animated bounce">
     <% @all_events.each do |event| %>
       <% current_time = Time.now %>
@@ -258,7 +256,6 @@
     <% end %>
   </div>
 
-  <%# 今後開催されるイベントを表示 %>
   <div id="frame-of-after-events" class="after-events animated bounce">
     <% @all_events.each do |event| %>
       <% current_time = Time.now %>
@@ -346,16 +343,13 @@
 <a href="#" class="back-to-top">▲</a>
 
 <script>
-  // イベントのセグメントをクリックしたら、そのイベントの詳細ページに遷移する
   <% @all_events.each do |event| %>
     $(".frame-of-segment-"+"<%= event.id %>").click(function() {
       location.href = "/events/" + "<%= event.id %>"
     });
   <% end %>
 
-  // ページトップにスクロールするボタンの表示・非表示を切り替える関数
-  function updateButton() {
-    // 300px以上スクロールされたらボタンを表示
+  function scrollUpButton() {
     if ($(this).scrollTop() >= 300) {
       $(".back-to-top").fadeIn();
     } else {
@@ -363,16 +357,12 @@
     }
   }
 
-  // ページトップにスクロールするボタンの表示・非表示を切り替える
   $(document).ready(function() {
-    updateButton();
+    scrollUpButton();
 
-    // スクロールされる度にupdateButtonを実行
-    $(window).scroll(updateButton);
+    $(window).scroll(scrollUpButton);
 
-    // ボタンをクリックしたらページトップにスクロールする
     $(".back-to-top").click(function() {
-      // 0.6秒かけてトップに戻る
       $("html, body").animate(
         {
           scrollTop: 0
@@ -380,26 +370,21 @@
         600
       );
 
-      // ボタンのhrefに遷移しない
       return false;
     });
   });
 
-  //このページを全て読み込んだ後にチュートリアルを初回アクセス時のみ表示する
   window.onload = function() {
-    // 初回アクセスならモーダルウィンドウを表示させ、そうでなければモーダルウィンドウを非表示にする
     if($.cookie('btnFlg') !== 'on') {
       $('.ui.modal')
         .modal('show')
       ;
     }
 
-    // モーダルウィンドウの中のOKボタンをクリックしたら、cookieを保存する
     $(".actions .ui.grid .column .button").click(function(){
       $.cookie('btnFlg', 'on', { expires: 30,path: '/' });
     });
 
-    // モーダルウィンドウ内のカルーセルで画像を表示する
     $('.carousel-image').slick({
       asNavFor: '.carousel-explanation',
       dots: true,
@@ -407,7 +392,6 @@
       appendDots:$("#original-dots"),
     });
 
-    // モーダルウィンドウ内でカルーセルで文章を表示する
     $('.carousel-explanation').slick({
       asNavFor: '.carousel-image',
       arrows: false,
@@ -415,26 +399,20 @@
     });
   };
 
-  // スクロール時にイベントをふわっと出す
   $(document).ready(function() {
-    // animatedクラスの付いた要素にwaypointを登録
     $(".animated").waypoint({
       handler: function(direction) {
-        // 要素が画面内に少しでも入ったら以下が実行される
-        if (direction === "down") { // 下方向のスクロール
+        if (direction === "down") {
           $(this.element).addClass("fadeInUp");
 
-          // waypointを削除することで、この要素に対してはこれ以降handlerが呼ばれなくなる
           this.destroy();
         }
       },
 
-      // 要素が画面内に少しでも入ったらhandlerを実行
       offset: "100%"
     });
   });
 
-  // セレクトボックスで選択している値によって表示する内容を変更する
   $(".select-box-show-events").change(function() {
     var selectBoxVal = $(".select-box-show-events").val();
 
@@ -471,7 +449,6 @@
     }
   });
 
-  // 遷移直後にイベント一覧のみを表示する
   $('.all-events').css('display', 'block');
   $('.my-events').css('display', 'none');
   $('.before-events').css('display', 'none');
