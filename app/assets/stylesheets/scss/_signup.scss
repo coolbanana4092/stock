@@ -14,16 +14,10 @@ form{
           margin-bottom: 15px;
 
           .ui.grid{
-            .signup-page-frame-of-name-label,
-            .signup-page-frame-of-email-label,
-            .signup-page-frame-of-password-label,
-            .signup-page-frame-of-password-confirmation-label{
+            .signup-page-frame-of-label{
               padding-bottom: 0px;
             }
-            .signup-page-frame-of-name-input,
-            .signup-page-frame-of-email-input,
-            .signup-page-frame-of-password-input,
-            .signup-page-frame-of-password-confirmation-input{
+            .signup-page-frame-of-input{
               padding-top: 5px;
             }
             #signup-page-frame-of-signup{

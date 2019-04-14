@@ -13,19 +13,7 @@ form{
         .field{
           .ui.grid{
             .frame-of-input-price,
-            .frame-of-input-year,
-            .frame-of-input-month,
-            .frame-of-input-day,
-            .frame-of-input-hour,
-            .frame-of-input-minute{
-              padding: 0 !important;
-            }
-            .yen-in-japanese,
-            .year-in-japanese,
-            .month-in-japanese,
-            .day-in-japanese,
-            .hour-in-japanese,
-            .minute-in-japanese{
+            .frame-of-input-date{
               padding: 0 !important;
             }
             #frame-of-price{
@@ -34,14 +22,14 @@ form{
             .frame-of-input-price{
               padding-left: 14px !important;
             }
+            .yen-in-japanese,
+            .date-in-japanese{
+              padding: 0 !important;
+            }
             .yen-in-japanese{
               padding-left: 10px !important;
             }
-            .frame-of-input-year,
-            .frame-of-input-hour,
-            .frame-of-input-month,
-            .frame-of-input-day,
-            .frame-of-input-minute{
+            .frame-of-input-date{
               .input-year,
               .input-hour,
               .input-month,
@@ -49,22 +37,10 @@ form{
               .input-minute{
                 padding: 5px;
 
-                #event_starting_year,
-                #event_ending_year,
-                #event_starting_hour,
-                #event_ending_hour,
-                #event_starting_month,
-                #event_ending_month,
-                #event_starting_day,
-                #event_ending_day,
-                #event_starting_minute,
-                #event_ending_minute{
+                .input-event-date{
                   padding: 10px;
                 }
               }
-            }
-            .frame-of-input-year,
-            .frame-of-input-hour,{
               .input-year,
               .input-hour,{
                 padding-left: 14px;
@@ -98,7 +74,7 @@ form{
   form{
     .ui.grid{
       .fourteen.wide.column{
-        #please-post-event{
+        #please-post-or-update-event{
           margin-bottom: 60px;
         }
         .depend-on-device{
