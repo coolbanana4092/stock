@@ -105,11 +105,14 @@
 </div>
 
 <script>
-  var map;
-  var marker;
-  var geocoder = new google.maps.Geocoder();
-
   function initMap() {
+    var geocoder = new google.maps.Geocoder();
+    var eventLocation;
+    var mapLatLng;
+    var markerLatLng;
+    var marker;
+    var map;
+
     geocoder.geocode(
       {
         'address': '<%= @event.place %>',
@@ -117,17 +120,15 @@
       },
         function (results, status) {
           if (status === 'OK' && results[0]){
-            var eventLocation = results[0].geometry.location
-            var mapLatLng = new google.maps.LatLng(eventLocation.lat(), eventLocation.lng());   // マップの中心の緯度経度のデータ作成
-            var markerLatLng = new google.maps.LatLng({lat: eventLocation.lat(), lng: eventLocation.lng()});
+            eventLocation = results[0].geometry.location
+            mapLatLng = new google.maps.LatLng(eventLocation.lat(), eventLocation.lng());
+            markerLatLng = new google.maps.LatLng({lat: eventLocation.lat(), lng: eventLocation.lng()});
 
-            // マーカーの定義
             marker = new google.maps.Marker({
               map: map,
               position: markerLatLng
             });
 
-            // 'div#map'に地図を埋め込む
             map = new google.maps.Map(document.getElementById('map'), {
               center: mapLatLng,
               zoom: 10,

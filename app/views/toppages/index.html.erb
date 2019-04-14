@@ -137,8 +137,9 @@
         },
           function (results, status) {
             if (status === 'OK' && results[0]){
-              var mapLatLng = new google.maps.LatLng(35.681236,139.767125);   // マップの中心の緯度経度のデータ作成
+              var mapLatLng = new google.maps.LatLng(35.681236,139.767125);
               var pos = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+              var markerLatLng;
               var markerData = [
                 {
                   name: '<%= event.name %>',
@@ -148,7 +149,6 @@
                 }
               ];
 
-              // 'div#map'に地図を埋め込む
               map = new google.maps.Map(document.getElementById('map'), {
                 center: mapLatLng,
                 zoom: 10,
@@ -157,27 +157,23 @@
                 fullscreenControl: false,
               });
 
-              // markerDataの数を数えるために、markerDataをmarkerDataArrayの中に入れる
+              // markerDataの数を数えるため
               markerDataArray.push(markerData);
 
-              // マーカー毎の処理
               for (var i = 0; i < markerDataArray.length; i++) {
-                // マーカーの緯度経度のデータ作成
                 var markerLatLng = new google.maps.LatLng({lat: markerDataArray[i][0].lat, lng: markerDataArray[i][0].lng});
 
-                // マーカーの追加
                 marker[i] = new google.maps.Marker({
                   map: map,
                   position: markerLatLng
                 });
 
-                // 吹き出しの追加
                 infoWindow[i] = new google.maps.InfoWindow({
                   content: '<div class="marker_name">' + markerDataArray[i][0].name + '</div>'
                             + '<div class="marker_place">' + markerDataArray[i][0].place + '</div>'
                 });
 
-                markerEvent(i);
+                addInfowindowToMarker(i);
               }
 
             }else{
@@ -188,8 +184,7 @@
     <% end %>
   }
 
-  // マーカーをクリックした時に1件のみ吹き出しを表示する
-  function markerEvent(i) {
+  function addInfowindowToMarker(i) {
     marker[i].addListener('click', function() {
       if (currentInfoWindow) {
         currentInfoWindow.close();
@@ -200,7 +195,6 @@
     });
   }
 
-  // 検索ボタンを押すと、住所から緯度と経度を算出する。
   $('#search').click(function () {
     var address = $('[name = address]').val();
 
@@ -211,9 +205,6 @@
       },
       function (results, status) {
         if (status === 'OK' && results[0]) {
-          var pos = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
-
-          //取得した座標をマップに反映する
           map.setCenter(results[0].geometry.location);
         } else {
           alert('住所検索に失敗しました。住所が正しいか確認してください');
