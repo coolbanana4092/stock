@@ -458,16 +458,10 @@ form .ui.grid .fourteen.wide.column #please-register-new {
 form .ui.grid .fourteen.wide.column .ui.form .field {
   margin-bottom: 15px;
 }
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-name-label,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-email-label,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-password-label,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-password-confirmation-label {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-label {
   padding-bottom: 0px;
 }
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-name-input,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-email-input,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-password-input,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-password-confirmation-input {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-input {
   padding-top: 5px;
 }
 form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #signup-page-frame-of-signup {
@@ -501,12 +495,10 @@ form .ui.grid .fourteen.wide.column #please-login {
 form .ui.grid .fourteen.wide.column .ui.form .field {
   margin-bottom: 15px;
 }
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .login-page-frame-of-email-label,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .login-page-frame-of-password-label {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .login-page-frame-of-label {
   padding-bottom: 0;
 }
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .login-page-frame-of-email-input,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .login-page-frame-of-password-input {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .login-page-frame-of-input {
   padding-top: 5px;
 }
 form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #always-login {
@@ -548,16 +540,10 @@ form .ui.grid .fourteen.wide.column #please-update-user-information {
 form .ui.grid .fourteen.wide.column .ui.form .field {
   margin-bottom: 15px;
 }
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-name-label,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-email-label,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-password-label,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-password-confirmation-label {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-label {
   padding-bottom: 0;
 }
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-name-input,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-email-input,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-password-input,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-password-confirmation-input {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .user-update-page-frame-of-input {
   padding-top: 5px;
 }
 form .ui.grid .fourteen.wide.column .ui.form #user-update-page-frame-of-update {
@@ -657,14 +643,10 @@ form .ui.grid .fourteen.wide.column #please-inquire {
 form .ui.grid .fourteen.wide.column .ui.form .field {
   margin-bottom: 15px;
 }
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-name-label,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-email-label,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-message-label {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-label {
   padding-bottom: 0;
 }
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-name-input,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-email-input,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-message-input {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .inquiry-page-frame-of-input {
   padding-top: 5px;
 }
 form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #inquiry-page-frame-of-submit {
@@ -692,19 +674,7 @@ form .ui.grid .fourteen.wide.column #please-post-or-update-event {
   font-size: 20px;
 }
 form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-price,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute {
-  padding: 0 !important;
-}
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .yen-in-japanese,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .year-in-japanese,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .month-in-japanese,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .day-in-japanese,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .hour-in-japanese,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .minute-in-japanese {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-date {
   padding: 0 !important;
 }
 form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #frame-of-price {
@@ -713,292 +683,29 @@ form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #frame-of-price {
 form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-price {
   padding-left: 14px !important;
 }
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .yen-in-japanese,
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .date-in-japanese {
+  padding: 0 !important;
+}
 form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .yen-in-japanese {
   padding-left: 10px !important;
 }
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-date .input-year,
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-date .input-hour,
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-date .input-month,
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-date .input-day,
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-date .input-minute {
   padding: 5px;
 }
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-hour #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-hour #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-hour #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-hour #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-hour #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-hour #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-hour #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-hour #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-hour #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-hour #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-month #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-month #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-month #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-month #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-month #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-month #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-month #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-month #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-month #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-month #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-day #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-day #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-day #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-day #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-day #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-day #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-day #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-day #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-day #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-day #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-minute #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-minute #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-minute #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-minute #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-minute #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-minute #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-minute #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-minute #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-minute #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-minute #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-year #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-year #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-year #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-year #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-year #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-year #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-year #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-year #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-year #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-year #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-month #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-month #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-month #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-month #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-month #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-month #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-month #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-month #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-month #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-month #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-day #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-day #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-day #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-day #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-day #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-day #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-day #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-day #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-day #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-day #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-minute #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-minute #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-minute #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-minute #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-minute #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-minute #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-minute #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-minute #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-minute #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-minute #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-year #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-year #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-year #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-year #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-year #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-year #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-year #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-year #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-year #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-year #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-hour #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-hour #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-hour #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-hour #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-hour #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-hour #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-hour #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-hour #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-hour #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-hour #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-month #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-day #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-day #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-day #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-day #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-day #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-day #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-day #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-day #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-day #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-day #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-minute #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-minute #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-minute #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-minute #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-minute #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-minute #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-minute #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-minute #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-minute #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-month .input-minute #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-year #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-year #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-year #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-year #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-year #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-year #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-year #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-year #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-year #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-year #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-hour #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-hour #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-hour #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-hour #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-hour #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-hour #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-hour #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-hour #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-hour #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-hour #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-month #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-month #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-month #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-month #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-month #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-month #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-month #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-month #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-month #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-month #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-day #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-minute #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-minute #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-minute #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-minute #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-minute #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-minute #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-minute #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-minute #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-minute #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-day .input-minute #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-year #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-year #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-year #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-year #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-year #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-year #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-year #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-year #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-year #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-year #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-hour #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-hour #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-hour #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-hour #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-hour #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-hour #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-hour #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-hour #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-hour #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-hour #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-month #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-month #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-month #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-month #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-month #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-month #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-month #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-month #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-month #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-month #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-day #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-day #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-day #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-day #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-day #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-day #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-day #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-day #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-day #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-day #event_ending_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute #event_starting_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute #event_ending_year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute #event_starting_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute #event_ending_hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute #event_starting_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute #event_ending_month,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute #event_starting_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute #event_ending_day,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute #event_starting_minute,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-minute .input-minute #event_ending_minute {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-date .input-year .input-event-date,
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-date .input-hour .input-event-date,
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-date .input-month .input-event-date,
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-date .input-day .input-event-date,
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-date .input-minute .input-event-date {
   padding: 10px;
 }
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-year .input-hour,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-year,
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-hour .input-hour {
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-date .input-year,
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-date .input-hour {
   padding-left: 14px;
 }
 form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-of-submit {
@@ -1014,7 +721,7 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
   }
 }
 @media screen and (min-width: 769px) {
-  form .ui.grid .fourteen.wide.column #please-post-event {
+  form .ui.grid .fourteen.wide.column #please-post-or-update-event {
     margin-bottom: 60px;
   }
   form .ui.grid .fourteen.wide.column .depend-on-device {
@@ -1037,20 +744,15 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
 .ui.grid .fourteen.wide.column #event-created-or-updated-date {
   margin-bottom: 5px;
 }
-.ui.grid .fourteen.wide.column #event-content-in-japanese,
-.ui.grid .fourteen.wide.column #event-date-in-japanese,
-.ui.grid .fourteen.wide.column #event-place-in-japanese,
-.ui.grid .fourteen.wide.column #event-price-in-japanese,
-.ui.grid .fourteen.wide.column #event-organizer-in-japanese,
-.ui.grid .fourteen.wide.column #event-cautionary-note-in-japanese {
-  margin-bottom: 10px;
-  font-size: 18px;
-}
 .ui.grid .fourteen.wide.column #event-place {
   margin-bottom: 20px;
 }
 .ui.grid .fourteen.wide.column #event-price {
   margin-bottom: 20px;
+}
+.ui.grid .fourteen.wide.column .subheading-of-event-details {
+  margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .frame-of-button-to-event-page {

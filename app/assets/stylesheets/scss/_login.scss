@@ -14,12 +14,10 @@ form{
           margin-bottom: 15px;
 
           .ui.grid{
-            .login-page-frame-of-email-label,
-            .login-page-frame-of-password-label{
+            .login-page-frame-of-label{
               padding-bottom: 0;
             }
-            .login-page-frame-of-email-input,
-            .login-page-frame-of-password-input{
+            .login-page-frame-of-input{
               padding-top: 5px;
             }
             #always-login{

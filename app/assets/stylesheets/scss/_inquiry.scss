@@ -14,14 +14,10 @@ form{
           margin-bottom: 15px;
 
           .ui.grid{
-            .inquiry-page-frame-of-name-label,
-            .inquiry-page-frame-of-email-label,
-            .inquiry-page-frame-of-message-label{
+            .inquiry-page-frame-of-label{
               padding-bottom: 0;
             }
-            .inquiry-page-frame-of-name-input,
-            .inquiry-page-frame-of-email-input,
-            .inquiry-page-frame-of-message-input{
+            .inquiry-page-frame-of-input{
               padding-top: 5px;
             }
             #inquiry-page-frame-of-submit{
