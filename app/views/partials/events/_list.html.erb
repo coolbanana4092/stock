@@ -1,0 +1,23 @@
+<div class="each-event ui center aligned grid">
+  <div class="fourteen wide column">
+    <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
+      <div class="ui left aligned raised segment">
+        <img class="events-list-image" src="/img/events/event1.jpg">
+        <li class="event-name"><%= event.name %></li>
+        <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
+        <li class="event-organizer">
+          <i class="user icon"></i>
+          <%= event.organizer %>
+        </li>
+        <li class="event-place">
+          <i class="map marker alternate icon"></i>
+          <%= event.place %>
+        </li>
+        <li class="date">
+          <i class="clock outline icon"></i>
+          <%= event.starting_year %>/<%= event.starting_month %>/<%= event.starting_day %> <%= event.starting_hour %>:<%= event.starting_minute %> 〜 <%= event.ending_year %>/<%= event.ending_month %>/<%= event.ending_day %> <%= event.ending_hour %>:<%= event.ending_minute %>
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>
