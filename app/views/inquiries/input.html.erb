@@ -1,15 +1,6 @@
 <%= form_for @inquiry, :url => inquiry_thanks_path do |f| %>
   <div class="ui center aligned grid">
     <div class="fourteen wide column">
-      <% if @inquiry.errors.any? %>
-        <div>入力内容にエラーがあります</div>
-        <ul>
-          <% @inquiry.errors.each do |attr, msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      <% end %>
-
       <div id="please-inquire" class="center aligned">お問い合わせ</div>
 
       <div class="depend-on-device ui form">

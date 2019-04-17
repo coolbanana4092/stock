@@ -1,3 +1,5 @@
+<% current_time = Time.now %>
+
 <% before_events_array = [] %>
 <% current_events_array = [] %>
 <% after_events_array = [] %>
@@ -74,269 +76,73 @@
 </div>
 
 <div class="various-events-list">
-  <div class="all-events animated bounce">
-    <% if @all_events.empty? then %>
-      <div class="ui center aligned grid">
-        <div class="ten wide column">
-          投稿されたイベントはまだ存在していません。
-        </div>
-      </div>
-    <% else %>
+  <% if @all_events.empty? then %>
+    <%= render partial: "partials/events/no-event-message", locals: { message: "投稿されたイベントはまだ存在していません。",
+                                                      classname: "all-events" } %>
+  <% else %>
+    <div class="all-events animated bounce">
       <% @all_events.each do |event| %>
-        <div class="each-event ui center aligned grid">
-          <div class="fourteen wide column">
-            <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
-              <div class="ui left aligned raised segment">
-                <img class="events-list-image" src="/img/events/event1.jpg">
-                <li class="event-name"><%= event.name %></li>
-                <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
-                <li class="event-organizer">
-                  <i class="user icon"></i>
-                  <%= event.organizer %>
-                </li>
-                <li class="event-place">
-                  <i class="map marker alternate icon"></i>
-                  <%= event.place %>
-                </li>
-                <li class="date">
-                  <i class="clock outline icon"></i>
-                  <%= event.starting_year %>/<%= event.starting_month %>/<%= event.starting_day %> <%= event.starting_hour %>:<%= event.starting_minute %> 〜 <%= event.ending_year %>/<%= event.ending_month %>/<%= event.ending_day %> <%= event.ending_hour %>:<%= event.ending_minute %>
-                </li>
-              </div>
-            </ul>
-          </div>
-        </div>
+        <%= render partial: "partials/events/list", locals: { event: event } %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
-  <div class="my-events animated bounce">
-    <% if @current_user_events.empty? then %>
-      <div class="ui center aligned grid">
-        <div class="ten wide column">
-          あなたが投稿したイベントはまだ存在していません。
-        </div>
-      </div>
-    <% else %>
+  <% if @current_user_events.empty? then %>
+    <%= render partial: "partials/events/no-event-message", locals: { message: "あなたが投稿したイベントはまだ存在していません。",
+                                                      classname: "my-events" } %>
+  <% else %>
+    <div class="my-events animated bounce">
       <% @current_user_events.each do |event| %>
-        <div class="each-event ui center aligned grid">
-          <div class="fourteen wide column">
-            <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
-              <div class="ui left aligned raised segment">
-                <img class="events-list-image" src="/img/events/event1.jpg">
-                <li class="event-name"><%= event.name %></li>
-                <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
-                <li class="event-organizer">
-                  <i class="user icon"></i>
-                  <%= event.organizer %>
-                </li>
-                <li class="event-place">
-                  <i class="map marker alternate icon"></i>
-                  <%= event.place %>
-                </li>
-                <li class="date">
-                  <i class="clock outline icon"></i>
-                  <%= event.starting_year %>/<%= event.starting_month %>/<%= event.starting_day %> <%= event.starting_hour %>:<%= event.starting_minute %> 〜 <%= event.ending_year %>/<%= event.ending_month %>/<%= event.ending_day %> <%= event.ending_hour %>:<%= event.ending_minute %>
-                </li>
-              </div>
-            </ul>
-          </div>
-        </div>
+        <%= render partial: "partials/events/list", locals: { event: event } %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
   <div id="frame-of-before-events" class="before-events animated bounce">
     <% @all_events.each do |event| %>
-      <% current_time = Time.now %>
-
-      <% starting_year = event.starting_year %>
-      <% starting_month = event.starting_month %>
-      <% starting_day = event.starting_day %>
-      <% starting_hour = event.starting_hour %>
-      <% starting_minute = event.starting_minute %>
-
-      <% ending_year = event.ending_year %>
-      <% ending_month = event.ending_month %>
-      <% ending_day = event.ending_day %>
-      <% ending_hour = event.ending_hour %>
-      <% ending_minute = event.ending_minute %>
-
-      <% starting_date_time = Time.new(starting_year, starting_month, starting_day, starting_hour, starting_minute) %>
-      <% ending_date_time = Time.new(ending_year, ending_month, ending_day, ending_hour, ending_minute) %>
+      <% ending_date_time = Time.new(event.ending_year, event.ending_month, event.ending_day, event.ending_hour, event.ending_minute) %>
 
       <% if ending_date_time < current_time then %>
         <% before_events_array.push(event) %>
-      <% elsif starting_date_time < current_time && current_time < ending_date_time then %>
-        <% current_events_array.push(event) %>
-      <% elsif current_time < starting_date_time then %>
-        <% after_events_array.push(event) %>
-      <% end %>
-
-      <% if ending_date_time < current_time then %>
-        <div class="each-event ui center aligned grid">
-          <div class="fourteen wide column">
-            <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
-              <div class="ui left aligned raised segment">
-                <img class="events-list-image" src="/img/events/event1.jpg">
-                <li class="event-name"><%= event.name %></li>
-                <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
-                <li class="event-organizer">
-                  <i class="user icon"></i>
-                  <%= event.organizer %>
-                </li>
-                <li class="event-place">
-                  <i class="map marker alternate icon"></i>
-                  <%= event.place %>
-                </li>
-                <li class="date">
-                  <i class="clock outline icon"></i>
-                  <%= event.starting_year %>/<%= event.starting_month %>/<%= event.starting_day %> <%= event.starting_hour %>:<%= event.starting_minute %> 〜 <%= event.ending_year %>/<%= event.ending_month %>/<%= event.ending_day %> <%= event.ending_hour %>:<%= event.ending_minute %>
-                </li>
-              </div>
-            </ul>
-          </div>
-        </div>
+        <%= render partial: "partials/events/list", locals: { event: event } %>
       <% end %>
     <% end %>
   </div>
 
   <div id="frame-of-current-events" class="current-events animated bounce">
     <% @all_events.each do |event| %>
-      <% current_time = Time.now %>
-
-      <% starting_year = event.starting_year %>
-      <% starting_month = event.starting_month %>
-      <% starting_day = event.starting_day %>
-      <% starting_hour = event.starting_hour %>
-      <% starting_minute = event.starting_minute %>
-
-      <% ending_year = event.ending_year %>
-      <% ending_month = event.ending_month %>
-      <% ending_day = event.ending_day %>
-      <% ending_hour = event.ending_hour %>
-      <% ending_minute = event.ending_minute %>
-
-      <% starting_date_time = Time.new(starting_year, starting_month, starting_day, starting_hour, starting_minute) %>
-      <% ending_date_time = Time.new(ending_year, ending_month, ending_day, ending_hour, ending_minute) %>
-
-      <% if ending_date_time < current_time then %>
-        <% before_events_array.push(event) %>
-      <% elsif starting_date_time < current_time && current_time < ending_date_time then %>
-        <% current_events_array.push(event) %>
-      <% elsif current_time < starting_date_time then %>
-        <% after_events_array.push(event) %>
-      <% end %>
+      <% starting_date_time = Time.new(event.starting_year, event.starting_month, event.starting_day, event.starting_hour, event.starting_minute) %>
+      <% ending_date_time = Time.new(event.ending_year, event.ending_month, event.ending_day, event.ending_hour, event.ending_minute) %>
 
       <% if starting_date_time < current_time && current_time < ending_date_time then %>
-        <div class="each-event ui center aligned grid">
-          <div class="fourteen wide column">
-            <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
-              <div class="ui left aligned raised segment">
-                <img class="events-list-image" src="/img/events/event1.jpg">
-                <li class="event-name"><%= event.name %></li>
-                <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
-                <li class="event-organizer">
-                  <i class="user icon"></i>
-                  <%= event.organizer %>
-                </li>
-                <li class="event-place">
-                  <i class="map marker alternate icon"></i>
-                  <%= event.place %>
-                </li>
-                <li class="date">
-                  <i class="clock outline icon"></i>
-                  <%= event.starting_year %>/<%= event.starting_month %>/<%= event.starting_day %> <%= event.starting_hour %>:<%= event.starting_minute %> 〜 <%= event.ending_year %>/<%= event.ending_month %>/<%= event.ending_day %> <%= event.ending_hour %>:<%= event.ending_minute %>
-                </li>
-              </div>
-            </ul>
-          </div>
-        </div>
+        <% current_events_array.push(event) %>
+        <%= render partial: "partials/events/list", locals: { event: event } %>
       <% end %>
     <% end %>
   </div>
 
   <div id="frame-of-after-events" class="after-events animated bounce">
     <% @all_events.each do |event| %>
-      <% current_time = Time.now %>
-
-      <% starting_year = event.starting_year %>
-      <% starting_month = event.starting_month %>
-      <% starting_day = event.starting_day %>
-      <% starting_hour = event.starting_hour %>
-      <% starting_minute = event.starting_minute %>
-
-      <% ending_year = event.ending_year %>
-      <% ending_month = event.ending_month %>
-      <% ending_day = event.ending_day %>
-      <% ending_hour = event.ending_hour %>
-      <% ending_minute = event.ending_minute %>
-
-      <% starting_date_time = Time.new(starting_year, starting_month, starting_day, starting_hour, starting_minute) %>
-      <% ending_date_time = Time.new(ending_year, ending_month, ending_day, ending_hour, ending_minute) %>
-
-      <% if ending_date_time < current_time then %>
-        <% before_events_array.push(event) %>
-      <% elsif starting_date_time < current_time && current_time < ending_date_time then %>
-        <% current_events_array.push(event) %>
-      <% elsif current_time < starting_date_time then %>
-        <% after_events_array.push(event) %>
-      <% end %>
+      <% starting_date_time = Time.new(event.starting_year, event.starting_month, event.starting_day, event.starting_hour, event.starting_minute) %>
 
       <% if current_time < starting_date_time then %>
-        <div class="each-event ui center aligned grid">
-          <div class="fourteen wide column">
-            <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
-              <div class="ui left aligned raised segment">
-                <img class="events-list-image" src="/img/events/event1.jpg">
-                <li class="event-name"><%= event.name %></li>
-                <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
-                <li class="event-organizer">
-                  <i class="user icon"></i>
-                  <%= event.organizer %>
-                </li>
-                <li class="event-place">
-                  <i class="map marker alternate icon"></i>
-                  <%= event.place %>
-                </li>
-                <li class="date">
-                  <i class="clock outline icon"></i>
-                  <%= event.starting_year %>/<%= event.starting_month %>/<%= event.starting_day %> <%= event.starting_hour %>:<%= event.starting_minute %> 〜 <%= event.ending_year %>/<%= event.ending_month %>/<%= event.ending_day %> <%= event.ending_hour %>:<%= event.ending_minute %>
-                </li>
-              </div>
-            </ul>
-          </div>
-        </div>
+        <% after_events_array.push(event) %>
+        <%= render partial: "partials/events/list", locals: { event: event } %>
       <% end %>
     <% end %>
   </div>
 
   <% if before_events_array.empty? then %>
-    <div class="before-events ui center aligned grid">
-      <div class="center aligned ten wide column">
-        <div class="animated bounce">
-          既に終了したイベントはまだ存在していません。
-        </div>
-      </div>
-    </div>
+    <%= render partial: "partials/events/no-event-message", locals: { message: "既に終了したイベントはまだ存在していません。",
+                                                      classname: "before-events" } %>
   <% end %>
   <% if current_events_array.empty? then %>
-    <div class="current-events ui center aligned grid">
-      <div class="center aligned ten wide column">
-        <div class="center aligned animated bounce">
-          現在開催中のイベントはまだ存在していません。
-        </div>
-      </div>
-    </div>
+    <%= render partial: "partials/events/no-event-message", locals: { message: "現在開催中のイベントはまだ存在していません。",
+                                                      classname: "current-events" } %>
   <% end %>
   <% if after_events_array.empty? then %>
-    <div class="after-events ui center aligned grid">
-      <div class="ten wide column">
-        <div class="animated bounce">
-          今後開催されるイベントはまだ存在していません。
-        </div>
-      </div>
-    </div>
+    <%= render partial: "partials/events/no-event-message", locals: { message: "今後開催されるイベントはまだ存在していません。",
+                                                      classname: "after-events" } %>
   <% end %>
 </div>
 
