@@ -6,7 +6,7 @@
 
 <div class="ui modal">
   <div id="modal-header">このアプリの使い方</div>
-  <div id="frame-of-carousel-image" class="ui center aligned grid">
+  <div class="ui center aligned grid" id="frame-of-carousel-image">
     <div class="carousel-image content center aligned fourteen wide column">
       <img class="operation-image" src="/img/events/event1.jpg"/>
       <img class="operation-image" src="/img/events/event2.jpg"/>
@@ -24,7 +24,7 @@
       <p>もし、そのイベントの詳細情報を知りたい場合は、吹き出しをタップまたはクリックします。</p>
     </div>
   </div>
-  <div class="ui center aligned slick-dotted">
+  <div class="slick-dotted ui center aligned grid">
     <ul class="slick-dots" id="original-dots"></ul>
   </div>
   <div class="actions">
@@ -58,7 +58,7 @@
   </div>
 </div>
 <div class="ui center aligned grid">
-  <div id="select-box" class="right aligned fourteen wide column">
+  <div class="right aligned fourteen wide column" id="select-box">
     <select class="select-box-show-events">
       <option value="all-events">イベント一覧</option>
       <option value="my-events">自分の投稿したイベント</option>
@@ -87,7 +87,7 @@
       <% end %>
     </div>
   <% end %>
-  <div id="frame-of-before-events" class="before-events animated bounce">
+  <div class="before-events animated bounce" id="frame-of-before-events">
     <% @all_events.each do |event| %>
       <% ending_date_time = Time.new(event.ending_year, event.ending_month, event.ending_day, event.ending_hour, event.ending_minute) %>
 
@@ -97,7 +97,7 @@
       <% end %>
     <% end %>
   </div>
-  <div id="frame-of-current-events" class="current-events animated bounce">
+  <div class="current-events animated bounce" id="frame-of-current-events">
     <% @all_events.each do |event| %>
       <% starting_date_time = Time.new(event.starting_year, event.starting_month, event.starting_day, event.starting_hour, event.starting_minute) %>
       <% ending_date_time = Time.new(event.ending_year, event.ending_month, event.ending_day, event.ending_hour, event.ending_minute) %>
@@ -108,7 +108,7 @@
       <% end %>
     <% end %>
   </div>
-  <div id="frame-of-after-events" class="after-events animated bounce">
+  <div class="after-events animated bounce" id="frame-of-after-events">
     <% @all_events.each do |event| %>
       <% starting_date_time = Time.new(event.starting_year, event.starting_month, event.starting_day, event.starting_hour, event.starting_minute) %>
 

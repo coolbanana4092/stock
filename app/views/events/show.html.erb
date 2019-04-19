@@ -1,13 +1,13 @@
 <div class="ui center aligned grid">
   <div class="fourteen wide column">
-    <img id="event-details-image" class="ui segment" src="/img/events/event1.jpg">
+    <img class="ui segment" id="event-details-image" src="/img/events/event1.jpg">
   </div>
   <div class="left aligned fourteen wide column">
     <div id="event-name">
       <%= @event.name %>
     </div>
     <div class="ui right aligned grid">
-      <div id="event-created-or-updated-date" class="right aligned ten wide column">
+      <div class="right aligned ten wide column" id="event-created-or-updated-date">
         <div>投稿日：<%= @event.created_at.strftime("%Y/%m/%d") %></div>
         <div>更新日：<%= @event.updated_at.strftime("%Y/%m/%d") %></div>
       </div>
@@ -29,7 +29,7 @@
     </div>
   </div>
 </div>
-<div id="map" class="map-an-event"></div>
+<div class="map-an-event" id="map"></div>
 <div class="ui center aligned grid">
   <div class="left aligned fourteen wide column">
     <div class="ui divider"></div>
@@ -53,18 +53,18 @@
 </div>
 <div class="frame-of-button-to-event-page">
   <div class="ui center aligned grid">
-    <div id="button-to-events-list" class="ui button ten wide column">
+    <div class="ui button ten wide column" id="button-to-events-list">
       <%= link_to 'イベント一覧', events_path %>
     </div>
   </div>
   <% if current_user == @event.user %>
     <div class="ui center aligned grid">
-      <div id="button-to-edit-event" class="ui button ten wide column">
+      <div class="ui button ten wide column" id="button-to-edit-event">
         <%= link_to 'イベント編集', edit_event_path(@event) %>
       </div>
     </div>
     <div class="ui center aligned grid">
-      <div id="button-to-delete-event" class="ui red button ten wide column">
+      <div class="ui red button ten wide column" id="button-to-delete-event">
         <%= link_to "イベント削除", @event, method: :delete, data: { confirm: "本当に削除しても大丈夫ですか?" } %>
       </div>
     </div>

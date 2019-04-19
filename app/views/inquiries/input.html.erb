@@ -1,7 +1,7 @@
 <%= form_for @inquiry, :url => inquiry_thanks_path do |f| %>
   <div class="ui center aligned grid">
     <div class="fourteen wide column">
-      <div id="please-inquire" class="center aligned">お問い合わせ</div>
+      <div id="please-inquire">お問い合わせ</div>
       <div class="depend-on-device ui form">
         <div class="field">
           <div class="ui left aligned grid">
@@ -43,7 +43,7 @@
         </div>
         <div class="field">
           <div class="ui center aligned grid">
-            <%= button_tag :type => "submit", :id => "inquiry-page-frame-of-submit", :class =>"ui blue submit button eight wide column" do %>
+            <%= button_tag :type => "submit", :class =>"ui blue submit button eight wide column", :id => "inquiry-page-frame-of-submit" do %>
               <i class="mail icon"></i>
               送信する
             <% end %>
