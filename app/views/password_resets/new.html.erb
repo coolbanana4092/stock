@@ -1,9 +1,8 @@
 <%= form_for(:password_reset, url: password_resets_path) do |f| %>
   <div class="ui center aligned grid">
     <div class="fourteen wide column">
-      <div id="please-password-reset" class="center aligned">パスワードを更新する</div>
-
-      <div class="depend-on-device ui center aligned grid message">
+      <div id="please-password-reset">パスワードを更新する</div>
+      <div class="depend-on-device message ui center aligned grid">
         <div class="left aligned fourteen wide column">
           <p id="procedure-of-password-reset">手順</p>
           <div class="step-of-password-reset">
@@ -24,7 +23,6 @@
           </div>
         </div>
       </div>
-
       <div class="depend-on-device ui form">
         <div class="field">
           <div class="ui left aligned grid">
@@ -39,10 +37,9 @@
             </div>
           </div>
         </div>
-
         <div class="field">
           <div class="ui center aligned grid">
-            <%= button_tag :type => "submit", :id => "password-reset-page-frame-of-submit", :class =>"ui blue submit button ten wide column" do %>
+            <%= button_tag :type => "submit", :class =>"ui blue submit button ten wide column", :id => "password-reset-page-frame-of-submit" do %>
               <i class="mail icon"></i>
               送信する
             <% end %>

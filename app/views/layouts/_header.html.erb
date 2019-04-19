@@ -1,19 +1,15 @@
 <header>
   <nav>
     <div class="ui center aligned grid">
-      <div id="header-title" class="fourteen wide column">
+      <div class="fourteen wide column" id="header-title">
         <h1>(アプリ名)</h1>
       </div>
     </div>
-
-    <!-- ハンバーガーメニューを作成 -->
-    <button type="button" id="nav-btn" class="hamburger">
+    <button type="button" class="hamburger" id="nav-btn">
       <span class="bdr"></span>
       <span class="bdr"></span>
       <span class="bdr"></span>
     </button>
-
-    <!-- ハンバーガーメニューの中身を作成 -->
     <div id="wrapper">
       <div class="menu">
         <ul>
@@ -35,19 +31,15 @@
 </header>
 
 <script>
-  // ハンバーガーメニューをクリックした時の関数
-  function hamburgerMenu () {
+  (function() {
     const wrapper = document.getElementById('wrapper');
     const hamburger = document.getElementsByClassName('hamburger')[0];
     const navBtn = document.getElementById('nav-btn');
 
     function navToggle() {
-      // ハンバーガーメニューが開かれている時
       if (wrapper.classList.contains('nav-open')) {
-        // ハンバーガーメニューを閉じる
         wrapper.classList.remove('nav-open');
       } else {
-        // ハンバーガーメニューを開く
         wrapper.classList.add('nav-open');
       }
     }
@@ -57,7 +49,5 @@
     });
 
     navBtn.addEventListener('click', navToggle);
-  };
-
-  hamburgerMenu()
+  })();
 </script>

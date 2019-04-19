@@ -1,24 +1,14 @@
 <%= form_for @inquiry, :url => inquiry_thanks_path do |f| %>
   <div class="ui center aligned grid">
     <div class="fourteen wide column">
-      <% if @inquiry.errors.any? %>
-        <div>入力内容にエラーがあります</div>
-        <ul>
-          <% @inquiry.errors.each do |attr, msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      <% end %>
-
-      <div id="please-inquire" class="center aligned">お問い合わせ</div>
-
+      <div id="please-inquire">お問い合わせ</div>
       <div class="depend-on-device ui form">
         <div class="field">
           <div class="ui left aligned grid">
-            <div class="inquiry-page-frame-of-name-label sixteen wide column">
+            <div class="inquiry-page-frame-of-label sixteen wide column">
               <%= f.label :name, 'ユーザー名' %>
             </div>
-            <div class="inquiry-page-frame-of-name-input sixteen wide column">
+            <div class="inquiry-page-frame-of-input sixteen wide column">
               <div class="ui left icon huge input">
                 <%= f.text_field :name, :placeholder => "例：taro" %>
                 <i class="user icon"></i>
@@ -26,13 +16,12 @@
             </div>
           </div>
         </div>
-
         <div class="field">
           <div class="ui left aligned grid">
-            <div class="inquiry-page-frame-of-email-label sixteen wide column">
+            <div class="inquiry-page-frame-of-label sixteen wide column">
               <%= f.label :email, 'メールアドレス' %>
             </div>
-            <div class="inquiry-page-frame-of-email-input sixteen wide column">
+            <div class="inquiry-page-frame-of-input sixteen wide column">
               <div class="ui left icon huge input">
                 <%= f.email_field :email, :placeholder => "例：case@example.com" %>
                 <i class="mail icon"></i>
@@ -40,23 +29,21 @@
             </div>
           </div>
         </div>
-
         <div class="field">
           <div class="ui left aligned grid">
-            <div class="inquiry-page-frame-of-message-label sixteen wide column">
+            <div class="inquiry-page-frame-of-label sixteen wide column">
               <%= f.label :message, 'お問い合わせ内容 (必須)' %>
             </div>
-            <div class="inquiry-page-frame-of-message-input sixteen wide column">
+            <div class="inquiry-page-frame-of-input sixteen wide column">
               <div class="ui left icon huge input">
                 <%= f.text_area :message, :placeholder => "例：イベントの投稿方法が分からないので教えていただきたいです。" %>
               </div>
             </div>
           </div>
         </div>
-
         <div class="field">
           <div class="ui center aligned grid">
-            <%= button_tag :type => "submit", :id => "inquiry-page-frame-of-submit", :class =>"ui blue submit button eight wide column" do %>
+            <%= button_tag :type => "submit", :class =>"ui blue submit button eight wide column", :id => "inquiry-page-frame-of-submit" do %>
               <i class="mail icon"></i>
               送信する
             <% end %>

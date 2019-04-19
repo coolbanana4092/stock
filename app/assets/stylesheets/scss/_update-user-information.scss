@@ -1,22 +1,12 @@
-@mixin mobile {
-  @media screen and (max-width : 768px) {
-    @content;
-  }
-}
-
-@mixin pc {
-  @media screen and (min-width: 769px) {
-    @content;
-  }
-}
-
 form{
   .ui.grid{
     .fourteen.wide.column{
       #please-update-user-information{
-        font-weight: bolder;
-        font-size: 20px;
         margin: 30px;
+        font: {
+          weight: bolder;
+          size: 20px;
+        }
       }
 
       .ui.form{
@@ -24,49 +14,35 @@ form{
           margin-bottom: 15px;
 
           .ui.grid{
-            .user-update-page-frame-of-name-label{
-              padding-bottom: 0px;
+            .user-update-page-frame-of-label{
+              padding-bottom: 0;
             }
-            .user-update-page-frame-of-name-input{
-              padding-top: 5px;
-            }
-            .user-update-page-frame-of-email-label{
-              padding-bottom: 0px;
-            }
-            .user-update-page-frame-of-email-input{
-              padding-top: 5px;
-            }
-            .user-update-page-frame-of-password-label{
-              padding-bottom: 0px;
-            }
-            .user-update-page-frame-of-password-input{
-              padding-top: 5px;
-            }
-            .user-update-page-frame-of-password-confirmation-label{
-              padding-bottom: 0px;
-            }
-            .user-update-page-frame-of-password-confirmation-input{
+            .user-update-page-frame-of-input{
               padding-top: 5px;
             }
           }
         }
 
         #user-update-page-frame-of-update{
-          margin: 40px;
-          margin-bottom: 60px;
+          margin: {
+            top: 40px;
+            right: 40px;
+            bottom: 60px;
+            left: 40px;
+          }
         }
       }
     }
   }
 }
 
-@include mobile {
+@media screen and (max-width : 768px) {
   .depend-on-device{
     width: 100%;
   }
 }
 
-@include pc {
+@media screen and (min-width: 769px) {
   form{
     .ui.grid{
       .fourteen.wide.column{
