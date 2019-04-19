@@ -2,14 +2,13 @@
   <div class="ui center aligned grid">
     <div class="fourteen wide column">
       <div id="please-login">ログイン</div>
-
       <div class="depend-on-device ui form">
         <div class="field">
           <div class="ui left aligned grid">
-            <div class="login-page-frame-of-email-label sixteen wide column">
+            <div class="login-page-frame-of-label sixteen wide column">
               <%= f.label :email, 'メールアドレス' %>
             </div>
-            <div class="login-page-frame-of-email-input sixteen wide column">
+            <div class="login-page-frame-of-input sixteen wide column">
               <div class="ui left icon huge input">
                 <%= f.email_field :email, :placeholder => "例：case@example.com" %>
                 <i class="mail icon"></i>
@@ -17,13 +16,12 @@
             </div>
           </div>
         </div>
-
         <div class="field">
           <div class="ui left aligned grid">
-            <div class="login-page-frame-of-password-label sixteen wide column">
+            <div class="login-page-frame-of-label sixteen wide column">
               <%= f.label :password, 'パスワード' %>
             </div>
-            <div class="login-page-frame-of-password-input sixteen wide column">
+            <div class="login-page-frame-of-input sixteen wide column">
               <div class="ui left icon huge input">
                 <%= f.password_field :password, :placeholder => "例：1234asdf" %>
                 <i class="lock icon"></i>
@@ -35,7 +33,7 @@
               </div>
             </div>
             <div class="ui left aligned grid">
-              <div id="always-login" class="sixteen wide column">
+              <div class="sixteen wide column" id="always-login">
                 <%= f.label :remember_me, class: "checkbox inline" do %>
                   <%= f.check_box :remember_me, :class => "ui checkbox" %>
                   常にログイン状態にする
@@ -44,21 +42,18 @@
             </div>
           </div>
         </div>
-
         <div class="field">
           <div class="ui center aligned grid">
-            <%= button_tag :type => "submit", :id => "login-page-frame-of-login", :class =>"ui blue submit button ten wide column" do %>
+            <%= button_tag :type => "submit", :class =>"ui blue submit button ten wide column", :id => "login-page-frame-of-login" do %>
               <i class="sign in alternate icon"></i>
               ログイン
             <% end %>
           </div>
         </div>
-
         <div class="ui horizontal divider">または</div>
-
         <div class="field">
           <div class="ui center aligned grid">
-            <div id="login-page-frame-of-signup" class="ui button ten wide column">
+            <div class="ui button ten wide column" id="login-page-frame-of-signup">
               <i class="pencil alternate icon"></i>
               <%= link_to '新規登録', signup_path %>
             </div>

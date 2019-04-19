@@ -1,10 +1,8 @@
 <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
   <div class="ui center aligned grid">
     <div class="fourteen wide column">
-      <div id="please-password-update" class="center aligned">パスワードの再設定</div>
-
+      <div id="please-password-update">パスワードの再設定</div>
       <%= hidden_field_tag :email, @user.email %>
-
       <div class="password-update-form-depend-on-device ui form">
         <div class="field">
           <div class="ui left aligned grid">
@@ -17,7 +15,6 @@
             <i class="lock icon"></i>
           </div>
         </div>
-
         <div class="field">
           <div class="ui left aligned grid">
             <div class="sixteen wide column">
@@ -29,9 +26,8 @@
             <i class="lock icon"></i>
           </div>
         </div>
-
         <div class="ui center aligned grid">
-          <%= button_tag :type => "submit", :id => "password-reset-page-frame-of-update", :class =>"ui blue submit button ten wide column" do %>
+          <%= button_tag :type => "submit", :class =>"ui blue submit button ten wide column", :id => "password-reset-page-frame-of-update" do %>
             <i class="undo alternate icon"></i>
             再設定する
           <% end %>
