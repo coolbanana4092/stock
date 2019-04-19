@@ -2,100 +2,67 @@
   <div class="fourteen wide column">
     <img id="event-details-image" class="ui segment" src="/img/events/event1.jpg">
   </div>
-</div>
-
-<div class="ui center aligned grid">
   <div class="left aligned fourteen wide column">
     <div id="event-name">
       <%= @event.name %>
     </div>
-
     <div class="ui right aligned grid">
       <div id="event-created-or-updated-date" class="right aligned ten wide column">
         <div>投稿日：<%= @event.created_at.strftime("%Y/%m/%d") %></div>
         <div>更新日：<%= @event.updated_at.strftime("%Y/%m/%d") %></div>
       </div>
     </div>
-
     <div class="ui divider"></div>
-
-    <div class="subheading-of-event-details">
-      イベント詳細
-    </div>
+    <div class="subheading-of-event-details">イベント詳細</div>
     <div id="event-content">
       <%= @event.content %>
     </div>
-
     <div class="ui divider"></div>
-
-    <div class="subheading-of-event-details">
-      開催日時
-    </div>
+    <div class="subheading-of-event-details">開催日時</div>
     <div id="event-date">
       <%= @event.starting_year %>/<%= @event.starting_month %>/<%= @event.starting_day %> <%= @event.starting_hour %>:<%= @event.starting_minute %> 〜 <%= @event.ending_year %>/<%= @event.ending_month %>/<%= @event.ending_day %> <%= @event.ending_hour %>:<%= @event.ending_minute %>
     </div>
-
     <div class="ui divider"></div>
-
-    <div class="subheading-of-event-details">
-      開催場所
-    </div>
+    <div class="subheading-of-event-details">開催場所</div>
     <div id="event-place">
       <%= @event.place %>
     </div>
   </div>
 </div>
-
 <div id="map" class="map-an-event"></div>
-
 <div class="ui center aligned grid">
   <div class="left aligned fourteen wide column">
     <div class="ui divider"></div>
-
-    <div class="subheading-of-event-details">
-      料金
-    </div>
+    <div class="subheading-of-event-details">料金</div>
     <div id="event-price">
       <%= @event.ticket_name %>：<%= @event.price %> 円
     </div>
-
     <div class="ui divider"></div>
-
-    <div class="subheading-of-event-details">
-      主催者
-    </div>
+    <div class="subheading-of-event-details">主催者</div>
     <div id="event-organizer">
       <%= @event.organizer %> <br>
       <a href="http://yahoo.co.jp">主催者に問い合わせる</a>
     </div>
-
     <div class="ui divider"></div>
-
-    <div class="subheading-of-event-details">
-      注意点
-    </div>
+    <div class="subheading-of-event-details">注意点</div>
     <div id="event-cautionary-note">
       <%= @event.cautionary_note %>
     </div>
-
     <div class="ui divider"></div>
   </div>
 </div>
-
 <div class="frame-of-button-to-event-page">
   <div class="ui center aligned grid">
     <div id="button-to-events-list" class="ui button ten wide column">
       <%= link_to 'イベント一覧', events_path %>
     </div>
   </div>
-
   <% if current_user == @event.user %>
     <div class="ui center aligned grid">
       <div id="button-to-edit-event" class="ui button ten wide column">
         <%= link_to 'イベント編集', edit_event_path(@event) %>
       </div>
     </div>
-
     <div class="ui center aligned grid">
       <div id="button-to-delete-event" class="ui red button ten wide column">
         <%= link_to "イベント削除", @event, method: :delete, data: { confirm: "本当に削除しても大丈夫ですか?" } %>
@@ -105,7 +72,7 @@
 </div>
 
 <script>
-  function initMap() {
+  (function() {
     var geocoder = new google.maps.Geocoder();
     var eventLocation;
     var mapLatLng;
@@ -113,38 +80,32 @@
     var marker;
     var map;
 
-    geocoder.geocode(
-      {
-        'address': '<%= @event.place %>',
-        'region': 'jp'
-      },
-        function (results, status) {
-          if (status === 'OK' && results[0]){
-            eventLocation = results[0].geometry.location
-            mapLatLng = new google.maps.LatLng(eventLocation.lat(), eventLocation.lng());
-            markerLatLng = new google.maps.LatLng({lat: eventLocation.lat(), lng: eventLocation.lng()});
+    geocoder.geocode({
+      'address': '<%= @event.place %>',
+      'region': 'jp'
+    },function (results, status) {
+        if (status === 'OK' && results[0]){
+          eventLocation = results[0].geometry.location
+          mapLatLng = new google.maps.LatLng(eventLocation.lat(), eventLocation.lng());
+          markerLatLng = new google.maps.LatLng({lat: eventLocation.lat(), lng: eventLocation.lng()});
+          marker = new google.maps.Marker({
+            map: map,
+            position: markerLatLng
+          });
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: mapLatLng,
+            zoom: 10,
+            mapTypeControl: false,
+            streetViewControl: false,
+            fullscreenControl: false,
+            zoomControl: false,
+          });
 
-            marker = new google.maps.Marker({
-              map: map,
-              position: markerLatLng
-            });
-
-            map = new google.maps.Map(document.getElementById('map'), {
-              center: mapLatLng,
-              zoom: 10,
-              mapTypeControl: false,
-              streetViewControl: false,
-              fullscreenControl: false,
-              zoomControl: false,
-            });
-
-            marker.setMap(map);
-          }else{
-            alert('失敗しました。理由: ' + status);
-          }
+          marker.setMap(map);
+        }else{
+          alert('失敗しました。理由: ' + status);
         }
+      }
     );
-  }
-
-  window.onload = initMap();
+  })();
 </script>

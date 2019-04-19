@@ -2,10 +2,8 @@
   <div class="ui center aligned grid">
     <div class="fourteen wide column">
       <div id="please-update-user-information">登録情報の更新</div>
-
       <div class="depend-on-device ui form">
         <%= render partial: "partials/users/form", locals: { f: f, pagename: "user-update-page" } %>
-
         <div class="field">
           <div class="ui center aligned grid">
             <%= button_tag :type => "submit", :id => "user-update-page-frame-of-update", :class =>"ui blue huge submit button ten wide column" do %>
