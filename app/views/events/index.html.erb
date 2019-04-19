@@ -6,7 +6,6 @@
 
 <div class="ui modal">
   <div id="modal-header">このアプリの使い方</div>
-
   <div id="frame-of-carousel-image" class="ui center aligned grid">
     <div class="carousel-image content center aligned fourteen wide column">
       <img class="operation-image" src="/img/events/event1.jpg"/>
@@ -16,7 +15,6 @@
       <img class="operation-image" src="/img/events/event1.jpg"/>
     </div>
   </div>
-
   <div class="ui center aligned grid">
     <div class="carousel-explanation content left aligned fourteen wide column">
       <p>〇〇をタップして〇〇画面に移動します。</p>
@@ -26,11 +24,9 @@
       <p>もし、そのイベントの詳細情報を知りたい場合は、吹き出しをタップまたはクリックします。</p>
     </div>
   </div>
-
   <div class="ui center aligned slick-dotted">
     <ul class="slick-dots" id="original-dots"></ul>
   </div>
-
   <div class="actions">
     <div class="ui center aligned grid">
       <div class="center aligned seven wide column">
@@ -47,7 +43,6 @@
     <div id="events-list-in-japanese">イベント一覧</div>
   </div>
 </div>
-
 <div class="ui center aligned grid" id="search-events">
   <div class="fourteen wide columm">
     <div class="item">
@@ -62,7 +57,6 @@
     </div>
   </div>
 </div>
-
 <div class="ui center aligned grid">
   <div id="select-box" class="right aligned fourteen wide column">
     <select class="select-box-show-events">
@@ -74,11 +68,9 @@
     </select>
   </div>
 </div>
-
 <div class="various-events-list">
   <% if @all_events.empty? then %>
-    <%= render partial: "partials/events/no-event-message", locals: { message: "投稿されたイベントはまだ存在していません。",
-                                                      classname: "all-events" } %>
+    <%= render partial: "partials/events/no-event-message", locals: { message: "投稿されたイベントはまだ存在していません。", classname: "all-events" } %>
   <% else %>
     <div class="all-events animated bounce">
       <% @all_events.each do |event| %>
@@ -86,10 +78,8 @@
       <% end %>
     </div>
   <% end %>
-
   <% if @current_user_events.empty? then %>
-    <%= render partial: "partials/events/no-event-message", locals: { message: "あなたが投稿したイベントはまだ存在していません。",
-                                                      classname: "my-events" } %>
+    <%= render partial: "partials/events/no-event-message", locals: { message: "あなたが投稿したイベントはまだ存在していません。", classname: "my-events" } %>
   <% else %>
     <div class="my-events animated bounce">
       <% @current_user_events.each do |event| %>
@@ -97,7 +87,6 @@
       <% end %>
     </div>
   <% end %>
-
   <div id="frame-of-before-events" class="before-events animated bounce">
     <% @all_events.each do |event| %>
       <% ending_date_time = Time.new(event.ending_year, event.ending_month, event.ending_day, event.ending_hour, event.ending_minute) %>
@@ -108,7 +97,6 @@
       <% end %>
     <% end %>
   </div>
-
   <div id="frame-of-current-events" class="current-events animated bounce">
     <% @all_events.each do |event| %>
       <% starting_date_time = Time.new(event.starting_year, event.starting_month, event.starting_day, event.starting_hour, event.starting_minute) %>
@@ -120,7 +108,6 @@
       <% end %>
     <% end %>
   </div>
-
   <div id="frame-of-after-events" class="after-events animated bounce">
     <% @all_events.each do |event| %>
       <% starting_date_time = Time.new(event.starting_year, event.starting_month, event.starting_day, event.starting_hour, event.starting_minute) %>
@@ -131,56 +118,20 @@
       <% end %>
     <% end %>
   </div>
-
   <% if before_events_array.empty? then %>
-    <%= render partial: "partials/events/no-event-message", locals: { message: "既に終了したイベントはまだ存在していません。",
-                                                      classname: "before-events" } %>
+    <%= render partial: "partials/events/no-event-message", locals: { message: "既に終了したイベントはまだ存在していません。", classname: "before-events" } %>
   <% end %>
   <% if current_events_array.empty? then %>
-    <%= render partial: "partials/events/no-event-message", locals: { message: "現在開催中のイベントはまだ存在していません。",
-                                                      classname: "current-events" } %>
+    <%= render partial: "partials/events/no-event-message", locals: { message: "現在開催中のイベントはまだ存在していません。", classname: "current-events" } %>
   <% end %>
   <% if after_events_array.empty? then %>
-    <%= render partial: "partials/events/no-event-message", locals: { message: "今後開催されるイベントはまだ存在していません。",
-                                                      classname: "after-events" } %>
+    <%= render partial: "partials/events/no-event-message", locals: { message: "今後開催されるイベントはまだ存在していません。", classname: "after-events" } %>
   <% end %>
 </div>
-
 <a href="#" class="back-to-top">▲</a>
 
 <script>
-  <% @all_events.each do |event| %>
-    $(".frame-of-segment-"+"<%= event.id %>").click(function() {
-      location.href = "/events/" + "<%= event.id %>"
-    });
-  <% end %>
-
-  function scrollUpButton() {
-    if ($(this).scrollTop() >= 300) {
-      $(".back-to-top").fadeIn();
-    } else {
-      $(".back-to-top").fadeOut();
-    }
-  }
-
-  $(document).ready(function() {
-    scrollUpButton();
-
-    $(window).scroll(scrollUpButton);
-
-    $(".back-to-top").click(function() {
-      $("html, body").animate(
-        {
-          scrollTop: 0
-        },
-        600
-      );
-
-      return false;
-    });
-  });
-
-  window.onload = function() {
+  (function() {
     if($.cookie('btnFlg') !== 'on') {
       $('.ui.modal')
         .modal('show')
@@ -190,7 +141,9 @@
     $(".actions .ui.grid .column .button").click(function(){
       $.cookie('btnFlg', 'on', { expires: 30,path: '/' });
     });
+  })();
 
+  (function() {
     $('.carousel-image').slick({
       asNavFor: '.carousel-explanation',
       dots: true,
@@ -203,9 +156,9 @@
       arrows: false,
       fade: true,
     });
-  };
+  })();
 
-  $(document).ready(function() {
+  (function() {
     $(".animated").waypoint({
       handler: function(direction) {
         if (direction === "down") {
@@ -217,7 +170,37 @@
 
       offset: "100%"
     });
-  });
+  })();
+
+  (function() {
+    <% @all_events.each do |event| %>
+      $(".frame-of-segment-"+"<%= event.id %>").click(function() {
+        location.href = "/events/" + "<%= event.id %>"
+      });
+    <% end %>
+  })();
+
+  (function() {
+    function displaySwitching() {
+      if ($(this).scrollTop() >= 300) {
+        $(".back-to-top").fadeIn();
+      } else {
+        $(".back-to-top").fadeOut();
+      }
+    }
+
+    $(window).scroll(displaySwitching);
+
+    $(".back-to-top").click(function() {
+      $("html, body").animate({
+        scrollTop: 0
+      },
+        600
+      );
+
+      return false;
+    });
+  })();
 
   $(".select-box-show-events").change(function() {
     var selectBoxVal = $(".select-box-show-events").val();

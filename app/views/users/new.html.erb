@@ -2,10 +2,8 @@
   <div class="ui center aligned grid">
     <div class="fourteen wide column">
       <div id="please-register-new" class="center aligned">新規登録</div>
-
       <div class="depend-on-device ui form">
         <%= render partial: "partials/users/form", locals: { f: f, pagename: "signup-page" } %>
-
         <div class="field">
           <div class="ui center aligned grid">
             <%= button_tag :type => "submit", :id => "signup-page-frame-of-signup", :class =>"ui blue submit button ten wide column" do %>
@@ -14,9 +12,7 @@
             <% end %>
           </div>
         </div>
-
         <div class="ui horizontal divider">または</div>
-
         <div class="field">
           <div class="ui center aligned grid">
             <div id="signup-page-frame-of-login" class="ui button ten wide column">
