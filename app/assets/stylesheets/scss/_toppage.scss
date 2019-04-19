@@ -54,7 +54,7 @@
   }
 
   #map-explanation{
-    margin-bottom: 50px !important;
+    margin-bottom: 30px;
   }
 }
 
@@ -68,7 +68,7 @@
     .toppage-divider{
       margin-top: 0;
     }
-    
+
     #major-characteristics{
       width: 87.5%;
       margin: {
@@ -97,9 +97,9 @@
 
     #map-explanation{
       width: 62.5% !important;
-      margin: auto !important;
       margin: {
-        top: 50px;
+        right: auto;
+        left: auto;
         bottom: 50px;
       }
     }

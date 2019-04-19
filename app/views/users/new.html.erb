@@ -1,12 +1,12 @@
 <%= form_for(@user) do |f| %>
   <div class="ui center aligned grid">
     <div class="fourteen wide column">
-      <div id="please-register-new" class="center aligned">新規登録</div>
+      <div id="please-register-new">新規登録</div>
       <div class="depend-on-device ui form">
         <%= render partial: "partials/users/form", locals: { f: f, pagename: "signup-page" } %>
         <div class="field">
           <div class="ui center aligned grid">
-            <%= button_tag :type => "submit", :id => "signup-page-frame-of-signup", :class =>"ui blue submit button ten wide column" do %>
+            <%= button_tag :type => "submit", :class =>"ui blue submit button ten wide column", :id => "signup-page-frame-of-signup" do %>
               <i class="pencil alternate icon"></i>
               新規登録
             <% end %>
@@ -15,7 +15,7 @@
         <div class="ui horizontal divider">または</div>
         <div class="field">
           <div class="ui center aligned grid">
-            <div id="signup-page-frame-of-login" class="ui button ten wide column">
+            <div class="ui button ten wide column" id="signup-page-frame-of-login">
               <i class="sign in alternate icon"></i>
               <%= link_to 'ログイン', login_path %>
             </div>
