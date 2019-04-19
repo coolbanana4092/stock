@@ -1,22 +1,12 @@
-@mixin mobile {
-  @media screen and (max-width : 768px) {
-    @content;
-  }
-}
-
-@mixin pc {
-  @media screen and (min-width: 769px) {
-    @content;
-  }
-}
-
 form{
   .ui.grid{
     .fourteen.wide.column{
       #please-inquire{
-        font-weight: bolder;
-        font-size: 20px;
         margin: 30px;
+        font: {
+          weight: bolder;
+          size: 20px;
+        }
       }
 
       .ui.form{
@@ -24,33 +14,17 @@ form{
           margin-bottom: 15px;
 
           .ui.grid{
-            .inquiry-page-frame-of-name-label{
-              padding-bottom: 0px;
+            .inquiry-page-frame-of-label{
+              padding-bottom: 0;
             }
-
-            .inquiry-page-frame-of-name-input{
+            .inquiry-page-frame-of-input{
               padding-top: 5px;
             }
-
-            .inquiry-page-frame-of-email-label{
-              padding-bottom: 0px;
-            }
-
-            .inquiry-page-frame-of-email-input{
-              padding-top: 5px;
-            }
-
-            .inquiry-page-frame-of-message-label{
-              padding-bottom: 0px;
-            }
-
-            .inquiry-page-frame-of-message-input{
-              padding-top: 5px;
-            }
-
             #inquiry-page-frame-of-submit{
-              margin-top: 30px;
-              margin-bottom: 60px;
+              margin: {
+                top: 30px;
+                bottom: 60px;
+              }
             }
           }
         }
@@ -59,13 +33,13 @@ form{
   }
 }
 
-@include mobile {
+@media screen and (max-width : 768px) {
   .depend-on-device{
     width: 100%;
   }
 }
 
-@include pc {
+@media screen and (min-width: 769px) {
   form{
     .ui.grid{
       .fourteen.wide.column{
