@@ -55,13 +55,13 @@
 </div>
 <div class="field">
   <div class="ui left aligned grid">
-    <div id="frame-of-price" class="sixteen wide column">
+    <div class="sixteen wide column" id="frame-of-price">
       <%= f.label :price, '料金' %>
     </div>
   </div>
   <div class="ui left aligned middle aligned grid">
-    <div class="fourteen wide column frame-of-input-price">
-      <div class="ui left icon huge input input-price">
+    <div class="frame-of-input-price fourteen wide column">
+      <div class="input-price ui left icon huge input">
         <%= f.text_field :price, :placeholder => "例：1000" %>
         <i class="yen sign icon"></i>
       </div>
@@ -74,34 +74,34 @@
 </div>
 <div class="field">
   <div class="ui left aligned middle aligned grid">
-    <div class="five wide column frame-of-input-date">
-      <div class="ui huge input input-year">
+    <div class="frame-of-input-datefive wide column">
+      <div class="input-yearui huge input">
         <%= f.text_field :starting_year, :class => "input-event-date", :placeholder => "2019" %>
       </div>
     </div>
     <div class="date-in-japanese center aligned column">年</div>
-    <div class="four wide column frame-of-input-date">
-      <div class="ui huge input input-month">
+    <div class="frame-of-input-date four wide column">
+      <div class="input-month ui huge input">
         <%= f.text_field :starting_month, :class => "input-event-date", :placeholder => "1" %>
       </div>
     </div>
     <div class="date-in-japanese center aligned column">月</div>
-    <div class="four wide column frame-of-input-date">
-      <div class="ui huge input input-day">
+    <div class="frame-of-input-date four wide column">
+      <div class="input-day ui huge input">
         <%= f.text_field :starting_day, :class => "input-event-date", :placeholder => "21" %>
       </div>
     </div>
     <div class="date-in-japanese center aligned column">日</div>
   </div>
   <div class="ui left aligned middle aligned grid">
-    <div class="five wide column frame-of-input-date">
-      <div class="ui huge input input-hour">
+    <div class="frame-of-input-date five wide column">
+      <div class="input-hour ui huge input">
         <%= f.text_field :starting_hour, :class => "input-event-date", :placeholder => "13" %>
       </div>
     </div>
     <div class="date-in-japanese center aligned column">時</div>
-    <div class="four wide column frame-of-input-date">
-      <div class="ui huge input input-minute">
+    <div class="frame-of-input-date four wide column">
+      <div class="input-minute ui huge input">
         <%= f.text_field :starting_minute, :class => "input-event-date", :placeholder => "30" %>
       </div>
     </div>
@@ -113,34 +113,34 @@
 </div>
 <div class="field">
   <div class="ui left aligned middle aligned grid">
-    <div class="five wide column frame-of-input-date">
-      <div class="ui huge input input-year">
+    <div class="frame-of-input-date five wide column">
+      <div class="input-year ui huge input">
         <%= f.text_field :ending_year, :class => "input-event-date", :placeholder => "2019" %>
       </div>
     </div>
     <div class="date-in-japanese center aligned column">年</div>
-    <div class="four wide column frame-of-input-date">
-      <div class="ui huge input input-month">
+    <div class="frame-of-input-date four wide column">
+      <div class="input-month ui huge input">
         <%= f.text_field :ending_month, :class => "input-event-date", :placeholder => "1" %>
       </div>
     </div>
     <div class="date-in-japanese center aligned column">月</div>
-    <div class="four wide column frame-of-input-date">
-      <div class="ui huge input input-day">
+    <div class="frame-of-input-date four wide column">
+      <div class="input-day ui huge input">
         <%= f.text_field :ending_day, :class => "input-event-date", :placeholder => "21" %>
       </div>
     </div>
     <div class="date-in-japanese center aligned column">日</div>
   </div>
   <div class="ui left aligned middle aligned grid">
-    <div class="five wide column frame-of-input-date">
-      <div class="ui huge input input-hour">
+    <div class="frame-of-input-date five wide column">
+      <div class="input-hour ui huge input">
         <%= f.text_field :ending_hour, :class => "input-event-date", :placeholder => "15" %>
       </div>
     </div>
     <div class="date-in-japanese center aligned column">時</div>
-    <div class="four wide column frame-of-input-date">
-      <div class="ui huge input input-minute">
+    <div class="frame-of-input-date four wide column">
+      <div class="input-minute ui huge input">
         <%= f.text_field :ending_minute, :class => "input-event-date", :placeholder => "00" %>
       </div>
     </div>
