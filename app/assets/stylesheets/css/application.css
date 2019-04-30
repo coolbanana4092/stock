@@ -243,6 +243,11 @@ footer {
     width: 50% !important;
   }
 }
+.ui.grid.flash-message {
+  width: 87.5%;
+  margin: auto;
+}
+
 .ui.grid #toppage-image {
   width: 87.5%;
   height: auto;
