@@ -27,6 +27,8 @@ html body #container {
 html body #container #main-content {
   padding-top: 80px;
   padding-bottom: 80px;
+  margin-top: 14px;
+  margin-bottom: 14px;
 }
 
 a {
@@ -38,6 +40,11 @@ li {
   list-style: none;
 }
 
+@media screen and (min-width: 769px) {
+  html body #container #main-content {
+    padding-top: 180px;
+  }
+}
 /********************************
   ヘッダー自体
 ********************************/
@@ -46,7 +53,8 @@ header {
   top: 0;
   height: 80px;
   width: 100%;
-  background-color: #42b9d0;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
 }
 
 #header-title {
@@ -211,11 +219,13 @@ footer {
   bottom: 0;
   height: 80px;
   width: 100%;
-  background-color: #42b9d0;
+  border-top: solid 1px;
+  border-bottom: solid 1px;
 }
 
 #social-medias {
   line-height: 100px;
+  margin: auto;
 }
 #social-medias .one-of-the-social-medias {
   height: 20px;
@@ -223,6 +233,16 @@ footer {
   margin-top: 5px;
 }
 
+@media screen and (max-width: 768px) {
+  #social-medias {
+    width: 90% !important;
+  }
+}
+@media screen and (min-width: 769px) {
+  #social-medias {
+    width: 50% !important;
+  }
+}
 .ui.grid #toppage-image {
   width: 87.5%;
   height: auto;
