@@ -11,10 +11,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      flash[:success] = "ユーザーを登録しました。"
       session[:user_id] = @user.id
       remember(@user)
       redirect_to root_url
     else
+      flash[:negative] = "ユーザーの登録に失敗しました。"
       redirect_to signup_url
     end
   end
