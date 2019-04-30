@@ -14,6 +14,10 @@ html{
           top: 80px;
           bottom: 80px;
         }
+        margin: {
+          top: 14px;
+          bottom: 14px;
+        }
       }
     }
   }
@@ -26,4 +30,16 @@ a{
 
 li{
   list-style: none;
+}
+
+@media screen and (min-width: 769px) {
+  html{
+    body{
+      #container{
+        #main-content{
+          padding-top: 180px;
+        }
+      }
+    }
+  }
 }
