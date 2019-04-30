@@ -6,7 +6,10 @@ header{
   top: 0;
   height: 80px;
   width: 100%;
-  background-color: #42b9d0;
+  border: {
+    top: solid 1px;
+    bottom: solid 1px;
+  }
 }
 
 #header-title{
