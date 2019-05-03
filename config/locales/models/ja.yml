@@ -1,0 +1,49 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      event: イベント
+      inquiry: お問い合わせ
+    attributes:
+      user:
+        id: イベントID
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード(確認)
+        password_digest: パスワードダイジェスト
+        remember_digest: 記憶ダイジェスト
+        reset_digest: リセットダイジェスト
+        reset_sent_at: パスワード再設定メール送信日
+        created_at: ユーザー作成日
+        updated_at: ユーザー更新日
+      event:
+        id: イベントID
+        user_id: ユーザーID
+        name: イベント名
+        genre: ジャンル
+        organizer: 主催者
+        place: 開催場所
+        ticket_name: チケット名
+        price: 料金
+        starting_year: 開始日程(年)
+        starting_month: 開始日程(月)
+        starting_day: 開始日程(日)
+        starting_hour: 開始日程(時)
+        starting_minute: 開始日程(分)
+        ending_year: 終了日程(年)
+        ending_month: 終了日程(月)
+        ending_day: 終了日程(日)
+        ending_hour: 終了日程(時)
+        ending_minute: 終了日程(分)
+        content: イベント内容
+        cautionary_note: 注意点
+        created_at: イベント作成日
+        updated_at: イベント更新日
+      inquiry:
+        id: お問い合わせID
+        name: ユーザー名
+        email: メールアドレス
+        message: お問い合わせ内容
+        created_at: お問い合わせ送信日
+        updated_at: お問い合わせ更新日

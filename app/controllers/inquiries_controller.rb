@@ -1,7 +1,6 @@
 class InquiriesController < ApplicationController
   def input
     @inquiry = Inquiry.new
-
     render 'input'
   end
 
@@ -14,6 +13,7 @@ class InquiriesController < ApplicationController
       redirect_to root_url
     else
       flash[:negative] = "お問い合わせの送信に失敗しました。"
+      flash[:error] = @inquiry.errors.full_messages
       redirect_to inquiry_input_url
     end
   end

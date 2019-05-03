@@ -7,13 +7,16 @@ class SessionsController < ApplicationController
   def create
     email = params[:session][:email].downcase
     password = params[:session][:password]
+    @user = User.find_by(email: email)
 
-    if login(email, password)
+    if @user && @user.authenticate(password)
+      session[:user_id] = @user.id
+      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
       flash[:success] = "ログインに成功しました。"
       redirect_to root_url
     else
-      flash.now[:negative] = "ログインに失敗しました。"
-      render :new
+      flash[:negative] = "ログインに失敗しました。"
+      redirect_to login_url
     end
   end
 
@@ -23,22 +26,8 @@ class SessionsController < ApplicationController
       session[:user_id] = nil
       @current_user = nil
     end
-    
+
     flash[:success] = 'ログアウトしました。'
     redirect_to root_url
   end
-
-  private
-
-    def login(email, password)
-      @user = User.find_by(email: email)
-
-      if @user && @user.authenticate(password)
-        session[:user_id] = @user.id
-        params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-        return true
-      else
-        return false
-      end
-    end
 end
