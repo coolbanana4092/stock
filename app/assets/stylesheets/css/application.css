@@ -252,8 +252,8 @@ footer {
   width: 87.5%;
   margin: auto;
 }
-.ui.grid.frame-of-error-message .error-message {
-  padding: 0;
+.ui.grid.frame-of-error-message .error-message li {
+  list-style: decimal;
 }
 
 .ui.grid #toppage-image {

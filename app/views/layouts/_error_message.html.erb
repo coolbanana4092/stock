@@ -1,11 +1,16 @@
-<% flash.each do |message_type, message| %>
-  <% if message_type == "error" then %>
+  <% unless flash[:error_count].nil? && flash[:error_content].nil? then %>
     <div class="warning message frame-of-error-message ui grid">
       <ul class="error-message">
-        <% flash[:error].each do |error| %>
-          <li><%= error %></li>
+        <% flash.each do |message_type, message| %>
+          <% if message_type == "error_count" then %>
+            <h4><%= flash[:error_count] %>件のエラーがあります。</h4>
+          <% end %>
+          <% if message_type == "error_content" then %>
+            <% flash[:error_content].each do |e| %>
+              <li><%= e %></li>
+            <% end %>
+          <% end %>
         <% end %>
       </ul>
     </div>
   <% end %>
-<% end %>

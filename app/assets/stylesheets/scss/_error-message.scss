@@ -3,6 +3,8 @@
   margin: auto;
 
   .error-message{
-    padding: 0;
+    li{
+      list-style: decimal;
+    }
   }
 }
