@@ -20,11 +20,12 @@ class EventsController < ApplicationController
     @event = current_user.events.build(event_params)
 
     if @event.save
-      flash[:success] = "イベントを投稿しました。"
+      flash[:success] = "イベントを投稿しました"
       redirect_to events_url
     else
-      flash[:negative] = "イベントの投稿に失敗しました。"
-      flash[:error] = @event.errors.full_messages
+      flash[:negative] = "イベントの投稿に失敗しました"
+      flash[:error_count] = @event.errors.count
+      flash[:error_content] = @event.errors.full_messages
       redirect_to new_event_url
     end
   end
@@ -37,18 +38,19 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     if @event.update(event_params)
-      flash[:success] = "イベントを更新しました。"
+      flash[:success] = "イベントを更新しました"
       redirect_to root_url
     else
-      flash[:negative] = "イベントの更新に失敗しました。"
-      flash[:error] = @event.errors.full_messages
+      flash[:negative] = "イベントの更新に失敗しました"
+      flash[:error_count] = @event.errors.count
+      flash[:error_content] = @event.errors.full_messages
       redirect_to edit_event_url
     end
   end
 
   def destroy
     @event.destroy
-    flash[:success] = "イベントを削除しました。"
+    flash[:success] = "イベントを削除しました"
     redirect_to events_url
   end
 
