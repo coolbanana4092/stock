@@ -1,0 +1,11 @@
+<% flash.each do |message_type, message| %>
+  <% if message_type == "error" then %>
+    <div class="warning message frame-of-error-message ui grid">
+      <ul class="error-message">
+        <% flash[:error].each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

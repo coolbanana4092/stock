@@ -248,6 +248,14 @@ footer {
   margin: auto;
 }
 
+.ui.grid.frame-of-error-message {
+  width: 87.5%;
+  margin: auto;
+}
+.ui.grid.frame-of-error-message .error-message {
+  padding: 0;
+}
+
 .ui.grid #toppage-image {
   width: 87.5%;
   height: auto;

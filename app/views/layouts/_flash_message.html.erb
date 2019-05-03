@@ -1,0 +1,7 @@
+<% flash.each do |message_type, message| %>
+  <% if message_type != "error" then %>
+    <div class="<%= message_type %> message flash-message ui grid">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>

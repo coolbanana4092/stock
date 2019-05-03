@@ -28,7 +28,8 @@
     <div id="container">
       <%= render 'layouts/header' %>
       <div id="main-content">
-        <%= render 'layouts/flash_messages' %>
+        <%= render 'layouts/flash_message' %>
+        <%= render 'layouts/error_message' %>
         <%= yield %>
       </div>
       <%= render 'layouts/footer' %>
