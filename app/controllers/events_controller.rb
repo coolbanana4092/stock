@@ -24,6 +24,7 @@ class EventsController < ApplicationController
       redirect_to events_url
     else
       flash[:negative] = "イベントの投稿に失敗しました。"
+      flash[:error] = @event.errors.full_messages
       redirect_to new_event_url
     end
   end
@@ -40,6 +41,7 @@ class EventsController < ApplicationController
       redirect_to root_url
     else
       flash[:negative] = "イベントの更新に失敗しました。"
+      flash[:error] = @event.errors.full_messages
       redirect_to edit_event_url
     end
   end
