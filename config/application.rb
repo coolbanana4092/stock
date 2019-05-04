@@ -23,7 +23,8 @@ module Stock
       controller_specs: false
     end
 
-    # タイムスタンプを日本時間に修正する
     config.time_zone = 'Tokyo'
+    config.i18n.default_locale = :ja
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
   end
 end

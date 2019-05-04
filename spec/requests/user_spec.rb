@@ -45,6 +45,7 @@ RSpec.describe "User pages", type: :request do
         sign_in_as user
         patch user_path(user), params: { id: user.id, user: user_params }
         expect(user.reload.name).to eq "NewName"
+        expect(flash[:success]).to match("ユーザー情報を編集しました")
       end
     end
 
@@ -60,17 +61,11 @@ RSpec.describe "User pages", type: :request do
 
     # 編集対象のユーザーとログインしているユーザーが異なる場合
     context "as other user" do
-      # ユーザー情報を更新できないこと
+      # ユーザー情報を更新できずに、トップページへ遷移すること
       it "can't update the user information" do
         sign_in_as other_user
         patch user_path(user), params: { id: user.id, user: user_params }
         expect(user.reload.name).to_not eq "NewName"
-      end
-
-      # トップページに遷移すること
-      it "redirects to the toppage" do
-        sign_in_as other_user
-        patch user_path(user), params: { id: user.id, user: user_params }
         expect(response).to redirect_to root_url
       end
     end

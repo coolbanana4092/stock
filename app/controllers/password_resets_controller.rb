@@ -11,9 +11,11 @@ class PasswordResetsController < ApplicationController
     if @user
       @user.create_reset_digest
       @user.send_password_reset_email
+      flash[:success] = "パスワードを変更するためのメールが送信されました"
       redirect_to root_url
     else
-      render :new
+      flash[:negative] = "パスワードを変更するためのメールの送信は失敗しました"
+      redirect_to new_password_reset_url
     end
   end
 
@@ -22,20 +24,24 @@ class PasswordResetsController < ApplicationController
 
   def update
     if params[:user][:password].empty?
-      render 'edit'
+      @user.errors.add(:password, :blank)
+      flash[:negative] = "パスワードの変更に失敗しました"
+      flash[:error_count] = @user.errors.count
+      flash[:error_content] = @user.errors.full_messages
+      redirect_to edit_password_reset_url
     elsif @user.update_attributes(user_params)
-      log_in @user
+      session[:user_id] = @user.id
+      flash[:success] = "パスワードを変更しました"
       redirect_to root_url
     else
-      render 'edit'
+      flash[:negative] = "パスワードの変更に失敗しました"
+      flash[:error_count] = @user.errors.count
+      flash[:error_content] = @user.errors.full_messages
+      redirect_to edit_password_reset_url
     end
   end
 
   private
-  
-    def log_in(user)
-      session[:user_id] = user.id
-    end
 
     def user_params
       params.require(:user).permit(:password, :password_confirmation)
@@ -53,7 +59,7 @@ class PasswordResetsController < ApplicationController
 
     def check_expiration
       if @user.password_reset_expired?
-        flash[:danger] = "Password reset has expired."
+        flash[:negative] = "Password reset has expired."
         redirect_to new_password_reset_url
       end
     end
