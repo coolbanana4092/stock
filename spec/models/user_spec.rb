@@ -37,7 +37,8 @@ RSpec.describe User, type: :model do
     end
   end
 
-  # remember me 機能における2つのバグのテスト2 -remember_digest が存在しない場合の authenticated?メソッド のテスト-
+  # remember me 機能におけるバグのテスト
+  # remember_digest が存在しない場合の authenticated?メソッド のテスト
   context "authenticated? should return false for a user with nil digest" do
     # remember_digest が存在しなければ authenticated?メソッド は無効であること
     it "is invalid without remember_digest" do
