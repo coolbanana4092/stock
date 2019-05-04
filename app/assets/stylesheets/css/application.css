@@ -243,6 +243,19 @@ footer {
     width: 50% !important;
   }
 }
+.ui.grid.flash-message {
+  width: 87.5%;
+  margin: auto;
+}
+
+.ui.grid.frame-of-error-message {
+  width: 87.5%;
+  margin: auto;
+}
+.ui.grid.frame-of-error-message .error-message li {
+  list-style: decimal;
+}
+
 .ui.grid #toppage-image {
   width: 87.5%;
   height: auto;

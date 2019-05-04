@@ -11,10 +11,14 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      flash[:success] = "ユーザーを登録しました"
       session[:user_id] = @user.id
       remember(@user)
       redirect_to root_url
     else
+      flash[:negative] = "ユーザーの登録に失敗しました"
+      flash[:error_count] = @user.errors.count
+      flash[:error_content] = @user.errors.full_messages
       redirect_to signup_url
     end
   end
@@ -27,9 +31,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
-      flash[:success] = "ユーザー情報を編集しました。"
+      flash[:success] = "ユーザー情報を編集しました"
       redirect_to root_url
     else
+      flash[:negative] = "ユーザー情報の編集に失敗しました"
+      flash[:error_count] = @user.errors.count
+      flash[:error_content] = @user.errors.full_messages
       redirect_to edit_user_url(current_user)
     end
   end

@@ -7,11 +7,13 @@ RSpec.describe "User pages", type: :request do
     # メール送信のテスト
     # 無効な(データベースに登録されていない)メールアドレスを送信
     post password_resets_path, params: { password_reset: { email: "" } }
-    expect(response).to render_template(:new)
+    expect(response).to redirect_to new_password_reset_url
+    expect(flash[:negative]).to match("パスワードを変更するためのメールの送信は失敗しました")
 
     # 有効な(データベースに登録されている)メールアドレスを送信
     post password_resets_path, params: { password_reset: { email: user.email }}
     expect(response).to redirect_to root_url
+    expect(flash[:success]).to match("パスワードを変更するためのメールが送信されました")
 
 
     # パスワード再設定フォームへのアクセスのテスト
@@ -34,17 +36,20 @@ RSpec.describe "User pages", type: :request do
     # パスワードとパスワード確認が異なる
     patch password_reset_path(user.reset_token),
       params: { email: user.email, user: { password: "hoge", password_confirmation: "foo" } }
-    expect(response).to render_template(:edit)
+    expect(response).to redirect_to edit_password_reset_url
+    expect(flash[:negative]).to match("パスワードの変更に失敗しました")
 
     # パスワードが空である
     patch password_reset_path(user.reset_token),
       params: { email: user.email, user: { password: "", password_confirmation: "" } }
-    expect(response).to render_template(:edit)
+    expect(response).to redirect_to edit_password_reset_url
+    expect(flash[:negative]).to match("パスワードの変更に失敗しました")
 
     # 有効なパスワードとパスワード確認
     patch password_reset_path(user.reset_token),
         params: { email: user.email, user: { password: "valid", password_confirmation: "valid" } }
     expect(session[:user_id]).to eq user.id
     expect(response).to redirect_to root_url
+    expect(flash[:success]).to match("パスワードを変更しました")
   end
 end

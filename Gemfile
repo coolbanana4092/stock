@@ -37,6 +37,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'kaminari'
+gem 'rails-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -65,6 +66,10 @@ group :test do
 
   gem "launchy", "~> 2.4.2"
   gem 'rails-controller-testing'
+end
+
+group :production do
+  gem 'pg', '0.21.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
