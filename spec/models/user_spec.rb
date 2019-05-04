@@ -11,21 +11,21 @@ RSpec.describe User, type: :model do
     it "is invalid without a name" do
       user = FactoryBot.build(:user, name: nil)
       user.valid?
-      expect(user.errors[:name]).to include("can't be blank")
+      expect(user.errors[:name]).to include("を入力してください")
     end
 
     # メールアドレスがなければ無効であること
     it "is invalid without an email address" do
       user = FactoryBot.build(:user, email: nil)
       user.valid?
-      expect(user.errors[:email]).to include("can't be blank")
+      expect(user.errors[:email]).to include("を入力してください")
     end
 
     # メールアドレスの形式でなければ無効であること
     it "is invalid without mail address format" do
       user = FactoryBot.build(:user, email: "m-fukaya-com")
       user.valid?
-      expect(user.errors[:email]).to include("is invalid")
+      expect(user.errors[:email]).to include("は不正な値です")
     end
 
     # 重複したメールアドレスなら無効であること
@@ -33,11 +33,12 @@ RSpec.describe User, type: :model do
       FactoryBot.create(:user, email: "m-fukaya@gmail.com")
       user = FactoryBot.build(:user, email: "m-fukaya@gmail.com")
       user.valid?
-      expect(user.errors[:email]).to include("has already been taken")
+      expect(user.errors[:email]).to include("はすでに存在します")
     end
   end
 
-  # remember me 機能における2つのバグのテスト2 -remember_digest が存在しない場合の authenticated?メソッド のテスト-
+  # remember me 機能におけるバグのテスト
+  # remember_digest が存在しない場合の authenticated?メソッド のテスト
   context "authenticated? should return false for a user with nil digest" do
     # remember_digest が存在しなければ authenticated?メソッド は無効であること
     it "is invalid without remember_digest" do
