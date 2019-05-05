@@ -13,4 +13,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :edit, :update]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :events
+
+  resources :events, only: [:create, :delete] do
+    post 'like' => 'favorites#create'
+    delete '/like' => 'favorites#destroy'
+  end
 end
