@@ -10,7 +10,17 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :events
+  has_many :favorites
+  has_many :fav_events, through: :favorites, source: :event
 
+  def like(event)
+    favorites.find_or_create_by(event_id: event.id)
+  end
+
+  def unlike(event)
+    favorite = favorites.find_by(event_id: event.id)
+    favorite.destroy if favorite
+  end
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
