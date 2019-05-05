@@ -17,6 +17,21 @@
           <i class="clock outline icon"></i>
           <%= event.starting_year %>/<%= event.starting_month %>/<%= event.starting_day %> <%= event.starting_hour %>:<%= event.starting_minute %> 〜 <%= event.ending_year %>/<%= event.ending_month %>/<%= event.ending_day %> <%= event.ending_hour %>:<%= event.ending_minute %>
         </li>
+        <% if !Favorite.exists?(user_id:current_user.id, event_id:event.id) %>
+          <div class="like-button ui center aligned grid">
+            <div class="ui large red button">
+              <i class="heart icon"></i>
+              <%= link_to "Like", event_like_path(event), method: :post, :class => "link-to-like" %>
+            </div>
+          </div>
+        <% else %>
+          <div class="unlike-button ui center aligned grid">
+            <div class="ui large blue button">
+              <i class="heart icon"></i>
+              <%= link_to "Unlike", event_like_path(event), method: :delete, :class => "link-to-unlike" %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </ul>
   </div>
