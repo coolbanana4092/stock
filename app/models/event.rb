@@ -18,6 +18,8 @@ class Event < ApplicationRecord
   validates :content, presence: true, length: { maximum: 50 }
 
   belongs_to :user, optional: true
+  has_many :favorites
+  has_many :fav_users, through: :favorites
 
   def self.search(search)
     if search

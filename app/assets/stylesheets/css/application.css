@@ -381,27 +381,37 @@ footer {
   margin-top: 20px;
   margin-bottom: 40px;
 }
-
-.frame-of-segment {
+.various-events-list .frame-of-segment {
   padding-left: 0;
   margin: 0;
 }
-.frame-of-segment .segment {
+.various-events-list .frame-of-segment .segment {
   font-size: 12px;
 }
-.frame-of-segment .segment .events-list-image {
+.various-events-list .frame-of-segment .segment .events-list-image {
   width: 100%;
 }
-.frame-of-segment .segment .event-name {
+.various-events-list .frame-of-segment .segment .event-name {
   font-size: 16px;
   font-weight: bolder;
 }
-.frame-of-segment .segment .event-created-at {
+.various-events-list .frame-of-segment .segment .event-created-at {
   text-align: right;
   margin-top: 10px;
 }
-.frame-of-segment .segment .event-organizer {
+.various-events-list .frame-of-segment .segment .event-organizer {
   margin-top: 15px;
+}
+.various-events-list .frame-of-segment .segment .like-button,
+.various-events-list .frame-of-segment .segment .unlike-button {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.various-events-list .frame-of-segment .segment .like-button .link-to-like,
+.various-events-list .frame-of-segment .segment .like-button .link-to-unlike,
+.various-events-list .frame-of-segment .segment .unlike-button .link-to-like,
+.various-events-list .frame-of-segment .segment .unlike-button .link-to-unlike {
+  color: white;
 }
 
 .before-events,
