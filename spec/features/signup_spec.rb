@@ -16,7 +16,7 @@ RSpec.feature "SignUp", type: :feature do
         click_button "新規登録"
       }.to change(User, :count).by(1)
 
-      expect(current_path).to eq root_path
+      expect(current_path).to eq events_path
     end
 
     # 新規登録に失敗する
