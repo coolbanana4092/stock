@@ -39,7 +39,7 @@ class EventsController < ApplicationController
 
     if @event.update(event_params)
       flash[:success] = "イベントを更新しました"
-      redirect_to root_url
+      redirect_to events_url
     else
       flash[:negative] = "イベントの更新に失敗しました"
       flash[:error_count] = @event.errors.count
@@ -60,7 +60,7 @@ class EventsController < ApplicationController
       params.require(:event).permit(:name, :genre, :organizer, :place, :ticket_name, :price,
                                     :starting_year, :starting_month, :starting_day, :starting_hour,
                                     :starting_minute, :ending_year, :ending_month, :ending_day,
-                                    :ending_hour, :ending_minute, :content, :cautionary_note)
+                                    :ending_hour, :ending_minute, :content, :cautionary_note, :picture)
     end
 
     def correct_user
