@@ -16,6 +16,11 @@ header{
   margin-top: 20px;
 }
 
+.application-name{
+  color: green;
+  font-family: serif;
+}
+
 /********************************
   ハンバーガーメニュー
 ********************************/
@@ -50,13 +55,14 @@ header{
 
 .menu {
   z-index: 2 !important;
+  border-bottom: solid 1px;
 
   ul {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     height: 70px;
-    background-color: #eaf2f4;
+    background-color: #f7faf2;
     padding: 0;
 
     li {
