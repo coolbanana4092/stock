@@ -21,11 +21,21 @@ class Event < ApplicationRecord
   has_many :favorites
   has_many :fav_users, through: :favorites
 
-  def self.search(search)
-    if search
-      where(['name LIKE ?', "%#{search}%"])
-    else
-      all
+  mount_uploader :picture, PictureUploader
+
+  private
+
+    def picture_size
+      if picture.size > 5.megabytes
+        errors.add(:picture, "5MB以下にしてください")
+      end
     end
-  end
+
+    def self.search(search)
+      if search
+        where(['name LIKE ?', "%#{search}%"])
+      else
+        all
+      end
+    end
 end
