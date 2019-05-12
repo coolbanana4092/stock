@@ -1,9 +1,4 @@
 .ui.grid{
-  #toppage-image{
-    width: 87.5%;
-    height: auto;
-  }
-
   #what-is-this-application{
     margin: {
       top: 50px;
@@ -60,9 +55,17 @@
 
 @media screen and (min-width: 769px) {
   .ui.grid{
+    #what-is-this-application{
+      margin-top: 25px;
+    }
+
     #explanation-of-application{
       width: 62.5% !important;
-      margin: auto !important;
+      margin:{
+        right: auto;
+        bottom: 45px;
+        left: auto;
+      }
     }
 
     .toppage-divider{
@@ -91,7 +94,7 @@
 
     #map{
       width: 50%;
-      height: 300px;
+      height: 500px;
       margin: auto;
     }
 
