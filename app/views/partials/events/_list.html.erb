@@ -2,7 +2,11 @@
   <div class="fourteen wide column">
     <ul class="frame-of-segment frame-of-segment-<%= event.id %>">
       <div class="ui left aligned raised segment">
-        <img class="events-list-image" src="/img/events/event1.jpg">
+        <% if event.picture? %>
+          <%= image_tag event.picture.url, :class => "events-list-image" %>
+        <% else %>
+          <img class="events-list-image" src="/img/no-image.png">
+        <% end %>
         <li class="event-name"><%= event.name %></li>
         <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
         <li class="event-organizer">

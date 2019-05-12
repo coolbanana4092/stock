@@ -1,6 +1,10 @@
 <div class="ui center aligned grid">
   <div class="fourteen wide column">
-    <img class="ui segment" id="event-details-image" src="/img/events/event1.jpg">
+    <% if @event.picture? %>
+      <%= image_tag @event.picture.url, :id => "event-details-image" %>
+    <% else %>
+      <img class="ui segment" id="event-details-image" src="/img/no-image.png">
+    <% end %>
   </div>
   <div class="left aligned fourteen wide column">
     <div id="event-name">
