@@ -390,6 +390,7 @@ footer {
 }
 .various-events-list .frame-of-segment .segment .events-list-image {
   width: 100%;
+  border: solid 1px;
 }
 .various-events-list .frame-of-segment .segment .event-name {
   font-size: 16px;
@@ -731,6 +732,9 @@ form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-dat
 form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-date .input-hour {
   padding-left: 14px;
 }
+form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .event-picture {
+  padding-top: 0px;
+}
 form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-of-submit {
   margin-top: 40px;
   margin-right: 40px;
@@ -757,6 +761,7 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
   padding: 5px;
   margin-top: 20px;
   margin-bottom: 5px;
+  border: solid 1px;
 }
 .ui.grid .fourteen.wide.column #event-name {
   margin-top: 15px;
