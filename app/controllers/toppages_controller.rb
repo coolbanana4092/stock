@@ -1,5 +1,9 @@
 class ToppagesController < ApplicationController
   def index
-    @events = Event.all
+    if logged_in?
+      redirect_to events_url
+    else
+      @events = Event.all
+    end
   end
 end
