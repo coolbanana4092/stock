@@ -62,6 +62,7 @@
     <select class="select-box-show-events">
       <option value="all-events">イベント一覧</option>
       <option value="my-events">自分の投稿したイベント</option>
+      <option value="favorite-events">お気に入りしたイベント</option>
       <option value="before-events">既に終了したイベント</option>
       <option value="current-events">現在開催中のイベント</option>
       <option value="after-events">今後開催されるイベント</option>
@@ -84,6 +85,15 @@
     <div class="my-events animated bounce">
       <% @current_user_events.each do |event| %>
         <%= render partial: "partials/events/list", locals: { event: event } %>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @favorite_events.empty? then %>
+    <%= render partial: "partials/events/no-event-message", locals: { message: "投稿されたイベントはまだ存在していません。", classname: "favorite-events" } %>
+  <% else %>
+    <div class="favorite-events animated bounce">
+      <% @favorite_events.each do |event| %>
+        <%= render partial: "partials/events/list", locals: { event: Event.find(event.id) } %>
       <% end %>
     </div>
   <% end %>
@@ -208,30 +218,42 @@
     if(selectBoxVal == "all-events") {
       $('.all-events').css('display', 'block');
       $('.my-events').css('display', 'none');
+      $('.favorite-events').css('display', 'none');
       $('.before-events').css('display', 'none');
       $('.current-events').css('display', 'none');
       $('.after-events').css('display', 'none');
     }else if(selectBoxVal == "my-events") {
       $('.all-events').css('display', 'none');
       $('.my-events').css('display', 'block');
+      $('.favorite-events').css('display', 'none');
+      $('.before-events').css('display', 'none');
+      $('.current-events').css('display', 'none');
+      $('.after-events').css('display', 'none');
+    }else if(selectBoxVal == "favorite-events") {
+      $('.all-events').css('display', 'none');
+      $('.my-events').css('display', 'none');
+      $('.favorite-events').css('display', 'block');
       $('.before-events').css('display', 'none');
       $('.current-events').css('display', 'none');
       $('.after-events').css('display', 'none');
     }else if(selectBoxVal == "before-events") {
       $('.all-events').css('display', 'none');
       $('.my-events').css('display', 'none');
+      $('.favorite-events').css('display', 'none');
       $('.before-events').css('display', 'block');
       $('.current-events').css('display', 'none');
       $('.after-events').css('display', 'none');
     }else if(selectBoxVal == "current-events") {
       $('.all-events').css('display', 'none');
       $('.my-events').css('display', 'none');
+      $('.favorite-events').css('display', 'none');
       $('.before-events').css('display', 'none');
       $('.current-events').css('display', 'block');
       $('.after-events').css('display', 'none');
     }else if(selectBoxVal == "after-events") {
       $('.all-events').css('display', 'none');
       $('.my-events').css('display', 'none');
+      $('.favorite-events').css('display', 'none');
       $('.before-events').css('display', 'none');
       $('.current-events').css('display', 'none');
       $('.after-events').css('display', 'block');
@@ -240,6 +262,7 @@
 
   $('.all-events').css('display', 'block');
   $('.my-events').css('display', 'none');
+  $('.favorite-events').css('display', 'none');
   $('.before-events').css('display', 'none');
   $('.current-events').css('display', 'none');
   $('.after-events').css('display', 'none');
