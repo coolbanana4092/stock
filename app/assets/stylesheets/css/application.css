@@ -436,6 +436,7 @@ footer {
 
   .various-events-list .all-events,
   .various-events-list .my-events,
+  .various-events-list .favorite-events,
   .various-events-list .before-events,
   .various-events-list .current-events,
   .various-events-list .after-events {
@@ -446,6 +447,7 @@ footer {
   }
   .various-events-list .all-events .each-event,
   .various-events-list .my-events .each-event,
+  .various-events-list .favorite-events .each-event,
   .various-events-list .before-events .each-event,
   .various-events-list .current-events .each-event,
   .various-events-list .after-events .each-event {
