@@ -183,14 +183,6 @@
   })();
 
   (function() {
-    <% @all_events.each do |event| %>
-      $(".frame-of-segment-"+"<%= event.id %>").click(function() {
-        location.href = "/events/" + "<%= event.id %>"
-      });
-    <% end %>
-  })();
-
-  (function() {
     function displaySwitching() {
       if ($(this).scrollTop() >= 300) {
         $(".back-to-top").fadeIn();
