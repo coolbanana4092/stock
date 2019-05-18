@@ -16,6 +16,6 @@ Rails.application.routes.draw do
 
   resources :events, only: [:create, :delete] do
     post 'like' => 'favorites#create'
-    delete '/like' => 'favorites#destroy'
+    delete 'like' => 'favorites#destroy'
   end
 end
