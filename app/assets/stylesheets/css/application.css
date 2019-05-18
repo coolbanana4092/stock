@@ -457,6 +457,10 @@ footer {
     margin-left: auto;
     margin-right: auto;
   }
+  .various-events-list .favorite-link-icon,
+  .various-events-list .detail-link-icon {
+    display: none;
+  }
 }
 /** イベントをふわっと出す *****/
 .animated {
