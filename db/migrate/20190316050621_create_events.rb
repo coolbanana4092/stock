@@ -18,8 +18,8 @@ class CreateEvents < ActiveRecord::Migration[5.2]
       t.string :ending_day
       t.string :ending_hour
       t.string :ending_minute
-      t.string :content
-      t.string :cautionary_note
+      t.text :content, limit: 2000
+      t.text :cautionary_note, limit: 2000
 
       t.timestamps
     end
