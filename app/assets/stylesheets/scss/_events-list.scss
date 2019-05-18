@@ -128,6 +128,7 @@
   .various-events-list{
     .all-events,
     .my-events,
+    .favorite-events,
     .before-events,
     .current-events,
     .after-events{
@@ -147,6 +148,10 @@
           right: auto;
         }
       }
+    }
+    .favorite-link-icon,
+    .detail-link-icon{
+      display: none;
     }
   }
 }
