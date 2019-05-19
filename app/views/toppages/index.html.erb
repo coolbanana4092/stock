@@ -62,7 +62,7 @@
       まずは、住所を検索するか、位置情報を送信してみましょう。
     </div>
   </div>
-  <div id="map"></div>
+  <div id="toppage-map"></div>
   <div class="fourteen wide columm" id="search-address">
     <div class="item">
       <div class="ui icon input">
@@ -100,15 +100,19 @@
 
   (function() {
     <% @events.each do |event| %>
+      var mapLatLng;
+      var pos;
+      var markerLatLng;
+      var markerData;
+
       geocoder.geocode({
         'address': '<%= event.place %>',
         'region': 'jp'
       },function (results, status) {
           if (status === 'OK' && results[0]){
-            var mapLatLng = new google.maps.LatLng(35.681236,139.767125);
-            var pos = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
-            var markerLatLng;
-            var markerData = [
+            mapLatLng = new google.maps.LatLng(35.681236,139.767125);
+            pos = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+            markerData = [
               {
                 name: '<%= event.name %>',
                 place: '<%= event.place %>',
@@ -116,7 +120,7 @@
                 lng: pos.lng(),
               }
             ];
-            map = new google.maps.Map(document.getElementById('map'), {
+            map = new google.maps.Map(document.getElementById('toppage-map'), {
               center: mapLatLng,
               zoom: 10,
               mapTypeControl: false,
