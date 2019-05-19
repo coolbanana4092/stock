@@ -5,49 +5,38 @@
       bottom: 30px;
     }
   }
-
   .toppage-divider{
     margin: {
       top: 60px;
       bottom: 60px;
     }
   }
-
   .characteristics-of-application{
-    margin: {
-      bottom: 30px;
-    }
+    margin-bottom: 30px;
   }
-
   #major-characteristics{
     .one-of-the-characteristics{
       margin-bottom: 50px;
     }
   }
-
   .use-for-trial{
-    margin: {
-      bottom: 30px;
-    }
+    margin-bottom: 30px;
   }
-
   #frame-of-lets-search{
     margin-bottom: 30px;
   }
-
-  #map {
+  #toppage-map{
     width: 80%;
     height: 300px;
     margin: auto;
+    border: solid 1px #d2ccd0;
   }
-
   #search-address{
     margin: {
       top: 30px;
       bottom: 30px;
     }
   }
-
   #map-explanation{
     margin-bottom: 30px;
   }
@@ -58,7 +47,6 @@
     #what-is-this-application{
       margin-top: 25px;
     }
-
     #explanation-of-application{
       width: 62.5% !important;
       margin:{
@@ -67,11 +55,9 @@
         left: auto;
       }
     }
-
     .toppage-divider{
       margin-top: 0;
     }
-
     #major-characteristics{
       width: 87.5%;
       margin: {
@@ -86,18 +72,14 @@
         width: 33.3%;
       }
     }
-
     #lets-search{
       width: 62.5% !important;
       margin: auto !important;
     }
-
-    #map{
+    #toppage-map{
       width: 50%;
       height: 500px;
-      margin: auto;
     }
-
     #map-explanation{
       width: 62.5% !important;
       margin: {

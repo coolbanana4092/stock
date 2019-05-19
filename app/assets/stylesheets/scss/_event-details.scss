@@ -1,19 +1,20 @@
 .ui.grid{
+  #frame-of-event-details-image{
+    padding: {
+      top: 5px;
+      bottom: 0px;
+    }
+  }
   .fourteen.wide.column{
     #event-details-image{
       width: 100%;
       padding: 5px;
-      margin: {
-        top: 20px;
-        bottom: 5px;
-      }
+      margin-top: 20px;
       border: solid 1px;
     }
     #event-name{
-      margin: {
-        top: 15px;
-        bottom: 15px;
-      }
+      margin-bottom: 15px;
+
       font: {
         size: 20px;
         weight: bolder;
@@ -33,6 +34,13 @@
       font-size: 18px;
     }
   }
+}
+
+#event-detail-page-map{
+  width: 80%;
+  height: 300px;
+  margin: auto;
+  border: solid 1px #d2ccd0;
 }
 
 .frame-of-button-to-event-page{
@@ -62,14 +70,23 @@
 
 @media screen and (min-width: 769px) {
   .ui.grid{
+    #frame-of-event-details-image{
+      padding: {
+        top: 10px;
+        bottom: 10px;
+      }
+      margin-top: 0px;
+    }
     .fourteen.wide.column{
       #event-details-image{
         width: 50%;
+        margin-top: 0px;
       }
     }
   }
 
-  .map-an-event{
-    margin-bottom: 10px !important;
+  #event-detail-page-map{
+    width: 50%;
+    height: 500px;
   }
 }
