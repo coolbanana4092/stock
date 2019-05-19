@@ -1,5 +1,5 @@
 <div class="ui center aligned grid">
-  <div class="fourteen wide column">
+  <div id="frame-of-event-details-image" class="fourteen wide column">
     <% if @event.picture? %>
       <%= image_tag @event.picture.url, :id => "event-details-image" %>
     <% else %>
