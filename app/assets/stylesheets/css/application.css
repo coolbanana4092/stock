@@ -283,10 +283,11 @@ footer {
 .ui.grid #frame-of-lets-search {
   margin-bottom: 30px;
 }
-.ui.grid #map {
+.ui.grid #toppage-map {
   width: 80%;
   height: 300px;
   margin: auto;
+  border: solid 1px #d2ccd0;
 }
 .ui.grid #search-address {
   margin-top: 30px;
@@ -324,10 +325,9 @@ footer {
     width: 62.5% !important;
     margin: auto !important;
   }
-  .ui.grid #map {
+  .ui.grid #toppage-map {
     width: 50%;
     height: 500px;
-    margin: auto;
   }
   .ui.grid #map-explanation {
     width: 62.5% !important;
@@ -401,6 +401,7 @@ footer {
   border: solid 1px;
 }
 .various-events-list .frame-of-segment .segment .event-name {
+  margin-top: 8px;
   font-size: 16px;
   font-weight: bolder;
 }
@@ -411,11 +412,14 @@ footer {
 .various-events-list .frame-of-segment .segment .event-organizer {
   margin-top: 15px;
 }
+.various-events-list .frame-of-segment .segment .detail-button,
 .various-events-list .frame-of-segment .segment .like-button,
 .various-events-list .frame-of-segment .segment .unlike-button {
   margin-top: 20px;
   margin-bottom: 10px;
 }
+.various-events-list .frame-of-segment .segment .detail-button .link-to-like,
+.various-events-list .frame-of-segment .segment .detail-button .link-to-unlike,
 .various-events-list .frame-of-segment .segment .like-button .link-to-like,
 .various-events-list .frame-of-segment .segment .like-button .link-to-unlike,
 .various-events-list .frame-of-segment .segment .unlike-button .link-to-like,
@@ -770,15 +774,17 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
     margin: auto;
   }
 }
+.ui.grid #frame-of-event-details-image {
+  padding-top: 5px;
+  padding-bottom: 0px;
+}
 .ui.grid .fourteen.wide.column #event-details-image {
   width: 100%;
   padding: 5px;
   margin-top: 20px;
-  margin-bottom: 5px;
   border: solid 1px;
 }
 .ui.grid .fourteen.wide.column #event-name {
-  margin-top: 15px;
   margin-bottom: 15px;
   font-size: 20px;
   font-weight: bolder;
@@ -795,6 +801,13 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
 .ui.grid .fourteen.wide.column .subheading-of-event-details {
   margin-bottom: 10px;
   font-size: 18px;
+}
+
+#event-detail-page-map {
+  width: 80%;
+  height: 300px;
+  margin: auto;
+  border: solid 1px #d2ccd0;
 }
 
 .frame-of-button-to-event-page {
@@ -817,12 +830,19 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
 }
 
 @media screen and (min-width: 769px) {
+  .ui.grid #frame-of-event-details-image {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 0px;
+  }
   .ui.grid .fourteen.wide.column #event-details-image {
     width: 50%;
+    margin-top: 0px;
   }
 
-  .map-an-event {
-    margin-bottom: 10px !important;
+  #event-detail-page-map {
+    width: 50%;
+    height: 500px;
   }
 }
 

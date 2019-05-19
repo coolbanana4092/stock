@@ -1,5 +1,5 @@
 <div class="ui center aligned grid">
-  <div class="fourteen wide column">
+  <div id="frame-of-event-details-image" class="fourteen wide column">
     <% if @event.picture? %>
       <%= image_tag @event.picture.url, :id => "event-details-image" %>
     <% else %>
@@ -33,7 +33,7 @@
     </div>
   </div>
 </div>
-<div class="map-an-event" id="map"></div>
+<div id="event-detail-page-map"></div>
 <div class="ui center aligned grid">
   <div class="left aligned fourteen wide column">
     <div class="ui divider"></div>
@@ -96,7 +96,7 @@
             map: map,
             position: markerLatLng
           });
-          map = new google.maps.Map(document.getElementById('map'), {
+          map = new google.maps.Map(document.getElementById('event-detail-page-map'), {
             center: mapLatLng,
             zoom: 10,
             mapTypeControl: false,
