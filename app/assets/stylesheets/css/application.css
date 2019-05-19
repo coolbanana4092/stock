@@ -283,10 +283,11 @@ footer {
 .ui.grid #frame-of-lets-search {
   margin-bottom: 30px;
 }
-.ui.grid #map {
+.ui.grid #toppage-map {
   width: 80%;
   height: 300px;
   margin: auto;
+  border: solid 1px #d2ccd0;
 }
 .ui.grid #search-address {
   margin-top: 30px;
@@ -324,10 +325,9 @@ footer {
     width: 62.5% !important;
     margin: auto !important;
   }
-  .ui.grid #map {
+  .ui.grid #toppage-map {
     width: 50%;
     height: 500px;
-    margin: auto;
   }
   .ui.grid #map-explanation {
     width: 62.5% !important;
@@ -803,6 +803,13 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
   font-size: 18px;
 }
 
+#event-detail-page-map {
+  width: 80%;
+  height: 300px;
+  margin: auto;
+  border: solid 1px #d2ccd0;
+}
+
 .frame-of-button-to-event-page {
   margin-top: 25px;
   margin-bottom: 35px;
@@ -833,8 +840,9 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
     margin-top: 0px;
   }
 
-  .map-an-event {
-    margin-bottom: 10px !important;
+  #event-detail-page-map {
+    width: 50%;
+    height: 500px;
   }
 }
 
