@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   def index
     @all_events = Event.all.order(created_at: :desc).page(params[:page]).per(10).search(params[:search])
     @current_user_events = current_user.events.order(created_at: :desc).page(params[:page]).per(10).search(params[:search])
-    @favorite_events = current_user.favorite_events.order(created_at: :desc).page(params[:page]).per(10).search(params[:search])
+    @favorite_events = current_user.fav_events.order(created_at: :desc).page(params[:page]).per(10).search(params[:search])
   end
 
   def show
