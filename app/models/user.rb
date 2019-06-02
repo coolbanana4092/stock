@@ -22,10 +22,6 @@ class User < ApplicationRecord
     favorite.destroy if favorite
   end
 
-  def favorite_events
-    Event.where(id: self.fav_event_ids + [self.id])
-  end
-
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
