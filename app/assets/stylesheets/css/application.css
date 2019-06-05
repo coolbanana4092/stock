@@ -346,9 +346,16 @@ footer {
   background-color: #fff;
 }
 .modal #modal-header {
+  margin: 15px;
   text-align: center;
+  font-weight: bold;
 }
 
+@media screen and (min-width: 769px) {
+  #modal-header {
+    margin: 60px;
+  }
+}
 /** カルーセル *****************/
 #frame-of-carousel-image .carousel-image {
   margin-bottom: 0;
@@ -357,6 +364,7 @@ footer {
   height: 200px;
 }
 #frame-of-carousel-image .carousel-image .operation-image {
+  border: solid 1px;
   height: 200px;
 }
 
@@ -366,10 +374,23 @@ footer {
 .ui.modal.scrolling .ui.grid .carousel-explanation {
   padding-top: 0;
 }
+.ui.modal.scrolling .slick-dotted {
+  margin: 0 !important;
+  margin-bottom: 15px !important;
+}
 .ui.modal.scrolling .slick-dotted .slick-dots {
   position: static;
 }
 
+@media screen and (min-width: 769px) {
+  #frame-of-carousel-image .carousel-image .slick-list {
+    height: 300px;
+  }
+  #frame-of-carousel-image .carousel-image .operation-image {
+    border: solid 1px;
+    height: 300px;
+  }
+}
 /********************************
 	イベント一覧
 ********************************/
