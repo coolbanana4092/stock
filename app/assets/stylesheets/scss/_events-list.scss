@@ -12,7 +12,15 @@
   background-color: #fff;
 
   #modal-header{
+    margin: 15px;
     text-align: center;
+    font-weight: bold;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  #modal-header{
+    margin: 60px;
   }
 }
 
@@ -26,6 +34,7 @@
       height: 200px;
     }
     .operation-image{
+      border: solid 1px;
       height: 200px;
     }
   }
@@ -41,8 +50,25 @@
   }
 
   .slick-dotted{
+    margin: 0 !important;
+    margin-bottom: 15px !important;
+
     .slick-dots{
       position: static;
+    }
+  }
+}
+
+@media screen and (min-width: 769px) {
+  #frame-of-carousel-image{
+    .carousel-image{
+      .slick-list{
+        height: 300px;
+      }
+      .operation-image{
+        border: solid 1px;
+        height: 300px;
+      }
     }
   }
 }
