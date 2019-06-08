@@ -5,7 +5,13 @@ User.create(
 )
 
 User.create(
-  name: 'fukaya',
+  name: 'a',
+  email: 'sc0085hx@ed.ritsumei.ac.jp',
+  password: 'a'
+)
+
+User.create(
+  name: 'testuser',
   email: 'case@example.com',
   password: '1234Asdf'
 )
