@@ -1,4 +1,4 @@
-<% current_time = Time.now %>
+<% this_year = Time.new.to_s.slice(0...4).to_i %>
 
 <% before_events_array = [] %>
 <% current_events_array = [] %>
@@ -63,9 +63,9 @@
       <option value="all-events">イベント一覧</option>
       <option value="my-events">自分の投稿したイベント</option>
       <option value="favorite-events">お気に入りしたイベント</option>
-      <option value="before-events">既に終了したイベント</option>
-      <option value="current-events">現在開催中のイベント</option>
-      <option value="after-events">今後開催されるイベント</option>
+      <option value="before-events"><%= this_year - 1 %>年以前のイベント</option>
+      <option value="current-events"><%= this_year %>年のイベント</option>
+      <option value="after-events"><%= this_year + 1 %>年以降のイベント</option>
     </select>
   </div>
 </div>
@@ -99,9 +99,9 @@
   <% end %>
   <div class="before-events animated bounce" id="frame-of-before-events">
     <% @all_events.each do |event| %>
-      <% ending_date_time = Time.new(event.ending_year, event.ending_month, event.ending_day, event.ending_hour, event.ending_minute) %>
+      <% starting_year = Time.new(event.starting_year).to_s.slice(0...4).to_i %>
 
-      <% if ending_date_time < current_time then %>
+      <% if starting_year < this_year then %>
         <% before_events_array.push(event) %>
         <%= render partial: "partials/events/list", locals: { event: event } %>
       <% end %>
@@ -109,10 +109,9 @@
   </div>
   <div class="current-events animated bounce" id="frame-of-current-events">
     <% @all_events.each do |event| %>
-      <% starting_date_time = Time.new(event.starting_year, event.starting_month, event.starting_day, event.starting_hour, event.starting_minute) %>
-      <% ending_date_time = Time.new(event.ending_year, event.ending_month, event.ending_day, event.ending_hour, event.ending_minute) %>
+      <% starting_year = Time.new(event.starting_year).to_s.slice(0...4).to_i %>
 
-      <% if starting_date_time < current_time && current_time < ending_date_time then %>
+      <% if starting_year == this_year then %>
         <% current_events_array.push(event) %>
         <%= render partial: "partials/events/list", locals: { event: event } %>
       <% end %>
@@ -120,9 +119,9 @@
   </div>
   <div class="after-events animated bounce" id="frame-of-after-events">
     <% @all_events.each do |event| %>
-      <% starting_date_time = Time.new(event.starting_year, event.starting_month, event.starting_day, event.starting_hour, event.starting_minute) %>
+      <% starting_year = Time.new(event.starting_year).to_s.slice(0...4).to_i %>
 
-      <% if current_time < starting_date_time then %>
+      <% if starting_year > this_year then %>
         <% after_events_array.push(event) %>
         <%= render partial: "partials/events/list", locals: { event: event } %>
       <% end %>
