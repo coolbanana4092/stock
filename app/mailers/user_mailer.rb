@@ -3,9 +3,8 @@ class UserMailer < ApplicationMailer
     @user = user
 
     mail(
-      from:    'from@example.com',
-      to:       user.email,
-      subject: 'Password reset'
+      to: user.email,
+      subject: 'パスワードの再設定'
     )
   end
 end
