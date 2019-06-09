@@ -78,6 +78,21 @@
 ********************************/
 
 /** イベント *****************/
+.sp{
+  display: block;
+}
+
+.sp-inline{
+  display: inline;
+}
+
+.pc{
+  display: none;
+}
+
+.pc-inline{
+  display: none;
+}
 
 #events-list-in-japanese{
   margin: 30px;
@@ -105,6 +120,7 @@
     margin: 0;
 
     .segment{
+      padding: 10px;
       font-size: 12px;
 
       .events-list-image{
@@ -149,6 +165,22 @@
 }
 
 @media screen and (min-width: 769px) {
+  .sp{
+    display: none;
+  }
+
+  .sp-inline{
+    display: none;
+  }
+
+  .pc{
+    display: block;
+  }
+
+  .pc-inline{
+    display: inline;
+  }
+
   #events-list-in-japanese{
     margin-bottom: 60px;
   }
@@ -175,11 +207,40 @@
           left: auto;
           right: auto;
         }
+
+        .inside-of-each-event{
+          padding: {
+            top: 20px !important;
+            right: 5px !important;
+            bottom: 20px !important;
+            left: 5px !important;
+          }
+        }
+        .event-name{
+          min-height: 84px !important;
+        }
       }
     }
     .favorite-link-icon,
     .detail-link-icon{
       display: none;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .various-events-list{
+    .all-events,
+    .my-events,
+    .favorite-events,
+    .before-events,
+    .current-events,
+    .after-events{
+      .each-event{
+        .event-name{
+          min-height: 63px !important;
+        }
+      }
     }
   }
 }
