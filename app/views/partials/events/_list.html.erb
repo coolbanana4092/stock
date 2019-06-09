@@ -1,5 +1,9 @@
+<% event_starting_date = event.starting_year + "/" + event.starting_month + "/" + event.starting_day + " " + event.starting_hour + ":" + event.starting_minute %>
+<% event_ending_date = event.ending_year + "/" + event.ending_month + "/" + event.ending_day + " " + event.ending_hour + ":" + event.ending_minute %>
+<% event_date = event_starting_date + " 〜 " + event_ending_date %>
+
 <div class="each-event ui center aligned grid">
-  <div class="fourteen wide column">
+  <div class="inside-of-each-event fourteen wide column">
     <ul class="frame-of-segment">
       <div class="ui left aligned raised segment">
         <% if event.picture? %>
@@ -7,19 +11,23 @@
         <% else %>
           <img class="events-list-image" src="/img/no-image.png">
         <% end %>
-        <li class="event-name"><%= event.name %></li>
+        <li class="sp event-name"><%= event.name.truncate(65, omission: '・・・') %></li>
+        <li class="pc event-name"><%= event.name.truncate(40, omission: '・・・') %></li>
         <li class="event-created-at">投稿日：<%= event.created_at.strftime("%Y/%m/%d") %></li>
         <li class="event-organizer">
           <i class="user icon"></i>
-          <%= event.organizer %>
+          <span class="sp-inline"><%= event.organizer.truncate(15, omission: '・・・') %></span>
+          <span class="pc-inline"><%= event.organizer.truncate(11, omission: '・・・') %></span>
         </li>
         <li class="event-place">
           <i class="map marker alternate icon"></i>
-          <%= event.place %>
+          <span class="sp-inline"><%= event.place.truncate(15, omission: '・・・') %></span>
+          <span class="pc-inline"><%= event.place.truncate(11, omission: '・・・') %></span>
         </li>
         <li class="date">
           <i class="clock outline icon"></i>
-          <%= event.starting_year %>/<%= event.starting_month %>/<%= event.starting_day %> <%= event.starting_hour %>:<%= event.starting_minute %> 〜 <%= event.ending_year %>/<%= event.ending_month %>/<%= event.ending_day %> <%= event.ending_hour %>:<%= event.ending_minute %>
+          <div class="sp-inline"><%= event_date %></div>
+          <div class="pc-inline"><%= event_date %></div>
         </li>
         <div class="ui center aligned grid">
           <div class="six wide column">

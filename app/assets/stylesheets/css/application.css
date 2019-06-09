@@ -395,6 +395,22 @@ footer {
 	イベント一覧
 ********************************/
 /** イベント *****************/
+.sp {
+  display: block;
+}
+
+.sp-inline {
+  display: inline;
+}
+
+.pc {
+  display: none;
+}
+
+.pc-inline {
+  display: none;
+}
+
 #events-list-in-japanese {
   margin: 30px;
   font-weight: bolder;
@@ -415,6 +431,7 @@ footer {
   margin: 0;
 }
 .various-events-list .frame-of-segment .segment {
+  padding: 10px;
   font-size: 12px;
 }
 .various-events-list .frame-of-segment .segment .events-list-image {
@@ -455,6 +472,22 @@ footer {
 }
 
 @media screen and (min-width: 769px) {
+  .sp {
+    display: none;
+  }
+
+  .sp-inline {
+    display: none;
+  }
+
+  .pc {
+    display: block;
+  }
+
+  .pc-inline {
+    display: inline;
+  }
+
   #events-list-in-japanese {
     margin-bottom: 60px;
   }
@@ -482,9 +515,38 @@ footer {
     margin-left: auto;
     margin-right: auto;
   }
+  .various-events-list .all-events .each-event .inside-of-each-event,
+  .various-events-list .my-events .each-event .inside-of-each-event,
+  .various-events-list .favorite-events .each-event .inside-of-each-event,
+  .various-events-list .before-events .each-event .inside-of-each-event,
+  .various-events-list .current-events .each-event .inside-of-each-event,
+  .various-events-list .after-events .each-event .inside-of-each-event {
+    padding-top: 20px !important;
+    padding-right: 5px !important;
+    padding-bottom: 20px !important;
+    padding-left: 5px !important;
+  }
+  .various-events-list .all-events .each-event .event-name,
+  .various-events-list .my-events .each-event .event-name,
+  .various-events-list .favorite-events .each-event .event-name,
+  .various-events-list .before-events .each-event .event-name,
+  .various-events-list .current-events .each-event .event-name,
+  .various-events-list .after-events .each-event .event-name {
+    min-height: 84px !important;
+  }
   .various-events-list .favorite-link-icon,
   .various-events-list .detail-link-icon {
     display: none;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .various-events-list .all-events .each-event .event-name,
+  .various-events-list .my-events .each-event .event-name,
+  .various-events-list .favorite-events .each-event .event-name,
+  .various-events-list .before-events .each-event .event-name,
+  .various-events-list .current-events .each-event .event-name,
+  .various-events-list .after-events .each-event .event-name {
+    min-height: 63px !important;
   }
 }
 /** イベントをふわっと出す *****/
