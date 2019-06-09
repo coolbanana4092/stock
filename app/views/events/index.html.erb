@@ -140,7 +140,7 @@
 <a href="#" class="back-to-top">▲</a>
 
 <script>
-  (function() {
+  $(function() {
     if($.cookie('btnFlg') !== 'on') {
       $('.ui.modal')
         .modal('show')
@@ -150,8 +150,7 @@
     $(".actions .ui.grid .column .button").click(function(){
       $.cookie('btnFlg', 'on', { expires: 30,path: '/' });
     });
-  })();
-
+  });
   (function() {
     $('.carousel-image').slick({
       asNavFor: '.carousel-explanation',
