@@ -1,3 +1,6 @@
+<% now = Time.new %>
+<% date_of_post = event.created_at %>
+
 <% event_starting_date = event.starting_year + "/" + event.starting_month + "/" + event.starting_day + " " + event.starting_hour + ":" + event.starting_minute %>
 <% event_ending_date = event.ending_year + "/" + event.ending_month + "/" + event.ending_day + " " + event.ending_hour + ":" + event.ending_minute %>
 <% event_date = event_starting_date + " 〜 " + event_ending_date %>
@@ -6,6 +9,9 @@
   <div class="inside-of-each-event fourteen wide column">
     <ul class="frame-of-segment">
       <div class="ui left aligned raised segment">
+        <% if (now - date_of_post) < 1.week %>
+          <div class="new_events"></div>
+        <% end %>
         <% if event.picture? %>
           <%= image_tag event.picture.url, :class => "events-list-image" %>
         <% else %>
