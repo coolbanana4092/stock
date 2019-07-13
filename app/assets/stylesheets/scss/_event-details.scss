@@ -23,15 +23,24 @@
     #event-created-or-updated-date{
       margin-bottom: 5px;
     }
+    .subheading-of-event-details{
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    .after-display-sentence,
+    .close-see-more{
+      display: none;
+    }
+    .see-more,
+    .close-see-more{
+      margin-top: 15px;
+      color: black !important;
+    }
     #event-place{
       margin-bottom: 20px;
     }
     #event-price{
       margin-bottom: 20px;
-    }
-    .subheading-of-event-details{
-      margin-bottom: 10px;
-      font-size: 18px;
     }
   }
 }
