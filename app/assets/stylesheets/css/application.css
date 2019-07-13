@@ -900,15 +900,24 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
 .ui.grid .fourteen.wide.column #event-created-or-updated-date {
   margin-bottom: 5px;
 }
+.ui.grid .fourteen.wide.column .subheading-of-event-details {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.ui.grid .fourteen.wide.column .after-display-sentence,
+.ui.grid .fourteen.wide.column .close-see-more {
+  display: none;
+}
+.ui.grid .fourteen.wide.column .see-more,
+.ui.grid .fourteen.wide.column .close-see-more {
+  margin-top: 15px;
+  color: black !important;
+}
 .ui.grid .fourteen.wide.column #event-place {
   margin-bottom: 20px;
 }
 .ui.grid .fourteen.wide.column #event-price {
   margin-bottom: 20px;
-}
-.ui.grid .fourteen.wide.column .subheading-of-event-details {
-  margin-bottom: 10px;
-  font-size: 18px;
 }
 
 #event-detail-page-map {

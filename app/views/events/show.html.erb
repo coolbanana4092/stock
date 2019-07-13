@@ -18,7 +18,7 @@
     </div>
     <div class="ui divider"></div>
     <div class="subheading-of-event-details">イベント詳細</div>
-    <div id="event-content">
+    <div class="event-content" id="event-content">
       <%= @event.content %>
     </div>
     <div class="ui divider"></div>
@@ -49,7 +49,7 @@
     </div>
     <div class="ui divider"></div>
     <div class="subheading-of-event-details">注意点</div>
-    <div id="event-cautionary-note">
+    <div class="event-cautionary-note" id="event-cautionary-note">
       <%= @event.cautionary_note %>
     </div>
     <div class="ui divider"></div>
@@ -111,5 +111,95 @@
         }
       }
     );
+  })();
+
+  <%# 以下の2つの関数の共通部分以外を引数で表現して定義した関数の引数に、
+  使用時の引数を代入した状態でこの関数を使用できなかったため(定義時の引数がそのまま使われてしまっている状態)、
+  JavaScriptによって作成されるHTMLの要素1パターンしか出来ず、
+  2回目以降にはこの関数を使用しても効果がない状態になってしまっているため、
+  冗長ではあるが、以下の2つの関数をまとめずにそれぞれ分けて記すことで対応させた。
+  (原因はJavaScriptによって作成された要素が''で囲まれているからということが判明した) %>
+  (function(){
+    var eventContent = document.getElementsByClassName('event-content').item(0);
+    var sentence= eventContent.innerHTML;
+    var alwaysDisplaySentence = sentence.substr(0,300);
+    var afterDisplaySentence = sentence.substr(300);
+
+    if (afterDisplaySentence != '') {
+      eventContent.innerHTML = alwaysDisplaySentence
+        + '<span id="content-continue-icon">'
+        + '・・・'
+        + '</span>'
+        + '<span class="after-display-sentence" id="content-after-display-sentence">'
+        + afterDisplaySentence
+        + '</span>'
+        + '<div class="see-more ui bottom attached basic button" id="content-see-more" tabindex="0">'
+        + 'もっと見る'
+        + '</div>'
+        + '<div class="close-see-more ui bottom attached basic button" id="content-close-see-more" tabindex="0">'
+        + '閉じる'
+        + '</div>'
+
+      var continueIcon = document.getElementById("content-continue-icon")
+      var seeMoreContent = document.getElementById("content-after-display-sentence")
+      var seeMoreButton = document.getElementById("content-see-more")
+      var closeButton = document.getElementById("content-close-see-more")
+
+      seeMoreButton.onclick = function() {
+        continueIcon.style.display = "none"
+        seeMoreContent.style.display = "inline"
+        seeMoreButton.style.display = "none"
+        closeButton.style.display = "block"
+      };
+
+      closeButton.onclick = function() {
+        continueIcon.style.display = "inline"
+        seeMoreContent.style.display = "none"
+        seeMoreButton.style.display = "block"
+        closeButton.style.display = "none"
+      };
+    }
+  })();
+
+  (function(){
+    var eventCautionaryNote = document.getElementsByClassName('event-cautionary-note').item(0);
+    var sentence= eventCautionaryNote.innerHTML;
+    var alwaysDisplaySentence = sentence.substr(0,300);
+    var afterDisplaySentence = sentence.substr(300);
+
+    if(afterDisplaySentence != ''){
+      eventCautionaryNote.innerHTML = alwaysDisplaySentence
+        + '<span id="cautionary-note-continue-icon">'
+        + '・・・'
+        + '</span>'
+        + '<span class="after-display-sentence" id="cautionary-note-after-display-sentence">'
+        + afterDisplaySentence
+        + '</span>'
+        + '<div class="see-more ui bottom attached basic button" id="cautionary-note-see-more" tabindex="0">'
+        + 'もっと見る'
+        + '</div>'
+        + '<div class="close-see-more ui bottom attached basic button" id="cautionary-note-close-see-more" tabindex="0">'
+        + '閉じる'
+        + '</div>'
+
+      var continueIcon = document.getElementById("cautionary-note-continue-icon")
+      var seeMoreContent = document.getElementById("cautionary-note-after-display-sentence")
+      var seeMoreButton = document.getElementById("cautionary-note-see-more")
+      var closeButton = document.getElementById("cautionary-note-close-see-more")
+
+      seeMoreButton.onclick = function() {
+        continueIcon.style.display = "none"
+        seeMoreContent.style.display = "inline"
+        seeMoreButton.style.display = "none"
+        closeButton.style.display = "block"
+      };
+
+      closeButton.onclick = function() {
+        continueIcon.style.display = "inline"
+        seeMoreContent.style.display = "none"
+        seeMoreButton.style.display = "block"
+        closeButton.style.display = "none"
+      };
+    }
   })();
 </script>
