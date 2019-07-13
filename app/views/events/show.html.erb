@@ -50,7 +50,7 @@
     <div class="ui divider"></div>
     <div class="subheading-of-event-details">注意点</div>
     <div class="event-cautionary-note" id="event-cautionary-note">
-      <%= @event.cautionary_note %>
+      <%= @event.cautionary_note.empty? ? "なし" : @event.cautionary_note %>
     </div>
     <div class="ui divider"></div>
   </div>
