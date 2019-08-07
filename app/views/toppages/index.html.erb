@@ -1,4 +1,4 @@
-<div class="ui center aligned grid">
+<div class="ui center aligned grid" id="toppage">
   <div class="fourteen wide column" id="what-is-this-application">
     <h2>EventNavi とは</h2>
   </div>
@@ -66,9 +66,9 @@
   <div class="fourteen wide columm" id="search-address">
     <div class="item">
       <div class="ui icon input">
-        <input type="text" name="address" placeholder="例：東京都渋谷区">
+        <input id="address" type="text" name="address" placeholder="例：東京都渋谷区">
         <i class="search link icon"></i>
-        <input type="button" id="search" value="検索">
+        <input type="button" id="search" value="検索" @click="search">
       </div>
     </div>
   </div>
@@ -87,86 +87,78 @@
   var geocoder = new google.maps.Geocoder();
   var markerDataArray = [];
 
-  function addInfowindowToMarker(i) {
-    marker[i].addListener('click', function() {
-      if (currentInfoWindow) {
-        currentInfoWindow.close();
-      }
+  new Vue({
+    el: "#toppage",
+    methods: {
+      search: function() {
+        var inputAddress = document.getElementById("address").value;
 
-      infoWindow[i].open(map, marker[i]);
-      currentInfoWindow = infoWindow[i];
-    });
-  }
-
-  (function() {
-    <% @events.each do |event| %>
-      var mapLatLng;
-      var pos;
-      var markerLatLng;
-      var markerData;
-
-      geocoder.geocode({
-        'address': '<%= event.place %>',
-        'region': 'jp'
-      },function (results, status) {
-          if (status === 'OK' && results[0]){
-            mapLatLng = new google.maps.LatLng(35.681236,139.767125);
-            pos = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
-            markerData = [
-              {
-                name: '<%= event.name %>',
-                place: '<%= event.place %>',
-                lat: pos.lat(),
-                lng: pos.lng(),
-              }
-            ];
-            map = new google.maps.Map(document.getElementById('toppage-map'), {
-              center: mapLatLng,
-              zoom: 10,
-              mapTypeControl: false,
-              streetViewControl: false,
-              fullscreenControl: false,
-            });
-
-            markerDataArray.push(markerData);
-
-            for (var i = 0; i < markerDataArray.length; i++) {
-              var markerLatLng = new google.maps.LatLng({lat: markerDataArray[i][0].lat, lng: markerDataArray[i][0].lng});
-              marker[i] = new google.maps.Marker({
-                map: map,
-                position: markerLatLng
-              });
-
-              infoWindow[i] = new google.maps.InfoWindow({
-                content: '<div class="marker_name">' + markerDataArray[i][0].name + '</div>'
-                          + '<div class="marker_place">' + markerDataArray[i][0].place + '</div>'
-              });
-
-              // addInfowindowToMarker(i)の中身をこの部分に代入するとなぜかエラーが出てしまい
-              // そのエラーが解決できないので今は関数を2つに分けてある。
-              addInfowindowToMarker(i);
+        geocoder.geocode({
+          'address': inputAddress,
+          'region': 'jp'
+        },function (results, status) {
+            if (status === 'OK' && results[0]) {
+              map.setCenter(results[0].geometry.location);
+            } else {
+              alert('住所検索に失敗しました。住所が正しいか確認してください');
             }
-          }else{
-            alert('失敗しました。理由: ' + status);
           }
-        }
-      );
-    <% end %>
-  })();
+        );
+      },
+      showMap: function() {
+        <% @events.each do |event| %>
+          var mapLatLng;
+          var pos;
+          var markerLatLng;
+          var markerData;
 
-  $('#search').click(function () {
-    var inputAddress = $('[name = address]').val();
+          geocoder.geocode({
+            'address': '<%= event.place %>',
+            'region': 'jp'
+          },function (results, status) {
+              if (status === 'OK' && results[0]){
+                mapLatLng = new google.maps.LatLng(35.681236,139.767125);
+                pos = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                markerData = [
+                  {
+                    name: '<%= event.name %>',
+                    place: '<%= event.place %>',
+                    lat: pos.lat(),
+                    lng: pos.lng(),
+                  }
+                ];
+                map = new google.maps.Map(document.getElementById('toppage-map'), {
+                  center: mapLatLng,
+                  zoom: 10,
+                  mapTypeControl: false,
+                  streetViewControl: false,
+                  fullscreenControl: false,
+                });
 
-    geocoder.geocode({
-      'address': inputAddress,
-      'region': 'jp'
-    },function (results, status) {
-        if (status === 'OK' && results[0]) {
-          map.setCenter(results[0].geometry.location);
-        } else {
-          alert('住所検索に失敗しました。住所が正しいか確認してください');
-        }
+                markerDataArray.push(markerData);
+
+                for (var i = 0; i < markerDataArray.length; i++) {
+                  var markerLatLng = new google.maps.LatLng({lat: markerDataArray[i][0].lat, lng: markerDataArray[i][0].lng});
+                  marker[i] = new google.maps.Marker({
+                    map: map,
+                    position: markerLatLng
+                  });
+
+                  infoWindow[i] = new google.maps.InfoWindow({
+                    content: '<div class="marker_name">' + markerDataArray[i][0].name + '</div>'
+                              + '<div class="marker_place">' + markerDataArray[i][0].place + '</div>'
+                  });
+                }
+              }else{
+                alert('失敗しました。理由: ' + status);
+              }
+            }
+          );
+        <% end %>
       }
-    );
-  });
+    },
+    mounted: function() {
+      window.addEventListener('load', this.showMap, false)
+    },
+  })
 </script>
