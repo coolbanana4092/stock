@@ -1,188 +1,197 @@
-<div class="field">
+<div id="event-form">
+  <div class="field">
+    <div class="ui left aligned grid">
+      <div class="sixteen wide column">
+        <%= f.label :name, 'イベント名' %>
+      </div>
+    </div>
+    <div class="ui left icon huge input">
+      <%= f.text_field :name, :placeholder => "例：サッカー大会" %>
+      <i class="file alternate icon"></i>
+    </div>
+  </div>
+  <div class="field">
+    <div class="ui left aligned grid">
+      <div class="sixteen wide column">
+        <%= f.label :genre, 'ジャンル' %>
+      </div>
+    </div>
+    <div class="ui left icon huge input">
+      <%= f.text_field :genre, :placeholder => "例：スポーツ" %>
+      <i class="list icon"></i>
+    </div>
+  </div>
+  <div class="field">
+    <div class="ui left aligned grid">
+      <div class="sixteen wide column">
+        <%= f.label :organizer, '主催者' %>
+      </div>
+    </div>
+    <div class="ui left icon huge input">
+      <%= f.text_field :organizer, :placeholder => "例：愛知県高浜市" %>
+      <i class="user icon"></i>
+    </div>
+  </div>
+  <div class="field">
+    <div class="ui left aligned grid">
+      <div class="sixteen wide column">
+        <%= f.label :place, '開催場所' %>
+      </div>
+    </div>
+    <div class="ui left icon huge input">
+      <%= f.text_field :place, :placeholder => "例：高浜小学校" %>
+      <i class="map marker alternate icon"></i>
+    </div>
+  </div>
+  <div class="field">
+    <div class="ui left aligned grid">
+      <div class="sixteen wide column">
+        <%= f.label :ticket_name, 'チケット名' %>
+      </div>
+    </div>
+    <div class="ui left icon huge input">
+      <%= f.text_field :ticket_name, :placeholder => "例：大人" %>
+      <i class="ticket alternate icon"></i>
+    </div>
+  </div>
+  <div class="field">
+    <div class="ui left aligned grid">
+      <div class="sixteen wide column" id="frame-of-price">
+        <%= f.label :price, '料金' %>
+      </div>
+    </div>
+    <div class="ui left aligned middle aligned grid">
+      <div class="frame-of-input-price fourteen wide column">
+        <div class="input-price ui left icon huge input">
+          <%= f.text_field :price, :placeholder => "例：1000" %>
+          <i class="yen sign icon"></i>
+        </div>
+      </div>
+      <div class="yen-in-japanese center aligned column">円</div>
+    </div>
+  </div>
   <div class="ui left aligned grid">
-    <div class="sixteen wide column">
-      <%= f.label :name, 'イベント名' %>
+    <div class="sixteen wide column">開始日時</div>
+  </div>
+  <div class="field">
+    <div class="ui left aligned middle aligned grid">
+      <div class="frame-of-input-date five wide column">
+        <div class="input-year ui huge input">
+          <%= f.text_field :starting_year, :class => "input-event-date", :placeholder => "2019" %>
+        </div>
+      </div>
+      <div class="date-in-japanese center aligned column">年</div>
+      <div class="frame-of-input-date four wide column">
+        <div class="input-month ui huge input">
+          <%= f.text_field :starting_month, :class => "input-event-date", :placeholder => "1" %>
+        </div>
+      </div>
+      <div class="date-in-japanese center aligned column">月</div>
+      <div class="frame-of-input-date four wide column">
+        <div class="input-day ui huge input">
+          <%= f.text_field :starting_day, :class => "input-event-date", :placeholder => "21" %>
+        </div>
+      </div>
+      <div class="date-in-japanese center aligned column">日</div>
+    </div>
+    <div class="ui left aligned middle aligned grid">
+      <div class="frame-of-input-date five wide column">
+        <div class="input-hour ui huge input">
+          <%= f.text_field :starting_hour, :class => "input-event-date", :placeholder => "13" %>
+        </div>
+      </div>
+      <div class="date-in-japanese center aligned column">時</div>
+      <div class="frame-of-input-date four wide column">
+        <div class="input-minute ui huge input">
+          <%= f.text_field :starting_minute, :class => "input-event-date", :placeholder => "30" %>
+        </div>
+      </div>
+      <div class="date-in-japanese center aligned column">分</div>
     </div>
   </div>
-  <div class="ui left icon huge input">
-    <%= f.text_field :name, :placeholder => "例：サッカー大会" %>
-    <i class="file alternate icon"></i>
-  </div>
-</div>
-<div class="field">
   <div class="ui left aligned grid">
-    <div class="sixteen wide column">
-      <%= f.label :genre, 'ジャンル' %>
+    <div class="sixteen wide column">終了日時</div>
+  </div>
+  <div class="field">
+    <div class="ui left aligned middle aligned grid">
+      <div class="frame-of-input-date five wide column">
+        <div class="input-year ui huge input">
+          <%= f.text_field :ending_year, :class => "input-event-date", :placeholder => "2019" %>
+        </div>
+      </div>
+      <div class="date-in-japanese center aligned column">年</div>
+      <div class="frame-of-input-date four wide column">
+        <div class="input-month ui huge input">
+          <%= f.text_field :ending_month, :class => "input-event-date", :placeholder => "1" %>
+        </div>
+      </div>
+      <div class="date-in-japanese center aligned column">月</div>
+      <div class="frame-of-input-date four wide column">
+        <div class="input-day ui huge input">
+          <%= f.text_field :ending_day, :class => "input-event-date", :placeholder => "21" %>
+        </div>
+      </div>
+      <div class="date-in-japanese center aligned column">日</div>
+    </div>
+    <div class="ui left aligned middle aligned grid">
+      <div class="frame-of-input-date five wide column">
+        <div class="input-hour ui huge input">
+          <%= f.text_field :ending_hour, :class => "input-event-date", :placeholder => "15" %>
+        </div>
+      </div>
+      <div class="date-in-japanese center aligned column">時</div>
+      <div class="frame-of-input-date four wide column">
+        <div class="input-minute ui huge input">
+          <%= f.text_field :ending_minute, :class => "input-event-date", :placeholder => "00" %>
+        </div>
+      </div>
+      <div class="date-in-japanese center aligned column">分</div>
     </div>
   </div>
-  <div class="ui left icon huge input">
-    <%= f.text_field :genre, :placeholder => "例：スポーツ" %>
-    <i class="list icon"></i>
-  </div>
-</div>
-<div class="field">
-  <div class="ui left aligned grid">
-    <div class="sixteen wide column">
-      <%= f.label :organizer, '主催者' %>
-    </div>
-  </div>
-  <div class="ui left icon huge input">
-    <%= f.text_field :organizer, :placeholder => "例：愛知県高浜市" %>
-    <i class="user icon"></i>
-  </div>
-</div>
-<div class="field">
-  <div class="ui left aligned grid">
-    <div class="sixteen wide column">
-      <%= f.label :place, '開催場所' %>
-    </div>
-  </div>
-  <div class="ui left icon huge input">
-    <%= f.text_field :place, :placeholder => "例：高浜小学校" %>
-    <i class="map marker alternate icon"></i>
-  </div>
-</div>
-<div class="field">
-  <div class="ui left aligned grid">
-    <div class="sixteen wide column">
-      <%= f.label :ticket_name, 'チケット名' %>
-    </div>
-  </div>
-  <div class="ui left icon huge input">
-    <%= f.text_field :ticket_name, :placeholder => "例：大人" %>
-    <i class="ticket alternate icon"></i>
-  </div>
-</div>
-<div class="field">
-  <div class="ui left aligned grid">
-    <div class="sixteen wide column" id="frame-of-price">
-      <%= f.label :price, '料金' %>
-    </div>
-  </div>
-  <div class="ui left aligned middle aligned grid">
-    <div class="frame-of-input-price fourteen wide column">
-      <div class="input-price ui left icon huge input">
-        <%= f.text_field :price, :placeholder => "例：1000" %>
-        <i class="yen sign icon"></i>
+  <div class="field">
+    <div class="ui left aligned grid">
+      <div class="sixteen wide column">
+        <%= f.label :content, '詳細なイベント内容' %>
       </div>
     </div>
-    <div class="yen-in-japanese center aligned column">円</div>
-  </div>
-</div>
-<div class="ui left aligned grid">
-  <div class="sixteen wide column">開始日時</div>
-</div>
-<div class="field">
-  <div class="ui left aligned middle aligned grid">
-    <div class="frame-of-input-date five wide column">
-      <div class="input-year ui huge input">
-        <%= f.text_field :starting_year, :class => "input-event-date", :placeholder => "2019" %>
-      </div>
-    </div>
-    <div class="date-in-japanese center aligned column">年</div>
-    <div class="frame-of-input-date four wide column">
-      <div class="input-month ui huge input">
-        <%= f.text_field :starting_month, :class => "input-event-date", :placeholder => "1" %>
-      </div>
-    </div>
-    <div class="date-in-japanese center aligned column">月</div>
-    <div class="frame-of-input-date four wide column">
-      <div class="input-day ui huge input">
-        <%= f.text_field :starting_day, :class => "input-event-date", :placeholder => "21" %>
-      </div>
-    </div>
-    <div class="date-in-japanese center aligned column">日</div>
-  </div>
-  <div class="ui left aligned middle aligned grid">
-    <div class="frame-of-input-date five wide column">
-      <div class="input-hour ui huge input">
-        <%= f.text_field :starting_hour, :class => "input-event-date", :placeholder => "13" %>
-      </div>
-    </div>
-    <div class="date-in-japanese center aligned column">時</div>
-    <div class="frame-of-input-date four wide column">
-      <div class="input-minute ui huge input">
-        <%= f.text_field :starting_minute, :class => "input-event-date", :placeholder => "30" %>
-      </div>
-    </div>
-    <div class="date-in-japanese center aligned column">分</div>
-  </div>
-</div>
-<div class="ui left aligned grid">
-  <div class="sixteen wide column">終了日時</div>
-</div>
-<div class="field">
-  <div class="ui left aligned middle aligned grid">
-    <div class="frame-of-input-date five wide column">
-      <div class="input-year ui huge input">
-        <%= f.text_field :ending_year, :class => "input-event-date", :placeholder => "2019" %>
-      </div>
-    </div>
-    <div class="date-in-japanese center aligned column">年</div>
-    <div class="frame-of-input-date four wide column">
-      <div class="input-month ui huge input">
-        <%= f.text_field :ending_month, :class => "input-event-date", :placeholder => "1" %>
-      </div>
-    </div>
-    <div class="date-in-japanese center aligned column">月</div>
-    <div class="frame-of-input-date four wide column">
-      <div class="input-day ui huge input">
-        <%= f.text_field :ending_day, :class => "input-event-date", :placeholder => "21" %>
-      </div>
-    </div>
-    <div class="date-in-japanese center aligned column">日</div>
-  </div>
-  <div class="ui left aligned middle aligned grid">
-    <div class="frame-of-input-date five wide column">
-      <div class="input-hour ui huge input">
-        <%= f.text_field :ending_hour, :class => "input-event-date", :placeholder => "15" %>
-      </div>
-    </div>
-    <div class="date-in-japanese center aligned column">時</div>
-    <div class="frame-of-input-date four wide column">
-      <div class="input-minute ui huge input">
-        <%= f.text_field :ending_minute, :class => "input-event-date", :placeholder => "00" %>
-      </div>
-    </div>
-    <div class="date-in-japanese center aligned column">分</div>
-  </div>
-</div>
-<div class="field">
-  <div class="ui left aligned grid">
-    <div class="sixteen wide column">
-      <%= f.label :content, '詳細なイベント内容' %>
+    <div class="ui huge input">
+      <%= f.text_area :content, :placeholder => "例：サッカー大会をします。優勝チームには商品があります。" %>
     </div>
   </div>
-  <div class="ui huge input">
-    <%= f.text_area :content, :placeholder => "例：サッカー大会をします。優勝チームには商品があります。" %>
-  </div>
-</div>
-<div class="field">
-  <div class="ui left aligned grid">
-    <div class="sixteen wide column">
-      <%= f.label :cautionary_note, '注意点' %>
+  <div class="field">
+    <div class="ui left aligned grid">
+      <div class="sixteen wide column">
+        <%= f.label :cautionary_note, '注意点' %>
+      </div>
+    </div>
+    <div class="ui huge input">
+      <%= f.text_area :cautionary_note, :placeholder => "例：最低でも11人集めてエントリーしてください。" %>
     </div>
   </div>
-  <div class="ui huge input">
-    <%= f.text_area :cautionary_note, :placeholder => "例：最低でも11人集めてエントリーしてください。" %>
-  </div>
-</div>
-<div class="field">
-  <div class="ui left aligned grid">
-    <div class="sixteen wide column">
-      <%= f.label :picture, 'イベント画像' %>
-    </div>
-    <div class="event-picture wide column">
-      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+  <div class="field">
+    <div class="ui left aligned grid">
+      <div class="sixteen wide column">
+        <%= f.label :picture, 'イベント画像' %>
+      </div>
+      <div class="event-picture wide column">
+        <input id="event_picture" accept="image/jpeg,image/gif,image/png" type="file" name="event[picture]" @change="checkFileSize">
+      </div>
     </div>
   </div>
 </div>
 
 <script>
-  $('#event_picture').bind('change', function() {
-    var size_in_megabytes = this.files[0].size/1024/1024;
-    if (size_in_megabytes > 5) {
-      alert("ファイルサイズは最大で5MBまでです。それよりも小さいファイルを選択してください。");
-    }
-  });
+  new Vue({
+    el: "#event-form",
+    methods: {
+      checkFileSize: function() {
+        var eventPicture = document.getElementById("event_picture")
+        var eventPictureSizeInMegabytes = eventPicture.files[0].size/1024/1024;
+
+        if (eventPictureSizeInMegabytes > 5) {
+          alert("ファイルサイズは最大で5MBまでです。それよりも小さいファイルを選択してください。");
+        }
+      },
+    },
+  })
 </script>
