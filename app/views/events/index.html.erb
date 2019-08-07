@@ -4,69 +4,70 @@
 
 <% this_year = Time.new.to_s.slice(0...4).to_i %>
 
-<div class="ui modal">
-  <div id="modal-header">このアプリの使い方</div>
-  <div class="ui center aligned grid" id="frame-of-carousel-image">
-    <div class="carousel-image content center aligned fourteen wide column">
-      <img class="operation-image" src="/img/no-image2.png"/>
-      <img class="operation-image" src="/img/no-image2.png"/>
-      <img class="operation-image" src="/img/no-image2.png"/>
-      <img class="operation-image" src="/img/no-image2.png"/>
-      <img class="operation-image" src="/img/no-image2.png"/>
+<div id="events-list">
+  <div class="ui modal">
+    <div id="modal-header">このアプリの使い方</div>
+    <div class="ui center aligned grid" id="frame-of-carousel-image">
+      <div class="carousel-image content center aligned fourteen wide column">
+        <img class="operation-image" src="/img/no-image2.png"/>
+        <img class="operation-image" src="/img/no-image2.png"/>
+        <img class="operation-image" src="/img/no-image2.png"/>
+        <img class="operation-image" src="/img/no-image2.png"/>
+        <img class="operation-image" src="/img/no-image2.png"/>
+      </div>
     </div>
-  </div>
-  <div class="ui center aligned grid">
-    <div class="carousel-explanation content left aligned fourteen wide column">
-      <p>イベントを投稿したい場合は "イベント投稿" をタップします。</p>
-      <p>イベントの詳細を入力して投稿ボタンを押すとイベントを投稿できます。</p>
-      <p>様々なイベントの表示する場合は "イベント一覧" をタップします。</p>
-      <p>イベントの表示方法は画面内のセレクトボックスから変更できます。</p>
-      <p>あるイベントの詳細情報を知りたい場合は、そのイベントの詳細ボタンをタップしましょう。</p>
-    </div>
-  </div>
-  <div class="slick-dotted ui center aligned grid">
-    <ul class="slick-dots" id="original-dots"></ul>
-  </div>
-  <div class="actions">
     <div class="ui center aligned grid">
-      <div class="center aligned seven wide column">
-        <button class="ui fluid red button">
-          OK
-        </button>
+      <div class="carousel-explanation content left aligned fourteen wide column">
+        <p>イベントを投稿したい場合は "イベント投稿" をタップします。</p>
+        <p>イベントの詳細を入力して投稿ボタンを押すとイベントを投稿できます。</p>
+        <p>様々なイベントの表示する場合は "イベント一覧" をタップします。</p>
+        <p>イベントの表示方法は画面内のセレクトボックスから変更できます。</p>
+        <p>あるイベントの詳細情報を知りたい場合は、そのイベントの詳細ボタンをタップしましょう。</p>
+      </div>
+    </div>
+    <div class="slick-dotted ui center aligned grid">
+      <ul class="slick-dots" id="original-dots"></ul>
+    </div>
+    <div class="actions">
+      <div class="ui center aligned grid">
+        <div class="center aligned seven wide column">
+          <button class="ui fluid red button">
+            OK
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<div class="ui center aligned grid">
-  <div class="fourteen wide column">
-    <div id="events-list-in-japanese">イベント一覧</div>
-  </div>
-</div>
-<div class="ui center aligned grid" id="search-events">
-  <div class="fourteen wide columm">
-    <div class="item">
-      <form action="/events" accept-charset="UTF-8" method="get">
-        <div class="ui icon input">
-          <input name="utf8" type="hidden" value="✓">
-          <input type="text" name="search" placeholder="例：デザイン">
-          <i class="search link icon"></i>
-          <input type="submit" value="検索">
-        </div>
-      </form>
+  <div class="ui center aligned grid">
+    <div class="fourteen wide column">
+      <div id="events-list-in-japanese">イベント一覧</div>
     </div>
   </div>
-</div>
-<div class="ui center aligned grid">
-  <div class="right aligned fourteen wide column" id="select-box">
-    <select class="select-box-show-events">
-      <option value="all-events">イベント一覧</option>
-      <option value="my-events">自分の投稿したイベント</option>
-      <option value="favorite-events">お気に入りしたイベント</option>
-      <option value="before-events"><%= this_year - 1 %>年以前のイベント</option>
-      <option value="current-events"><%= this_year %>年のイベント</option>
-      <option value="after-events"><%= this_year + 1 %>年以降のイベント</option>
-    </select>
+  <div class="ui center aligned grid" id="search-events">
+    <div class="fourteen wide columm">
+      <div class="item">
+        <form action="/events" accept-charset="UTF-8" method="get">
+          <div class="ui icon input">
+            <input name="utf8" type="hidden" value="✓">
+            <input type="text" name="search" placeholder="例：デザイン">
+            <i class="search link icon"></i>
+            <input type="submit" value="検索">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="ui center aligned grid">
+    <div class="right aligned fourteen wide column" id="select-box">
+      <select class="select-box-show-events" v-eventchange>
+        <option value="all-events">イベント一覧</option>
+        <option value="my-events">自分の投稿したイベント</option>
+        <option value="favorite-events">お気に入りしたイベント</option>
+        <option value="before-events"><%= this_year - 1 %>年以前のイベント</option>
+        <option value="current-events"><%= this_year %>年のイベント</option>
+        <option value="after-events"><%= this_year + 1 %>年以降のイベント</option>
+      </select>
+    </div>
   </div>
 </div>
 <div class="various-events-list">
@@ -140,6 +141,86 @@
 <a href="#" class="back-to-top">▲</a>
 
 <script>
+  // オプションのelの要素(今回でいうとHTMLの#events-list)の中に、HTMLの.various-events-listの要素を含めると、
+  // なぜか以下の関数が動かなくなってしまうため、#events-listの中に.various-events-listは含めていない。
+  // オプションのelの要素(今回でいうとHTMLの#events-list)に含めていない部分(今回でいうと.various-events-list)は、仕方なくjQueryを用いて実装することにした。
+  var vm = new Vue({
+    el: "#events-list",
+    methods: {
+      selectDisplay: function(className, display) {
+        var elements = document.getElementsByClassName(className);
+        for(i=0;i<elements.length;i++){
+          elements[i].style.display = display;
+        }
+      },
+      initialDisplay: function() {
+        this.selectDisplay("all-events", "block")
+        this.selectDisplay("my-events", "none")
+        this.selectDisplay("favorite-events", "none")
+        this.selectDisplay("before-events", "none")
+        this.selectDisplay("current-events", "none")
+        this.selectDisplay("after-events", "none")
+      },
+    },
+    mounted: function() {
+      window.addEventListener('load', this.initialDisplay, false)
+    },
+    directives: {
+      eventchange: {
+        bind: function (el) {
+          el.addEventListener("change", function() {
+            var selectBoxVal = el.value;
+            if(selectBoxVal == "all-events"){
+              vm.selectDisplay("all-events", "block")
+              vm.selectDisplay("my-events", "none")
+              vm.selectDisplay("favorite-events", "none")
+              vm.selectDisplay("before-events", "none")
+              vm.selectDisplay("current-events", "none")
+              vm.selectDisplay("after-events", "none")
+            }else if(selectBoxVal == "my-events") {
+              vm.selectDisplay("all-events", "none")
+              vm.selectDisplay("my-events", "block")
+              vm.selectDisplay("favorite-events", "none")
+              vm.selectDisplay("before-events", "none")
+              vm.selectDisplay("current-events", "none")
+              vm.selectDisplay("after-events", "none")
+            }else if(selectBoxVal == "favorite-events") {
+              vm.selectDisplay("all-events", "none")
+              vm.selectDisplay("my-events", "none")
+              vm.selectDisplay("favorite-events", "block")
+              vm.selectDisplay("before-events", "none")
+              vm.selectDisplay("current-events", "none")
+              vm.selectDisplay("after-events", "none")
+            }else if(selectBoxVal == "before-events") {
+              vm.selectDisplay("all-events", "none")
+              vm.selectDisplay("my-events", "none")
+              vm.selectDisplay("favorite-events", "none")
+              vm.selectDisplay("before-events", "block")
+              vm.selectDisplay("current-events", "none")
+              vm.selectDisplay("after-events", "none")
+            }else if(selectBoxVal == "current-events") {
+              vm.selectDisplay("all-events", "none")
+              vm.selectDisplay("my-events", "none")
+              vm.selectDisplay("favorite-events", "none")
+              vm.selectDisplay("before-events", "none")
+              vm.selectDisplay("current-events", "block")
+              vm.selectDisplay("after-events", "none")
+            }else if(selectBoxVal == "after-events") {
+              vm.selectDisplay("all-events", "none")
+              vm.selectDisplay("my-events", "none")
+              vm.selectDisplay("favorite-events", "none")
+              vm.selectDisplay("before-events", "none")
+              vm.selectDisplay("current-events", "none")
+              vm.selectDisplay("after-events", "block")
+            }
+          });
+        }
+      }
+    }
+  })
+
+// 上記の通り、なぜかオプションのelの中に.various-events-listを含めることが出来ないため、
+// Vue.jsで実装出来ていない部分は仕方なくjQueryを使用して実装した。
   $(function() {
     if($.cookie('btnFlg') !== 'on') {
       $('.ui.modal')
@@ -151,6 +232,7 @@
       $.cookie('btnFlg', 'on', { expires: 30,path: '/' });
     });
   });
+
   (function() {
     $('.carousel-image').slick({
       asNavFor: '.carousel-explanation',
@@ -171,25 +253,17 @@
       handler: function(direction) {
         if (direction === "down") {
           $(this.element).addClass("fadeInUp");
-
           this.destroy();
         }
       },
-
       offset: "100%"
     });
   })();
 
   (function() {
-    function displaySwitching() {
-      if ($(this).scrollTop() >= 300) {
-        $(".back-to-top").fadeIn();
-      } else {
-        $(".back-to-top").fadeOut();
-      }
-    }
-
-    $(window).scroll(displaySwitching);
+    $(window).scroll(function() {
+      $(this).scrollTop() >= 150 ? $(".back-to-top").fadeIn() : $(".back-to-top").fadeOut()
+    });
 
     $(".back-to-top").click(function() {
       $("html, body").animate({
@@ -197,63 +271,7 @@
       },
         600
       );
-
       return false;
     });
   })();
-
-  $(".select-box-show-events").change(function() {
-    var selectBoxVal = $(".select-box-show-events").val();
-
-    if(selectBoxVal == "all-events") {
-      $('.all-events').css('display', 'block');
-      $('.my-events').css('display', 'none');
-      $('.favorite-events').css('display', 'none');
-      $('.before-events').css('display', 'none');
-      $('.current-events').css('display', 'none');
-      $('.after-events').css('display', 'none');
-    }else if(selectBoxVal == "my-events") {
-      $('.all-events').css('display', 'none');
-      $('.my-events').css('display', 'block');
-      $('.favorite-events').css('display', 'none');
-      $('.before-events').css('display', 'none');
-      $('.current-events').css('display', 'none');
-      $('.after-events').css('display', 'none');
-    }else if(selectBoxVal == "favorite-events") {
-      $('.all-events').css('display', 'none');
-      $('.my-events').css('display', 'none');
-      $('.favorite-events').css('display', 'block');
-      $('.before-events').css('display', 'none');
-      $('.current-events').css('display', 'none');
-      $('.after-events').css('display', 'none');
-    }else if(selectBoxVal == "before-events") {
-      $('.all-events').css('display', 'none');
-      $('.my-events').css('display', 'none');
-      $('.favorite-events').css('display', 'none');
-      $('.before-events').css('display', 'block');
-      $('.current-events').css('display', 'none');
-      $('.after-events').css('display', 'none');
-    }else if(selectBoxVal == "current-events") {
-      $('.all-events').css('display', 'none');
-      $('.my-events').css('display', 'none');
-      $('.favorite-events').css('display', 'none');
-      $('.before-events').css('display', 'none');
-      $('.current-events').css('display', 'block');
-      $('.after-events').css('display', 'none');
-    }else if(selectBoxVal == "after-events") {
-      $('.all-events').css('display', 'none');
-      $('.my-events').css('display', 'none');
-      $('.favorite-events').css('display', 'none');
-      $('.before-events').css('display', 'none');
-      $('.current-events').css('display', 'none');
-      $('.after-events').css('display', 'block');
-    }
-  });
-
-  $('.all-events').css('display', 'block');
-  $('.my-events').css('display', 'none');
-  $('.favorite-events').css('display', 'none');
-  $('.before-events').css('display', 'none');
-  $('.current-events').css('display', 'none');
-  $('.after-events').css('display', 'none');
 </script>

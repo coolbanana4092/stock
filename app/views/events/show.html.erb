@@ -1,205 +1,232 @@
-<div class="ui center aligned grid">
-  <div id="frame-of-event-details-image" class="fourteen wide column">
-    <% if @event.picture? %>
-      <%= image_tag @event.picture.url, :id => "event-details-image" %>
-    <% else %>
-      <img class="ui segment" id="event-details-image" src="/img/no-image.png">
+<div id="event-details">
+  <div class="ui center aligned grid">
+    <div id="frame-of-event-details-image" class="fourteen wide column">
+      <% if @event.picture? %>
+        <%= image_tag @event.picture.url, :id => "event-details-image" %>
+      <% else %>
+        <img class="ui segment" id="event-details-image" src="/img/no-image.png">
+      <% end %>
+    </div>
+    <div class="left aligned fourteen wide column">
+      <div id="event-name">
+        <%= @event.name %>
+      </div>
+      <div class="ui right aligned grid">
+        <div class="right aligned ten wide column" id="event-created-or-updated-date">
+          <div>投稿日：<%= @event.created_at.strftime("%Y/%m/%d") %></div>
+          <div>更新日：<%= @event.updated_at.strftime("%Y/%m/%d") %></div>
+        </div>
+      </div>
+      <div class="ui divider"></div>
+      <div class="subheading-of-event-details">イベント詳細</div>
+      <div class="event-content" id="event-content">
+        <%= @event.content %>
+      </div>
+      <div class="ui divider"></div>
+      <div class="subheading-of-event-details">開催日時</div>
+      <div id="event-date">
+        <%= @event.starting_year %>/<%= @event.starting_month %>/<%= @event.starting_day %> <%= @event.starting_hour %>:<%= @event.starting_minute %> 〜 <%= @event.ending_year %>/<%= @event.ending_month %>/<%= @event.ending_day %> <%= @event.ending_hour %>:<%= @event.ending_minute %>
+      </div>
+      <div class="ui divider"></div>
+      <div class="subheading-of-event-details">開催場所</div>
+      <div id="event-place">
+        <%= @event.place %>
+      </div>
+    </div>
+  </div>
+  <div id="event-detail-page-map"></div>
+  <div class="ui center aligned grid">
+    <div class="left aligned fourteen wide column">
+      <div class="ui divider"></div>
+      <div class="subheading-of-event-details">料金</div>
+      <div id="event-price">
+        <%= @event.ticket_name %>：<%= @event.price %> 円
+      </div>
+      <div class="ui divider"></div>
+      <div class="subheading-of-event-details">主催者</div>
+      <div id="event-organizer">
+        <%= @event.organizer %> <br>
+        <a href="http://yahoo.co.jp">主催者に問い合わせる</a>
+      </div>
+      <div class="ui divider"></div>
+      <div class="subheading-of-event-details">注意点</div>
+      <div class="event-cautionary-note" id="event-cautionary-note">
+        <%= @event.cautionary_note.empty? ? "なし" : @event.cautionary_note %>
+      </div>
+      <div class="ui divider"></div>
+    </div>
+  </div>
+  <div class="frame-of-button-to-event-page">
+    <div class="ui center aligned grid">
+      <div class="ui button ten wide column" id="button-to-events-list">
+        <%= link_to 'イベント一覧', events_path %>
+      </div>
+    </div>
+    <% if current_user == @event.user %>
+      <div class="ui center aligned grid">
+        <div class="ui button ten wide column" id="button-to-edit-event">
+          <%= link_to 'イベント編集', edit_event_path(@event) %>
+        </div>
+      </div>
+      <div class="ui center aligned grid">
+        <div class="ui red button ten wide column" id="button-to-delete-event">
+          <%= link_to "イベント削除", @event, method: :delete, data: { confirm: "本当に削除しても大丈夫ですか?" } %>
+        </div>
+      </div>
     <% end %>
   </div>
-  <div class="left aligned fourteen wide column">
-    <div id="event-name">
-      <%= @event.name %>
-    </div>
-    <div class="ui right aligned grid">
-      <div class="right aligned ten wide column" id="event-created-or-updated-date">
-        <div>投稿日：<%= @event.created_at.strftime("%Y/%m/%d") %></div>
-        <div>更新日：<%= @event.updated_at.strftime("%Y/%m/%d") %></div>
-      </div>
-    </div>
-    <div class="ui divider"></div>
-    <div class="subheading-of-event-details">イベント詳細</div>
-    <div class="event-content" id="event-content">
-      <%= @event.content %>
-    </div>
-    <div class="ui divider"></div>
-    <div class="subheading-of-event-details">開催日時</div>
-    <div id="event-date">
-      <%= @event.starting_year %>/<%= @event.starting_month %>/<%= @event.starting_day %> <%= @event.starting_hour %>:<%= @event.starting_minute %> 〜 <%= @event.ending_year %>/<%= @event.ending_month %>/<%= @event.ending_day %> <%= @event.ending_hour %>:<%= @event.ending_minute %>
-    </div>
-    <div class="ui divider"></div>
-    <div class="subheading-of-event-details">開催場所</div>
-    <div id="event-place">
-      <%= @event.place %>
-    </div>
-  </div>
-</div>
-<div id="event-detail-page-map"></div>
-<div class="ui center aligned grid">
-  <div class="left aligned fourteen wide column">
-    <div class="ui divider"></div>
-    <div class="subheading-of-event-details">料金</div>
-    <div id="event-price">
-      <%= @event.ticket_name %>：<%= @event.price %> 円
-    </div>
-    <div class="ui divider"></div>
-    <div class="subheading-of-event-details">主催者</div>
-    <div id="event-organizer">
-      <%= @event.organizer %> <br>
-      <a href="http://yahoo.co.jp">主催者に問い合わせる</a>
-    </div>
-    <div class="ui divider"></div>
-    <div class="subheading-of-event-details">注意点</div>
-    <div class="event-cautionary-note" id="event-cautionary-note">
-      <%= @event.cautionary_note.empty? ? "なし" : @event.cautionary_note %>
-    </div>
-    <div class="ui divider"></div>
-  </div>
-</div>
-<div class="frame-of-button-to-event-page">
-  <div class="ui center aligned grid">
-    <div class="ui button ten wide column" id="button-to-events-list">
-      <%= link_to 'イベント一覧', events_path %>
-    </div>
-  </div>
-  <% if current_user == @event.user %>
-    <div class="ui center aligned grid">
-      <div class="ui button ten wide column" id="button-to-edit-event">
-        <%= link_to 'イベント編集', edit_event_path(@event) %>
-      </div>
-    </div>
-    <div class="ui center aligned grid">
-      <div class="ui red button ten wide column" id="button-to-delete-event">
-        <%= link_to "イベント削除", @event, method: :delete, data: { confirm: "本当に削除しても大丈夫ですか?" } %>
-      </div>
-    </div>
-  <% end %>
 </div>
 
 <script>
-  (function() {
-    var geocoder = new google.maps.Geocoder();
-    var eventLocation;
-    var mapLatLng;
-    var markerLatLng;
-    var marker;
-    var map;
+  new Vue({
+    el: "#event-details",
+    // 以下のmethods内の4つの関数は、new Vueの外などでグローバル変数を定義することによって、
+    // 関数内を簡単に記述したかったが、調べても出てこず、それが出来なかったため、
+    // 冗長ではあるがそれぞれの関数内で毎回変数を定義した。
+    // また、関数に引数を使用して、以下の4つの関数を2つにまとめたかったが、
+    // '<span>','</span>'などの様に''で囲まれているためなのか(?)、@click="functionName('hoge')"の様にしても
+    // 正しく引数として認識されないため(?)、それも出来なさそうなので、4つの関数を記した。
+    methods: {
+      seeMoreContent: function(){
+        var contentContinueIcon = document.getElementById("content-continue-icon")
+        var contentSeeMoreContent = document.getElementById("content-after-display-sentence")
+        var contentSeeMoreButton = document.getElementById("content-see-more")
+        var contentCloseButton = document.getElementById("content-close-see-more")
 
-    geocoder.geocode({
-      'address': '<%= @event.place %>',
-      'region': 'jp'
-    },function (results, status) {
-        if (status === 'OK' && results[0]){
-          eventLocation = results[0].geometry.location
-          mapLatLng = new google.maps.LatLng(eventLocation.lat(), eventLocation.lng());
-          markerLatLng = new google.maps.LatLng({lat: eventLocation.lat(), lng: eventLocation.lng()});
-          marker = new google.maps.Marker({
-            map: map,
-            position: markerLatLng
-          });
-          map = new google.maps.Map(document.getElementById('event-detail-page-map'), {
-            center: mapLatLng,
-            zoom: 10,
-            mapTypeControl: false,
-            streetViewControl: false,
-            fullscreenControl: false,
-            zoomControl: false,
-          });
+        contentContinueIcon.style.display = "none"
+        contentSeeMoreContent.style.display = "inline"
+        contentSeeMoreButton.style.display = "none"
+        contentCloseButton.style.display = "block"
+      },
+      closeSeeMoreContent: function(){
+        var contentContinueIcon = document.getElementById("content-continue-icon")
+        var contentSeeMoreContent = document.getElementById("content-after-display-sentence")
+        var contentSeeMoreButton = document.getElementById("content-see-more")
+        var contentCloseButton = document.getElementById("content-close-see-more")
 
-          marker.setMap(map);
-        }else{
-          alert('失敗しました。理由: ' + status);
+        contentContinueIcon.style.display = "inline"
+        contentSeeMoreContent.style.display = "none"
+        contentSeeMoreButton.style.display = "block"
+        contentCloseButton.style.display = "none"
+      },
+      seeMoreCautionaryNote: function() {
+        var cautionaryNoteContinueIcon = document.getElementById("cautionary-note-continue-icon")
+        var cautionaryNoteSeeMoreContent = document.getElementById("cautionary-note-after-display-sentence")
+        var cautionaryNoteSeeMoreButton = document.getElementById("cautionary-note-see-more")
+        var cautionaryNoteCloseButton = document.getElementById("cautionary-note-close-see-more")
+
+        cautionaryNoteContinueIcon.style.display = "none"
+        cautionaryNoteSeeMoreContent.style.display = "inline"
+        cautionaryNoteSeeMoreButton.style.display = "none"
+        cautionaryNoteCloseButton.style.display = "block"
+      },
+      closeSeeMoreCautionaryNote: function() {
+        var cautionaryNoteContinueIcon = document.getElementById("cautionary-note-continue-icon")
+        var cautionaryNoteSeeMoreContent = document.getElementById("cautionary-note-after-display-sentence")
+        var cautionaryNoteSeeMoreButton = document.getElementById("cautionary-note-see-more")
+        var cautionaryNoteCloseButton = document.getElementById("cautionary-note-close-see-more")
+
+        cautionaryNoteContinueIcon.style.display = "inline"
+        cautionaryNoteSeeMoreContent.style.display = "none"
+        cautionaryNoteSeeMoreButton.style.display = "block"
+        cautionaryNoteCloseButton.style.display = "none"
+      },
+    },
+    // 以下の2つの関数の共通部分以外を引数で表現して定義した関数の引数に、
+    // 使用時の引数を代入した状態でこの関数を使用できなかったため(定義時の引数がそのまま使われてしまっている状態)、
+    // JavaScriptによって作成されるHTMLの要素1パターンしか出来ず、
+    // 2回目以降にはこの関数を使用しても効果がない状態になってしまっているため、
+    // 冗長ではあるが、以下の2つの関数をまとめずにそれぞれ分けて記すことで対応させた。
+    // (原因はJavaScriptによって作成された要素が''で囲まれているからということが判明した)
+    //
+    // また、以下の2つの関数をmethodsに定義して、それを呼び出した場合、
+    // 追加されたhtml要素の@clickが役割を果たしているのではなく、ただの文字列として認識されているので、クリックしても関数が実行されない。
+    // →これは、普通のHTMLの要素に@clickを入れると、デベロッパーツールで見た時に@clickが消えるのに、追加されたhtml要素の場合はそのまま@clickとして
+    // 残り続けていることから判明した。
+    beforeCreate: function() {
+      var eventContent = document.getElementsByClassName('event-content').item(0);
+      var sentence= eventContent.innerHTML;
+      var alwaysDisplaySentence = sentence.substr(0,300);
+      var afterDisplaySentence = sentence.substr(300);
+
+      if (afterDisplaySentence != '') {
+        eventContent.innerHTML = alwaysDisplaySentence
+          + '<span id="content-continue-icon">'
+          + '・・・'
+          + '</span>'
+          + '<span class="after-display-sentence" id="content-after-display-sentence">'
+          + afterDisplaySentence
+          + '</span>'
+          + '<div class="see-more ui bottom attached basic button" id="content-see-more" tabindex="0" @click="seeMoreContent">'
+          + 'もっと見る'
+          + '</div>'
+          + '<div class="close-see-more ui bottom attached basic button" id="content-close-see-more" tabindex="0" @click="closeSeeMoreContent">'
+          + '閉じる'
+          + '</div>'
+      };
+    },
+    created: function() {
+      var eventCautionaryNote = document.getElementsByClassName('event-cautionary-note').item(0);
+      var sentence= eventCautionaryNote.innerHTML;
+      var alwaysDisplaySentence = sentence.substr(0,300);
+      var afterDisplaySentence = sentence.substr(300);
+
+      if(afterDisplaySentence != ''){
+        eventCautionaryNote.innerHTML = alwaysDisplaySentence
+          + '<span id="cautionary-note-continue-icon">'
+          + '・・・'
+          + '</span>'
+          + '<span class="after-display-sentence" id="cautionary-note-after-display-sentence">'
+          + afterDisplaySentence
+          + '</span>'
+          + '<div class="see-more ui bottom attached basic button" id="cautionary-note-see-more" tabindex="0" @click="seeMoreCautionaryNote">'
+          + 'もっと見る'
+          + '</div>'
+          + '<div class="close-see-more ui bottom attached basic button" id="cautionary-note-close-see-more" tabindex="0" @click="closeSeeMoreCautionaryNote">'
+          + '閉じる'
+          + '</div>'
+      };
+    },
+    // 以下の関数をshowDetailMapとしてmethodsに定義して、mountedにおいてwindow.addEventListener('load', this.showDetailMap, false)で呼び出してもshowDetailMapが呼び出されない。
+    // mountedでconsole.log(this.showDetailMap)をしたところ、undefinedにならずしっかりと定義されていた。
+    // window.addEventListener('load', this.showDetailMap, false)のloadの部分をclickやscrollなどにしたら、関数が呼び出されたので、loadの部分がおそらく原因(解決策は分からない)。
+    // 最悪、1度だけリロードすれば対処できると思ったが、リロードするとmountedが再度実行されるため、永遠にリロードが続いてしまう。
+    // 原因はわかったが、解決策が分からないのでmountedに直接showDetailMapの中身を記述した。
+    mounted: function() {
+      var geocoder = new google.maps.Geocoder();
+      var eventLocation;
+      var mapLatLng;
+      var markerLatLng;
+      var marker;
+      var map;
+
+      geocoder.geocode({
+        'address': '<%= @event.place %>',
+        'region': 'jp'
+      },function (results, status) {
+          if (status === 'OK' && results[0]){
+            eventLocation = results[0].geometry.location
+            mapLatLng = new google.maps.LatLng(eventLocation.lat(), eventLocation.lng());
+            markerLatLng = new google.maps.LatLng({lat: eventLocation.lat(), lng: eventLocation.lng()});
+            marker = new google.maps.Marker({
+              map: map,
+              position: markerLatLng
+            });
+            map = new google.maps.Map(document.getElementById('event-detail-page-map'), {
+              center: mapLatLng,
+              zoom: 10,
+              mapTypeControl: false,
+              streetViewControl: false,
+              fullscreenControl: false,
+              zoomControl: false,
+            });
+
+            marker.setMap(map);
+          }else{
+            alert('失敗しました。理由: ' + status);
+          }
         }
-      }
-    );
-  })();
-
-  <%# 以下の2つの関数の共通部分以外を引数で表現して定義した関数の引数に、
-  使用時の引数を代入した状態でこの関数を使用できなかったため(定義時の引数がそのまま使われてしまっている状態)、
-  JavaScriptによって作成されるHTMLの要素1パターンしか出来ず、
-  2回目以降にはこの関数を使用しても効果がない状態になってしまっているため、
-  冗長ではあるが、以下の2つの関数をまとめずにそれぞれ分けて記すことで対応させた。
-  (原因はJavaScriptによって作成された要素が''で囲まれているからということが判明した) %>
-  (function(){
-    var eventContent = document.getElementsByClassName('event-content').item(0);
-    var sentence= eventContent.innerHTML;
-    var alwaysDisplaySentence = sentence.substr(0,300);
-    var afterDisplaySentence = sentence.substr(300);
-
-    if (afterDisplaySentence != '') {
-      eventContent.innerHTML = alwaysDisplaySentence
-        + '<span id="content-continue-icon">'
-        + '・・・'
-        + '</span>'
-        + '<span class="after-display-sentence" id="content-after-display-sentence">'
-        + afterDisplaySentence
-        + '</span>'
-        + '<div class="see-more ui bottom attached basic button" id="content-see-more" tabindex="0">'
-        + 'もっと見る'
-        + '</div>'
-        + '<div class="close-see-more ui bottom attached basic button" id="content-close-see-more" tabindex="0">'
-        + '閉じる'
-        + '</div>'
-
-      var continueIcon = document.getElementById("content-continue-icon")
-      var seeMoreContent = document.getElementById("content-after-display-sentence")
-      var seeMoreButton = document.getElementById("content-see-more")
-      var closeButton = document.getElementById("content-close-see-more")
-
-      seeMoreButton.onclick = function() {
-        continueIcon.style.display = "none"
-        seeMoreContent.style.display = "inline"
-        seeMoreButton.style.display = "none"
-        closeButton.style.display = "block"
-      };
-
-      closeButton.onclick = function() {
-        continueIcon.style.display = "inline"
-        seeMoreContent.style.display = "none"
-        seeMoreButton.style.display = "block"
-        closeButton.style.display = "none"
-      };
-    }
-  })();
-
-  (function(){
-    var eventCautionaryNote = document.getElementsByClassName('event-cautionary-note').item(0);
-    var sentence= eventCautionaryNote.innerHTML;
-    var alwaysDisplaySentence = sentence.substr(0,300);
-    var afterDisplaySentence = sentence.substr(300);
-
-    if(afterDisplaySentence != ''){
-      eventCautionaryNote.innerHTML = alwaysDisplaySentence
-        + '<span id="cautionary-note-continue-icon">'
-        + '・・・'
-        + '</span>'
-        + '<span class="after-display-sentence" id="cautionary-note-after-display-sentence">'
-        + afterDisplaySentence
-        + '</span>'
-        + '<div class="see-more ui bottom attached basic button" id="cautionary-note-see-more" tabindex="0">'
-        + 'もっと見る'
-        + '</div>'
-        + '<div class="close-see-more ui bottom attached basic button" id="cautionary-note-close-see-more" tabindex="0">'
-        + '閉じる'
-        + '</div>'
-
-      var continueIcon = document.getElementById("cautionary-note-continue-icon")
-      var seeMoreContent = document.getElementById("cautionary-note-after-display-sentence")
-      var seeMoreButton = document.getElementById("cautionary-note-see-more")
-      var closeButton = document.getElementById("cautionary-note-close-see-more")
-
-      seeMoreButton.onclick = function() {
-        continueIcon.style.display = "none"
-        seeMoreContent.style.display = "inline"
-        seeMoreButton.style.display = "none"
-        closeButton.style.display = "block"
-      };
-
-      closeButton.onclick = function() {
-        continueIcon.style.display = "inline"
-        seeMoreContent.style.display = "none"
-        seeMoreButton.style.display = "block"
-        closeButton.style.display = "none"
-      };
-    }
-  })();
+      );
+    },
+  });
 </script>
