@@ -1,11 +1,11 @@
-<header>
+<header id="header">
   <nav>
     <div class="ui center aligned grid">
       <div class="fourteen wide column" id="header-title">
         <h1 class="application-name">EventNavi</h1>
       </div>
     </div>
-    <button type="button" class="hamburger" id="nav-btn">
+    <button type="button" class="hamburger" id="nav-btn" @click="navToggle">
       <span class="bdr"></span>
       <span class="bdr"></span>
       <span class="bdr"></span>
@@ -31,23 +31,16 @@
 </header>
 
 <script>
-  (function() {
-    const wrapper = document.getElementById('wrapper');
-    const hamburger = document.getElementsByClassName('hamburger')[0];
-    const navBtn = document.getElementById('nav-btn');
+  new Vue({
+    el: "#header",
+    methods: {
+      navToggle: function() {
+        var hamburgerClass = document.getElementsByClassName('hamburger')[0].classList;
+        var wrapperClass = document.getElementById('wrapper').classList
 
-    function navToggle() {
-      if (wrapper.classList.contains('nav-open')) {
-        wrapper.classList.remove('nav-open');
-      } else {
-        wrapper.classList.add('nav-open');
-      }
-    }
-
-    hamburger.addEventListener('click', function(){
-      hamburger.classList.toggle('is-active')
-    });
-
-    navBtn.addEventListener('click', navToggle);
-  })();
+        hamburgerClass.toggle('is-active')
+        wrapperClass.contains('nav-open') ? wrapperClass.remove('nav-open') : wrapperClass.add('nav-open')
+      },
+    },
+  })
 </script>
