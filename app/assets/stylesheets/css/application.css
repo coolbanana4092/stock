@@ -908,6 +908,29 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
   margin-bottom: 10px;
   font-size: 18px;
 }
+.ui.grid .fourteen.wide.column .axis path,
+.ui.grid .fourteen.wide.column .axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+.ui.grid .fourteen.wide.column .axis .tick line {
+  fill: none;
+  stroke: #ccc;
+}
+.ui.grid .fourteen.wide.column .axis text {
+  font-family: sans-serif;
+  font-size: 9px;
+}
+.ui.grid .fourteen.wide.column .y-axis-label {
+  font-family: sans-serif;
+  font-size: 9px;
+  word-wrap: break-word;
+  text-align: center;
+}
+.ui.grid .fourteen.wide.column .y-axis path {
+  stroke: none;
+}
 .ui.grid .fourteen.wide.column .after-display-sentence,
 .ui.grid .fourteen.wide.column .close-see-more {
   display: none;
