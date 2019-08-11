@@ -396,8 +396,14 @@
       );
     },
     beforeMount: function() {
+      var currentWidth = window.innerWidth;
       window.addEventListener('load', this.makeTimeChart, false)
-      window.addEventListener('resize', this.redrawTimeChart, false)
+      window.addEventListener("resize", function() {
+        if (currentWidth !== window.innerWidth) {
+          currentWidth = window.innerWidth;
+          vm.redrawTimeChart()
+        }
+      }, false);
     }
   });
 </script>
