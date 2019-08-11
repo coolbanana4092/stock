@@ -27,6 +27,9 @@
       <div id="event-date">
         <%= @event.starting_year %>/<%= @event.starting_month %>/<%= @event.starting_day %> <%= @event.starting_hour %>:<%= @event.starting_minute %> 〜 <%= @event.ending_year %>/<%= @event.ending_month %>/<%= @event.ending_day %> <%= @event.ending_hour %>:<%= @event.ending_minute %>
       </div>
+      <div>
+        <svg id="time-chart"></svg>
+      </div>
       <div class="ui divider"></div>
       <div class="subheading-of-event-details">開催場所</div>
       <div id="event-place">
@@ -78,15 +81,25 @@
 </div>
 
 <script>
-  new Vue({
+  var vm = new Vue({
     el: "#event-details",
-    // 以下のmethods内の4つの関数は、new Vueの外などでグローバル変数を定義することによって、
-    // 関数内を簡単に記述したかったが、調べても出てこず、それが出来なかったため、
-    // 冗長ではあるがそれぞれの関数内で毎回変数を定義した。
-    // また、関数に引数を使用して、以下の4つの関数を2つにまとめたかったが、
-    // '<span>','</span>'などの様に''で囲まれているためなのか(?)、@click="functionName('hoge')"の様にしても
-    // 正しく引数として認識されないため(?)、それも出来なさそうなので、4つの関数を記した。
     methods: {
+      getDevice: function() {
+        var ua = navigator.userAgent;
+        if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {
+          return 'sp';
+        } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+          return 'tab';
+        } else {
+          return 'pc';
+        }
+      },
+      // 以下のmethods内の4つの関数は、new Vueの外などでグローバル変数を定義することによって、
+      // 関数内を簡単に記述したかったが、調べても出てこず、それが出来なかったため、
+      // 冗長ではあるがそれぞれの関数内で毎回変数を定義した。
+      // また、関数に引数を使用して、以下の4つの関数を2つにまとめたかったが、
+      // '<span>','</span>'などの様に''で囲まれているためなのか(?)、@click="functionName('hoge')"の様にしても
+      // 正しく引数として認識されないため(?)、それも出来なさそうなので、4つの関数を記した。
       seeMoreContent: function(){
         var contentContinueIcon = document.getElementById("content-continue-icon")
         var contentSeeMoreContent = document.getElementById("content-after-display-sentence")
@@ -131,6 +144,160 @@
         cautionaryNoteSeeMoreButton.style.display = "block"
         cautionaryNoteCloseButton.style.display = "none"
       },
+      makeTimeChart: function() {
+        var device = vm.getDevice();
+
+        var eventStartingTime = new Date(<%= @event.starting_year %>, <%= @event.starting_month %>, <%= @event.starting_day %>, <%= @event.starting_hour %>, <%= @event.starting_minute %>)
+        var eventEndingTime = new Date(<%= @event.ending_year %>, <%= @event.ending_month %>, <%= @event.ending_day %>, <%= @event.ending_hour %>, <%= @event.ending_minute %>)
+
+        var eventStartingDay = new Date(<%= @event.starting_year %>, <%= @event.starting_month %>, <%= @event.starting_day %>)
+        var eventStartingNextDay = new Date(<%= @event.starting_year %>, <%= @event.starting_month %>, <%= @event.starting_day %>)
+        var eventStartingRealNextDay = eventStartingNextDay.getDate() + 1;
+        eventStartingNextDay.setDate(eventStartingRealNextDay);
+
+        var width = window.innerWidth * 0.875;
+        var height = 150;
+
+        if (device == "pc") {
+          var margin = {
+            top: 30,
+            right: 20,
+            bottom: 10,
+            left: 20
+          };
+        } else {
+          var margin = {
+            top: 50,
+            right: 10,
+            bottom: 10,
+            left: 10
+          };
+        }
+        var eventData = [{
+          key: 1,
+          name: '<%= @event.name %>',
+          start: eventStartingTime,
+          end: eventEndingTime
+        }];
+        var labels = d3.nest()
+          .key(function(d) {
+            return d.key;
+          })
+          .entries(eventData);
+        var svg = d3.select("#time-chart")
+          .attr({
+            width: width,
+            height: height
+          });
+        var x = d3.time.scale()
+          .domain([
+            eventStartingDay,
+            eventStartingNextDay
+          ])
+          .clamp(true)
+          .range([0, width - (margin.left + margin.right)]);
+        if (device == "pc") {
+          var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient('top')
+            .ticks(d3.time.hours, 1)
+            .tickFormat(d3.time.format('%H:00'))
+            .innerTickSize(-(height - (margin.top + margin.bottom)))
+            .outerTickSize(0);
+        } else {
+          var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient('top')
+            .ticks(d3.time.hours, 2)
+            .tickFormat(d3.time.format('%H:00'))
+            .innerTickSize(-(height - (margin.top + margin.bottom)))
+            .outerTickSize(0);
+        }
+        var y = d3.scale.ordinal()
+          .domain(labels.map(function(d) {
+            return d.key;
+          }))
+          .rangeRoundBands([margin.top, height - margin.bottom], 0.5);
+        var yAxis = d3.svg.axis()
+          .scale(y)
+          .orient('left')
+          .innerTickSize(0)
+          .outerTickSize(0);
+
+        svg.append('g')
+          .attr({
+            class: 'axis x-axis',
+            transform: 'translate(' + margin.left + ', ' + margin.top + ')'
+          })
+          .call(xAxis)
+          .selectAll('text')
+          .attr('transform', function() {
+            if (width <= 768) {
+              return 'translate(7, -15) rotate(-90)';
+            } else if (768 < width && width < 980) {
+              return 'translate(14, -10) rotate(-45)';
+            } else {
+              return null;
+            }
+          });
+        svg.append('g')
+          .attr({
+            class: 'axis y-axis',
+            transform: 'translate(' + margin.left + ', 0)'
+          })
+          .call(yAxis)
+          .selectAll('text')
+          .each(function(d, i) {
+            var el = d3.select(this);
+            var parent = d3.select(this.parentNode);
+            parent.append('foreignObject')
+              .attr({
+                x: -margin.left,
+                y: -5,
+                width: margin.left,
+                height: 20 * 2
+              })
+              .append('xhtml:p')
+              .attr({
+                class: 'y-axis-label'
+              })
+            el.remove();
+          });
+        svg.selectAll('.active')
+          .data(eventData)
+          .enter()
+          .append('rect')
+          .attr({
+            x: function(d) {
+              return x(d.start) + margin.left + 1;
+            },
+            y: function(d, i) {
+              return y(d.key) - 8;
+            },
+            width: 0,
+            height: 50,
+            fill: '#45A1CF',
+            class: 'active'
+          })
+          .transition()
+          .attr({
+            width: function(d) {
+              return x(d.end) - x(d.start) - 1;
+            }
+          });
+      },
+      redrawTimeChart: function() {
+        var timer;
+
+        if (timer !== false) {
+          clearTimeout(timer);
+        }
+
+        timer = setTimeout(function() {
+          d3.select('#time-chart').selectAll('*').remove();
+          vm.makeTimeChart();
+        }, 200);
+      }
     },
     // 以下の2つの関数の共通部分以外を引数で表現して定義した関数の引数に、
     // 使用時の引数を代入した状態でこの関数を使用できなかったため(定義時の引数がそのまま使われてしまっている状態)、
@@ -228,5 +395,9 @@
         }
       );
     },
+    beforeMount: function() {
+      window.addEventListener('load', this.makeTimeChart, false)
+      window.addEventListener('resize', this.redrawTimeChart, false)
+    }
   });
 </script>
