@@ -94,56 +94,6 @@
           return 'pc';
         }
       },
-      // 以下のmethods内の4つの関数は、new Vueの外などでグローバル変数を定義することによって、
-      // 関数内を簡単に記述したかったが、調べても出てこず、それが出来なかったため、
-      // 冗長ではあるがそれぞれの関数内で毎回変数を定義した。
-      // また、関数に引数を使用して、以下の4つの関数を2つにまとめたかったが、
-      // '<span>','</span>'などの様に''で囲まれているためなのか(?)、@click="functionName('hoge')"の様にしても
-      // 正しく引数として認識されないため(?)、それも出来なさそうなので、4つの関数を記した。
-      seeMoreContent: function(){
-        var contentContinueIcon = document.getElementById("content-continue-icon")
-        var contentSeeMoreContent = document.getElementById("content-after-display-sentence")
-        var contentSeeMoreButton = document.getElementById("content-see-more")
-        var contentCloseButton = document.getElementById("content-close-see-more")
-
-        contentContinueIcon.style.display = "none"
-        contentSeeMoreContent.style.display = "inline"
-        contentSeeMoreButton.style.display = "none"
-        contentCloseButton.style.display = "block"
-      },
-      closeSeeMoreContent: function(){
-        var contentContinueIcon = document.getElementById("content-continue-icon")
-        var contentSeeMoreContent = document.getElementById("content-after-display-sentence")
-        var contentSeeMoreButton = document.getElementById("content-see-more")
-        var contentCloseButton = document.getElementById("content-close-see-more")
-
-        contentContinueIcon.style.display = "inline"
-        contentSeeMoreContent.style.display = "none"
-        contentSeeMoreButton.style.display = "block"
-        contentCloseButton.style.display = "none"
-      },
-      seeMoreCautionaryNote: function() {
-        var cautionaryNoteContinueIcon = document.getElementById("cautionary-note-continue-icon")
-        var cautionaryNoteSeeMoreContent = document.getElementById("cautionary-note-after-display-sentence")
-        var cautionaryNoteSeeMoreButton = document.getElementById("cautionary-note-see-more")
-        var cautionaryNoteCloseButton = document.getElementById("cautionary-note-close-see-more")
-
-        cautionaryNoteContinueIcon.style.display = "none"
-        cautionaryNoteSeeMoreContent.style.display = "inline"
-        cautionaryNoteSeeMoreButton.style.display = "none"
-        cautionaryNoteCloseButton.style.display = "block"
-      },
-      closeSeeMoreCautionaryNote: function() {
-        var cautionaryNoteContinueIcon = document.getElementById("cautionary-note-continue-icon")
-        var cautionaryNoteSeeMoreContent = document.getElementById("cautionary-note-after-display-sentence")
-        var cautionaryNoteSeeMoreButton = document.getElementById("cautionary-note-see-more")
-        var cautionaryNoteCloseButton = document.getElementById("cautionary-note-close-see-more")
-
-        cautionaryNoteContinueIcon.style.display = "inline"
-        cautionaryNoteSeeMoreContent.style.display = "none"
-        cautionaryNoteSeeMoreButton.style.display = "block"
-        cautionaryNoteCloseButton.style.display = "none"
-      },
       makeTimeChart: function() {
         var device = vm.getDevice();
 
@@ -297,7 +247,93 @@
           d3.select('#time-chart').selectAll('*').remove();
           vm.makeTimeChart();
         }, 200);
-      }
+      },
+      makeMap: function() {
+        var geocoder = new google.maps.Geocoder();
+        var eventLocation;
+        var mapLatLng;
+        var markerLatLng;
+        var marker;
+        var map;
+
+        geocoder.geocode({
+          'address': '<%= @event.place %>',
+          'region': 'jp'
+        },function (results, status) {
+            if (status === 'OK' && results[0]){
+              eventLocation = results[0].geometry.location
+              mapLatLng = new google.maps.LatLng(eventLocation.lat(), eventLocation.lng());
+              markerLatLng = new google.maps.LatLng({lat: eventLocation.lat(), lng: eventLocation.lng()});
+              marker = new google.maps.Marker({
+                map: map,
+                position: markerLatLng
+              });
+              map = new google.maps.Map(document.getElementById('event-detail-page-map'), {
+                center: mapLatLng,
+                zoom: 10,
+                mapTypeControl: false,
+                streetViewControl: false,
+                fullscreenControl: false,
+                zoomControl: false,
+              });
+
+              marker.setMap(map);
+            }else{
+              alert('失敗しました。理由: ' + status);
+            }
+          }
+        );
+      },
+      // 以下のmethods内の4つの関数は、new Vueの外などでグローバル変数を定義することによって、
+      // 関数内を簡単に記述したかったが、調べても出てこず、それが出来なかったため、
+      // 冗長ではあるがそれぞれの関数内で毎回変数を定義した。
+      // また、関数に引数を使用して、以下の4つの関数を2つにまとめたかったが、
+      // '<span>','</span>'などの様に''で囲まれているためなのか(?)、@click="functionName('hoge')"の様にしても
+      // 正しく引数として認識されないため(?)、それも出来なさそうなので、4つの関数を記した。
+      seeMoreContent: function(){
+        var contentContinueIcon = document.getElementById("content-continue-icon")
+        var contentSeeMoreContent = document.getElementById("content-after-display-sentence")
+        var contentSeeMoreButton = document.getElementById("content-see-more")
+        var contentCloseButton = document.getElementById("content-close-see-more")
+
+        contentContinueIcon.style.display = "none"
+        contentSeeMoreContent.style.display = "inline"
+        contentSeeMoreButton.style.display = "none"
+        contentCloseButton.style.display = "block"
+      },
+      closeSeeMoreContent: function(){
+        var contentContinueIcon = document.getElementById("content-continue-icon")
+        var contentSeeMoreContent = document.getElementById("content-after-display-sentence")
+        var contentSeeMoreButton = document.getElementById("content-see-more")
+        var contentCloseButton = document.getElementById("content-close-see-more")
+
+        contentContinueIcon.style.display = "inline"
+        contentSeeMoreContent.style.display = "none"
+        contentSeeMoreButton.style.display = "block"
+        contentCloseButton.style.display = "none"
+      },
+      seeMoreCautionaryNote: function() {
+        var cautionaryNoteContinueIcon = document.getElementById("cautionary-note-continue-icon")
+        var cautionaryNoteSeeMoreContent = document.getElementById("cautionary-note-after-display-sentence")
+        var cautionaryNoteSeeMoreButton = document.getElementById("cautionary-note-see-more")
+        var cautionaryNoteCloseButton = document.getElementById("cautionary-note-close-see-more")
+
+        cautionaryNoteContinueIcon.style.display = "none"
+        cautionaryNoteSeeMoreContent.style.display = "inline"
+        cautionaryNoteSeeMoreButton.style.display = "none"
+        cautionaryNoteCloseButton.style.display = "block"
+      },
+      closeSeeMoreCautionaryNote: function() {
+        var cautionaryNoteContinueIcon = document.getElementById("cautionary-note-continue-icon")
+        var cautionaryNoteSeeMoreContent = document.getElementById("cautionary-note-after-display-sentence")
+        var cautionaryNoteSeeMoreButton = document.getElementById("cautionary-note-see-more")
+        var cautionaryNoteCloseButton = document.getElementById("cautionary-note-close-see-more")
+
+        cautionaryNoteContinueIcon.style.display = "inline"
+        cautionaryNoteSeeMoreContent.style.display = "none"
+        cautionaryNoteSeeMoreButton.style.display = "block"
+        cautionaryNoteCloseButton.style.display = "none"
+      },
     },
     // 以下の2つの関数の共通部分以外を引数で表現して定義した関数の引数に、
     // 使用時の引数を代入した状態でこの関数を使用できなかったため(定義時の引数がそのまま使われてしまっている状態)、
@@ -354,56 +390,17 @@
           + '</div>'
       };
     },
-    // 以下の関数をshowDetailMapとしてmethodsに定義して、mountedにおいてwindow.addEventListener('load', this.showDetailMap, false)で呼び出してもshowDetailMapが呼び出されない。
-    // mountedでconsole.log(this.showDetailMap)をしたところ、undefinedにならずしっかりと定義されていた。
-    // window.addEventListener('load', this.showDetailMap, false)のloadの部分をclickやscrollなどにしたら、関数が呼び出されたので、loadの部分がおそらく原因(解決策は分からない)。
-    // 最悪、1度だけリロードすれば対処できると思ったが、リロードするとmountedが再度実行されるため、永遠にリロードが続いてしまう。
-    // 原因はわかったが、解決策が分からないのでmountedに直接showDetailMapの中身を記述した。
     mounted: function() {
-      var geocoder = new google.maps.Geocoder();
-      var eventLocation;
-      var mapLatLng;
-      var markerLatLng;
-      var marker;
-      var map;
-
-      geocoder.geocode({
-        'address': '<%= @event.place %>',
-        'region': 'jp'
-      },function (results, status) {
-          if (status === 'OK' && results[0]){
-            eventLocation = results[0].geometry.location
-            mapLatLng = new google.maps.LatLng(eventLocation.lat(), eventLocation.lng());
-            markerLatLng = new google.maps.LatLng({lat: eventLocation.lat(), lng: eventLocation.lng()});
-            marker = new google.maps.Marker({
-              map: map,
-              position: markerLatLng
-            });
-            map = new google.maps.Map(document.getElementById('event-detail-page-map'), {
-              center: mapLatLng,
-              zoom: 10,
-              mapTypeControl: false,
-              streetViewControl: false,
-              fullscreenControl: false,
-              zoomControl: false,
-            });
-
-            marker.setMap(map);
-          }else{
-            alert('失敗しました。理由: ' + status);
-          }
-        }
-      );
-    },
-    beforeMount: function() {
       var currentWidth = window.innerWidth;
-      window.addEventListener('load', this.makeTimeChart, false)
+
+      setTimeout(this.makeMap, 300);
+      setTimeout(this.makeTimeChart, 300);
       window.addEventListener("resize", function() {
         if (currentWidth !== window.innerWidth) {
           currentWidth = window.innerWidth;
           vm.redrawTimeChart()
         }
-      }, false);
-    }
+      });
+    },
   });
 </script>
