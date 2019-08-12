@@ -163,7 +163,7 @@
       },
     },
     mounted: function() {
-      window.addEventListener('load', this.initialDisplay, false)
+      setTimeout(this.initialDisplay, 300);
     },
     directives: {
       eventchange: {
