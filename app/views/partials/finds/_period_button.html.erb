@@ -1,0 +1,7 @@
+<div :class="buttonColumn" id="period-form">
+  <form action="/find" accept-charset="UTF-8" method="get">
+    <input name="utf8" type="hidden" value="✓">
+    <input type="hidden" name="created_at" value="<%= value %>">
+    <button class="period-button ui tiny fluid button" type='submit' name='action' value='send'><%= buttonname %></button>
+  </form>
+</div>

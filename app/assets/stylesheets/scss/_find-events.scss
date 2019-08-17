@@ -1,0 +1,90 @@
+.tabs-menu {
+  width: 87.5%;
+  margin: 0 auto;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    display: block;
+    width: 50%;
+    float: left;
+    padding: 10px;
+    margin-bottom: -1px;
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: transparent;
+    border-radius: 4px 4px 0 0;
+    color: #557f95;
+    text-decoration: none;
+    transition: all 0.15s;
+
+    &:hover {
+      cursor: pointer;
+    }
+    &:not(.active) {
+      &:hover {
+        border-color: #f0f0f0 #f0f0f0 #999;
+        background-color: #f0f0f0;
+      }
+    }
+  }
+  .active {
+    border-color: #999 #999 transparent #999;
+    background-color: #fff;
+    color: #3f4548;
+  }
+}
+
+.tabs-content {
+  width: 87.5%;
+  padding: 10px;
+  margin: 0 auto;
+  clear: both;
+  border: 1px solid #999;
+  border-radius: 0 4px 4px 4px;
+
+  .find-events-from-created{
+    margin-top: 15px;
+    font-weight: bolder;
+  }
+  #period-form{
+    padding: 10px !important;
+
+    .period-button{
+      font-size: 11px;
+    }
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .tabs-menu {
+    li {
+      padding: 15px;
+      font-size: 15px;
+    }
+  }
+
+  .tabs-content {
+    .find-events-from-created{
+      margin: {
+        top: 30px;
+        bottom: 10px;
+      }
+      font-size: 18px;
+    }
+    .select-created-range{
+      margin: {
+        bottom: 10px;
+      }
+      font-size: 16px;
+    }
+    #period-form{
+      padding: 10px !important;
+
+      .period-button{
+        font-size: 11px;
+      }
+    }
+  }
+}

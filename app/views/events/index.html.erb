@@ -248,17 +248,19 @@
     });
   })();
 
-  (function() {
-    $(".animated").waypoint({
-      handler: function(direction) {
-        if (direction === "down") {
-          $(this.element).addClass("fadeInUp");
-          this.destroy();
-        }
-      },
-      offset: "100%"
-    });
-  })();
+  $(function(){
+    setTimeout(function(){
+      $(".animated").waypoint({
+        handler: function(direction) {
+          if (direction === "down") {
+            $(this.element).addClass("fadeInUp");
+            this.destroy();
+          }
+        },
+        offset: "100%"
+      });
+    },300);
+  });
 
   (function() {
     $(window).scroll(function() {
