@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'inquiry/input' => 'inquiries#input'
   post 'inquiry/thanks' => 'inquiries#thanks'
 
+  get 'find' => 'finds#index'
+
   resources :users, only: [:new, :create, :edit, :update]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :events

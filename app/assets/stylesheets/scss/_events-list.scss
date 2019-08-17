@@ -190,6 +190,12 @@
   padding: 0;
 }
 
+@media screen and (max-width: 374px) {
+  #favorite-icon{
+    display: none !important;
+  }
+}
+
 @media screen and (min-width: 769px) {
   .sp{
     display: none;
@@ -256,6 +262,10 @@
 
 @media screen and (min-width: 1024px) {
   .various-events-list{
+    .no-event{
+      padding: 30px;
+    }
+
     .all-events,
     .my-events,
     .favorite-events,
