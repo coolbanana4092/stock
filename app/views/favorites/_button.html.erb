@@ -1,14 +1,14 @@
 <% if !Favorite.exists?(user_id:current_user.id, event_id:event.id) %>
   <div class="like-button ui center aligned grid">
     <div class="ui large fluid red button">
-      <i class="favorite-link-icon heart icon"></i>
+      <i id="favorite-icon" class="favorite-link-icon heart icon"></i>
       <%= link_to "Like", event_like_path(event), :class => "link-to-like", method: :post, remote: true  %>
     </div>
   </div>
 <% else %>
   <div class="unlike-button ui center aligned grid">
     <div class="ui large fluid blue button">
-      <i class="favorite-link-icon heart icon"></i>
+      <i id="favorite-icon" class="favorite-link-icon heart icon"></i>
       <%= link_to "Unlike", event_like_path(event), :class => "link-to-unlike", method: :delete, remote: true  %>
     </div>
   </div>

@@ -1,4 +1,4 @@
-Event.create(
+event1 = Event.create(
   user_id: '1',
   name: 'Xデザイン学校公開講座+第6回フューチャー・エクスペリエンスフォーラム 「ソーシャルとイノベーション」',
   genre: 'ウェブ/テクノロジー',
@@ -37,7 +37,7 @@ Event.create(
   picture: open("#{Rails.root}/public/seeds/event1.png")
 )
 
-Event.create(
+event2 = Event.create(
   user_id: '1',
   name: '観覧券×びん焼き菓子×びんドリンク付いて500円！レアなビンテージガラスびんを300本以上展示！！ ガラスびんテージハウス@渋谷 古民家',
   genre: 'デザイン',
@@ -105,7 +105,7 @@ Event.create(
   picture: open("#{Rails.root}/public/seeds/event2.png")
 )
 
-Event.create(
+event3 = Event.create(
   user_id: '2',
   name: '中継会場開設＆遠方オンライン参加可！モンテソーリ・レッジョエミリアを知り尽くした研究者が語る 誘導しない子育て',
   genre: '健康',
@@ -159,3 +159,8 @@ Event.create(
                       ・写真・動画の撮影が入ります。SNS等でシェアされることもあるかと思いますので、予め御了承の上、ご参加ください。',
   picture: open("#{Rails.root}/public/seeds/event3.png")
 )
+
+event2.created_at = (rand*7).days.ago
+event3.created_at = (rand*30).days.ago
+event2.save
+event3.save
