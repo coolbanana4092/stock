@@ -14,6 +14,7 @@
       <div class="menu">
         <ul>
           <% if logged_in? %>
+            <li><%= link_to 'イベントを探す', find_path %></li>
             <li><%= link_to "イベント一覧", events_path %></li>
             <li><%= link_to "イベントの投稿", new_event_path %></li>
             <li><%= link_to "登録情報の変更", edit_user_path(current_user) %></li>
