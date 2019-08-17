@@ -9,8 +9,8 @@ class User < ApplicationRecord
   before_save { self.email.downcase! }
   has_secure_password
 
-  has_many :events
-  has_many :favorites
+  has_many :events, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_many :fav_events, through: :favorites, source: :event
 
   def like(event)
