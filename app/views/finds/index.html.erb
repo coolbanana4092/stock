@@ -1,0 +1,147 @@
+<div id="find-events">
+  <div class="ui center aligned grid">
+    <div class="fourteen wide column">
+      <div id="events-list-in-japanese">イベントを探す</div>
+    </div>
+  </div>
+  <template v-if="tabs !== null">
+    <ul class="tabs-menu">
+      <li
+        v-for="tab in tabs"
+        :key="tab.id"
+        :class="{active: activeTab.id == tab.id}"
+        @click="activeTab = tab"
+      >
+        {{ tab.title }}
+      </li>
+    </ul>
+    <div class="tabs-content">
+      <template v-if="activeTab.id == '0'">
+        <date-content></date-content>
+      </template>
+      <template v-if="activeTab.id == '1'">
+        <place-content></place-content>
+      </template>
+    </div>
+  </template>
+</div>
+
+<script>
+  var dateContent = {
+    data: function() {
+      return { buttonColumn: "eight wide column" };
+    },
+    methods: {
+      getDevice: function() {
+        var ua = navigator.userAgent;
+        if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {
+          return 'sp';
+        } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
+          return 'tab';
+        } else {
+          return 'pc';
+        }
+      },
+      judgeColumn: function() {
+        var device = this.getDevice();
+        if (device == "pc") {
+          this.buttonColumn = "four wide column"
+        } else {
+          this.buttonColumn = "eight wide column"
+        }
+      },
+    },
+    created: function() {
+      setTimeout(this.judgeColumn, 10);
+    },
+    template:`
+      <div>
+        <div class="ui center aligned grid">
+          <div class="fourteen wide column">
+            <div class="ui center aligned grid">
+              <div class="wide column">
+                <div class="find-events-from-created">イベント投稿日から探す</div>
+              </div>
+            </div>
+            <div class="ui left aligned grid">
+              <div class="wide column">
+                <div class="select-created-range">イベント投稿日の範囲を選択してください。</div>
+              </div>
+            </div>
+            <div class="ui left aligned grid">
+              <%= render partial: "partials/finds/period_button", locals: { value: "today", buttonname: "今日のみ" } %>
+              <%= render partial: "partials/finds/period_button", locals: { value: "3_days_later", buttonname: "3日前まで" } %>
+              <%= render partial: "partials/finds/period_button", locals: { value: "1_week_later", buttonname: "1週間前まで" } %>
+              <%= render partial: "partials/finds/period_button", locals: { value: "1_month_later", buttonname: "1ヶ月前まで" } %>
+              <%= render partial: "partials/finds/period_button", locals: { value: "3_months_later", buttonname: "3ヶ月前まで" } %>
+              <%= render partial: "partials/finds/period_button", locals: { value: "6_months_later", buttonname: "半年前まで" } %>
+            </div>
+          </div>
+        </div>
+        <div class="various-events-list">
+          <% if @events.empty? then %>
+            <%= render partial: "partials/events/no-event-message", locals: { message: "投稿されたイベントはまだ存在していません。", classname: "all-events" } %>
+          <% else %>
+            <div class="all-events animated bounce">
+              <% @events.each do |event| %>
+                <%= render partial: "partials/events/list", locals: { event: event } %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    `,
+  };
+
+  var placeContent = {
+    template: `
+      <div>
+        <div>場所から検索するよ！</div>
+        <div>2行目</div>
+      </div>
+    `
+  };
+
+  var vm = new Vue({
+    el: "#find-events",
+    components: {
+      "date-content": dateContent,
+      "place-content": placeContent
+    },
+    data: {
+      tabs: "",
+      activeTab: "",
+    },
+    methods: {
+      makeTab: function() {
+        var _tabs = [
+          {
+            id: "0",
+            title: "日時から検索する",
+          },
+          {
+            id: "1",
+            title: "場所から検索する",
+          },
+        ];
+        vm.tabs = _tabs;
+        vm.activeTab = _tabs[0];
+      },
+      appearanceAnimation: function() {
+        $(".animated").waypoint({
+          handler: function(direction) {
+            if (direction === "down") {
+              $(this.element).addClass("fadeInUp");
+              this.destroy();
+            }
+          },
+          offset: "100%"
+        });
+      },
+    },
+    created: function() {
+      setTimeout(this.makeTab, 300);
+      setTimeout(this.appearanceAnimation, 300);
+    }
+  });
+</script>
