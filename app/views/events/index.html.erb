@@ -71,7 +71,7 @@
   </div>
 </div>
 <div class="various-events-list">
-  <% if @all_events.empty? then %>
+  <% if @all_events.empty? %>
     <%= render partial: "partials/events/no-event-message", locals: { message: "投稿されたイベントはまだ存在していません。", classname: "all-events" } %>
   <% else %>
     <div class="all-events animated bounce">
@@ -80,7 +80,7 @@
       <% end %>
     </div>
   <% end %>
-  <% if @current_user_events.empty? then %>
+  <% if @current_user_events.empty? %>
     <%= render partial: "partials/events/no-event-message", locals: { message: "あなたが投稿したイベントはまだ存在していません。", classname: "my-events" } %>
   <% else %>
     <div class="my-events animated bounce">
@@ -89,7 +89,7 @@
       <% end %>
     </div>
   <% end %>
-  <% if @favorite_events.empty? then %>
+  <% if @favorite_events.empty? %>
     <%= render partial: "partials/events/no-event-message", locals: { message: "投稿されたイベントはまだ存在していません。", classname: "favorite-events" } %>
   <% else %>
     <div class="favorite-events animated bounce">
@@ -102,7 +102,7 @@
     <% @all_events.each do |event| %>
       <% starting_year = Time.new(event.starting_year).to_s.slice(0...4).to_i %>
 
-      <% if starting_year < this_year then %>
+      <% if starting_year < this_year %>
         <% before_events_array.push(event) %>
         <%= render partial: "partials/events/list", locals: { event: event } %>
       <% end %>
@@ -112,7 +112,7 @@
     <% @all_events.each do |event| %>
       <% starting_year = Time.new(event.starting_year).to_s.slice(0...4).to_i %>
 
-      <% if starting_year == this_year then %>
+      <% if starting_year == this_year %>
         <% current_events_array.push(event) %>
         <%= render partial: "partials/events/list", locals: { event: event } %>
       <% end %>
@@ -122,19 +122,19 @@
     <% @all_events.each do |event| %>
       <% starting_year = Time.new(event.starting_year).to_s.slice(0...4).to_i %>
 
-      <% if starting_year > this_year then %>
+      <% if starting_year > this_year %>
         <% after_events_array.push(event) %>
         <%= render partial: "partials/events/list", locals: { event: event } %>
       <% end %>
     <% end %>
   </div>
-  <% if before_events_array.empty? then %>
+  <% if before_events_array.empty? %>
     <%= render partial: "partials/events/no-event-message", locals: { message: "既に終了したイベントはまだ存在していません。", classname: "before-events" } %>
   <% end %>
-  <% if current_events_array.empty? then %>
+  <% if current_events_array.empty? %>
     <%= render partial: "partials/events/no-event-message", locals: { message: "現在開催中のイベントはまだ存在していません。", classname: "current-events" } %>
   <% end %>
-  <% if after_events_array.empty? then %>
+  <% if after_events_array.empty? %>
     <%= render partial: "partials/events/no-event-message", locals: { message: "今後開催されるイベントはまだ存在していません。", classname: "after-events" } %>
   <% end %>
 </div>
