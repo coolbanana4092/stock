@@ -20,5 +20,8 @@ class FindsController < ApplicationController
     else
       @events = Event.all.order(created_at: :desc).page(params[:page]).per(10)
     end
+
+    @latitude = params[:latitude]
+    @longitude = params[:longitude]
   end
 end

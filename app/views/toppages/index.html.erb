@@ -143,12 +143,32 @@
                     map: map,
                     position: markerLatLng
                   });
-
-                  infoWindow[i] = new google.maps.InfoWindow({
-                    content: '<div class="marker_name">' + markerDataArray[i][0].name + '</div>'
-                              + '<div class="marker_place">' + markerDataArray[i][0].place + '</div>'
-                  });
                 }
+
+                setTimeout(function(){
+                  marker[i-1].addListener('click', function() {
+                    infoWindow[i-1] = new google.maps.InfoWindow({
+                      content: `
+                        <div class="marker_name">
+                          イベント名：<%= event.id %>
+                          <a href="/events/<%= event.id %>">
+                            ${markerDataArray[i-1][0].name}
+                          </a>
+                        </div>
+                        <div class="marker_place">
+                          開催地：${markerDataArray[i-1][0].place}
+                        </div>
+                      `
+                    });
+
+                    if (currentInfoWindow) {
+                      currentInfoWindow.close();
+                    }
+
+                    infoWindow[i-1].open(map, marker[i-1]);
+                    currentInfoWindow = infoWindow[i-1];
+                  });
+                }, 100);
               }else{
                 alert('失敗しました。理由: ' + status);
               }
