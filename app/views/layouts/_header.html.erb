@@ -37,10 +37,10 @@
     methods: {
       navToggle: function() {
         var hamburgerClass = document.getElementsByClassName('hamburger')[0].classList;
-        var wrapperClass = document.getElementById('wrapper').classList
+        var wrapperClass = document.getElementById('wrapper').classList;
 
-        hamburgerClass.toggle('is-active')
-        wrapperClass.contains('nav-open') ? wrapperClass.remove('nav-open') : wrapperClass.add('nav-open')
+        hamburgerClass.toggle('is-active');
+        wrapperClass.contains('nav-open') ? wrapperClass.remove('nav-open') : wrapperClass.add('nav-open');
       },
     },
   })

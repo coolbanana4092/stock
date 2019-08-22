@@ -154,12 +154,12 @@
         }
       },
       initialDisplay: function() {
-        this.selectDisplay("all-events", "block")
-        this.selectDisplay("my-events", "none")
-        this.selectDisplay("favorite-events", "none")
-        this.selectDisplay("before-events", "none")
-        this.selectDisplay("current-events", "none")
-        this.selectDisplay("after-events", "none")
+        this.selectDisplay("all-events", "block");
+        this.selectDisplay("my-events", "none");
+        this.selectDisplay("favorite-events", "none");
+        this.selectDisplay("before-events", "none");
+        this.selectDisplay("current-events", "none");
+        this.selectDisplay("after-events", "none");
       },
     },
     mounted: function() {
@@ -171,48 +171,48 @@
           el.addEventListener("change", function() {
             var selectBoxVal = el.value;
             if(selectBoxVal == "all-events"){
-              vm.selectDisplay("all-events", "block")
-              vm.selectDisplay("my-events", "none")
-              vm.selectDisplay("favorite-events", "none")
-              vm.selectDisplay("before-events", "none")
-              vm.selectDisplay("current-events", "none")
-              vm.selectDisplay("after-events", "none")
+              vm.selectDisplay("all-events", "block");
+              vm.selectDisplay("my-events", "none");
+              vm.selectDisplay("favorite-events", "none");
+              vm.selectDisplay("before-events", "none");
+              vm.selectDisplay("current-events", "none");
+              vm.selectDisplay("after-events", "none");
             }else if(selectBoxVal == "my-events") {
-              vm.selectDisplay("all-events", "none")
-              vm.selectDisplay("my-events", "block")
-              vm.selectDisplay("favorite-events", "none")
-              vm.selectDisplay("before-events", "none")
-              vm.selectDisplay("current-events", "none")
-              vm.selectDisplay("after-events", "none")
+              vm.selectDisplay("all-events", "none");
+              vm.selectDisplay("my-events", "block");
+              vm.selectDisplay("favorite-events", "none");
+              vm.selectDisplay("before-events", "none");
+              vm.selectDisplay("current-events", "none");
+              vm.selectDisplay("after-events", "none");
             }else if(selectBoxVal == "favorite-events") {
-              vm.selectDisplay("all-events", "none")
-              vm.selectDisplay("my-events", "none")
-              vm.selectDisplay("favorite-events", "block")
-              vm.selectDisplay("before-events", "none")
-              vm.selectDisplay("current-events", "none")
-              vm.selectDisplay("after-events", "none")
+              vm.selectDisplay("all-events", "none");
+              vm.selectDisplay("my-events", "none");
+              vm.selectDisplay("favorite-events", "block");
+              vm.selectDisplay("before-events", "none");
+              vm.selectDisplay("current-events", "none");
+              vm.selectDisplay("after-events", "none");
             }else if(selectBoxVal == "before-events") {
-              vm.selectDisplay("all-events", "none")
-              vm.selectDisplay("my-events", "none")
-              vm.selectDisplay("favorite-events", "none")
-              vm.selectDisplay("before-events", "block")
-              vm.selectDisplay("current-events", "none")
-              vm.selectDisplay("after-events", "none")
+              vm.selectDisplay("all-events", "none");
+              vm.selectDisplay("my-events", "none");
+              vm.selectDisplay("favorite-events", "none");
+              vm.selectDisplay("before-events", "block");
+              vm.selectDisplay("current-events", "none");
+              vm.selectDisplay("after-events", "none");
             }else if(selectBoxVal == "current-events") {
-              vm.selectDisplay("all-events", "none")
-              vm.selectDisplay("my-events", "none")
-              vm.selectDisplay("favorite-events", "none")
-              vm.selectDisplay("before-events", "none")
-              vm.selectDisplay("current-events", "block")
-              vm.selectDisplay("after-events", "none")
+              vm.selectDisplay("all-events", "none");
+              vm.selectDisplay("my-events", "none");
+              vm.selectDisplay("favorite-events", "none");
+              vm.selectDisplay("before-events", "none");
+              vm.selectDisplay("current-events", "block");
+              vm.selectDisplay("after-events", "none");
             }else if(selectBoxVal == "after-events") {
-              vm.selectDisplay("all-events", "none")
-              vm.selectDisplay("my-events", "none")
-              vm.selectDisplay("favorite-events", "none")
-              vm.selectDisplay("before-events", "none")
-              vm.selectDisplay("current-events", "none")
-              vm.selectDisplay("after-events", "block")
-            }
+              vm.selectDisplay("all-events", "none");
+              vm.selectDisplay("my-events", "none");
+              vm.selectDisplay("favorite-events", "none");
+              vm.selectDisplay("before-events", "none");
+              vm.selectDisplay("current-events", "none");
+              vm.selectDisplay("after-events", "block");
+            };
           });
         }
       }
@@ -226,7 +226,7 @@
       $('.ui.modal')
         .modal('show')
       ;
-    }
+    };
 
     $(".actions .ui.grid .column .button").click(function(){
       $.cookie('btnFlg', 'on', { expires: 30,path: '/' });
@@ -255,7 +255,7 @@
           if (direction === "down") {
             $(this.element).addClass("fadeInUp");
             this.destroy();
-          }
+          };
         },
         offset: "100%"
       });

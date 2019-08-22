@@ -143,7 +143,7 @@
                     map: map,
                     position: markerLatLng
                   });
-                }
+                };
 
                 setTimeout(function(){
                   marker[i-1].addListener('click', function() {
@@ -163,7 +163,7 @@
 
                     if (currentInfoWindow) {
                       currentInfoWindow.close();
-                    }
+                    };
 
                     infoWindow[i-1].open(map, marker[i-1]);
                     currentInfoWindow = infoWindow[i-1];

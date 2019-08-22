@@ -92,16 +92,16 @@
           return 'tab';
         } else {
           return 'pc';
-        }
+        };
       },
       makeTimeChart: function() {
         var device = vm.getDevice();
 
-        var eventStartingTime = new Date(<%= @event.starting_year %>, <%= @event.starting_month %>, <%= @event.starting_day %>, <%= @event.starting_hour %>, <%= @event.starting_minute %>)
-        var eventEndingTime = new Date(<%= @event.ending_year %>, <%= @event.ending_month %>, <%= @event.ending_day %>, <%= @event.ending_hour %>, <%= @event.ending_minute %>)
+        var eventStartingTime = new Date(<%= @event.starting_year %>, <%= @event.starting_month %>, <%= @event.starting_day %>, <%= @event.starting_hour %>, <%= @event.starting_minute %>);
+        var eventEndingTime = new Date(<%= @event.ending_year %>, <%= @event.ending_month %>, <%= @event.ending_day %>, <%= @event.ending_hour %>, <%= @event.ending_minute %>);
 
-        var eventStartingDay = new Date(<%= @event.starting_year %>, <%= @event.starting_month %>, <%= @event.starting_day %>)
-        var eventStartingNextDay = new Date(<%= @event.starting_year %>, <%= @event.starting_month %>, <%= @event.starting_day %>)
+        var eventStartingDay = new Date(<%= @event.starting_year %>, <%= @event.starting_month %>, <%= @event.starting_day %>);
+        var eventStartingNextDay = new Date(<%= @event.starting_year %>, <%= @event.starting_month %>, <%= @event.starting_day %>);
         var eventStartingRealNextDay = eventStartingNextDay.getDate() + 1;
         eventStartingNextDay.setDate(eventStartingRealNextDay);
 
@@ -122,7 +122,7 @@
             bottom: 10,
             left: 10
           };
-        }
+        };
         var eventData = [{
           key: 1,
           name: '<%= @event.name %>',
@@ -162,7 +162,7 @@
             .tickFormat(d3.time.format('%H:00'))
             .innerTickSize(-(height - (margin.top + margin.bottom)))
             .outerTickSize(0);
-        }
+        };
         var y = d3.scale.ordinal()
           .domain(labels.map(function(d) {
             return d.key;
@@ -188,7 +188,7 @@
               return 'translate(14, -10) rotate(-45)';
             } else {
               return null;
-            }
+            };
           });
         svg.append('g')
           .attr({
@@ -241,7 +241,7 @@
 
         if (timer !== false) {
           clearTimeout(timer);
-        }
+        };
 
         timer = setTimeout(function() {
           d3.select('#time-chart').selectAll('*').remove();
@@ -261,7 +261,7 @@
           'region': 'jp'
         },function (results, status) {
             if (status === 'OK' && results[0]){
-              eventLocation = results[0].geometry.location
+              eventLocation = results[0].geometry.location;
               mapLatLng = new google.maps.LatLng(eventLocation.lat(), eventLocation.lng());
               markerLatLng = new google.maps.LatLng({lat: eventLocation.lat(), lng: eventLocation.lng()});
               marker = new google.maps.Marker({
@@ -280,7 +280,7 @@
               marker.setMap(map);
             }else{
               alert('失敗しました。理由: ' + status);
-            }
+            };
           }
         );
       },
@@ -291,48 +291,48 @@
       // '<span>','</span>'などの様に''で囲まれているためなのか(?)、@click="functionName('hoge')"の様にしても
       // 正しく引数として認識されないため(?)、それも出来なさそうなので、4つの関数を記した。
       seeMoreContent: function(){
-        var contentContinueIcon = document.getElementById("content-continue-icon")
-        var contentSeeMoreContent = document.getElementById("content-after-display-sentence")
-        var contentSeeMoreButton = document.getElementById("content-see-more")
-        var contentCloseButton = document.getElementById("content-close-see-more")
+        var contentContinueIcon = document.getElementById("content-continue-icon");
+        var contentSeeMoreContent = document.getElementById("content-after-display-sentence");
+        var contentSeeMoreButton = document.getElementById("content-see-more");
+        var contentCloseButton = document.getElementById("content-close-see-more");
 
-        contentContinueIcon.style.display = "none"
-        contentSeeMoreContent.style.display = "inline"
-        contentSeeMoreButton.style.display = "none"
-        contentCloseButton.style.display = "block"
+        contentContinueIcon.style.display = "none";
+        contentSeeMoreContent.style.display = "inline";
+        contentSeeMoreButton.style.display = "none";
+        contentCloseButton.style.display = "block";
       },
       closeSeeMoreContent: function(){
-        var contentContinueIcon = document.getElementById("content-continue-icon")
-        var contentSeeMoreContent = document.getElementById("content-after-display-sentence")
-        var contentSeeMoreButton = document.getElementById("content-see-more")
-        var contentCloseButton = document.getElementById("content-close-see-more")
+        var contentContinueIcon = document.getElementById("content-continue-icon");
+        var contentSeeMoreContent = document.getElementById("content-after-display-sentence");
+        var contentSeeMoreButton = document.getElementById("content-see-more");
+        var contentCloseButton = document.getElementById("content-close-see-more");
 
-        contentContinueIcon.style.display = "inline"
-        contentSeeMoreContent.style.display = "none"
-        contentSeeMoreButton.style.display = "block"
-        contentCloseButton.style.display = "none"
+        contentContinueIcon.style.display = "inline";
+        contentSeeMoreContent.style.display = "none";
+        contentSeeMoreButton.style.display = "block";
+        contentCloseButton.style.display = "none";
       },
       seeMoreCautionaryNote: function() {
-        var cautionaryNoteContinueIcon = document.getElementById("cautionary-note-continue-icon")
-        var cautionaryNoteSeeMoreContent = document.getElementById("cautionary-note-after-display-sentence")
-        var cautionaryNoteSeeMoreButton = document.getElementById("cautionary-note-see-more")
-        var cautionaryNoteCloseButton = document.getElementById("cautionary-note-close-see-more")
+        var cautionaryNoteContinueIcon = document.getElementById("cautionary-note-continue-icon");
+        var cautionaryNoteSeeMoreContent = document.getElementById("cautionary-note-after-display-sentence");
+        var cautionaryNoteSeeMoreButton = document.getElementById("cautionary-note-see-more");
+        var cautionaryNoteCloseButton = document.getElementById("cautionary-note-close-see-more");
 
-        cautionaryNoteContinueIcon.style.display = "none"
-        cautionaryNoteSeeMoreContent.style.display = "inline"
-        cautionaryNoteSeeMoreButton.style.display = "none"
-        cautionaryNoteCloseButton.style.display = "block"
+        cautionaryNoteContinueIcon.style.display = "none";
+        cautionaryNoteSeeMoreContent.style.display = "inline";
+        cautionaryNoteSeeMoreButton.style.display = "none";
+        cautionaryNoteCloseButton.style.display = "block";
       },
       closeSeeMoreCautionaryNote: function() {
-        var cautionaryNoteContinueIcon = document.getElementById("cautionary-note-continue-icon")
-        var cautionaryNoteSeeMoreContent = document.getElementById("cautionary-note-after-display-sentence")
-        var cautionaryNoteSeeMoreButton = document.getElementById("cautionary-note-see-more")
-        var cautionaryNoteCloseButton = document.getElementById("cautionary-note-close-see-more")
+        var cautionaryNoteContinueIcon = document.getElementById("cautionary-note-continue-icon");
+        var cautionaryNoteSeeMoreContent = document.getElementById("cautionary-note-after-display-sentence");
+        var cautionaryNoteSeeMoreButton = document.getElementById("cautionary-note-see-more");
+        var cautionaryNoteCloseButton = document.getElementById("cautionary-note-close-see-more");
 
-        cautionaryNoteContinueIcon.style.display = "inline"
-        cautionaryNoteSeeMoreContent.style.display = "none"
-        cautionaryNoteSeeMoreButton.style.display = "block"
-        cautionaryNoteCloseButton.style.display = "none"
+        cautionaryNoteContinueIcon.style.display = "inline";
+        cautionaryNoteSeeMoreContent.style.display = "none";
+        cautionaryNoteSeeMoreButton.style.display = "block";
+        cautionaryNoteCloseButton.style.display = "none";
       },
     },
     // 以下の2つの関数の共通部分以外を引数で表現して定義した関数の引数に、
@@ -365,7 +365,7 @@
           + '</div>'
           + '<div class="close-see-more ui bottom attached basic button" id="content-close-see-more" tabindex="0" @click="closeSeeMoreContent">'
           + '閉じる'
-          + '</div>'
+          + '</div>';
       };
     },
     created: function() {
@@ -387,7 +387,7 @@
           + '</div>'
           + '<div class="close-see-more ui bottom attached basic button" id="cautionary-note-close-see-more" tabindex="0" @click="closeSeeMoreCautionaryNote">'
           + '閉じる'
-          + '</div>'
+          + '</div>';
       };
     },
     mounted: function() {
@@ -398,8 +398,8 @@
       window.addEventListener("resize", function() {
         if (currentWidth !== window.innerWidth) {
           currentWidth = window.innerWidth;
-          vm.redrawTimeChart()
-        }
+          vm.redrawTimeChart();
+        };
       });
     },
   });
