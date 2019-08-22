@@ -10,14 +10,14 @@
         v-for="tab in tabs"
         :key="tab.id"
         :class="{active: activeTab.id == tab.id}"
-        @click="activeTab = tab"
+        @click="activeTab = tab; setCookies(activeTab.id)"
       >
         {{ tab.title }}
       </li>
     </ul>
     <div class="tabs-content">
       <template v-if="activeTab.id == '0'">
-        <date-content></date-content>
+        <date-content @animation="appearanceAnimation"></date-content>
       </template>
       <template v-if="activeTab.id == '1'">
         <place-content></place-content>
@@ -50,9 +50,13 @@
           this.buttonColumn = "eight wide column"
         }
       },
+      callParentAnimation: function() {
+        this.$emit('animation')
+      }
     },
     created: function() {
       setTimeout(this.judgeColumn, 10);
+      setTimeout(this.callParentAnimation, 10);
     },
     template:`
       <div>
@@ -94,10 +98,164 @@
   };
 
   var placeContent = {
+    methods: {
+      showMap: function() {
+        <% @events.each do |event| %>
+          var map;
+          var marker = [];
+          var infoWindow = [];
+          var currentInfoWindow = null;
+          var geocoder = new google.maps.Geocoder();
+          var markerDataArray = [];
+          var mapLatLng;
+          var pos;
+          var markerLatLng;
+          var markerData;
+
+          geocoder.geocode({
+            'address': '<%= event.place %>',
+            'region': 'jp'
+          },function (results, status) {
+              if (status === 'OK' && results[0]){
+                <% if @latitude && @longitude then %>
+                  mapLatLng = new google.maps.LatLng(<%= @latitude %>, <%= @longitude %>);
+                <% else %>
+                  mapLatLng = new google.maps.LatLng(35.681236,139.767125);
+                <% end %>
+                pos = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                markerData = [
+                  {
+                    name: '<%= event.name %>',
+                    place: '<%= event.place %>',
+                    lat: pos.lat(),
+                    lng: pos.lng(),
+                  }
+                ];
+
+                map = new google.maps.Map(document.getElementById('find-events-page-map'), {
+                  center: mapLatLng,
+                  zoom: 9,
+                  mapTypeControl: false,
+                  streetViewControl: false,
+                  fullscreenControl: false,
+                });
+
+                new google.maps.Circle({
+                  map: map,
+                  center: mapLatLng,
+                  fillColor: '#f00',
+                  fillOpacity: 0.3,
+                  radius: 15000,
+                  strokeColor: '#f00',
+                  strokeOpacity: 1,
+                  strokeWeight: 1
+                });
+
+                new google.maps.Circle({
+                  map: map,
+                  center: mapLatLng,
+                  fillColor: '#fff',
+                  fillOpacity: 0,
+                  radius: 25000,
+                  strokeColor: '#555',
+                  strokeOpacity: 1,
+                  strokeWeight: 1
+                });
+
+                markerDataArray.push(markerData);
+
+                for (var i = 0; i < markerDataArray.length; i++) {
+                  var markerLatLng = new google.maps.LatLng({lat: markerDataArray[i][0].lat, lng: markerDataArray[i][0].lng});
+                  marker[i] = new google.maps.Marker({
+                    map: map,
+                    position: markerLatLng
+                  });
+                }
+
+                setTimeout(function(){
+                  marker[i-1].addListener('click', function() {
+                    infoWindow[i-1] = new google.maps.InfoWindow({
+                      content: `
+                        <div class="marker_name">
+                          イベント名：<%= event.id %>
+                          <a href="/events/<%= event.id %>">
+                            ${markerDataArray[i-1][0].name}
+                          </a>
+                        </div>
+                        <div class="marker_place">
+                          開催地：${markerDataArray[i-1][0].place}
+                        </div>
+                      `
+                    });
+
+                    if (currentInfoWindow) {
+                      currentInfoWindow.close();
+                    }
+
+                    infoWindow[i-1].open(map, marker[i-1]);
+                    currentInfoWindow = infoWindow[i-1];
+                  });
+                }, 100);
+              }else{
+                alert('失敗しました。理由: ' + status);
+              }
+            }
+          );
+        <% end %>
+      },
+      getLocationInfo: function() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            function(position) {
+              var lat = position.coords.latitude;
+              var lng = position.coords.longitude;
+              window.location.href = `/find?latitude=${lat}&longitude=${lng}`
+            },
+            function (error) {
+              var errorInfo = [
+                "原因不明のエラーが発生しました。",
+                "位置情報の利用が許可されていません。",
+                "現在位置が取得できませんでした。",
+              ];
+              var errorNumber = error.code;
+              var errorMessage = "[エラー番号:" + errorNumber + "]\n" + errorInfo[errorNumber];
+              alert(errorMessage);
+            }
+          );
+        } else {
+          var errorMessage = "お使いの端末は、GeoLacation APIに対応していません。";
+          alert(errorMessage);
+        }
+      }
+    },
+    mounted: function() {
+      setTimeout(this.showMap, 300);
+    },
     template: `
       <div>
-        <div>場所から検索するよ！</div>
-        <div>2行目</div>
+        <div class="ui center aligned grid">
+          <div class="fourteen wide column">
+            <div class="ui center aligned grid">
+              <div class="wide column">
+                <div class="find-events-from-location-info">位置情報から探す</div>
+              </div>
+            </div>
+            <div class="ui left aligned grid">
+              <div class="wide column">
+                <div class="map-circle-explanation">
+                  赤色の円内には現在地から15km以内の場所で開催されるイベントが、<br>
+                  透明の円内には現在地から25km以内の場所で開催されるイベントが表示されます。
+                </div>
+              </div>
+            </div>
+            <div class="ui center aligned grid">
+              <div class="wide column">
+                <button class="ui button" @click="getLocationInfo">現在地を取得する</button>
+              </div>
+            </div>
+            <div id="find-events-page-map"></div>
+          </div>
+        </div>
       </div>
     `
   };
@@ -109,23 +267,21 @@
       "place-content": placeContent
     },
     data: {
-      tabs: "",
+      tabs: [
+        {
+          id: "0",
+          title: "日時から検索する",
+        },
+        {
+          id: "1",
+          title: "場所から検索する",
+        },
+      ],
       activeTab: "",
     },
     methods: {
-      makeTab: function() {
-        var _tabs = [
-          {
-            id: "0",
-            title: "日時から検索する",
-          },
-          {
-            id: "1",
-            title: "場所から検索する",
-          },
-        ];
-        vm.tabs = _tabs;
-        vm.activeTab = _tabs[0];
+      setActiveTab: function() {
+        vm.activeTab = vm.tabs[0];
       },
       appearanceAnimation: function() {
         $(".animated").waypoint({
@@ -138,10 +294,17 @@
           offset: "100%"
         });
       },
+      setCookies: function(activeTabId) {
+        Cookies.set('activeTabId', activeTabId, {path: ''});
+      },
+      getCookies: function() {
+        vm.activeTab = vm.tabs[Cookies.get('activeTabId')];
+      }
     },
     created: function() {
-      setTimeout(this.makeTab, 300);
-      setTimeout(this.appearanceAnimation, 300);
+      setTimeout(this.setActiveTab, 10);
+      setTimeout(this.appearanceAnimation, 10);
+      setTimeout(this.getCookies, 10);
     }
   });
 </script>
