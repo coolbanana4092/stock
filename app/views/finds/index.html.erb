@@ -83,7 +83,7 @@
           </div>
         </div>
         <div class="various-events-list">
-          <% if @events.empty? then %>
+          <% if @events.empty? %>
             <%= render partial: "partials/events/no-event-message", locals: { message: "投稿されたイベントはまだ存在していません。", classname: "all-events" } %>
           <% else %>
             <div class="all-events animated bounce">
@@ -117,7 +117,7 @@
             'region': 'jp'
           },function (results, status) {
               if (status === 'OK' && results[0]){
-                <% if @latitude && @longitude then %>
+                <% if @latitude && @longitude %>
                   mapLatLng = new google.maps.LatLng(<%= @latitude %>, <%= @longitude %>);
                 <% else %>
                   mapLatLng = new google.maps.LatLng(35.681236,139.767125);
