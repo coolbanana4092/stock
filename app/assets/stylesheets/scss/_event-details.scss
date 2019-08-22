@@ -57,7 +57,7 @@
     .see-more,
     .close-see-more{
       margin-top: 15px;
-      color: black !important;
+      color: #000 !important;
     }
     #event-place{
       margin-bottom: 20px;
@@ -87,14 +87,14 @@
       margin-bottom: 15px;
 
       a{
-        color: gray;
+        color: #808080;
       }
     }
     #button-to-delete-event{
       margin-bottom: 20px;
 
       a{
-        color: white;
+        color: #fff;
       }
     }
   }

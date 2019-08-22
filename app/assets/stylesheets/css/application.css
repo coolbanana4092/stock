@@ -67,7 +67,7 @@ header {
 }
 
 .application-name {
-  color: green;
+  color: #008000;
   font-family: serif;
 }
 
@@ -497,7 +497,7 @@ footer {
 .various-events-list .frame-of-segment .segment .like-button .link-to-unlike,
 .various-events-list .frame-of-segment .segment .unlike-button .link-to-like,
 .various-events-list .frame-of-segment .segment .unlike-button .link-to-unlike {
-  color: white;
+  color: #fff;
 }
 
 .before-events,
@@ -952,7 +952,7 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
 .ui.grid .fourteen.wide.column .see-more,
 .ui.grid .fourteen.wide.column .close-see-more {
   margin-top: 15px;
-  color: black !important;
+  color: #000 !important;
 }
 .ui.grid .fourteen.wide.column #event-place {
   margin-bottom: 20px;
@@ -978,13 +978,13 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
 }
 .frame-of-button-to-event-page .ui.grid #button-to-events-list a,
 .frame-of-button-to-event-page .ui.grid #button-to-edit-event a {
-  color: gray;
+  color: #808080;
 }
 .frame-of-button-to-event-page .ui.grid #button-to-delete-event {
   margin-bottom: 20px;
 }
 .frame-of-button-to-event-page .ui.grid #button-to-delete-event a {
-  color: white;
+  color: #fff;
 }
 
 @media screen and (min-width: 769px) {
