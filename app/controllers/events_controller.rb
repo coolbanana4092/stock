@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :require_user_logged_in, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_user_logged_in, only: [:index, :new, :create, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   include SessionsHelper
 
