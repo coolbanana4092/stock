@@ -40,18 +40,18 @@
           return 'tab';
         } else {
           return 'pc';
-        }
+        };
       },
       judgeColumn: function() {
         var device = this.getDevice();
         if (device == "pc") {
-          this.buttonColumn = "four wide column"
+          this.buttonColumn = "four wide column";
         } else {
-          this.buttonColumn = "eight wide column"
-        }
+          this.buttonColumn = "eight wide column";
+        };
       },
       callParentAnimation: function() {
-        this.$emit('animation')
+        this.$emit('animation');
       }
     },
     created: function() {
@@ -190,7 +190,7 @@
 
                     if (currentInfoWindow) {
                       currentInfoWindow.close();
-                    }
+                    };
 
                     infoWindow[i-1].open(map, marker[i-1]);
                     currentInfoWindow = infoWindow[i-1];
@@ -209,7 +209,7 @@
             function(position) {
               var lat = position.coords.latitude;
               var lng = position.coords.longitude;
-              window.location.href = `/find?latitude=${lat}&longitude=${lng}`
+              window.location.href = `/find?latitude=${lat}&longitude=${lng}`;
             },
             function (error) {
               var errorInfo = [
@@ -225,7 +225,7 @@
         } else {
           var errorMessage = "お使いの端末は、GeoLacation APIに対応していません。";
           alert(errorMessage);
-        }
+        };
       }
     },
     mounted: function() {
@@ -289,7 +289,7 @@
             if (direction === "down") {
               $(this.element).addClass("fadeInUp");
               this.destroy();
-            }
+            };
           },
           offset: "100%"
         });
