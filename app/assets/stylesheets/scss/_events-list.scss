@@ -33,6 +33,7 @@
     .slick-list{
       height: 200px;
     }
+
     .operation-image{
       border: solid 1px;
       height: 200px;
@@ -65,6 +66,7 @@
       .slick-list{
         height: 300px;
       }
+
       .operation-image{
         border: solid 1px;
         height: 300px;
@@ -134,6 +136,7 @@
           border-width: 75px 75px 0 0;
           border-color: #f00 transparent transparent transparent;
         }
+
         &::after{
           position: absolute;
           content: "New!";
@@ -149,10 +152,12 @@
           line-height: 1.2;
         }
       }
+
       .events-list-image{
         width: 100%;
         border: solid 1px;
       }
+
       .event-name{
         margin-top: 8px;
         font: {
@@ -160,13 +165,16 @@
           weight: bolder;
         }
       }
+
       .event-created-at{
         text-align: right;
         margin-top: 10px;
       }
+
       .event-organizer{
         margin-top: 15px;
       }
+
 			.detail-button,
       .like-button,
       .unlike-button{
@@ -248,11 +256,13 @@
             left: 5px !important;
           }
         }
+
         .event-name{
           min-height: 84px !important;
         }
       }
     }
+    
     .favorite-link-icon,
     .detail-link-icon{
       display: none;
