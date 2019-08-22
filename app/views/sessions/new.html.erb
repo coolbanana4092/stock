@@ -28,12 +28,12 @@
               </div>
             </div>
             <div class="ui left aligned grid">
-              <div class="sixteen wide column">
+              <div class="wide column">
                 パスワードを忘れた方は<%= link_to "こちら", new_password_reset_path %>をクリック
               </div>
             </div>
             <div class="ui left aligned grid">
-              <div class="sixteen wide column" id="always-login">
+              <div class="wide column" id="always-login">
                 <%= f.label :remember_me, class: "checkbox inline" do %>
                   <%= f.check_box :remember_me, :class => "ui checkbox" %>
                   常にログイン状態にする
