@@ -93,13 +93,13 @@
   <div class="frame-of-button-to-event-page">
     <div class="ui center aligned grid">
       <div class="ui button ten wide column" id="button-to-events-list">
-        <%= link_to 'イベント一覧', events_path %>
+        <%= link_to "イベント一覧", events_path %>
       </div>
     </div>
     <% if current_user == @event.user %>
       <div class="ui center aligned grid">
         <div class="ui button ten wide column" id="button-to-edit-event">
-          <%= link_to 'イベント編集', edit_event_path(@event) %>
+          <%= link_to "イベント編集", edit_event_path(@event) %>
         </div>
       </div>
       <div class="ui center aligned grid">
@@ -117,12 +117,12 @@
     methods: {
       getDevice: function() {
         var ua = navigator.userAgent;
-        if (ua.indexOf('iPhone') > 0 || ua.indexOf('iPod') > 0 || ua.indexOf('Android') > 0 && ua.indexOf('Mobile') > 0) {
-          return 'sp';
-        } else if (ua.indexOf('iPad') > 0 || ua.indexOf('Android') > 0) {
-          return 'tab';
+        if (ua.indexOf("iPhone") > 0 || ua.indexOf("iPod") > 0 || ua.indexOf("Android") > 0 && ua.indexOf("Mobile") > 0) {
+          return "sp";
+        } else if (ua.indexOf("iPad") > 0 || ua.indexOf("Android") > 0) {
+          return "tab";
         } else {
-          return 'pc';
+          return "pc";
         };
       },
       makeTimeChart: function() {
@@ -156,7 +156,7 @@
         };
         var eventData = [{
           key: 1,
-          name: '<%= @event.name %>',
+          name: "<%= @event.name %>",
           start: eventStartingTime,
           end: eventEndingTime
         }];
@@ -180,17 +180,17 @@
         if (device == "pc") {
           var xAxis = d3.svg.axis()
             .scale(x)
-            .orient('top')
+            .orient("top")
             .ticks(d3.time.hours, 1)
-            .tickFormat(d3.time.format('%H:00'))
+            .tickFormat(d3.time.format("%H:00"))
             .innerTickSize(-(height - (margin.top + margin.bottom)))
             .outerTickSize(0);
         } else {
           var xAxis = d3.svg.axis()
             .scale(x)
-            .orient('top')
+            .orient("top")
             .ticks(d3.time.hours, 2)
-            .tickFormat(d3.time.format('%H:00'))
+            .tickFormat(d3.time.format("%H:00"))
             .innerTickSize(-(height - (margin.top + margin.bottom)))
             .outerTickSize(0);
         };
@@ -201,53 +201,53 @@
           .rangeRoundBands([margin.top, height - margin.bottom], 0.5);
         var yAxis = d3.svg.axis()
           .scale(y)
-          .orient('left')
+          .orient("left")
           .innerTickSize(0)
           .outerTickSize(0);
 
-        svg.append('g')
+        svg.append("g")
           .attr({
-            class: 'axis x-axis',
-            transform: 'translate(' + margin.left + ', ' + margin.top + ')'
+            class: "axis x-axis",
+            transform: "translate(" + margin.left + ", " + margin.top + ")"
           })
           .call(xAxis)
-          .selectAll('text')
-          .attr('transform', function() {
+          .selectAll("text")
+          .attr("transform", function() {
             if (width <= 768) {
-              return 'translate(7, -15) rotate(-90)';
+              return "translate(7, -15) rotate(-90)";
             } else if (768 < width && width < 980) {
-              return 'translate(14, -10) rotate(-45)';
+              return "translate(14, -10) rotate(-45)";
             } else {
               return null;
             };
           });
-        svg.append('g')
+        svg.append("g")
           .attr({
-            class: 'axis y-axis',
-            transform: 'translate(' + margin.left + ', 0)'
+            class: "axis y-axis",
+            transform: "translate(" + margin.left + ", 0)"
           })
           .call(yAxis)
-          .selectAll('text')
+          .selectAll("text")
           .each(function(d, i) {
             var el = d3.select(this);
             var parent = d3.select(this.parentNode);
-            parent.append('foreignObject')
+            parent.append("foreignObject")
               .attr({
                 x: -margin.left,
                 y: -5,
                 width: margin.left,
                 height: 20 * 2
               })
-              .append('xhtml:p')
+              .append("xhtml:p")
               .attr({
-                class: 'y-axis-label'
+                class: "y-axis-label"
               })
             el.remove();
           });
-        svg.selectAll('.active')
+        svg.selectAll(".active")
           .data(eventData)
           .enter()
-          .append('rect')
+          .append("rect")
           .attr({
             x: function(d) {
               return x(d.start) + margin.left + 1;
@@ -257,8 +257,8 @@
             },
             width: 0,
             height: 50,
-            fill: '#45a1Cf',
-            class: 'active'
+            fill: "#45a1Cf",
+            class: "active"
           })
           .transition()
           .attr({
@@ -279,7 +279,7 @@
             };
 
             timer = setTimeout(function() {
-              d3.select('#time-chart').selectAll('*').remove();
+              d3.select("#time-chart").selectAll("*").remove();
               vm.makeTimeChart();
             }, 200);
 
@@ -296,10 +296,10 @@
         var marker;
 
         geocoder.geocode({
-          'address': '<%= @event.place %>',
-          'region': 'jp'
+          "address": "<%= @event.place %>",
+          "region": "jp"
         },function(results, status) {
-            if (status === 'OK' && results[0]){
+            if (status == "OK" && results[0]){
               eventLocation = results[0].geometry.location;
               mapLatLng = new google.maps.LatLng(eventLocation.lat(), eventLocation.lng());
               markerLatLng = new google.maps.LatLng({lat: eventLocation.lat(), lng: eventLocation.lng()});
@@ -318,7 +318,7 @@
 
               marker.setMap(map);
             } else{
-              alert('失敗しました。理由: ' + status);
+              alert("失敗しました。理由: " + status);
             };
           }
         );

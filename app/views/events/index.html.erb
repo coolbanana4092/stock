@@ -157,29 +157,29 @@
     },
     methods: {
       setCookies: function() {
-        Cookies.set('seeTutorial?', 'yes');
+        Cookies.set("seeTutorial?", "yes");
       },
       showModal: function() {
-        if (Cookies.get('seeTutorial?') !== 'yes') {
-          $('.ui.modal').modal('show');
+        if (Cookies.get("seeTutorial?") !== "yes") {
+          $(".ui.modal").modal("show");
         };
       },
       carousel: function() {
-        $('.carousel-image').slick({
-          asNavFor: '.carousel-explanation',
+        $(".carousel-image").slick({
+          asNavFor: ".carousel-explanation",
           dots: true,
           arrows: false,
           appendDots:$("#original-dots"),
         });
-        $('.carousel-explanation').slick({
-          asNavFor: '.carousel-image',
+        $(".carousel-explanation").slick({
+          asNavFor: ".carousel-image",
           arrows: false,
           fade: true,
         });
       },
       judgeNumberofEvents: function() {
         <% @all_events.each do |event| %>
-          var startingYear = new Date('<%= event.starting_year %>').getFullYear();
+          var startingYear = new Date("<%= event.starting_year %>").getFullYear();
           if (startingYear < this.thisYear) {
             this.beforeEventsArray.push(event);
             this.isBeforeEvents = "true";
@@ -218,7 +218,7 @@
       appearanceAnimation: function() {
         $(".animated").waypoint({
           handler: function(direction) {
-            if (direction === "down") {
+            if (direction == "down") {
               $(this.element).addClass("fadeInUp");
               this.destroy();
             };

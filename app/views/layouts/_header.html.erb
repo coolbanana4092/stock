@@ -14,15 +14,15 @@
       <div class="menu">
         <ul>
           <% if logged_in? %>
-            <li><%= link_to 'イベントを探す', find_path %></li>
+            <li><%= link_to "イベントを探す", find_path %></li>
             <li><%= link_to "イベント一覧", events_path %></li>
             <li><%= link_to "イベントの投稿", new_event_path %></li>
             <li><%= link_to "登録情報の変更", edit_user_path(current_user) %></li>
             <li><%= link_to "お問い合わせ", inquiry_input_path %></li>
-            <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+            <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to '新規登録', signup_path %></li>
-            <li><%= link_to 'ログイン', login_path %></li>
+            <li><%= link_to "新規登録", signup_path %></li>
+            <li><%= link_to "ログイン", login_path %></li>
             <li><%= link_to "お問い合わせ", inquiry_input_path %></li>
           <% end %>
         </ul>
@@ -39,8 +39,8 @@
         var hamburgerClass = this.$refs.hamburger.classList;
         var wrapperClass = this.$refs.wrapper.classList;
 
-        hamburgerClass.toggle('is-active');
-        wrapperClass.contains('nav-open') ? wrapperClass.remove('nav-open') : wrapperClass.add('nav-open');
+        hamburgerClass.toggle("is-active");
+        wrapperClass.contains("nav-open") ? wrapperClass.remove("nav-open") : wrapperClass.add("nav-open");
       },
     },
   });
