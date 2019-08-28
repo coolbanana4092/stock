@@ -262,7 +262,7 @@
         }
       }
     }
-    
+
     .favorite-link-icon,
     .detail-link-icon{
       display: none;
@@ -314,6 +314,7 @@
   color: #333;
   opacity: 0.6;
   transition: opacity 2.5s;
+  z-index: 1;
 
   &:hover {
     opacity: 1;

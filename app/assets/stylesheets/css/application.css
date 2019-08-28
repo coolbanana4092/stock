@@ -613,6 +613,7 @@ footer {
   color: #333;
   opacity: 0.6;
   transition: opacity 2.5s;
+  z-index: 1;
 }
 .back-to-top:hover {
   opacity: 1;

@@ -174,7 +174,7 @@
         <%= f.label :picture, 'イベント画像' %>
       </div>
       <div class="event-picture wide column">
-        <input id="event_picture" accept="image/jpeg,image/gif,image/png" type="file" name="event[picture]" @change="checkFileSize">
+        <input id="event_picture" accept="image/jpeg,image/gif,image/png" type="file" name="event[picture]" ref="eventPicture" @change="checkFileSize()">
       </div>
     </div>
   </div>
@@ -185,7 +185,7 @@
     el: "#event-form",
     methods: {
       checkFileSize: function() {
-        var eventPicture = document.getElementById("event_picture");
+        var eventPicture = this.$refs.eventPicture;
         var eventPictureSizeInMegabytes = eventPicture.files[0].size/1024/1024;
 
         if (eventPictureSizeInMegabytes > 5) {
@@ -193,5 +193,5 @@
         };
       },
     },
-  })
+  });
 </script>
