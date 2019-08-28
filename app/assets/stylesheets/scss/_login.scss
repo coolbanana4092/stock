@@ -1,7 +1,7 @@
-form{
-  .ui.grid{
-    .fourteen.wide.column{
-      #please-login{
+form {
+  .ui.grid {
+    .fourteen.wide.column {
+      #please-login {
         margin: 30px;
         font: {
           weight: bolder;
@@ -9,26 +9,26 @@ form{
         }
       }
 
-      .ui.form{
-        .field{
+      .ui.form {
+        .field {
           margin-bottom: 15px;
 
-          .ui.grid{
-            .login-page-frame-of-label{
+          .ui.grid {
+            .login-page-frame-of-label {
               padding-bottom: 0;
             }
 
-            .login-page-frame-of-input{
+            .login-page-frame-of-input {
               padding-top: 5px;
             }
 
-            #always-login{
+            #always-login {
               padding-top: 10px;
             }
           }
         }
 
-        #login-page-frame-of-login{
+        #login-page-frame-of-login {
           margin: {
             top: 40px;
             right: 40px;
@@ -37,7 +37,7 @@ form{
           }
         }
 
-        #login-page-frame-of-signup{
+        #login-page-frame-of-signup {
           margin: {
             top: 30px;
             bottom: 60px;
@@ -49,25 +49,25 @@ form{
 }
 
 @media screen and (max-width : 768px) {
-  .depend-on-device{
+  .depend-on-device {
     width: 100%;
   }
 }
 
 @media screen and (min-width: 769px) {
-  form{
-    .ui.grid{
-      .fourteen.wide.column{
-        #please-login{
+  form {
+    .ui.grid {
+      .fourteen.wide.column {
+        #please-login {
           margin-bottom: 60px;
         }
 
-        .depend-on-device{
+        .depend-on-device {
           width: 75%;
           margin: auto;
         }
 
-        #always-login{
+        #always-login {
           padding-top: 0px;
         }
       }

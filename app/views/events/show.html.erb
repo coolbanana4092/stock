@@ -257,7 +257,7 @@
             },
             width: 0,
             height: 50,
-            fill: '#45A1CF',
+            fill: '#45a1Cf',
             class: 'active'
           })
           .transition()
@@ -298,7 +298,7 @@
         geocoder.geocode({
           'address': '<%= @event.place %>',
           'region': 'jp'
-        },function (results, status) {
+        },function(results, status) {
             if (status === 'OK' && results[0]){
               eventLocation = results[0].geometry.location;
               mapLatLng = new google.maps.LatLng(eventLocation.lat(), eventLocation.lng());
@@ -317,7 +317,7 @@
               });
 
               marker.setMap(map);
-            }else{
+            } else{
               alert('失敗しました。理由: ' + status);
             };
           }
