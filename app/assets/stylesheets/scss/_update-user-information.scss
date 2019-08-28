@@ -1,7 +1,7 @@
-form{
-  .ui.grid{
-    .fourteen.wide.column{
-      #please-update-user-information{
+form {
+  .ui.grid {
+    .fourteen.wide.column {
+      #please-update-user-information {
         margin: 30px;
         font: {
           weight: bolder;
@@ -9,22 +9,22 @@ form{
         }
       }
 
-      .ui.form{
-        .field{
+      .ui.form {
+        .field {
           margin-bottom: 15px;
 
-          .ui.grid{
-            .user-update-page-frame-of-label{
+          .ui.grid {
+            .user-update-page-frame-of-label {
               padding-bottom: 0;
             }
 
-            .user-update-page-frame-of-input{
+            .user-update-page-frame-of-input {
               padding-top: 5px;
             }
           }
         }
 
-        #user-update-page-frame-of-update{
+        #user-update-page-frame-of-update {
           margin: {
             top: 40px;
             right: 40px;
@@ -38,20 +38,20 @@ form{
 }
 
 @media screen and (max-width : 768px) {
-  .depend-on-device{
+  .depend-on-device {
     width: 100%;
   }
 }
 
 @media screen and (min-width: 769px) {
-  form{
-    .ui.grid{
-      .fourteen.wide.column{
-        #please-update-user-information{
+  form {
+    .ui.grid {
+      .fourteen.wide.column {
+        #please-update-user-information {
           margin-bottom: 60px;
         }
-        
-        .depend-on-device{
+
+        .depend-on-device {
           width: 75%;
           margin: auto;
         }

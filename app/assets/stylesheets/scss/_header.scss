@@ -1,7 +1,7 @@
 /********************************
   ヘッダー自体
 ********************************/
-header{
+header {
   position: absolute;
   top: 0;
   height: 80px;
@@ -12,11 +12,11 @@ header{
   }
 }
 
-#header-title{
+#header-title {
   margin-top: 20px;
 }
 
-.application-name{
+.application-name {
   color: #008000;
   font-family: serif;
 }
@@ -153,7 +153,7 @@ header{
     }
   }
 
-  .menu{
+  .menu {
     position: fixed;
     top: 0;
     right: 0;
@@ -192,11 +192,11 @@ header{
   }
 
   .nav-open {
-    .menu{
+    .menu {
       transform: translateX(0);
     }
-    
-    #contents{
+
+    #contents {
       transform: translateX(-150px);
     }
   }

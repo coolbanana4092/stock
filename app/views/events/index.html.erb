@@ -160,7 +160,7 @@
         Cookies.set('seeTutorial?', 'yes');
       },
       showModal: function() {
-        if(Cookies.get('seeTutorial?') !== 'yes') {
+        if (Cookies.get('seeTutorial?') !== 'yes') {
           $('.ui.modal').modal('show');
         };
       },
@@ -239,45 +239,45 @@
     },
     directives: {
       eventchange: {
-        bind: function (el) {
+        bind: function(el) {
           el.addEventListener("change", function() {
             var selectBoxVal = el.value;
-            if(selectBoxVal == "all-events"){
+            if (selectBoxVal == "all-events"){
               vm.selectDisplay("all-events", "block");
               vm.selectDisplay("my-events", "none");
               vm.selectDisplay("favorite-events", "none");
               vm.selectDisplay("before-events", "none");
               vm.selectDisplay("current-events", "none");
               vm.selectDisplay("after-events", "none");
-            }else if(selectBoxVal == "my-events") {
+            } else if (selectBoxVal == "my-events") {
               vm.selectDisplay("all-events", "none");
               vm.selectDisplay("my-events", "block");
               vm.selectDisplay("favorite-events", "none");
               vm.selectDisplay("before-events", "none");
               vm.selectDisplay("current-events", "none");
               vm.selectDisplay("after-events", "none");
-            }else if(selectBoxVal == "favorite-events") {
+            } else if (selectBoxVal == "favorite-events") {
               vm.selectDisplay("all-events", "none");
               vm.selectDisplay("my-events", "none");
               vm.selectDisplay("favorite-events", "block");
               vm.selectDisplay("before-events", "none");
               vm.selectDisplay("current-events", "none");
               vm.selectDisplay("after-events", "none");
-            }else if(selectBoxVal == "before-events") {
+            } else if (selectBoxVal == "before-events") {
               vm.selectDisplay("all-events", "none");
               vm.selectDisplay("my-events", "none");
               vm.selectDisplay("favorite-events", "none");
               vm.selectDisplay("before-events", "block");
               vm.selectDisplay("current-events", "none");
               vm.selectDisplay("after-events", "none");
-            }else if(selectBoxVal == "current-events") {
+            } else if (selectBoxVal == "current-events") {
               vm.selectDisplay("all-events", "none");
               vm.selectDisplay("my-events", "none");
               vm.selectDisplay("favorite-events", "none");
               vm.selectDisplay("before-events", "none");
               vm.selectDisplay("current-events", "block");
               vm.selectDisplay("after-events", "none");
-            }else if(selectBoxVal == "after-events") {
+            } else if (selectBoxVal == "after-events") {
               vm.selectDisplay("all-events", "none");
               vm.selectDisplay("my-events", "none");
               vm.selectDisplay("favorite-events", "none");

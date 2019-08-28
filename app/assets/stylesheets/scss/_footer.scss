@@ -1,4 +1,4 @@
-footer{
+footer {
   position: absolute;
   bottom: 0;
   height: 80px;
@@ -9,11 +9,11 @@ footer{
   }
 }
 
-#social-medias{
+#social-medias {
   line-height: 100px;
   margin: auto;
 
-  .one-of-the-social-medias{
+  .one-of-the-social-medias {
     height: 20px;
     padding: 0;
     margin-top: 5px;
@@ -21,13 +21,13 @@ footer{
 }
 
 @media screen and (max-width: 768px) {
-  #social-medias{
+  #social-medias {
     width: 90% !important;
   }
 }
 
 @media screen and (min-width: 769px) {
-  #social-medias{
+  #social-medias {
     width: 50% !important;
   }
 }

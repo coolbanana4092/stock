@@ -1,20 +1,20 @@
-[v-cloak]{
+[v-cloak] {
   display: none;
 }
 
-html{
+html {
   height: 100%;
   margin: 0;
   padding: 0;
 
-  body{
-    #container{
+  body {
+    #container {
       position: relative;
       min-height: 100%;
       overflow: hidden;
       background-color: #f7faf2;
 
-      #main-content{
+      #main-content {
         padding: {
           top: 80px;
           bottom: 80px;
@@ -28,20 +28,20 @@ html{
   }
 }
 
-a{
+a {
   color: #000;
   text-decoration: none;
 }
 
-li{
+li {
   list-style: none;
 }
 
 @media screen and (min-width: 769px) {
-  html{
-    body{
-      #container{
-        #main-content{
+  html {
+    body {
+      #container {
+        #main-content {
           padding-top: 180px;
         }
       }
