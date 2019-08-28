@@ -1,7 +1,7 @@
-form{
-  .ui.grid{
-    .fourteen.wide.column{
-      #please-post-or-update-event{
+form {
+  .ui.grid {
+    .fourteen.wide.column {
+      #please-post-or-update-event {
         margin: 30px;
         font: {
           weight: bolder;
@@ -9,58 +9,58 @@ form{
         }
       }
 
-      .ui.form{
-        .field{
-          .ui.grid{
+      .ui.form {
+        .field {
+          .ui.grid {
             .frame-of-input-price,
-            .frame-of-input-date{
+            .frame-of-input-date {
               padding: 0 !important;
             }
 
-            #frame-of-price{
+            #frame-of-price {
               padding-bottom: 0;
             }
 
-            .frame-of-input-price{
+            .frame-of-input-price {
               padding-left: 14px !important;
             }
 
             .yen-in-japanese,
-            .date-in-japanese{
+            .date-in-japanese {
               padding: 0 !important;
             }
 
-            .yen-in-japanese{
+            .yen-in-japanese {
               padding-left: 10px !important;
             }
 
-            .frame-of-input-date{
+            .frame-of-input-date {
               .input-year,
               .input-hour,
               .input-month,
               .input-day,
-              .input-minute{
+              .input-minute {
                 padding: 5px;
 
-                .input-event-date{
+                .input-event-date {
                   padding: 10px;
                 }
               }
 
               .input-year,
-              .input-hour,{
+              .input-hour, {
                 padding-left: 14px;
               }
             }
 
-            .event-picture{
+            .event-picture {
               padding-top: 0px;
             }
           }
         }
 
-        .ui.grid{
-          #event-update-page-frame-of-submit{
+        .ui.grid {
+          #event-update-page-frame-of-submit {
             margin: {
               top: 40px;
               right: 40px;
@@ -75,20 +75,20 @@ form{
 }
 
 @media screen and (max-width : 768px) {
-  .depend-on-device{
+  .depend-on-device {
     width: 100%;
   }
 }
 
 @media screen and (min-width: 769px) {
-  form{
-    .ui.grid{
-      .fourteen.wide.column{
-        #please-post-or-update-event{
+  form {
+    .ui.grid {
+      .fourteen.wide.column {
+        #please-post-or-update-event {
           margin-bottom: 60px;
         }
-        
-        .depend-on-device{
+
+        .depend-on-device {
           width: 50%;
           margin: auto;
         }

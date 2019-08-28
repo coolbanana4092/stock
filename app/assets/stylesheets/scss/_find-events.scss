@@ -46,25 +46,25 @@
   border: 1px solid #999;
   border-radius: 0 4px 4px 4px;
 
-  .find-events-from-created{
+  .find-events-from-created {
     margin-top: 15px;
     font-weight: bolder;
   }
 
-  #period-form{
+  #period-form {
     padding: 10px !important;
 
-    .period-button{
+    .period-button {
       font-size: 11px;
     }
   }
 
-  .find-events-from-location-info{
+  .find-events-from-location-info {
     margin-top: 15px;
     font-weight: bolder;
   }
 
-  #find-events-page-map{
+  #find-events-page-map {
     width: 100%;
     height: 300px;
     margin: {
@@ -76,11 +76,11 @@
     border: solid 1px #d2ccd0;
   }
 
-  .marker_name{
+  .marker_name {
     text-align: left;
   }
 
-  .marker_place{
+  .marker_place {
     text-align: left;
   }
 }
@@ -94,7 +94,7 @@
   }
 
   .tabs-content {
-    .find-events-from-created{
+    .find-events-from-created {
       margin: {
         top: 30px;
         bottom: 10px;
@@ -102,22 +102,22 @@
       font-size: 18px;
     }
 
-    .select-created-range{
+    .select-created-range {
       margin: {
         bottom: 10px;
       }
       font-size: 16px;
     }
 
-    #period-form{
+    #period-form {
       padding: 10px !important;
 
-      .period-button{
+      .period-button {
         font-size: 11px;
       }
     }
 
-    .find-events-from-location-info{
+    .find-events-from-location-info {
       margin: {
         top: 30px;
         bottom: 10px;
@@ -125,14 +125,14 @@
       font-size: 18px;
     }
 
-    .map-circle-explanation{
+    .map-circle-explanation {
       margin: {
         bottom: 10px;
       }
       font-size: 16px;
     }
-    
-    #find-events-page-map{
+
+    #find-events-page-map {
       width: 60%;
       height: 500px;
     }

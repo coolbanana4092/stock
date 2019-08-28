@@ -130,7 +130,7 @@
           geocoder.geocode({
             'address': '<%= event.place %>',
             'region': 'jp'
-          },function (results, status) {
+          },function(results, status) {
               if (status === 'OK' && results[0]){
                 pos = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
                 markerData = [
@@ -205,7 +205,7 @@
                     currentInfoWindow = infoWindow[i-1];
                   });
                 }, 100);
-              }else{
+              } else{
                 alert('失敗しました。理由: ' + status);
               }
             }
@@ -229,7 +229,7 @@
               lng = position.coords.longitude;
               window.location.href = `/find?latitude=${lat}&longitude=${lng}`;
             },
-            function (error) {
+            function(error) {
               errorMessage = errorInfo[error.code];
               alert(errorMessage);
             }

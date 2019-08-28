@@ -1,20 +1,20 @@
-.ui.grid{
-  #frame-of-event-details-image{
+.ui.grid {
+  #frame-of-event-details-image {
     padding: {
       top: 5px;
       bottom: 0px;
     }
   }
 
-  .fourteen.wide.column{
-    #event-details-image{
+  .fourteen.wide.column {
+    #event-details-image {
       width: 100%;
       padding: 5px;
       margin-top: 20px;
       border: solid 1px;
     }
 
-    #event-name{
+    #event-name {
       margin-bottom: 15px;
 
       font: {
@@ -23,91 +23,91 @@
       }
     }
 
-    #event-created-or-updated-date{
+    #event-created-or-updated-date {
       margin-bottom: 5px;
     }
 
-    .subheading-of-event-details{
+    .subheading-of-event-details {
       margin-bottom: 10px;
       font-size: 18px;
     }
 
     .axis path,
-    .axis line{
+    .axis line {
       fill: none;
       stroke: black;
       shape-rendering: crispEdges;
     }
 
-    .axis .tick line{
+    .axis .tick line {
       fill: none;
       stroke: #ccc;
     }
 
-    .axis text{
+    .axis text {
       font-family: sans-serif;
       font-size: 9px;
     }
 
-    .y-axis-label{
+    .y-axis-label {
       font-family: sans-serif;
       font-size: 9px;
       word-wrap: break-word;
       text-align: center;
     }
 
-    .y-axis path{
+    .y-axis path {
       stroke: none;
     }
 
     .after-display-sentence,
-    .close-see-more{
+    .close-see-more {
       display: none;
     }
 
     .see-more,
-    .close-see-more{
+    .close-see-more {
       margin-top: 15px;
       color: #000 !important;
     }
 
-    #event-place{
+    #event-place {
       margin-bottom: 20px;
     }
 
-    #event-price{
+    #event-price {
       margin-bottom: 20px;
     }
   }
 }
 
-#event-detail-page-map{
+#event-detail-page-map {
   width: 80%;
   height: 300px;
   margin: auto;
   border: solid 1px #d2ccd0;
 }
 
-.frame-of-button-to-event-page{
+.frame-of-button-to-event-page {
   margin: {
     top: 25px;
     bottom: 35px;
   }
 
-  .ui.grid{
+  .ui.grid {
     #button-to-events-list,
-    #button-to-edit-event{
+    #button-to-edit-event {
       margin-bottom: 15px;
 
-      a{
+      a {
         color: #808080;
       }
     }
 
-    #button-to-delete-event{
+    #button-to-delete-event {
       margin-bottom: 20px;
 
-      a{
+      a {
         color: #fff;
       }
     }
@@ -115,24 +115,24 @@
 }
 
 @media screen and (min-width: 769px) {
-  .ui.grid{
-    #frame-of-event-details-image{
+  .ui.grid {
+    #frame-of-event-details-image {
       padding: {
         top: 10px;
         bottom: 10px;
       }
       margin-top: 0px;
     }
-    
-    .fourteen.wide.column{
-      #event-details-image{
+
+    .fourteen.wide.column {
+      #event-details-image {
         width: 50%;
         margin-top: 0px;
       }
     }
   }
 
-  #event-detail-page-map{
+  #event-detail-page-map {
     width: 50%;
     height: 500px;
   }
