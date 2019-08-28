@@ -97,15 +97,15 @@
           var currentInfoWindow;
 
           geocoder.geocode({
-            'address': '<%= event.place %>',
-            'region': 'jp'
+            "address": "<%= event.place %>",
+            "region": "jp"
           },function(results, status) {
-              if (status === 'OK' && results[0]) {
+              if (status == "OK" && results[0]) {
                 pos = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
                 markerData = [
                   {
-                    name: '<%= event.name %>',
-                    place: '<%= event.place %>',
+                    name: "<%= event.name %>",
+                    place: "<%= event.place %>",
                     lat: pos.lat(),
                     lng: pos.lng(),
                   }
@@ -129,7 +129,7 @@
                 };
 
                 setTimeout(function(){
-                  marker[i-1].addListener('click', function() {
+                  marker[i-1].addListener("click", function() {
                     infoWindow[i-1] = new google.maps.InfoWindow({
                       content: `
                         <div class="marker_name">
@@ -153,7 +153,7 @@
                   });
                 }, 100);
               } else{
-                alert('失敗しました。理由: ' + status);
+                alert("失敗しました。理由: " + status);
               }
             }
           );
@@ -163,13 +163,13 @@
         var inputAddress = this.$refs.address.value;
 
         geocoder.geocode({
-          'address': inputAddress,
-          'region': 'jp'
+          "address": inputAddress,
+          "region": "jp"
         },function(results, status) {
-            if (status === 'OK' && results[0]) {
+            if (status == "OK" && results[0]) {
               map.setCenter(results[0].geometry.location);
             } else {
-              alert('住所検索に失敗しました。住所が正しいか確認してください');
+              alert("住所検索に失敗しました。住所が正しいか確認してください。");
             }
           }
         );
