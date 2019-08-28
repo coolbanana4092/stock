@@ -19,17 +19,30 @@
       </div>
       <div class="ui divider"></div>
       <div class="subheading-of-event-details">イベント詳細</div>
-      <div class="event-content" id="event-content">
-        <%= @event.content %>
+      <div class="event-content" id="event-content" ref="eventContent">
+        <template v-if="<%= @event.content.length %> <= 300">
+          <%= @event.content %>
+        </template>
+        <template v-else>
+          <span><%= @event.content[0..299] %></span>
+          <span id="content-continue-icon" ref="contentContinueIcon">・・・</span>
+          <span class="after-display-sentence" id="content-after-display-sentence" ref="contentAfterDisplaySentence">
+            <%= @event.content[300..] %>
+          </span>
+          <div class="see-more ui bottom attached basic button" id="content-see-more" ref="contentSeeMore" tabindex="0" @click="seeMoreContent()">
+            もっと見る
+          </div>
+          <div class="close-see-more ui bottom attached basic button" id="content-close-see-more" ref="contentCloseSeeMore" tabindex="0" @click="closeSeeMoreContent()">
+            閉じる
+          </div>
+        </template>
       </div>
       <div class="ui divider"></div>
       <div class="subheading-of-event-details">開催日時</div>
       <div id="event-date">
         <%= @event.starting_year %>/<%= @event.starting_month %>/<%= @event.starting_day %> <%= @event.starting_hour %>:<%= @event.starting_minute %> 〜 <%= @event.ending_year %>/<%= @event.ending_month %>/<%= @event.ending_day %> <%= @event.ending_hour %>:<%= @event.ending_minute %>
       </div>
-      <div>
-        <svg id="time-chart"></svg>
-      </div>
+      <svg id="time-chart"></svg>
       <div class="ui divider"></div>
       <div class="subheading-of-event-details">開催場所</div>
       <div id="event-place">
@@ -37,7 +50,7 @@
       </div>
     </div>
   </div>
-  <div id="event-detail-page-map"></div>
+  <div id="event-detail-page-map" ref="eventDetailPageMap"></div>
   <div class="ui center aligned grid">
     <div class="left aligned fourteen wide column">
       <div class="ui divider"></div>
@@ -53,8 +66,26 @@
       </div>
       <div class="ui divider"></div>
       <div class="subheading-of-event-details">注意点</div>
-      <div class="event-cautionary-note" id="event-cautionary-note">
-        <%= @event.cautionary_note.empty? ? "なし" : @event.cautionary_note %>
+      <div class="event-cautionary-note" id="event-cautionary-note" ref="eventCautionaryNote">
+        <template v-if="<%= @event.cautionary_note.empty? %>">
+          なし
+        </template>
+        <template v-else-if="<%= @event.cautionary_note.length %> <= 300">
+          <%= @event.cautionary_note %>
+        </template>
+        <template v-else>
+          <span><%= @event.cautionary_note[0..299] %></span>
+          <span id="cautionary-note-continue-icon" ref="cautionaryContinueIcon">・・・</span>
+          <span class="after-display-sentence" id="cautionary-note-after-display-sentence" ref="cautionaryAfterDisplaySentence">
+            <span><%= @event.cautionary_note[300..] %></span>
+          </span>
+          <div class="see-more ui bottom attached basic button" id="cautionary-note-see-more" ref="cautionarySeeMore" tabindex="0" @click="seeMoreCautionaryNote()">
+            もっと見る
+          </div>
+          <div class="close-see-more ui bottom attached basic button" id="cautionary-note-close-see-more" ref="cautionaryCloseSeeMore" tabindex="0" @click="closeSeeMoreCautionaryNote()">
+            閉じる
+          </div>
+        </template>
       </div>
       <div class="ui divider"></div>
     </div>
@@ -95,7 +126,7 @@
         };
       },
       makeTimeChart: function() {
-        var device = vm.getDevice();
+        var device = this.getDevice();
 
         var eventStartingTime = new Date(<%= @event.starting_year %>, <%= @event.starting_month %>, <%= @event.starting_day %>, <%= @event.starting_hour %>, <%= @event.starting_minute %>);
         var eventEndingTime = new Date(<%= @event.ending_year %>, <%= @event.ending_month %>, <%= @event.ending_day %>, <%= @event.ending_hour %>, <%= @event.ending_minute %>);
@@ -237,24 +268,32 @@
           });
       },
       redrawTimeChart: function() {
-        var timer;
+        var currentWidth = window.innerWidth;
 
-        if (timer !== false) {
-          clearTimeout(timer);
-        };
+        window.addEventListener("resize", function() {
+          if (currentWidth !== window.innerWidth) {
+            var timer;
 
-        timer = setTimeout(function() {
-          d3.select('#time-chart').selectAll('*').remove();
-          vm.makeTimeChart();
-        }, 200);
+            if (timer !== false) {
+              clearTimeout(timer);
+            };
+
+            timer = setTimeout(function() {
+              d3.select('#time-chart').selectAll('*').remove();
+              vm.makeTimeChart();
+            }, 200);
+
+            currentWidth = window.innerWidth;
+          };
+        });
       },
-      makeMap: function() {
+      makeEventDetailsMap: function() {
         var geocoder = new google.maps.Geocoder();
         var eventLocation;
         var mapLatLng;
         var markerLatLng;
-        var marker;
         var map;
+        var marker;
 
         geocoder.geocode({
           'address': '<%= @event.place %>',
@@ -264,17 +303,17 @@
               eventLocation = results[0].geometry.location;
               mapLatLng = new google.maps.LatLng(eventLocation.lat(), eventLocation.lng());
               markerLatLng = new google.maps.LatLng({lat: eventLocation.lat(), lng: eventLocation.lng()});
-              marker = new google.maps.Marker({
-                map: map,
-                position: markerLatLng
-              });
-              map = new google.maps.Map(document.getElementById('event-detail-page-map'), {
+              map = new google.maps.Map(vm.$refs.eventDetailPageMap, {
                 center: mapLatLng,
                 zoom: 10,
                 mapTypeControl: false,
                 streetViewControl: false,
                 fullscreenControl: false,
                 zoomControl: false,
+              });
+              marker = new google.maps.Marker({
+                map: map,
+                position: markerLatLng
               });
 
               marker.setMap(map);
@@ -284,123 +323,35 @@
           }
         );
       },
-      // 以下のmethods内の4つの関数は、new Vueの外などでグローバル変数を定義することによって、
-      // 関数内を簡単に記述したかったが、調べても出てこず、それが出来なかったため、
-      // 冗長ではあるがそれぞれの関数内で毎回変数を定義した。
-      // また、関数に引数を使用して、以下の4つの関数を2つにまとめたかったが、
-      // '<span>','</span>'などの様に''で囲まれているためなのか(?)、@click="functionName('hoge')"の様にしても
-      // 正しく引数として認識されないため(?)、それも出来なさそうなので、4つの関数を記した。
       seeMoreContent: function(){
-        var contentContinueIcon = document.getElementById("content-continue-icon");
-        var contentSeeMoreContent = document.getElementById("content-after-display-sentence");
-        var contentSeeMoreButton = document.getElementById("content-see-more");
-        var contentCloseButton = document.getElementById("content-close-see-more");
-
-        contentContinueIcon.style.display = "none";
-        contentSeeMoreContent.style.display = "inline";
-        contentSeeMoreButton.style.display = "none";
-        contentCloseButton.style.display = "block";
+        this.$refs.contentContinueIcon.style.display = "none";
+        this.$refs.contentAfterDisplaySentence.style.display = "inline";
+        this.$refs.contentSeeMore.style.display = "none";
+        this.$refs.contentCloseSeeMore.style.display = "block";
       },
       closeSeeMoreContent: function(){
-        var contentContinueIcon = document.getElementById("content-continue-icon");
-        var contentSeeMoreContent = document.getElementById("content-after-display-sentence");
-        var contentSeeMoreButton = document.getElementById("content-see-more");
-        var contentCloseButton = document.getElementById("content-close-see-more");
-
-        contentContinueIcon.style.display = "inline";
-        contentSeeMoreContent.style.display = "none";
-        contentSeeMoreButton.style.display = "block";
-        contentCloseButton.style.display = "none";
+        this.$refs.contentContinueIcon.style.display = "inline";
+        this.$refs.contentAfterDisplaySentence.style.display = "none";
+        this.$refs.contentSeeMore.style.display = "block";
+        this.$refs.contentCloseSeeMore.style.display = "none";
       },
       seeMoreCautionaryNote: function() {
-        var cautionaryNoteContinueIcon = document.getElementById("cautionary-note-continue-icon");
-        var cautionaryNoteSeeMoreContent = document.getElementById("cautionary-note-after-display-sentence");
-        var cautionaryNoteSeeMoreButton = document.getElementById("cautionary-note-see-more");
-        var cautionaryNoteCloseButton = document.getElementById("cautionary-note-close-see-more");
-
-        cautionaryNoteContinueIcon.style.display = "none";
-        cautionaryNoteSeeMoreContent.style.display = "inline";
-        cautionaryNoteSeeMoreButton.style.display = "none";
-        cautionaryNoteCloseButton.style.display = "block";
+        this.$refs.cautionaryContinueIcon.style.display = "none";
+        this.$refs.cautionaryAfterDisplaySentence.style.display = "inline";
+        this.$refs.cautionarySeeMore.style.display = "none";
+        this.$refs.cautionaryCloseSeeMore.style.display = "block";
       },
       closeSeeMoreCautionaryNote: function() {
-        var cautionaryNoteContinueIcon = document.getElementById("cautionary-note-continue-icon");
-        var cautionaryNoteSeeMoreContent = document.getElementById("cautionary-note-after-display-sentence");
-        var cautionaryNoteSeeMoreButton = document.getElementById("cautionary-note-see-more");
-        var cautionaryNoteCloseButton = document.getElementById("cautionary-note-close-see-more");
-
-        cautionaryNoteContinueIcon.style.display = "inline";
-        cautionaryNoteSeeMoreContent.style.display = "none";
-        cautionaryNoteSeeMoreButton.style.display = "block";
-        cautionaryNoteCloseButton.style.display = "none";
+        this.$refs.cautionaryContinueIcon.style.display = "inline";
+        this.$refs.cautionaryAfterDisplaySentence.style.display = "none";
+        this.$refs.cautionarySeeMore.style.display = "block";
+        this.$refs.cautionaryCloseSeeMore.style.display = "none";
       },
     },
-    // 以下の2つの関数の共通部分以外を引数で表現して定義した関数の引数に、
-    // 使用時の引数を代入した状態でこの関数を使用できなかったため(定義時の引数がそのまま使われてしまっている状態)、
-    // JavaScriptによって作成されるHTMLの要素1パターンしか出来ず、
-    // 2回目以降にはこの関数を使用しても効果がない状態になってしまっているため、
-    // 冗長ではあるが、以下の2つの関数をまとめずにそれぞれ分けて記すことで対応させた。
-    // (原因はJavaScriptによって作成された要素が''で囲まれているからということが判明した)
-    //
-    // また、以下の2つの関数をmethodsに定義して、それを呼び出した場合、
-    // 追加されたhtml要素の@clickが役割を果たしているのではなく、ただの文字列として認識されているので、クリックしても関数が実行されない。
-    // →これは、普通のHTMLの要素に@clickを入れると、デベロッパーツールで見た時に@clickが消えるのに、追加されたhtml要素の場合はそのまま@clickとして
-    // 残り続けていることから判明した。
-    beforeCreate: function() {
-      var eventContent = document.getElementsByClassName('event-content').item(0);
-      var sentence= eventContent.innerHTML;
-      var alwaysDisplaySentence = sentence.substr(0,300);
-      var afterDisplaySentence = sentence.substr(300);
-
-      if (afterDisplaySentence != '') {
-        eventContent.innerHTML = alwaysDisplaySentence
-          + '<span id="content-continue-icon">'
-          + '・・・'
-          + '</span>'
-          + '<span class="after-display-sentence" id="content-after-display-sentence">'
-          + afterDisplaySentence
-          + '</span>'
-          + '<div class="see-more ui bottom attached basic button" id="content-see-more" tabindex="0" @click="seeMoreContent">'
-          + 'もっと見る'
-          + '</div>'
-          + '<div class="close-see-more ui bottom attached basic button" id="content-close-see-more" tabindex="0" @click="closeSeeMoreContent">'
-          + '閉じる'
-          + '</div>';
-      };
-    },
-    created: function() {
-      var eventCautionaryNote = document.getElementsByClassName('event-cautionary-note').item(0);
-      var sentence= eventCautionaryNote.innerHTML;
-      var alwaysDisplaySentence = sentence.substr(0,300);
-      var afterDisplaySentence = sentence.substr(300);
-
-      if(afterDisplaySentence != ''){
-        eventCautionaryNote.innerHTML = alwaysDisplaySentence
-          + '<span id="cautionary-note-continue-icon">'
-          + '・・・'
-          + '</span>'
-          + '<span class="after-display-sentence" id="cautionary-note-after-display-sentence">'
-          + afterDisplaySentence
-          + '</span>'
-          + '<div class="see-more ui bottom attached basic button" id="cautionary-note-see-more" tabindex="0" @click="seeMoreCautionaryNote">'
-          + 'もっと見る'
-          + '</div>'
-          + '<div class="close-see-more ui bottom attached basic button" id="cautionary-note-close-see-more" tabindex="0" @click="closeSeeMoreCautionaryNote">'
-          + '閉じる'
-          + '</div>';
-      };
-    },
     mounted: function() {
-      var currentWidth = window.innerWidth;
-
-      setTimeout(this.makeMap, 300);
-      setTimeout(this.makeTimeChart, 300);
-      window.addEventListener("resize", function() {
-        if (currentWidth !== window.innerWidth) {
-          currentWidth = window.innerWidth;
-          vm.redrawTimeChart();
-        };
-      });
+      this.makeEventDetailsMap();
+      this.makeTimeChart();
+      this.redrawTimeChart();
     },
   });
 </script>

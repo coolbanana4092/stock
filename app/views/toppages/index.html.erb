@@ -62,13 +62,13 @@
       まずは、住所を検索するか、位置情報を送信してみましょう。
     </div>
   </div>
-  <div id="toppage-map"></div>
+  <div id="toppage-map" ref="toppageMap"></div>
   <div class="fourteen wide columm" id="search-address">
     <div class="item">
       <div class="ui icon input">
-        <input id="address" type="text" name="address" placeholder="例：東京都渋谷区">
-        <i class="search link icon"></i>
-        <input type="button" id="search" value="検索" @click="search">
+        <input id="address" type="text" name="address" placeholder="例：東京都渋谷区" ref="address">
+        <i class="search link icon" @click="search()"></i>
+        <input type="button" id="search" value="検索" @click="search()">
       </div>
     </div>
   </div>
@@ -81,43 +81,26 @@
 
 <script>
   var map;
-  var marker = [];
-  var infoWindow = [];
-  var currentInfoWindow = null;
   var geocoder = new google.maps.Geocoder();
-  var markerDataArray = [];
-
-  new Vue({
+  var vm = new Vue({
     el: "#toppage",
     methods: {
-      search: function() {
-        var inputAddress = document.getElementById("address").value;
-
-        geocoder.geocode({
-          'address': inputAddress,
-          'region': 'jp'
-        },function (results, status) {
-            if (status === 'OK' && results[0]) {
-              map.setCenter(results[0].geometry.location);
-            } else {
-              alert('住所検索に失敗しました。住所が正しいか確認してください');
-            }
-          }
-        );
-      },
-      showMap: function() {
+      makeEventsListMap: function() {
         <% @events.each do |event| %>
-          var mapLatLng;
+          var mapLatLng = new google.maps.LatLng(35.681236,139.767125);
           var pos;
-          var markerLatLng;
           var markerData;
+          var markerDataArray = [];
+          var markerLatLng;
+          var marker = [];
+          var infoWindow = [];
+          var currentInfoWindow;
 
           geocoder.geocode({
             'address': '<%= event.place %>',
             'region': 'jp'
           },function (results, status) {
               if (status === 'OK' && results[0]){
-                mapLatLng = new google.maps.LatLng(35.681236,139.767125);
                 pos = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
                 markerData = [
                   {
@@ -127,7 +110,7 @@
                     lng: pos.lng(),
                   }
                 ];
-                map = new google.maps.Map(document.getElementById('toppage-map'), {
+                map = new google.maps.Map(vm.$refs.toppageMap, {
                   center: mapLatLng,
                   zoom: 10,
                   mapTypeControl: false,
@@ -138,7 +121,7 @@
                 markerDataArray.push(markerData);
 
                 for (var i = 0; i < markerDataArray.length; i++) {
-                  var markerLatLng = new google.maps.LatLng({lat: markerDataArray[i][0].lat, lng: markerDataArray[i][0].lng});
+                  markerLatLng = new google.maps.LatLng({lat: markerDataArray[i][0].lat, lng: markerDataArray[i][0].lng});
                   marker[i] = new google.maps.Marker({
                     map: map,
                     position: markerLatLng
@@ -175,10 +158,25 @@
             }
           );
         <% end %>
-      }
+      },
+      search: function() {
+        var inputAddress = this.$refs.address.value;
+
+        geocoder.geocode({
+          'address': inputAddress,
+          'region': 'jp'
+        },function (results, status) {
+            if (status === 'OK' && results[0]) {
+              map.setCenter(results[0].geometry.location);
+            } else {
+              alert('住所検索に失敗しました。住所が正しいか確認してください');
+            }
+          }
+        );
+      },
     },
     mounted: function() {
-      setTimeout(this.showMap, 300);
+      this.makeEventsListMap();
     },
-  })
+  });
 </script>

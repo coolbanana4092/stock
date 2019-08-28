@@ -5,12 +5,12 @@
         <h1 class="application-name">EventNavi</h1>
       </div>
     </div>
-    <button type="button" class="hamburger" id="nav-btn" @click="navToggle">
+    <button type="button" class="hamburger" id="nav-btn" ref="hamburger" @click="navToggle()">
       <span class="bdr"></span>
       <span class="bdr"></span>
       <span class="bdr"></span>
     </button>
-    <div id="wrapper">
+    <div id="wrapper" ref="wrapper">
       <div class="menu">
         <ul>
           <% if logged_in? %>
@@ -36,12 +36,12 @@
     el: "#header",
     methods: {
       navToggle: function() {
-        var hamburgerClass = document.getElementsByClassName('hamburger')[0].classList;
-        var wrapperClass = document.getElementById('wrapper').classList;
+        var hamburgerClass = this.$refs.hamburger.classList;
+        var wrapperClass = this.$refs.wrapper.classList;
 
         hamburgerClass.toggle('is-active');
         wrapperClass.contains('nav-open') ? wrapperClass.remove('nav-open') : wrapperClass.add('nav-open');
       },
     },
-  })
+  });
 </script>

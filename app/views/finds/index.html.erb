@@ -17,7 +17,7 @@
     </ul>
     <div class="tabs-content">
       <template v-if="activeTab.id == '0'">
-        <date-content @animation="appearanceAnimation"></date-content>
+        <date-content></date-content>
       </template>
       <template v-if="activeTab.id == '1'">
         <place-content></place-content>
@@ -29,7 +29,7 @@
 <script>
   var dateContent = {
     data: function() {
-      return { buttonColumn: "eight wide column" };
+      return { buttonColumn: "" };
     },
     methods: {
       getDevice: function() {
@@ -50,13 +50,23 @@
           this.buttonColumn = "eight wide column";
         };
       },
-      callParentAnimation: function() {
-        this.$emit('animation');
-      }
+      appearanceAnimation: function() {
+        $(".animated").waypoint({
+          handler: function(direction) {
+            if (direction === "down") {
+              $(this.element).addClass("fadeInUp");
+              this.destroy();
+            };
+          },
+          offset: "100%"
+        });
+      },
     },
     created: function() {
-      setTimeout(this.judgeColumn, 10);
-      setTimeout(this.callParentAnimation, 10);
+      this.judgeColumn();
+    },
+    mounted: function() {
+      this.appearanceAnimation();
     },
     template:`
       <div>
@@ -99,29 +109,29 @@
 
   var placeContent = {
     methods: {
-      showMap: function() {
+      makeFindMap: function() {
         <% @events.each do |event| %>
+          var geocoder = new google.maps.Geocoder();
+          var pos;
+          var markerData;
           var map;
+          var markerDataArray = [];
+          var markerLatLng;
           var marker = [];
           var infoWindow = [];
           var currentInfoWindow = null;
-          var geocoder = new google.maps.Geocoder();
-          var markerDataArray = [];
-          var mapLatLng;
-          var pos;
-          var markerLatLng;
-          var markerData;
+
+          <% if @latitude && @longitude %>
+            var mapLatLng = new google.maps.LatLng(<%= @latitude %>, <%= @longitude %>);
+          <% else %>
+            var mapLatLng = new google.maps.LatLng(35.681236,139.767125);
+          <% end %>
 
           geocoder.geocode({
             'address': '<%= event.place %>',
             'region': 'jp'
           },function (results, status) {
               if (status === 'OK' && results[0]){
-                <% if @latitude && @longitude %>
-                  mapLatLng = new google.maps.LatLng(<%= @latitude %>, <%= @longitude %>);
-                <% else %>
-                  mapLatLng = new google.maps.LatLng(35.681236,139.767125);
-                <% end %>
                 pos = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
                 markerData = [
                   {
@@ -131,8 +141,7 @@
                     lng: pos.lng(),
                   }
                 ];
-
-                map = new google.maps.Map(document.getElementById('find-events-page-map'), {
+                map = new google.maps.Map(vm.$children[0].$refs.findEventsPageMap, {
                   center: mapLatLng,
                   zoom: 9,
                   mapTypeControl: false,
@@ -165,7 +174,7 @@
                 markerDataArray.push(markerData);
 
                 for (var i = 0; i < markerDataArray.length; i++) {
-                  var markerLatLng = new google.maps.LatLng({lat: markerDataArray[i][0].lat, lng: markerDataArray[i][0].lng});
+                  markerLatLng = new google.maps.LatLng({lat: markerDataArray[i][0].lat, lng: markerDataArray[i][0].lng});
                   marker[i] = new google.maps.Marker({
                     map: map,
                     position: markerLatLng
@@ -204,32 +213,35 @@
         <% end %>
       },
       getLocationInfo: function() {
+        var lat;
+        var lng;
+        var errorMessage;
+        var errorInfo = [
+          "原因不明のエラーが発生しました。",
+          "位置情報の利用が許可されていません。",
+          "現在位置が取得できませんでした。",
+        ];
+
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
             function(position) {
-              var lat = position.coords.latitude;
-              var lng = position.coords.longitude;
+              lat = position.coords.latitude;
+              lng = position.coords.longitude;
               window.location.href = `/find?latitude=${lat}&longitude=${lng}`;
             },
             function (error) {
-              var errorInfo = [
-                "原因不明のエラーが発生しました。",
-                "位置情報の利用が許可されていません。",
-                "現在位置が取得できませんでした。",
-              ];
-              var errorNumber = error.code;
-              var errorMessage = "[エラー番号:" + errorNumber + "]\n" + errorInfo[errorNumber];
+              errorMessage = errorInfo[error.code];
               alert(errorMessage);
             }
           );
         } else {
-          var errorMessage = "お使いの端末は、GeoLacation APIに対応していません。";
+          errorMessage = "お使いの端末は、GeoLacation APIに対応していません。";
           alert(errorMessage);
         };
       }
     },
     mounted: function() {
-      setTimeout(this.showMap, 300);
+      this.makeFindMap();
     },
     template: `
       <div>
@@ -250,10 +262,10 @@
             </div>
             <div class="ui center aligned grid">
               <div class="wide column">
-                <button class="ui button" @click="getLocationInfo">現在地を取得する</button>
+                <button class="ui button" @click="getLocationInfo()">現在地を取得する</button>
               </div>
             </div>
-            <div id="find-events-page-map"></div>
+            <div id="find-events-page-map" ref="findEventsPageMap"></div>
           </div>
         </div>
       </div>
@@ -281,30 +293,20 @@
     },
     methods: {
       setActiveTab: function() {
-        vm.activeTab = vm.tabs[0];
-      },
-      appearanceAnimation: function() {
-        $(".animated").waypoint({
-          handler: function(direction) {
-            if (direction === "down") {
-              $(this.element).addClass("fadeInUp");
-              this.destroy();
-            };
-          },
-          offset: "100%"
-        });
+        this.activeTab = this.tabs[0];
       },
       setCookies: function(activeTabId) {
         Cookies.set('activeTabId', activeTabId, {path: ''});
       },
       getCookies: function() {
-        vm.activeTab = vm.tabs[Cookies.get('activeTabId')];
+        this.activeTab = this.tabs[Cookies.get('activeTabId')];
       }
     },
     created: function() {
-      setTimeout(this.setActiveTab, 10);
-      setTimeout(this.appearanceAnimation, 10);
-      setTimeout(this.getCookies, 10);
+      this.setActiveTab();
+    },
+    mounted: function() {
+      this.getCookies();
     }
   });
 </script>
