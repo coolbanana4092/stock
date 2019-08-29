@@ -8,7 +8,6 @@
     display: block;
     width: 50%;
     float: left;
-    padding: 10px;
     margin-bottom: -1px;
     text-align: center;
     border-style: solid;
@@ -47,7 +46,6 @@
   border-radius: 0 4px 4px 4px;
 
   .find-events-from-created {
-    margin-top: 15px;
     font-weight: bolder;
   }
 
@@ -60,13 +58,10 @@
   }
 
   .find-events-from-location-info {
-    margin-top: 15px;
     font-weight: bolder;
   }
 
   #find-events-page-map {
-    width: 100%;
-    height: 300px;
     margin: {
       top: 30px;
       right: auto;
@@ -82,6 +77,29 @@
 
   .marker_place {
     text-align: left;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .tabs-menu {
+    li {
+      padding: 10px;
+    }
+  }
+
+  .tabs-content {
+    .find-events-from-created {
+      margin-top: 15px;
+    }
+
+    .find-events-from-location-info {
+      margin-top: 15px;
+    }
+
+    #find-events-page-map {
+      width: 100%;
+      height: 300px;
+    }
   }
 }
 
@@ -103,18 +121,8 @@
     }
 
     .select-created-range {
-      margin: {
-        bottom: 10px;
-      }
+      margin-bottom: 10px;
       font-size: 16px;
-    }
-
-    #period-form {
-      padding: 10px !important;
-
-      .period-button {
-        font-size: 11px;
-      }
     }
 
     .find-events-from-location-info {
@@ -126,9 +134,7 @@
     }
 
     .map-circle-explanation {
-      margin: {
-        bottom: 10px;
-      }
+      margin-bottom: 10px;
       font-size: 16px;
     }
 

@@ -30,7 +30,6 @@ html body #container {
   background-color: #f7faf2;
 }
 html body #container #main-content {
-  padding-top: 80px;
   padding-bottom: 80px;
   margin-top: 14px;
   margin-bottom: 14px;
@@ -45,6 +44,11 @@ li {
   list-style: none;
 }
 
+@media screen and (max-width: 768px) {
+  html body #container #main-content {
+    padding-top: 80px;
+  }
+}
 @media screen and (min-width: 769px) {
   html body #container #main-content {
     padding-top: 180px;
@@ -106,7 +110,6 @@ header {
   border-bottom: solid 1px;
 }
 .menu ul {
-  display: flex;
   justify-content: flex-end;
   align-items: center;
   height: 70px;
@@ -196,7 +199,6 @@ header {
     text-align: left;
     font-size: 13px;
     background-color: #eaf2f4;
-    z-index: 1;
     transform: translateX(150px);
     transition: .4s all;
   }
@@ -207,9 +209,6 @@ header {
     background: none;
     color: #000;
     text-align: center;
-  }
-  .menu ul li {
-    transition: all .5s;
   }
   .menu ul li:hover {
     background-color: #fff;
@@ -223,6 +222,15 @@ header {
   }
   .nav-open #contents {
     transform: translateX(-150px);
+  }
+}
+@media screen and (min-width: 769px) {
+  #nav-btn {
+    display: none;
+  }
+
+  .menu ul {
+    display: flex;
   }
 }
 footer {
@@ -268,11 +276,9 @@ footer {
 }
 
 .ui.grid #what-is-this-application {
-  margin-top: 50px;
   margin-bottom: 30px;
 }
 .ui.grid .toppage-divider {
-  margin-top: 60px;
   margin-bottom: 60px;
 }
 .ui.grid .characteristics-of-application {
@@ -288,8 +294,6 @@ footer {
   margin-bottom: 30px;
 }
 .ui.grid #toppage-map {
-  width: 80%;
-  height: 300px;
   margin: auto;
   border: solid 1px #d2ccd0;
 }
@@ -303,10 +307,19 @@ footer {
   margin-top: 30px;
   margin-bottom: 30px;
 }
-.ui.grid #map-explanation {
-  margin-bottom: 30px;
-}
 
+@media screen and (max-width: 768px) {
+  .ui.grid #what-is-this-application {
+    margin-top: 50px;
+  }
+  .ui.grid .toppage-divider {
+    margin-top: 60px;
+  }
+  .ui.grid #toppage-map {
+    width: 80%;
+    height: 300px;
+  }
+}
 @media screen and (min-width: 769px) {
   .ui.grid #what-is-this-application {
     margin-top: 25px;
@@ -356,11 +369,15 @@ footer {
   background-color: #fff;
 }
 .modal #modal-header {
-  margin: 15px;
   text-align: center;
   font-weight: bold;
 }
 
+@media screen and (max-width: 768px) {
+  #modal-header {
+    margin: 15px;
+  }
+}
 @media screen and (min-width: 769px) {
   #modal-header {
     margin: 60px;
@@ -370,12 +387,8 @@ footer {
 #frame-of-carousel-image .carousel-image {
   margin-bottom: 0;
 }
-#frame-of-carousel-image .carousel-image .slick-list {
-  height: 200px;
-}
 #frame-of-carousel-image .carousel-image .operation-image {
   border: solid 1px;
-  height: 200px;
 }
 
 .ui.modal.scrolling .ui.grid {
@@ -392,12 +405,19 @@ footer {
   position: static;
 }
 
+@media screen and (max-width: 768px) {
+  #frame-of-carousel-image .carousel-image .slick-list {
+    height: 200px;
+  }
+  #frame-of-carousel-image .carousel-image .operation-image {
+    height: 200px;
+  }
+}
 @media screen and (min-width: 769px) {
   #frame-of-carousel-image .carousel-image .slick-list {
     height: 300px;
   }
   #frame-of-carousel-image .carousel-image .operation-image {
-    border: solid 1px;
     height: 300px;
   }
 }
@@ -405,22 +425,6 @@ footer {
 	イベント一覧
 ********************************/
 /** イベント *****************/
-.sp {
-  display: block;
-}
-
-.sp-inline {
-  display: inline;
-}
-
-.pc {
-  display: none;
-}
-
-.pc-inline {
-  display: none;
-}
-
 #events-list-in-japanese {
   margin: 30px;
   font-weight: bolder;
@@ -620,7 +624,7 @@ footer {
 }
 
 form .ui.grid .fourteen.wide.column #please-register-new {
-  margin: 30px;
+  margin-top: 30px;
   font-weight: bolder;
   font-size: 20px;
 }
@@ -628,7 +632,7 @@ form .ui.grid .fourteen.wide.column .ui.form .field {
   margin-bottom: 15px;
 }
 form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-label {
-  padding-bottom: 0px;
+  padding-bottom: 0;
 }
 form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .signup-page-frame-of-input {
   padding-top: 5px;
@@ -643,7 +647,10 @@ form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #signup-page-frame-
 }
 
 @media screen and (max-width: 768px) {
-  .depend-on-device {
+  form .ui.grid .fourteen.wide.column #please-register-new {
+    margin-bottom: 30px;
+  }
+  form .ui.grid .fourteen.wide.column .depend-on-device {
     width: 100%;
   }
 }
@@ -657,7 +664,7 @@ form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #signup-page-frame-
   }
 }
 form .ui.grid .fourteen.wide.column #please-login {
-  margin: 30px;
+  margin-top: 30px;
   font-weight: bolder;
   font-size: 20px;
 }
@@ -669,9 +676,6 @@ form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .login-page-frame-o
 }
 form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .login-page-frame-of-input {
   padding-top: 5px;
-}
-form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #always-login {
-  padding-top: 10px;
 }
 form .ui.grid .fourteen.wide.column .ui.form #login-page-frame-of-login {
   margin-top: 40px;
@@ -685,8 +689,11 @@ form .ui.grid .fourteen.wide.column .ui.form #login-page-frame-of-signup {
 }
 
 @media screen and (max-width: 768px) {
-  .depend-on-device {
-    width: 100%;
+  form .ui.grid .fourteen.wide.column #please-login {
+    margin-bottom: 30px;
+  }
+  form .ui.grid .fourteen.wide.column #always-login {
+    padding-top: 10px;
   }
 }
 @media screen and (min-width: 769px) {
@@ -698,11 +705,11 @@ form .ui.grid .fourteen.wide.column .ui.form #login-page-frame-of-signup {
     margin: auto;
   }
   form .ui.grid .fourteen.wide.column #always-login {
-    padding-top: 0px;
+    padding-top: 0;
   }
 }
 form .ui.grid .fourteen.wide.column #please-update-user-information {
-  margin: 30px;
+  margin-top: 30px;
   font-weight: bolder;
   font-size: 20px;
 }
@@ -723,7 +730,10 @@ form .ui.grid .fourteen.wide.column .ui.form #user-update-page-frame-of-update {
 }
 
 @media screen and (max-width: 768px) {
-  .depend-on-device {
+  form .ui.grid .fourteen.wide.column #please-update-user-information {
+    margin-bottom: 30px;
+  }
+  form .ui.grid .fourteen.wide.column .depend-on-device {
     width: 100%;
   }
 }
@@ -737,7 +747,7 @@ form .ui.grid .fourteen.wide.column .ui.form #user-update-page-frame-of-update {
   }
 }
 form .ui.grid .fourteen.wide.column #please-password-reset {
-  margin: 30px;
+  margin-top: 30px;
   font-weight: bolder;
   font-size: 20px;
 }
@@ -762,7 +772,10 @@ form .ui.grid .fourteen.wide.column .ui.form #password-reset-page-frame-of-submi
 }
 
 @media screen and (max-width: 768px) {
-  .depend-on-device {
+  form .ui.grid .fourteen.wide.column #please-password-reset {
+    margin-bottom: 30px;
+  }
+  form .ui.grid .fourteen.wide.column .depend-on-device {
     width: 100%;
   }
 }
@@ -776,7 +789,7 @@ form .ui.grid .fourteen.wide.column .ui.form #password-reset-page-frame-of-submi
   }
 }
 form .ui.grid .fourteen.wide.column #please-password-update {
-  margin: 30px;
+  margin-top: 30px;
   font-weight: bolder;
   font-size: 20px;
 }
@@ -791,7 +804,10 @@ form .ui.grid .fourteen.wide.column .ui.form #password-reset-page-frame-of-updat
 }
 
 @media screen and (max-width: 768px) {
-  .password-update-form-depend-on-device {
+  form .ui.grid .fourteen.wide.column #please-password-update {
+    margin-bottom: 30px;
+  }
+  form .ui.grid .fourteen.wide.column .password-update-form-depend-on-device {
     width: 100% !important;
   }
 }
@@ -805,7 +821,7 @@ form .ui.grid .fourteen.wide.column .ui.form #password-reset-page-frame-of-updat
   }
 }
 form .ui.grid .fourteen.wide.column #please-inquire {
-  margin: 30px;
+  margin-top: 30px;
   font-weight: bolder;
   font-size: 20px;
 }
@@ -824,7 +840,10 @@ form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #inquiry-page-frame
 }
 
 @media screen and (max-width: 768px) {
-  .depend-on-device {
+  form .ui.grid .fourteen.wide.column #please-inquire {
+    margin-bottom: 30px;
+  }
+  form .ui.grid .fourteen.wide.column .depend-on-device {
     width: 100%;
   }
 }
@@ -838,7 +857,7 @@ form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid #inquiry-page-frame
   }
 }
 form .ui.grid .fourteen.wide.column #please-post-or-update-event {
-  margin: 30px;
+  margin-top: 30px;
   font-weight: bolder;
   font-size: 20px;
 }
@@ -878,7 +897,7 @@ form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .frame-of-input-dat
   padding-left: 14px;
 }
 form .ui.grid .fourteen.wide.column .ui.form .field .ui.grid .event-picture {
-  padding-top: 0px;
+  padding-top: 0;
 }
 form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-of-submit {
   margin-top: 40px;
@@ -888,7 +907,10 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
 }
 
 @media screen and (max-width: 768px) {
-  .depend-on-device {
+  form .ui.grid .fourteen.wide.column #please-post-or-update-event {
+    margin-bottom: 30px;
+  }
+  form .ui.grid .fourteen.wide.column .depend-on-device {
     width: 100%;
   }
 }
@@ -901,14 +923,8 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
     margin: auto;
   }
 }
-.ui.grid #frame-of-event-details-image {
-  padding-top: 5px;
-  padding-bottom: 0px;
-}
 .ui.grid .fourteen.wide.column #event-details-image {
-  width: 100%;
   padding: 5px;
-  margin-top: 20px;
   border: solid 1px;
 }
 .ui.grid .fourteen.wide.column #event-name {
@@ -963,8 +979,6 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
 }
 
 #event-detail-page-map {
-  width: 80%;
-  height: 300px;
   margin: auto;
   border: solid 1px #d2ccd0;
 }
@@ -988,15 +1002,31 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
   color: #fff;
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (max-width: 768px) {
   .ui.grid #frame-of-event-details-image {
     padding-top: 10px;
     padding-bottom: 10px;
-    margin-top: 0px;
+    margin-top: 0;
+  }
+  .ui.grid .fourteen.wide.column #event-details-image {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  #event-detail-page-map {
+    width: 80%;
+    height: 300px;
+  }
+}
+@media screen and (min-width: 769px) {
+  .ui.grid #frame-of-event-details-image {
+    padding-top: 5px;
+    padding-bottom: 0;
+    margin-top: 0;
   }
   .ui.grid .fourteen.wide.column #event-details-image {
     width: 50%;
-    margin-top: 0px;
+    margin-top: 0;
   }
 
   #event-detail-page-map {
@@ -1014,7 +1044,6 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
   display: block;
   width: 50%;
   float: left;
-  padding: 10px;
   margin-bottom: -1px;
   text-align: center;
   border-style: solid;
@@ -1047,7 +1076,6 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
   border-radius: 0 4px 4px 4px;
 }
 .tabs-content .find-events-from-created {
-  margin-top: 15px;
   font-weight: bolder;
 }
 .tabs-content #period-form {
@@ -1057,12 +1085,9 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
   font-size: 11px;
 }
 .tabs-content .find-events-from-location-info {
-  margin-top: 15px;
   font-weight: bolder;
 }
 .tabs-content #find-events-page-map {
-  width: 100%;
-  height: 300px;
   margin-top: 30px;
   margin-right: auto;
   margin-bottom: 30px;
@@ -1076,6 +1101,22 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
   text-align: left;
 }
 
+@media screen and (max-width: 768px) {
+  .tabs-menu li {
+    padding: 10px;
+  }
+
+  .tabs-content .find-events-from-created {
+    margin-top: 15px;
+  }
+  .tabs-content .find-events-from-location-info {
+    margin-top: 15px;
+  }
+  .tabs-content #find-events-page-map {
+    width: 100%;
+    height: 300px;
+  }
+}
 @media screen and (min-width: 769px) {
   .tabs-menu li {
     padding: 15px;
@@ -1090,12 +1131,6 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
   .tabs-content .select-created-range {
     margin-bottom: 10px;
     font-size: 16px;
-  }
-  .tabs-content #period-form {
-    padding: 10px !important;
-  }
-  .tabs-content #period-form .period-button {
-    font-size: 11px;
   }
   .tabs-content .find-events-from-location-info {
     margin-top: 30px;
