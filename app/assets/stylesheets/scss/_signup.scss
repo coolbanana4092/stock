@@ -2,7 +2,7 @@ form {
   .ui.grid {
     .fourteen.wide.column {
       #please-register-new {
-        margin: 30px;
+        margin-top: 30px;
         font: {
           weight: bolder;
           size: 20px;
@@ -15,7 +15,7 @@ form {
 
           .ui.grid {
             .signup-page-frame-of-label {
-              padding-bottom: 0px;
+              padding-bottom: 0;
             }
 
             .signup-page-frame-of-input {
@@ -38,9 +38,19 @@ form {
   }
 }
 
-@media screen and (max-width : 768px) {
-  .depend-on-device {
-    width: 100%;
+@media screen and (max-width: 768px) {
+  form {
+    .ui.grid {
+      .fourteen.wide.column {
+        #please-register-new {
+          margin-bottom: 30px;
+        }
+
+        .depend-on-device {
+          width: 100%;
+        }
+      }
+    }
   }
 }
 
