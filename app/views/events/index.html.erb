@@ -1,9 +1,3 @@
-<% before_events_array = [] %>
-<% current_events_array = [] %>
-<% after_events_array = [] %>
-
-<% this_year = Time.new.to_s.slice(0...4).to_i %>
-
 <div id="events-list">
   <div class="ui modal">
     <div id="modal-header">このアプリの使い方</div>
@@ -31,7 +25,7 @@
     <div class="actions">
       <div class="ui center aligned grid">
         <div class="center aligned seven wide column">
-          <button class="ui fluid red button">
+          <button class="ui fluid red button" @click="setCookies()">
             OK
           </button>
         </div>
@@ -63,90 +57,141 @@
         <option value="all-events">イベント一覧</option>
         <option value="my-events">自分の投稿したイベント</option>
         <option value="favorite-events">お気に入りしたイベント</option>
-        <option value="before-events"><%= this_year - 1 %>年以前のイベント</option>
-        <option value="current-events"><%= this_year %>年のイベント</option>
-        <option value="after-events"><%= this_year + 1 %>年以降のイベント</option>
+        <option value="before-events">{{ thisYear - 1 }}年以前のイベント</option>
+        <option value="current-events">{{ thisYear }}年のイベント</option>
+        <option value="after-events">{{ thisYear + 1 }}年以降のイベント</option>
       </select>
     </div>
   </div>
+  <div class="various-events-list">
+    <div class="all-events-in-all-cases">
+      <% if @all_events.empty? %>
+        <%= render partial: "partials/events/no-event-message", locals: { message: "投稿されたイベントはまだ存在していません。", classname: "all-events" } %>
+      <% else %>
+        <div class="all-events animated bounce">
+          <% @all_events.each do |event| %>
+            <%= render partial: "partials/events/list", locals: { event: event } %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="my-events-in-all-cases">
+      <% if @current_user_events.empty? %>
+        <%= render partial: "partials/events/no-event-message", locals: { message: "あなたが投稿したイベントはまだ存在していません。", classname: "my-events" } %>
+      <% else %>
+        <div class="my-events animated bounce">
+          <% @current_user_events.each do |event| %>
+            <%= render partial: "partials/events/list", locals: { event: event } %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="favorite-events-in-all-cases">
+      <% if @favorite_events.empty? %>
+        <%= render partial: "partials/events/no-event-message", locals: { message: "投稿されたイベントはまだ存在していません。", classname: "favorite-events" } %>
+      <% else %>
+        <div class="favorite-events animated bounce">
+          <% @favorite_events.each do |event| %>
+            <%= render partial: "partials/events/list", locals: { event: Event.find(event.id) } %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="before-events-in-all-cases">
+      <template v-if="isBeforeEvents == 'true'">
+        <div class="before-events animated bounce" id="frame-of-before-events">
+          <% @all_events.each do |event| %>
+            <template v-if="new Date('<%= event.starting_year %>').getFullYear() < thisYear">
+              <%= render partial: "partials/events/list", locals: { event: event } %>
+            </template>
+          <% end %>
+        </div>
+      </template>
+      <template v-else>
+        <%= render partial: "partials/events/no-event-message", locals: { message: "既に終了したイベントはまだ存在していません。", classname: "before-events" } %>
+      </template>
+    </div>
+    <div class="current-events-in-all-cases">
+      <template v-if="isCurrentEvents == 'true'">
+        <div class="current-events animated bounce" id="frame-of-current-events">
+          <% @all_events.each do |event| %>
+            <template v-if="new Date('<%= event.starting_year %>').getFullYear() == thisYear">
+              <%= render partial: "partials/events/list", locals: { event: event } %>
+            </template>
+          <% end %>
+        </div>
+      </template>
+      <template v-else>
+        <%= render partial: "partials/events/no-event-message", locals: { message: "現在開催中のイベントはまだ存在していません。", classname: "current-events" } %>
+      </template>
+    </div>
+    <div class="after-events-in-all-cases">
+      <template v-if="isAfterEvents == 'true'">
+        <div class="after-events animated bounce" id="frame-of-after-events">
+          <% @all_events.each do |event| %>
+            <template v-if="new Date('<%= event.starting_year %>').getFullYear() > thisYear">
+              <%= render partial: "partials/events/list", locals: { event: event } %>
+            </template>
+          <% end %>
+        </div>
+      </template>
+      <template v-else>
+        <%= render partial: "partials/events/no-event-message", locals: { message: "今後開催されるイベントはまだ存在していません。", classname: "after-events" } %>
+      </template>
+    </div>
+  </div>
+  <a href="javascript:void(0)" class="back-to-top" @click="movetoTop()">▲</a>
 </div>
-<div class="various-events-list">
-  <% if @all_events.empty? then %>
-    <%= render partial: "partials/events/no-event-message", locals: { message: "投稿されたイベントはまだ存在していません。", classname: "all-events" } %>
-  <% else %>
-    <div class="all-events animated bounce">
-      <% @all_events.each do |event| %>
-        <%= render partial: "partials/events/list", locals: { event: event } %>
-      <% end %>
-    </div>
-  <% end %>
-  <% if @current_user_events.empty? then %>
-    <%= render partial: "partials/events/no-event-message", locals: { message: "あなたが投稿したイベントはまだ存在していません。", classname: "my-events" } %>
-  <% else %>
-    <div class="my-events animated bounce">
-      <% @current_user_events.each do |event| %>
-        <%= render partial: "partials/events/list", locals: { event: event } %>
-      <% end %>
-    </div>
-  <% end %>
-  <% if @favorite_events.empty? then %>
-    <%= render partial: "partials/events/no-event-message", locals: { message: "投稿されたイベントはまだ存在していません。", classname: "favorite-events" } %>
-  <% else %>
-    <div class="favorite-events animated bounce">
-      <% @favorite_events.each do |event| %>
-        <%= render partial: "partials/events/list", locals: { event: Event.find(event.id) } %>
-      <% end %>
-    </div>
-  <% end %>
-  <div class="before-events animated bounce" id="frame-of-before-events">
-    <% @all_events.each do |event| %>
-      <% starting_year = Time.new(event.starting_year).to_s.slice(0...4).to_i %>
-
-      <% if starting_year < this_year then %>
-        <% before_events_array.push(event) %>
-        <%= render partial: "partials/events/list", locals: { event: event } %>
-      <% end %>
-    <% end %>
-  </div>
-  <div class="current-events animated bounce" id="frame-of-current-events">
-    <% @all_events.each do |event| %>
-      <% starting_year = Time.new(event.starting_year).to_s.slice(0...4).to_i %>
-
-      <% if starting_year == this_year then %>
-        <% current_events_array.push(event) %>
-        <%= render partial: "partials/events/list", locals: { event: event } %>
-      <% end %>
-    <% end %>
-  </div>
-  <div class="after-events animated bounce" id="frame-of-after-events">
-    <% @all_events.each do |event| %>
-      <% starting_year = Time.new(event.starting_year).to_s.slice(0...4).to_i %>
-
-      <% if starting_year > this_year then %>
-        <% after_events_array.push(event) %>
-        <%= render partial: "partials/events/list", locals: { event: event } %>
-      <% end %>
-    <% end %>
-  </div>
-  <% if before_events_array.empty? then %>
-    <%= render partial: "partials/events/no-event-message", locals: { message: "既に終了したイベントはまだ存在していません。", classname: "before-events" } %>
-  <% end %>
-  <% if current_events_array.empty? then %>
-    <%= render partial: "partials/events/no-event-message", locals: { message: "現在開催中のイベントはまだ存在していません。", classname: "current-events" } %>
-  <% end %>
-  <% if after_events_array.empty? then %>
-    <%= render partial: "partials/events/no-event-message", locals: { message: "今後開催されるイベントはまだ存在していません。", classname: "after-events" } %>
-  <% end %>
-</div>
-<a href="#" class="back-to-top">▲</a>
 
 <script>
-  // オプションのelの要素(今回でいうとHTMLの#events-list)の中に、HTMLの.various-events-listの要素を含めると、
-  // なぜか以下の関数が動かなくなってしまうため、#events-listの中に.various-events-listは含めていない。
-  // オプションのelの要素(今回でいうとHTMLの#events-list)に含めていない部分(今回でいうと.various-events-list)は、仕方なくjQueryを用いて実装することにした。
   var vm = new Vue({
     el: "#events-list",
+    data: {
+      thisYear: new Date().getFullYear(),
+      beforeEventsArray: [],
+      currentEventsArray: [],
+      afterEventsArray: [],
+      isBeforeEvents: "",
+      isCurrentEvents: "",
+      isAfterEvents: "",
+    },
     methods: {
+      setCookies: function() {
+        Cookies.set("seeTutorial?", "yes");
+      },
+      showModal: function() {
+        if (Cookies.get("seeTutorial?") !== "yes") {
+          $(".ui.modal").modal("show");
+        };
+      },
+      carousel: function() {
+        $(".carousel-image").slick({
+          asNavFor: ".carousel-explanation",
+          dots: true,
+          arrows: false,
+          appendDots:$("#original-dots"),
+        });
+        $(".carousel-explanation").slick({
+          asNavFor: ".carousel-image",
+          arrows: false,
+          fade: true,
+        });
+      },
+      judgeNumberofEvents: function() {
+        <% @all_events.each do |event| %>
+          var startingYear = new Date("<%= event.starting_year %>").getFullYear();
+          if (startingYear < this.thisYear) {
+            this.beforeEventsArray.push(event);
+            this.isBeforeEvents = "true";
+          } else if (startingYear == this.thisYear) {
+            this.currentEventsArray.push(event);
+            this.isCurrentEvents = "true";
+          } else if (startingYear > this.thisYear) {
+            this.afterEventsArray.push(event);
+            this.isAfterEvents = "true";
+          };
+        <% end %>
+      },
       selectDisplay: function(className, display) {
         var elements = document.getElementsByClassName(className);
         for(i=0;i<elements.length;i++){
@@ -154,126 +199,95 @@
         }
       },
       initialDisplay: function() {
-        this.selectDisplay("all-events", "block")
-        this.selectDisplay("my-events", "none")
-        this.selectDisplay("favorite-events", "none")
-        this.selectDisplay("before-events", "none")
-        this.selectDisplay("current-events", "none")
-        this.selectDisplay("after-events", "none")
+        this.selectDisplay("all-events", "block");
+        this.selectDisplay("my-events", "none");
+        this.selectDisplay("favorite-events", "none");
+        this.selectDisplay("before-events", "none");
+        this.selectDisplay("current-events", "none");
+        this.selectDisplay("after-events", "none");
+      },
+      showBacktoTop: function() {
+        window.addEventListener("scroll", function() {
+          var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+          scrollTop >= 50 ? $(".back-to-top").fadeIn() : $(".back-to-top").fadeOut();
+        });
+      },
+      movetoTop: function() {
+        $("html, body").animate({scrollTop: 0}, 600);
+      },
+      appearanceAnimation: function() {
+        $(".animated").waypoint({
+          handler: function(direction) {
+            if (direction == "down") {
+              $(this.element).addClass("fadeInUp");
+              this.destroy();
+            };
+          },
+          offset: "100%"
+        });
       },
     },
+    created: function() {
+      this.judgeNumberofEvents();
+    },
     mounted: function() {
-      setTimeout(this.initialDisplay, 300);
+      this.showModal();
+      this.carousel();
+      this.initialDisplay();
+      this.appearanceAnimation();
+      this.showBacktoTop();
     },
     directives: {
       eventchange: {
-        bind: function (el) {
+        bind: function(el) {
           el.addEventListener("change", function() {
             var selectBoxVal = el.value;
-            if(selectBoxVal == "all-events"){
-              vm.selectDisplay("all-events", "block")
-              vm.selectDisplay("my-events", "none")
-              vm.selectDisplay("favorite-events", "none")
-              vm.selectDisplay("before-events", "none")
-              vm.selectDisplay("current-events", "none")
-              vm.selectDisplay("after-events", "none")
-            }else if(selectBoxVal == "my-events") {
-              vm.selectDisplay("all-events", "none")
-              vm.selectDisplay("my-events", "block")
-              vm.selectDisplay("favorite-events", "none")
-              vm.selectDisplay("before-events", "none")
-              vm.selectDisplay("current-events", "none")
-              vm.selectDisplay("after-events", "none")
-            }else if(selectBoxVal == "favorite-events") {
-              vm.selectDisplay("all-events", "none")
-              vm.selectDisplay("my-events", "none")
-              vm.selectDisplay("favorite-events", "block")
-              vm.selectDisplay("before-events", "none")
-              vm.selectDisplay("current-events", "none")
-              vm.selectDisplay("after-events", "none")
-            }else if(selectBoxVal == "before-events") {
-              vm.selectDisplay("all-events", "none")
-              vm.selectDisplay("my-events", "none")
-              vm.selectDisplay("favorite-events", "none")
-              vm.selectDisplay("before-events", "block")
-              vm.selectDisplay("current-events", "none")
-              vm.selectDisplay("after-events", "none")
-            }else if(selectBoxVal == "current-events") {
-              vm.selectDisplay("all-events", "none")
-              vm.selectDisplay("my-events", "none")
-              vm.selectDisplay("favorite-events", "none")
-              vm.selectDisplay("before-events", "none")
-              vm.selectDisplay("current-events", "block")
-              vm.selectDisplay("after-events", "none")
-            }else if(selectBoxVal == "after-events") {
-              vm.selectDisplay("all-events", "none")
-              vm.selectDisplay("my-events", "none")
-              vm.selectDisplay("favorite-events", "none")
-              vm.selectDisplay("before-events", "none")
-              vm.selectDisplay("current-events", "none")
-              vm.selectDisplay("after-events", "block")
-            }
+            if (selectBoxVal == "all-events"){
+              vm.selectDisplay("all-events", "block");
+              vm.selectDisplay("my-events", "none");
+              vm.selectDisplay("favorite-events", "none");
+              vm.selectDisplay("before-events", "none");
+              vm.selectDisplay("current-events", "none");
+              vm.selectDisplay("after-events", "none");
+            } else if (selectBoxVal == "my-events") {
+              vm.selectDisplay("all-events", "none");
+              vm.selectDisplay("my-events", "block");
+              vm.selectDisplay("favorite-events", "none");
+              vm.selectDisplay("before-events", "none");
+              vm.selectDisplay("current-events", "none");
+              vm.selectDisplay("after-events", "none");
+            } else if (selectBoxVal == "favorite-events") {
+              vm.selectDisplay("all-events", "none");
+              vm.selectDisplay("my-events", "none");
+              vm.selectDisplay("favorite-events", "block");
+              vm.selectDisplay("before-events", "none");
+              vm.selectDisplay("current-events", "none");
+              vm.selectDisplay("after-events", "none");
+            } else if (selectBoxVal == "before-events") {
+              vm.selectDisplay("all-events", "none");
+              vm.selectDisplay("my-events", "none");
+              vm.selectDisplay("favorite-events", "none");
+              vm.selectDisplay("before-events", "block");
+              vm.selectDisplay("current-events", "none");
+              vm.selectDisplay("after-events", "none");
+            } else if (selectBoxVal == "current-events") {
+              vm.selectDisplay("all-events", "none");
+              vm.selectDisplay("my-events", "none");
+              vm.selectDisplay("favorite-events", "none");
+              vm.selectDisplay("before-events", "none");
+              vm.selectDisplay("current-events", "block");
+              vm.selectDisplay("after-events", "none");
+            } else if (selectBoxVal == "after-events") {
+              vm.selectDisplay("all-events", "none");
+              vm.selectDisplay("my-events", "none");
+              vm.selectDisplay("favorite-events", "none");
+              vm.selectDisplay("before-events", "none");
+              vm.selectDisplay("current-events", "none");
+              vm.selectDisplay("after-events", "block");
+            };
           });
         }
       }
     }
-  })
-
-// 上記の通り、なぜかオプションのelの中に.various-events-listを含めることが出来ないため、
-// Vue.jsで実装出来ていない部分は仕方なくjQueryを使用して実装した。
-  $(function() {
-    if($.cookie('btnFlg') !== 'on') {
-      $('.ui.modal')
-        .modal('show')
-      ;
-    }
-
-    $(".actions .ui.grid .column .button").click(function(){
-      $.cookie('btnFlg', 'on', { expires: 30,path: '/' });
-    });
   });
-
-  (function() {
-    $('.carousel-image').slick({
-      asNavFor: '.carousel-explanation',
-      dots: true,
-      arrows: false,
-      appendDots:$("#original-dots"),
-    });
-
-    $('.carousel-explanation').slick({
-      asNavFor: '.carousel-image',
-      arrows: false,
-      fade: true,
-    });
-  })();
-
-  $(function(){
-    setTimeout(function(){
-      $(".animated").waypoint({
-        handler: function(direction) {
-          if (direction === "down") {
-            $(this.element).addClass("fadeInUp");
-            this.destroy();
-          }
-        },
-        offset: "100%"
-      });
-    },300);
-  });
-
-  (function() {
-    $(window).scroll(function() {
-      $(this).scrollTop() >= 150 ? $(".back-to-top").fadeIn() : $(".back-to-top").fadeOut()
-    });
-
-    $(".back-to-top").click(function() {
-      $("html, body").animate({
-        scrollTop: 0
-      },
-        600
-      );
-      return false;
-    });
-  })();
 </script>

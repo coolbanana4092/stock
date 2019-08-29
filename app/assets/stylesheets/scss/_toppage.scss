@@ -1,70 +1,92 @@
-.ui.grid{
-  #what-is-this-application{
-    margin: {
-      top: 50px;
-      bottom: 30px;
-    }
-  }
-  .toppage-divider{
-    margin: {
-      top: 60px;
-      bottom: 60px;
-    }
-  }
-  .characteristics-of-application{
+.ui.grid {
+  #what-is-this-application {
     margin-bottom: 30px;
   }
-  #major-characteristics{
-    .one-of-the-characteristics{
+
+  .toppage-divider {
+    margin-bottom: 60px;
+  }
+
+  .characteristics-of-application {
+    margin-bottom: 30px;
+  }
+
+  #major-characteristics {
+    .one-of-the-characteristics {
       margin-bottom: 50px;
     }
   }
-  .use-for-trial{
+
+  .use-for-trial {
     margin-bottom: 30px;
   }
-  #frame-of-lets-search{
+
+  #frame-of-lets-search {
     margin-bottom: 30px;
   }
-  #toppage-map{
-    width: 80%;
-    height: 300px;
+
+  #toppage-map {
     margin: auto;
     border: solid 1px #d2ccd0;
   }
-  .marker_name{
+
+  .marker_name {
     text-align: left;
   }
-  .marker_place{
+
+  .marker_place {
     text-align: left;
   }
-  #search-address{
+
+  #search-address {
     margin: {
       top: 30px;
       bottom: 30px;
     }
   }
-  #map-explanation{
-    margin-bottom: 30px;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .ui.grid {
+    #what-is-this-application {
+      margin-top: 50px;
+    }
+
+    .toppage-divider {
+      margin-top: 60px;
+    }
+
+    #toppage-map {
+      width: 80%;
+      height: 300px;
+    }
   }
 }
 
+
+
 @media screen and (min-width: 769px) {
-  .ui.grid{
-    #what-is-this-application{
+  .ui.grid {
+    #what-is-this-application {
       margin-top: 25px;
     }
-    #explanation-of-application{
+
+    #explanation-of-application {
       width: 62.5% !important;
-      margin:{
+      margin: {
         right: auto;
         bottom: 45px;
         left: auto;
       }
     }
-    .toppage-divider{
+
+    .toppage-divider {
       margin-top: 0;
     }
-    #major-characteristics{
+
+    #major-characteristics {
       width: 87.5%;
       margin: {
         top: 50px;
@@ -73,20 +95,23 @@
       }
       overflow: hidden;
 
-      .one-of-the-characteristics{
+      .one-of-the-characteristics {
         float: left;
         width: 33.3%;
       }
     }
-    #lets-search{
+
+    #lets-search {
       width: 62.5% !important;
       margin: auto !important;
     }
-    #toppage-map{
+
+    #toppage-map {
       width: 50%;
       height: 500px;
     }
-    #map-explanation{
+
+    #map-explanation {
       width: 62.5% !important;
       margin: {
         right: auto;
