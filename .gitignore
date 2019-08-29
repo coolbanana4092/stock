@@ -26,5 +26,8 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-# Ignore bundler .sass-cache.
+# Ignore .sass-cache.
 /.sass-cache
+
+# Ignore /public/uploads.
+/public/uploads
