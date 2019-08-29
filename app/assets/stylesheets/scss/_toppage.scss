@@ -1,16 +1,10 @@
 .ui.grid {
   #what-is-this-application {
-    margin: {
-      top: 50px;
-      bottom: 30px;
-    }
+    margin-bottom: 30px;
   }
 
   .toppage-divider {
-    margin: {
-      top: 60px;
-      bottom: 60px;
-    }
+    margin-bottom: 60px;
   }
 
   .characteristics-of-application {
@@ -32,8 +26,6 @@
   }
 
   #toppage-map {
-    width: 80%;
-    height: 300px;
     margin: auto;
     border: solid 1px #d2ccd0;
   }
@@ -52,11 +44,28 @@
       bottom: 30px;
     }
   }
+}
 
-  #map-explanation {
-    margin-bottom: 30px;
+
+
+@media screen and (max-width: 768px) {
+  .ui.grid {
+    #what-is-this-application {
+      margin-top: 50px;
+    }
+
+    .toppage-divider {
+      margin-top: 60px;
+    }
+
+    #toppage-map {
+      width: 80%;
+      height: 300px;
+    }
   }
 }
+
+
 
 @media screen and (min-width: 769px) {
   .ui.grid {
