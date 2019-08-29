@@ -4,69 +4,84 @@
 
 /** モーダルウィンドウ *********/
 
-.modal{
+.modal {
   padding: {
     top: 20px;
     bottom: 20px;
   }
   background-color: #fff;
 
-  #modal-header{
-    margin: 15px;
+  #modal-header {
     text-align: center;
     font-weight: bold;
   }
 }
 
+@media screen and (max-width: 768px) {
+  #modal-header {
+    margin: 15px;
+  }
+}
+
 @media screen and (min-width: 769px) {
-  #modal-header{
+  #modal-header {
     margin: 60px;
   }
 }
 
 /** カルーセル *****************/
 
-#frame-of-carousel-image{
-  .carousel-image{
+#frame-of-carousel-image {
+  .carousel-image {
     margin-bottom: 0;
 
-    .slick-list{
-      height: 200px;
-    }
-    .operation-image{
+    .operation-image {
       border: solid 1px;
-      height: 200px;
     }
   }
 }
 
-.ui.modal.scrolling{
-  .ui.grid{
+.ui.modal.scrolling {
+  .ui.grid {
     margin-top: 10px;
 
-    .carousel-explanation{
+    .carousel-explanation {
       padding-top: 0;
     }
   }
 
-  .slick-dotted{
+  .slick-dotted {
     margin: 0 !important;
     margin-bottom: 15px !important;
 
-    .slick-dots{
+    .slick-dots {
       position: static;
     }
   }
 }
 
+@media screen and (max-width: 768px) {
+  #frame-of-carousel-image {
+    .carousel-image {
+      .slick-list {
+        height: 200px;
+      }
+
+      .operation-image {
+        height: 200px;
+      }
+    }
+  }
+}
+
 @media screen and (min-width: 769px) {
-  #frame-of-carousel-image{
-    .carousel-image{
-      .slick-list{
+  #frame-of-carousel-image {
+    .carousel-image {
+      .slick-list {
         height: 300px;
       }
-      .operation-image{
-        border: solid 1px;
+
+      .operation-image {
         height: 300px;
       }
     }
@@ -78,23 +93,7 @@
 ********************************/
 
 /** イベント *****************/
-.sp{
-  display: block;
-}
-
-.sp-inline{
-  display: inline;
-}
-
-.pc{
-  display: none;
-}
-
-.pc-inline{
-  display: none;
-}
-
-#events-list-in-japanese{
+#events-list-in-japanese {
   margin: 30px;
   font: {
     weight: bolder;
@@ -102,39 +101,40 @@
   }
 }
 
-#search-events{
+#search-events {
   margin: {
     top: 0;
     bottom: 10px;
   }
 }
 
-.various-events-list{
+.various-events-list {
   margin: {
     top: 20px;
     bottom: 40px;
   }
 
-  .frame-of-segment{
+  .frame-of-segment {
     padding-left: 0;
     margin: 0;
 
-    .segment{
+    .segment {
       padding: 10px;
       font-size: 12px;
 
-      .new_events{
+      .new_events {
         position: relative;
         background-color: #fef2f2;
 
-        &::before{
+        &::before {
           position: absolute;
           content: "";
           border-style: solid;
           border-width: 75px 75px 0 0;
           border-color: #f00 transparent transparent transparent;
         }
-        &::after{
+
+        &::after {
           position: absolute;
           content: "New!";
           transform: rotate(315deg);
@@ -149,35 +149,40 @@
           line-height: 1.2;
         }
       }
-      .events-list-image{
+
+      .events-list-image {
         width: 100%;
         border: solid 1px;
       }
-      .event-name{
+
+      .event-name {
         margin-top: 8px;
         font: {
           size: 16px;
           weight: bolder;
         }
       }
-      .event-created-at{
+
+      .event-created-at {
         text-align: right;
         margin-top: 10px;
       }
-      .event-organizer{
+
+      .event-organizer {
         margin-top: 15px;
       }
+
 			.detail-button,
       .like-button,
-      .unlike-button{
+      .unlike-button {
         margin: {
           top: 20px;
           bottom: 10px;
         }
 
         .link-to-like,
-        .link-to-unlike{
-          color: white;
+        .link-to-unlike {
+          color: #fff;
         }
       }
     }
@@ -186,44 +191,44 @@
 
 .before-events,
 .current-events,
-.after-events{
+.after-events {
   padding: 0;
 }
 
 @media screen and (max-width: 374px) {
-  #favorite-icon{
+  #favorite-icon {
     display: none !important;
   }
 }
 
 @media screen and (min-width: 769px) {
-  .sp{
+  .sp {
     display: none;
   }
 
-  .sp-inline{
+  .sp-inline {
     display: none;
   }
 
-  .pc{
+  .pc {
     display: block;
   }
 
-  .pc-inline{
+  .pc-inline {
     display: inline;
   }
 
-  #events-list-in-japanese{
+  #events-list-in-japanese {
     margin-bottom: 60px;
   }
 
-  .various-events-list{
+  .various-events-list {
     .all-events,
     .my-events,
     .favorite-events,
     .before-events,
     .current-events,
-    .after-events{
+    .after-events {
       width: 87.5%;
       margin: {
         left: auto !important;
@@ -231,7 +236,7 @@
       }
       overflow: hidden;
 
-      .each-event{
+      .each-event {
         float: left;
         width: 33%;
         margin: {
@@ -240,7 +245,7 @@
           right: auto;
         }
 
-        .inside-of-each-event{
+        .inside-of-each-event {
           padding: {
             top: 20px !important;
             right: 5px !important;
@@ -248,21 +253,23 @@
             left: 5px !important;
           }
         }
-        .event-name{
+
+        .event-name {
           min-height: 84px !important;
         }
       }
     }
+
     .favorite-link-icon,
-    .detail-link-icon{
+    .detail-link-icon {
       display: none;
     }
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .various-events-list{
-    .no-event{
+  .various-events-list {
+    .no-event {
       padding: 30px;
     }
 
@@ -271,9 +278,9 @@
     .favorite-events,
     .before-events,
     .current-events,
-    .after-events{
-      .each-event{
-        .event-name{
+    .after-events {
+      .each-event {
+        .event-name {
           min-height: 63px !important;
         }
       }
@@ -304,6 +311,7 @@
   color: #333;
   opacity: 0.6;
   transition: opacity 2.5s;
+  z-index: 1;
 
   &:hover {
     opacity: 1;

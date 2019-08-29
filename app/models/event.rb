@@ -40,40 +40,20 @@ class Event < ApplicationRecord
       end
     end
 
-    # FindsControllerと同様に、いろいろな方法を試したが、
-    # 以下の6つの似た様な関数を適切に簡略化することができなかったため、とりあえずそのまま6つとも記しておく。
-    def self.judge_created_at_today
-      from  = 1.day.ago.beginning_of_day
-      to = Time.zone.now.end_of_day
-      where(created_at: from...to)
-    end
-
-    def self.judge_created_at_3d
-      from  = 3.day.ago.beginning_of_day
-      to = Time.zone.now.end_of_day
-      where(created_at: from...to)
-    end
-
-    def self.judge_created_at_1w
-      from  = 1.week.ago.beginning_of_day
-      to = Time.zone.now.end_of_day
-      where(created_at: from...to)
-    end
-
-    def self.judge_created_at_1m
-      from  = 1.month.ago.beginning_of_day
-      to = Time.zone.now.end_of_day
-      where(created_at: from...to)
-    end
-
-    def self.judge_created_at_3m
-      from  = 3.month.ago.beginning_of_day
-      to = Time.zone.now.end_of_day
-      where(created_at: from...to)
-    end
-
-    def self.judge_created_at_6m
-      from  = 6.month.ago.beginning_of_day
+    def self.judge_created_at(period)
+      if period == "today"
+        from  = 1.day.ago.beginning_of_day
+      elsif period == "3_days_later"
+        from  = 3.day.ago.beginning_of_day
+      elsif period == "1_week_later"
+        from  = 1.week.ago.beginning_of_day
+      elsif period == "1_month_later"
+        from  = 1.month.ago.beginning_of_day
+      elsif period == "3_months_later"
+        from  = 3.month.ago.beginning_of_day
+      elsif period == "6_months_later"
+        from  = 6.month.ago.beginning_of_day
+      end
       to = Time.zone.now.end_of_day
       where(created_at: from...to)
     end

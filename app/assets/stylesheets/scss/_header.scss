@@ -1,7 +1,7 @@
 /********************************
   ヘッダー自体
 ********************************/
-header{
+header {
   position: absolute;
   top: 0;
   height: 80px;
@@ -12,12 +12,12 @@ header{
   }
 }
 
-#header-title{
+#header-title {
   margin-top: 20px;
 }
 
-.application-name{
-  color: green;
+.application-name {
+  color: #008000;
   font-family: serif;
 }
 
@@ -58,7 +58,6 @@ header{
   border-bottom: solid 1px;
 
   ul {
-    display: flex;
     justify-content: flex-end;
     align-items: center;
     height: 70px;
@@ -86,6 +85,7 @@ header{
           transform-origin: left top;
           transition: transform .3s;
         }
+
         &:hover::after {
           transform: scale(1, 1);
         }
@@ -94,7 +94,7 @@ header{
   }
 }
 
-@media screen and (max-width : 768px) {
+@media screen and (max-width: 768px) {
   #nav-btn {
     display: block;
     position: fixed;
@@ -123,9 +123,11 @@ header{
       &:nth-child(1) {
         top: 0;
       }
+
       &:nth-child(2) {
         top: 20px;
       }
+
       &:nth-child(3) {
         bottom: 0;
       }
@@ -138,9 +140,11 @@ header{
         &:nth-child(1) {
           transform: translateY(20px) rotate(-45deg);
         }
+
         &:nth-child(2) {
           opacity: 0;
         }
+
         &:nth-child(3) {
           transform: translateY(-20px) rotate(45deg);
         }
@@ -148,7 +152,7 @@ header{
     }
   }
 
-  .menu{
+  .menu {
     position: fixed;
     top: 0;
     right: 0;
@@ -158,7 +162,6 @@ header{
     text-align: left;
     font-size: 13px;
     background-color: #eaf2f4;
-    z-index: 1;
     transform: translateX(150px);
     transition: .4s all;
 
@@ -171,8 +174,6 @@ header{
       text-align: center;
 
       li {
-        transition: all .5s;
-
         &:hover {
           background-color: #fff;
         }
@@ -187,11 +188,24 @@ header{
   }
 
   .nav-open {
-    .menu{
+    .menu {
       transform: translateX(0);
     }
-    #contents{
+
+    #contents {
       transform: translateX(-150px);
+    }
+  }
+}
+
+@media screen and (min-width: 769px) {
+  #nav-btn {
+    display: none;
+  }
+
+  .menu {
+    ul {
+      display: flex;
     }
   }
 }
