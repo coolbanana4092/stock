@@ -425,6 +425,22 @@ footer {
 	イベント一覧
 ********************************/
 /** イベント *****************/
+.sp {
+  display: block;
+}
+
+.sp-inline {
+  display: inline;
+}
+
+.pc {
+  display: none;
+}
+
+.pc-inline {
+  display: none;
+}
+
 #events-list-in-japanese {
   margin: 30px;
   font-weight: bolder;
