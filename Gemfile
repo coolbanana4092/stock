@@ -18,11 +18,18 @@ gem 'kaminari'
 gem 'rails-i18n'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'unicorn'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.6.0'
   gem 'factory_bot_rails', '~> 4.10.0'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
 end
 
 group :development do
@@ -42,6 +49,8 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '0.21.0'
   gem 'fog', '1.42'
+end
+
+group :production, :staging do
 end
