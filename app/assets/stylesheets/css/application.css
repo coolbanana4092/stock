@@ -1050,6 +1050,19 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
     height: 500px;
   }
 }
+#loading {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 1;
+}
+#loading .ui.active {
+  height: 200px;
+}
+
 .tabs-menu {
   width: 87.5%;
   margin: 0 auto;

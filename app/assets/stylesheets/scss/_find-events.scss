@@ -1,3 +1,17 @@
+#loading {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 1;
+
+  .ui.active {
+    height: 200px;
+  }
+}
+
 .tabs-menu {
   width: 87.5%;
   margin: 0 auto;
