@@ -1,4 +1,11 @@
 <div id="find-events">
+  <div class="ui center aligned grid" id="loading" ref="loading">
+    <div class="wide column">
+      <div class="ui active inverted dimmer">
+        <div class="ui text loader">現在地を取得しています</div>
+      </div>
+    </div>
+  </div>
   <div class="ui center aligned grid">
     <div class="fourteen wide column">
       <div id="events-list-in-japanese">イベントを探す</div>
@@ -238,7 +245,9 @@
           errorMessage = "お使いの端末は、GeoLacation APIに対応していません。";
           alert(errorMessage);
         };
-      }
+
+        this.$parent.$refs.loading.style.display = "block"
+      },
     },
     mounted: function() {
       this.makeFindMap();
@@ -300,7 +309,7 @@
       },
       getCookies: function() {
         this.activeTab = this.tabs[Cookies.get("activeTabId")];
-      }
+      },
     },
     created: function() {
       this.setActiveTab();
