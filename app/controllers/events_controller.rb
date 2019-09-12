@@ -1,12 +1,17 @@
 class EventsController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :new, :create, :edit, :update, :destroy]
+  before_action :require_user_logged_in, only: [:new, :create, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   include SessionsHelper
 
   def index
     @all_events = Event.all.order(created_at: :desc).page(params[:page]).per(10).search(params[:search])
-    @current_user_events = current_user.events.order(created_at: :desc).page(params[:page]).per(10).search(params[:search])
-    @favorite_events = current_user.fav_events.order(created_at: :desc).page(params[:page]).per(10).search(params[:search])
+    if current_user
+      @current_user_events = current_user.events.order(created_at: :desc).page(params[:page]).per(10).search(params[:search])
+      @favorite_events = current_user.fav_events.order(created_at: :desc).page(params[:page]).per(10).search(params[:search])
+    else
+      @current_user_events = ""
+      @favorite_events = ""
+    end
   end
 
   def show
