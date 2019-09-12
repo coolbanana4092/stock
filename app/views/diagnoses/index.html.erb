@@ -1,0 +1,207 @@
+<div id="diagnose-favorite-events">
+  <div class="ui center aligned grid">
+    <div class="fourteen wide column">
+      <div id="events-list-in-japanese">イベント診断</div>
+    </div>
+  </div>
+  <div class="ui center aligned grid">
+    <div class="diagnostic-message thirteen wide column">
+      {{ message }}
+    </div>
+  </div>
+  <div class="ui center aligned grid">
+    <div class="fourteen wide columm">
+      <template v-if="isFinished">
+        <div class="frame-of-button-to-event-page">
+          <div class="ui center aligned grid">
+            <div class="retry-button ui button ten wide column" id="button-to-find-events" @click="retry">
+              もう一度診断する
+            </div>
+          </div>
+          <div class="ui center aligned grid">
+            <div class="ui button ten wide column" id="button-to-events-list">
+              <%= link_to "イベント一覧", events_path %>
+            </div>
+          </div>
+        </div>
+      </template>
+      <template v-else>
+        <div class="answer-button ui center aligned grid">
+          <div class="answer-yes six wide column">
+            <button class="ui fluid button" @click="clickAnswer('Yes')">はい</button>
+          </div>
+          <div class="answer-no six wide column">
+            <button class="ui fluid button" @click="clickAnswer('No')">いいえ</button>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+</div>
+
+<script>
+  var count;
+  var genres;
+  var quetions = [
+    "Q1.あなたはアウトドア派ですか？",
+    "Q2.あなたは盛り上がる事が好きですか？",
+    "Q3.少人数制のイベントの方が良いですか？",
+    "Q4.友達と一緒に申し込みたいですか？",
+    "Q5.参加費がかかるのは嫌ですか？",
+  ];
+
+  var vm = new Vue({
+    el: "#diagnose-favorite-events",
+    data: {
+      isFinished: false,
+      message: "",
+    },
+    methods: {
+      init: function()  {
+        count = 0;
+        genres = {
+          "交流会": 0,
+          "スポーツ": 0,
+          "デザイン・アート": 0,
+          "ウェブ・テクノロジー": 0,
+          "自己啓発": 0,
+          "食・グルメ": 0,
+          "展覧会・展示会": 0,
+          "勉強会": 0,
+          "ビジネス": 0,
+          "旅行": 0,
+          "エンターテイメント": 0,
+        };
+        this.message = quetions[0];
+      },
+      addPoint: function(answer,count) {
+        switch(count) {
+          case 0:
+            if (answer == "Yes") {
+              genres["交流会"] += 1;
+              genres["スポーツ"] += 1;
+              genres["旅行"] += 1;
+              genres["デザイン・アート"] -= 1;
+              genres["ウェブ・テクノロジー"] -= 1;
+              genres["展覧会・展示会"] -= 1;
+            } else {
+              genres["交流会"] -= 1;
+              genres["スポーツ"] -= 1;
+              genres["旅行"] -= 1;
+              genres["デザイン・アート"] += 1;
+              genres["ウェブ・テクノロジー"] += 1;
+              genres["展覧会・展示会"] += 1;
+            };
+            break;
+          case 1:
+            if (answer == "Yes") {
+              genres["スポーツ"] += 1;
+              genres["エンターテイメント"] += 1;
+              genres["デザイン・アート"] -= 1;
+              genres["ウェブ・テクノロジー"] -= 1;
+              genres["自己啓発"] -= 1;
+              genres["展覧会・展示会"] -= 1;
+              genres["勉強会"] -= 1;
+            } else {
+              genres["スポーツ"] -= 1;
+              genres["エンターテイメント"] -= 1;
+              genres["デザイン・アート"] += 1;
+              genres["ウェブ・テクノロジー"] += 1;
+              genres["自己啓発"] += 1;
+              genres["展覧会・展示会"] += 1;
+              genres["勉強会"] += 1;
+            };
+            break;
+          case 2:
+            if (answer == "Yes") {
+              genres["デザイン・アート"] += 1;
+              genres["ウェブ・テクノロジー"] += 1;
+              genres["スキル・自己啓発"] += 1;
+              genres["食・グルメ"] += 1;
+              genres["展覧会・展示会"] += 1;
+              genres["交流会"] -= 1;
+              genres["スポーツ"] -= 1;
+            } else {
+              genres["デザイン・アート"] -= 1;
+              genres["ウェブ・テクノロジー"] -= 1;
+              genres["スキル・自己啓発"] -= 1;
+              genres["食・グルメ"] -= 1;
+              genres["展覧会・展示会"] -= 1;
+              genres["交流会"] += 1;
+              genres["スポーツ"] += 1;
+            };
+            break;
+          case 3:
+            if (answer == "Yes") {
+              genres["食・グルメ"] += 1;
+              genres["旅行"] += 1;
+              genres["エンターテイメント"] += 1;
+              genres["交流会"] -= 1;
+              genres["スポーツ"] -= 1;
+              genres["ウェブ・テクノロジー"] -= 1;
+              genres["自己啓発"] -= 1;
+              genres["展覧会・展示会"] -= 1;
+              genres["勉強会"] -= 1;
+            } else {
+              genres["食・グルメ"] -= 1;
+              genres["旅行"] -= 1;
+              genres["エンターテイメント"] -= 1;
+              genres["交流会"] += 1;
+              genres["スポーツ"] += 1;
+              genres["ウェブ・テクノロジー"] += 1;
+              genres["自己啓発"] += 1;
+              genres["展覧会・展示会"] += 1;
+              genres["勉強会"] += 1;
+            };
+            break;
+          case 4:
+            if (answer == "Yes") {
+              genres["交流会"] += 1;
+              genres["自己啓発"] += 1;
+              genres["勉強会"] += 1;
+              genres["食・グルメ"] -= 1;
+              genres["展覧会・展示会"] -= 1;
+              genres["旅行"] -= 1;
+              genres["エンターテイメント"] -= 1;
+            } else {
+              genres["交流会"] -= 1;
+              genres["自己啓発"] -= 1;
+              genres["勉強会"] -= 1;
+              genres["食・グルメ"] += 1;
+              genres["展覧会・展示会"] += 1;
+              genres["旅行"] += 1;
+              genres["エンターテイメント"] += 1;
+            };
+            break;
+        };
+      },
+      clickAnswer: function(answer) {
+        var selectedCount = 0;
+        var mostSelectedGenre;
+
+        this.addPoint(answer,count);
+        count += 1;
+
+        if (count > quetions.length-1) {
+          for (genre in genres) {
+            if (selectedCount < genres[genre]) {
+              selectedCount = genres[genre];
+              mostSelectedGenre = genre;
+            };
+          };
+          this.message = "診断結果：あなたには「" + mostSelectedGenre + "」がオススメです！";
+          this.isFinished = true;
+        }else{
+          this.message = quetions[count];
+        };
+      },
+      retry: function () {
+        this.isFinished = false;
+        this.init();
+      },
+    },
+    created: function() {
+      this.init();
+    },
+  });
+</script>
