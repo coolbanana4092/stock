@@ -237,6 +237,13 @@ header {
     display: flex;
   }
 }
+/********************************
+  チュートリアル
+********************************/
+.tutorial {
+  color: #009fda;
+}
+
 footer {
   position: absolute;
   bottom: 0;

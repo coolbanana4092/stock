@@ -1,34 +1,69 @@
-<header id="header">
-  <nav>
+<div id="header">
+  <header>
+    <nav>
+      <div class="ui center aligned grid">
+        <div class="fourteen wide column" id="header-title">
+          <h1 class="application-name">EventNavi</h1>
+        </div>
+      </div>
+      <button type="button" class="hamburger" id="nav-btn" ref="hamburger" @click="navToggle()">
+        <span class="bdr"></span>
+        <span class="bdr"></span>
+        <span class="bdr"></span>
+      </button>
+      <div id="wrapper" ref="wrapper">
+        <div class="menu">
+          <ul>
+            <li><%= link_to "イベント診断", diagnose_path %></li>
+            <li><%= link_to "イベントを探す", find_path %></li>
+            <li><%= link_to "イベント一覧", events_path %></li>
+            <li><%= link_to "イベントの投稿", new_event_path %></li>
+            <li class="tutorial" @click="showModal(); carousel()">チュートリアル</li>
+            <li><%= link_to "お問い合わせ", inquiry_input_path %></li>
+            <% if logged_in? %>
+              <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "ログイン/新規登録", login_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="ui modal">
+    <div id="modal-header">このアプリの使い方</div>
+    <div class="ui center aligned grid" id="frame-of-carousel-image">
+      <div class="carousel-image content center aligned fourteen wide column">
+        <img class="operation-image" src="/img/no-image2.png"/>
+        <img class="operation-image" src="/img/no-image2.png"/>
+        <img class="operation-image" src="/img/no-image2.png"/>
+        <img class="operation-image" src="/img/no-image2.png"/>
+        <img class="operation-image" src="/img/no-image2.png"/>
+      </div>
+    </div>
     <div class="ui center aligned grid">
-      <div class="fourteen wide column" id="header-title">
-        <h1 class="application-name">EventNavi</h1>
+      <div class="carousel-explanation content left aligned fourteen wide column">
+        <p>イベントを投稿したい場合は "イベント投稿" をタップします。</p>
+        <p>イベントの詳細を入力して投稿ボタンを押すとイベントを投稿できます。</p>
+        <p>様々なイベントの表示する場合は "イベント一覧" をタップします。</p>
+        <p>イベントの表示方法は画面内のセレクトボックスから変更できます。</p>
+        <p>あるイベントの詳細情報を知りたい場合は、そのイベントの詳細ボタンをタップしましょう。</p>
       </div>
     </div>
-    <button type="button" class="hamburger" id="nav-btn" ref="hamburger" @click="navToggle()">
-      <span class="bdr"></span>
-      <span class="bdr"></span>
-      <span class="bdr"></span>
-    </button>
-    <div id="wrapper" ref="wrapper">
-      <div class="menu">
-        <ul>
-          <li><%= link_to "イベント診断", diagnose_path %></li>
-          <li><%= link_to "イベントを探す", find_path %></li>
-          <li><%= link_to "イベント一覧", events_path %></li>
-          <li><%= link_to "イベントの投稿", new_event_path %></li>
-          <li><%= link_to "お問い合わせ", inquiry_input_path %></li>
-          <% if logged_in? %>
-            <li><%= link_to "登録情報の変更", edit_user_path(current_user) %></li>
-            <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to "ログイン/新規登録", login_path %></li>
-          <% end %>
-        </ul>
+    <div class="slick-dotted ui center aligned grid">
+      <ul class="slick-dots" id="original-dots"></ul>
+    </div>
+    <div class="actions">
+      <div class="ui center aligned grid">
+        <div class="center aligned seven wide column">
+          <button class="ui fluid red button">
+            OK
+          </button>
+        </div>
       </div>
     </div>
-  </nav>
-</header>
+  </div>
+</div>
 
 <script>
   new Vue({
@@ -40,6 +75,23 @@
 
         hamburgerClass.toggle("is-active");
         wrapperClass.contains("nav-open") ? wrapperClass.remove("nav-open") : wrapperClass.add("nav-open");
+      },
+      showModal: function() {
+        $(".ui.modal").modal("show");
+        this.navToggle();
+      },
+      carousel: function() {
+        $(".carousel-image").not('.slick-initialized').slick({
+          asNavFor: ".carousel-explanation",
+          dots: true,
+          arrows: false,
+          appendDots:$("#original-dots"),
+        });
+        $(".carousel-explanation").not('.slick-initialized').slick({
+          asNavFor: ".carousel-image",
+          arrows: false,
+          fade: true,
+        });
       },
     },
   });
