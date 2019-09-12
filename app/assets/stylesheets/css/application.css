@@ -1175,5 +1175,19 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
     height: 500px;
   }
 }
+.diagnostic-message {
+  height: 70px;
+  font-size: 15px !important;
+}
+
+#button-to-find-events {
+  margin-top: 40px;
+  margin-bottom: 15px;
+  color: #808080;
+}
+
+.answer-button {
+  margin-top: 40px !important;
+}
 
 /*# sourceMappingURL=application.css.map */
