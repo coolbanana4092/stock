@@ -77,7 +77,11 @@
     </div>
     <div class="my-events-in-all-cases">
       <% if @current_user_events.empty? %>
-        <%= render partial: "partials/events/no-event-message", locals: { message: "あなたが投稿したイベントはまだ存在していません。", classname: "my-events" } %>
+        <% if current_user %>
+          <%= render partial: "partials/events/no-event-message", locals: { message: "あなたが投稿したイベントはまだ存在していません。", classname: "my-events" } %>
+        <% else %>
+          <%= render partial: "partials/events/no-event-message", locals: { message: "あなたが投稿したイベントを確認するためにはログインする必要があります。", classname: "my-events" } %>
+        <% end %>
       <% else %>
         <div class="my-events animated bounce">
           <% @current_user_events.each do |event| %>
@@ -88,7 +92,11 @@
     </div>
     <div class="favorite-events-in-all-cases">
       <% if @favorite_events.empty? %>
-        <%= render partial: "partials/events/no-event-message", locals: { message: "投稿されたイベントはまだ存在していません。", classname: "favorite-events" } %>
+        <% if current_user %>
+          <%= render partial: "partials/events/no-event-message", locals: { message: "お気に入りされたイベントはまだ存在していません。", classname: "favorite-events" } %>
+        <% else %>
+          <%= render partial: "partials/events/no-event-message", locals: { message: "お気に入りされたイベントを確認するためにはログインする必要があります。", classname: "favorite-events" } %>
+        <% end %>
       <% else %>
         <div class="favorite-events animated bounce">
           <% @favorite_events.each do |event| %>

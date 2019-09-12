@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
       flash[:success] = "ログインに成功しました"
-      redirect_to root_url
+      redirect_back_or root_url
     else
       flash[:negative] = "ログインに失敗しました"
       redirect_to login_url
