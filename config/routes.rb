@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   get 'find' => 'finds#index'
 
+  get 'diagnose' => 'diagnoses#index'
+
   resources :users, only: [:new, :create, :edit, :update]
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :events
