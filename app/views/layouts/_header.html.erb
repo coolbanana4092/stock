@@ -13,19 +13,16 @@
     <div id="wrapper" ref="wrapper">
       <div class="menu">
         <ul>
+          <li><%= link_to "イベント診断", diagnose_path %></li>
+          <li><%= link_to "イベントを探す", find_path %></li>
+          <li><%= link_to "イベント一覧", events_path %></li>
+          <li><%= link_to "イベントの投稿", new_event_path %></li>
+          <li><%= link_to "お問い合わせ", inquiry_input_path %></li>
           <% if logged_in? %>
-            <li><%= link_to "イベント診断", diagnose_path %></li>
-            <li><%= link_to "イベントを探す", find_path %></li>
-            <li><%= link_to "イベント一覧", events_path %></li>
-            <li><%= link_to "イベントの投稿", new_event_path %></li>
             <li><%= link_to "登録情報の変更", edit_user_path(current_user) %></li>
-            <li><%= link_to "お問い合わせ", inquiry_input_path %></li>
             <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "イベント診断", diagnose_path %></li>
-            <li><%= link_to "新規登録", signup_path %></li>
-            <li><%= link_to "ログイン", login_path %></li>
-            <li><%= link_to "お問い合わせ", inquiry_input_path %></li>
+            <li><%= link_to "ログイン/新規登録", login_path %></li>
           <% end %>
         </ul>
       </div>
