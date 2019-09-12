@@ -82,25 +82,33 @@
 <script>
   var map;
   var geocoder = new google.maps.Geocoder();
+
   var vm = new Vue({
     el: "#toppage",
     methods: {
-      makeEventsListMap: function() {
+      makeToppageMap: function() {
         <% @events.each do |event| %>
-          var mapLatLng = new google.maps.LatLng(35.681236,139.767125);
+          var geocoder = new google.maps.Geocoder();
           var pos;
           var markerData;
+          var map;
           var markerDataArray = [];
           var markerLatLng;
           var marker = [];
           var infoWindow = [];
-          var currentInfoWindow;
+          var currentInfoWindow = null;
+
+          <% if @latitude && @longitude %>
+            var mapLatLng = new google.maps.LatLng(<%= @latitude %>, <%= @longitude %>);
+          <% else %>
+            var mapLatLng = new google.maps.LatLng(35.681236,139.767125);
+          <% end %>
 
           geocoder.geocode({
             "address": "<%= event.place %>",
             "region": "jp"
           },function(results, status) {
-              if (status == "OK" && results[0]) {
+              if (status == "OK" && results[0]){
                 pos = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
                 markerData = [
                   {
@@ -112,10 +120,32 @@
                 ];
                 map = new google.maps.Map(vm.$refs.toppageMap, {
                   center: mapLatLng,
-                  zoom: 10,
+                  zoom: 9,
                   mapTypeControl: false,
                   streetViewControl: false,
                   fullscreenControl: false,
+                });
+
+                new google.maps.Circle({
+                  map: map,
+                  center: mapLatLng,
+                  fillColor: "#f00",
+                  fillOpacity: 0.3,
+                  radius: 15000,
+                  strokeColor: "#f00",
+                  strokeOpacity: 1,
+                  strokeWeight: 1
+                });
+
+                new google.maps.Circle({
+                  map: map,
+                  center: mapLatLng,
+                  fillColor: "#fff",
+                  fillOpacity: 0,
+                  radius: 25000,
+                  strokeColor: "#555",
+                  strokeOpacity: 1,
+                  strokeWeight: 1
                 });
 
                 markerDataArray.push(markerData);
@@ -126,7 +156,7 @@
                     map: map,
                     position: markerLatLng
                   });
-                };
+                }
 
                 setTimeout(function(){
                   marker[i-1].addListener("click", function() {
@@ -176,7 +206,7 @@
       },
     },
     mounted: function() {
-      this.makeEventsListMap();
+      this.makeToppageMap();
     },
   });
 </script>
