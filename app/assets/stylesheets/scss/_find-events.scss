@@ -12,6 +12,14 @@
   }
 }
 
+#please-find-events {
+  margin: 30px;
+  font: {
+    weight: bolder;
+    size: 20px;
+  }
+}
+
 .tabs-menu {
   width: 87.5%;
   margin: 0 auto;
@@ -118,6 +126,10 @@
 }
 
 @media screen and (min-width: 769px) {
+  #please-find-events {
+    margin-bottom: 60px;
+  }
+
   .tabs-menu {
     li {
       padding: 15px;
