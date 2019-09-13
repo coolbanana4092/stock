@@ -1,7 +1,7 @@
 <div id="diagnose-favorite-events">
   <div class="ui center aligned grid">
     <div class="fourteen wide column">
-      <div id="events-list-in-japanese">イベント診断</div>
+      <div id="please-diagnose-events">イベント診断</div>
     </div>
   </div>
   <div class="ui center aligned grid">
@@ -14,12 +14,12 @@
       <template v-if="isFinished">
         <div class="frame-of-button-to-event-page">
           <div class="ui center aligned grid">
-            <div class="retry-button ui button ten wide column" id="button-to-find-events" @click="retry">
+            <div :class="resultColumn" id="button-to-find-events" @click="retry">
               もう一度診断する
             </div>
           </div>
           <div class="ui center aligned grid">
-            <div class="ui button ten wide column" id="button-to-events-list">
+            <div :class="resultColumn" id="button-to-events-list">
               <%= link_to "イベント一覧", events_path %>
             </div>
           </div>
@@ -27,10 +27,10 @@
       </template>
       <template v-else>
         <div class="answer-button ui center aligned grid">
-          <div class="answer-yes six wide column">
+          <div :class="answerColumn">
             <button class="ui fluid button" @click="clickAnswer('Yes')">はい</button>
           </div>
-          <div class="answer-no six wide column">
+          <div :class="answerColumn">
             <button class="ui fluid button" @click="clickAnswer('No')">いいえ</button>
           </div>
         </div>
@@ -53,10 +53,32 @@
   var vm = new Vue({
     el: "#diagnose-favorite-events",
     data: {
+      answerColumn: "",
+      resultColumn: "",
       isFinished: false,
       message: "",
     },
     methods: {
+      getDevice: function() {
+        var ua = navigator.userAgent;
+        if (ua.indexOf("iPhone") > 0 || ua.indexOf("iPod") > 0 || ua.indexOf("Android") > 0 && ua.indexOf("Mobile") > 0) {
+          return "sp";
+        } else if (ua.indexOf("iPad") > 0 || ua.indexOf("Android") > 0) {
+          return "tab";
+        } else {
+          return "pc";
+        };
+      },
+      judgeColumn: function() {
+        var device = this.getDevice();
+        if (device == "pc") {
+          this.resultColumn = "ui button four wide column";
+          this.answerColumn = "four wide column";
+        } else {
+          this.resultColumn = "ui button ten wide column";
+          this.answerColumn = "six wide column";
+        };
+      },
       init: function()  {
         count = 0;
         genres = {
@@ -201,6 +223,7 @@
       },
     },
     created: function() {
+      this.judgeColumn();
       this.init();
     },
   });
