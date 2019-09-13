@@ -51,7 +51,7 @@ li {
 }
 @media screen and (min-width: 769px) {
   html body #container #main-content {
-    padding-top: 180px;
+    padding-top: 150px;
   }
 }
 /********************************
@@ -238,12 +238,75 @@ header {
   }
 }
 /********************************
-  チュートリアル
+	チュートリアル
 ********************************/
+/** ハンバーガーメニュー *******/
 .tutorial {
   color: #009fda;
 }
 
+/** モーダルウィンドウ *********/
+.modal {
+  padding-top: 20px;
+  background-color: #fff;
+}
+.modal #modal-header {
+  text-align: center;
+  font-weight: bold;
+}
+.modal .actions {
+  margin: 0 !important;
+}
+
+@media screen and (max-width: 768px) {
+  #modal-header {
+    margin: 15px;
+  }
+}
+@media screen and (min-width: 769px) {
+  #modal-header {
+    margin: 30px;
+    font-size: 18px;
+  }
+}
+/** カルーセル *****************/
+#frame-of-carousel-image .carousel-image {
+  margin-bottom: 0;
+}
+#frame-of-carousel-image .carousel-image .operation-image {
+  border: solid 1px;
+}
+
+.ui.modal.scrolling .ui.grid {
+  margin-top: 10px;
+}
+.ui.modal.scrolling .ui.grid .carousel-explanation {
+  padding-top: 0;
+}
+.ui.modal.scrolling .slick-dotted {
+  margin: 0 !important;
+  margin-bottom: 15px !important;
+}
+.ui.modal.scrolling .slick-dotted .slick-dots {
+  position: static;
+}
+
+@media screen and (max-width: 768px) {
+  #frame-of-carousel-image .carousel-image .slick-list {
+    height: 200px;
+  }
+  #frame-of-carousel-image .carousel-image .operation-image {
+    height: 200px;
+  }
+}
+@media screen and (min-width: 769px) {
+  #frame-of-carousel-image .carousel-image .slick-list {
+    height: 300px;
+  }
+  #frame-of-carousel-image .carousel-image .operation-image {
+    height: 300px;
+  }
+}
 footer {
   position: absolute;
   bottom: 0;
@@ -368,68 +431,6 @@ footer {
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 50px;
-  }
-}
-/********************************
-	チュートリアル
-********************************/
-/** モーダルウィンドウ *********/
-.modal {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: #fff;
-}
-.modal #modal-header {
-  text-align: center;
-  font-weight: bold;
-}
-
-@media screen and (max-width: 768px) {
-  #modal-header {
-    margin: 15px;
-  }
-}
-@media screen and (min-width: 769px) {
-  #modal-header {
-    margin: 60px;
-  }
-}
-/** カルーセル *****************/
-#frame-of-carousel-image .carousel-image {
-  margin-bottom: 0;
-}
-#frame-of-carousel-image .carousel-image .operation-image {
-  border: solid 1px;
-}
-
-.ui.modal.scrolling .ui.grid {
-  margin-top: 10px;
-}
-.ui.modal.scrolling .ui.grid .carousel-explanation {
-  padding-top: 0;
-}
-.ui.modal.scrolling .slick-dotted {
-  margin: 0 !important;
-  margin-bottom: 15px !important;
-}
-.ui.modal.scrolling .slick-dotted .slick-dots {
-  position: static;
-}
-
-@media screen and (max-width: 768px) {
-  #frame-of-carousel-image .carousel-image .slick-list {
-    height: 200px;
-  }
-  #frame-of-carousel-image .carousel-image .operation-image {
-    height: 200px;
-  }
-}
-@media screen and (min-width: 769px) {
-  #frame-of-carousel-image .carousel-image .slick-list {
-    height: 300px;
-  }
-  #frame-of-carousel-image .carousel-image .operation-image {
-    height: 300px;
   }
 }
 /********************************
@@ -950,58 +951,57 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
     margin: auto;
   }
 }
-.ui.grid .fourteen.wide.column #event-details-image {
+.ui.grid .column #event-details-image {
   padding: 5px;
   border: solid 1px;
 }
-.ui.grid .fourteen.wide.column #event-name {
-  margin-bottom: 15px;
+.ui.grid .column #event-name {
   font-size: 20px;
   font-weight: bolder;
 }
-.ui.grid .fourteen.wide.column #event-created-or-updated-date {
+.ui.grid .column #event-created-or-updated-date {
   margin-bottom: 5px;
 }
-.ui.grid .fourteen.wide.column .subheading-of-event-details {
+.ui.grid .column .subheading-of-event-details {
   margin-bottom: 10px;
   font-size: 18px;
 }
-.ui.grid .fourteen.wide.column .axis path,
-.ui.grid .fourteen.wide.column .axis line {
+.ui.grid .column .axis path,
+.ui.grid .column .axis line {
   fill: none;
   stroke: black;
   shape-rendering: crispEdges;
 }
-.ui.grid .fourteen.wide.column .axis .tick line {
+.ui.grid .column .axis .tick line {
   fill: none;
   stroke: #ccc;
 }
-.ui.grid .fourteen.wide.column .axis text {
+.ui.grid .column .axis text {
   font-family: sans-serif;
   font-size: 9px;
 }
-.ui.grid .fourteen.wide.column .y-axis-label {
+.ui.grid .column .y-axis-label {
   font-family: sans-serif;
   font-size: 9px;
   word-wrap: break-word;
   text-align: center;
 }
-.ui.grid .fourteen.wide.column .y-axis path {
+.ui.grid .column .y-axis path {
   stroke: none;
 }
-.ui.grid .fourteen.wide.column .after-display-sentence,
-.ui.grid .fourteen.wide.column .close-see-more {
+.ui.grid .column .after-display-sentence,
+.ui.grid .column .close-see-more {
   display: none;
 }
-.ui.grid .fourteen.wide.column .see-more,
-.ui.grid .fourteen.wide.column .close-see-more {
+.ui.grid .column .see-more,
+.ui.grid .column .close-see-more {
   margin-top: 15px;
   color: #000 !important;
 }
-.ui.grid .fourteen.wide.column #event-place {
+.ui.grid .column #event-place {
   margin-bottom: 20px;
 }
-.ui.grid .fourteen.wide.column #event-price {
+.ui.grid .column #event-price {
   margin-bottom: 20px;
 }
 
@@ -1035,7 +1035,10 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
     padding-bottom: 10px;
     margin-top: 0;
   }
-  .ui.grid .fourteen.wide.column #event-details-image {
+  .ui.grid #event-name {
+    margin-bottom: 15px;
+  }
+  .ui.grid .column #event-details-image {
     width: 100%;
     margin-top: 20px;
   }
@@ -1049,9 +1052,15 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
   .ui.grid #frame-of-event-details-image {
     padding-top: 5px;
     padding-bottom: 0;
-    margin-top: 0;
+    margin-top: 10px;
   }
-  .ui.grid .fourteen.wide.column #event-details-image {
+  .ui.grid #event-name {
+    margin-top: 20px;
+    margin-right: 0;
+    margin-bottom: 30px;
+    margin-left: 0;
+  }
+  .ui.grid .column #event-details-image {
     width: 50%;
     margin-top: 0;
   }
@@ -1072,6 +1081,12 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
 }
 #loading .ui.active {
   height: 200px;
+}
+
+#please-find-events {
+  margin: 30px;
+  font-weight: bolder;
+  font-size: 20px;
 }
 
 .tabs-menu {
@@ -1158,6 +1173,10 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
   }
 }
 @media screen and (min-width: 769px) {
+  #please-find-events {
+    margin-bottom: 60px;
+  }
+
   .tabs-menu li {
     padding: 15px;
     font-size: 15px;
@@ -1186,9 +1205,15 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
     height: 500px;
   }
 }
+#please-diagnose-events {
+  margin: 30px;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
 .diagnostic-message {
   height: 70px;
-  font-size: 15px !important;
+  font-size: 16px !important;
 }
 
 #button-to-find-events {
@@ -1199,6 +1224,12 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
 
 .answer-button {
   margin-top: 40px !important;
+}
+
+@media screen and (min-width: 769px) {
+  #please-diagnose-events {
+    margin-bottom: 60px;
+  }
 }
 
 /*# sourceMappingURL=application.css.map */
