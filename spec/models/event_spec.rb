@@ -14,13 +14,6 @@ RSpec.describe Event, type: :model do
       expect(event.errors[:name]).to include("を入力してください")
     end
 
-    # ジャンルがなければ無効であること
-    it "is invalid without a genre" do
-      event = FactoryBot.build(:event, genre: nil)
-      event.valid?
-      expect(event.errors[:genre]).to include("を入力してください")
-    end
-
     # 主催者がなければ無効であること
     it "is invalid without a organizer" do
       event = FactoryBot.build(:event, organizer: nil)
