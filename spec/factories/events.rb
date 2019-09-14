@@ -2,7 +2,6 @@ FactoryBot.define do
   factory :event do
     user             nil
     name            "m-fukaya"
-    genre           "スポーツ"
     organizer       "イベント株式会社"
     place           "日比谷公園"
     ticket_name     "大人"
