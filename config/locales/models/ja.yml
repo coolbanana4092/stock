@@ -21,7 +21,6 @@ ja:
         id: イベントID
         user_id: ユーザーID
         name: イベント名
-        genre: ジャンル
         organizer: 主催者
         place: 開催場所
         ticket_name: チケット名
