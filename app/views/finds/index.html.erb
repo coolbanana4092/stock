@@ -6,9 +6,11 @@
       </div>
     </div>
   </div>
-  <div class="ui center aligned grid">
-    <div class="fourteen wide column">
-      <div id="events-list-in-japanese">イベントを探す</div>
+  <div class="frame-of-find-events">
+    <div class="ui center aligned grid">
+      <div class="fourteen wide column">
+        <div id="please-find-events">イベントを探す</div>
+      </div>
     </div>
   </div>
   <template v-if="tabs !== null">
@@ -34,6 +36,9 @@
 </div>
 
 <script>
+  var geocoder = new google.maps.Geocoder();
+  var map;
+
   var dateContent = {
     data: function() {
       return { buttonColumn: "" };
@@ -116,12 +121,30 @@
 
   var placeContent = {
     methods: {
+      getDevice: function() {
+        var ua = navigator.userAgent;
+        if (ua.indexOf("iPhone") > 0 || ua.indexOf("iPod") > 0 || ua.indexOf("Android") > 0 && ua.indexOf("Mobile") > 0) {
+          return "sp";
+        } else if (ua.indexOf("iPad") > 0 || ua.indexOf("Android") > 0) {
+          return "tab";
+        } else {
+          return "pc";
+        };
+      },
+      judgeDateColumn: function() {
+        var device = this.getDevice();
+        if (device == "pc") {
+          this.judgeCenterColumn = "ten wide column";
+          this.judgeSurroundingColumn = "three wide column";
+        } else {
+          this.judgeCenterColumn = "sixteen wide column";
+          this.judgeSurroundingColumn = "";
+        };
+      },
       makeFindMap: function() {
         <% @events.each do |event| %>
-          var geocoder = new google.maps.Geocoder();
           var pos;
           var markerData;
-          var map;
           var markerDataArray = [];
           var markerLatLng;
           var marker = [];
@@ -248,6 +271,24 @@
 
         this.$parent.$refs.loading.style.display = "block"
       },
+      search: function() {
+        var inputAddress = this.$refs.address.value;
+
+        geocoder.geocode({
+          "address": inputAddress,
+          "region": "jp"
+        },function(results, status) {
+            if (status == "OK" && results[0]) {
+              map.setCenter(results[0].geometry.location);
+            } else {
+              alert("住所検索に失敗しました。住所が正しいか確認してください。");
+            }
+          }
+        );
+      },
+    },
+    created: function() {
+      this.judgeDateColumn();
     },
     mounted: function() {
       this.makeFindMap();
@@ -258,16 +299,18 @@
           <div class="fourteen wide column">
             <div class="ui center aligned grid">
               <div class="wide column">
-                <div class="find-events-from-location-info">位置情報から探す</div>
+                <div class="find-events-from-location-info">場所から探す</div>
               </div>
             </div>
             <div class="ui left aligned grid">
-              <div class="wide column">
+              <div :class="judgeSurroundingColumn"></div>
+              <div :class="judgeCenterColumn">
                 <div class="map-circle-explanation">
                   赤色の円内には現在地から15km以内の場所で開催されるイベントが、<br>
                   透明の円内には現在地から25km以内の場所で開催されるイベントが表示されます。
                 </div>
               </div>
+              <div :class="judgeSurroundingColumn"></div>
             </div>
             <div class="ui center aligned grid">
               <div class="wide column">
@@ -275,6 +318,17 @@
               </div>
             </div>
             <div id="find-events-page-map" ref="findEventsPageMap"></div>
+            <div class="ui center aligned grid">
+              <div class="fourteen wide columm" id="search-address">
+                <div class="item">
+                  <div class="ui icon input">
+                    <input id="address" type="text" name="address" placeholder="例：東京都渋谷区" ref="address">
+                    <i class="search link icon" @click="search()"></i>
+                    <input type="button" id="search" value="検索" @click="search()">
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
