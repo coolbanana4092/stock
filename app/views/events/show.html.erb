@@ -1,13 +1,13 @@
 <div id="event-details">
   <div class="ui center aligned grid">
-    <div id="frame-of-event-details-image" class="fourteen wide column">
+    <div class="fourteen wide column" id="frame-of-event-details-image">
       <% if @event.picture? %>
         <%= image_tag @event.picture.url, :id => "event-details-image" %>
       <% else %>
         <img class="ui segment" id="event-details-image" src="/img/no-image.png">
       <% end %>
     </div>
-    <div class="left aligned fourteen wide column">
+    <div :class="eventDetailsColumn">
       <div id="event-name">
         <%= @event.name %>
       </div>
@@ -49,10 +49,8 @@
         <%= @event.place %>
       </div>
     </div>
-  </div>
-  <div id="event-detail-page-map" ref="eventDetailPageMap"></div>
-  <div class="ui center aligned grid">
-    <div class="left aligned fourteen wide column">
+    <div id="event-detail-page-map" ref="eventDetailPageMap"></div>
+    <div :class="eventDetailsColumn">
       <div class="ui divider"></div>
       <div class="subheading-of-event-details">料金</div>
       <div id="event-price">
@@ -92,18 +90,18 @@
   </div>
   <div class="frame-of-button-to-event-page">
     <div class="ui center aligned grid">
-      <div class="ui button ten wide column" id="button-to-events-list">
+      <div :class="normalButtonColumn" id="button-to-events-list">
         <%= link_to "イベント一覧", events_path %>
       </div>
     </div>
     <% if current_user == @event.user %>
       <div class="ui center aligned grid">
-        <div class="ui button ten wide column" id="button-to-edit-event">
+        <div :class="normalButtonColumn" id="button-to-edit-event">
           <%= link_to "イベント編集", edit_event_path(@event) %>
         </div>
       </div>
       <div class="ui center aligned grid">
-        <div class="ui red button ten wide column" id="button-to-delete-event">
+        <div :class="dangerButtonColumn" id="button-to-delete-event">
           <%= link_to "イベント削除", @event, method: :delete, data: { confirm: "本当に削除しても大丈夫ですか?" } %>
         </div>
       </div>
@@ -114,6 +112,11 @@
 <script>
   var vm = new Vue({
     el: "#event-details",
+    data: {
+      eventDetailsColumn: "",
+      normalButtonColumn: "",
+      dangerButtonColumn: "",
+    },
     methods: {
       getDevice: function() {
         var ua = navigator.userAgent;
@@ -123,6 +126,18 @@
           return "tab";
         } else {
           return "pc";
+        };
+      },
+      judgeColumn: function() {
+        var device = this.getDevice();
+        if (device == "pc") {
+          this.eventDetailsColumn = "left aligned twelve wide column";
+          this.normalButtonColumn = "ui button six wide column";
+          this.dangerButtonColumn = "ui red button six wide column";
+        } else {
+          this.eventDetailsColumn = "left aligned fourteen wide column";
+          this.normalButtonColumn = "ui button ten wide column";
+          this.dangerButtonColumn = "ui red button ten wide column";
         };
       },
       makeTimeChart: function() {
@@ -136,10 +151,8 @@
         var eventStartingRealNextDay = eventStartingNextDay.getDate() + 1;
         eventStartingNextDay.setDate(eventStartingRealNextDay);
 
-        var width = window.innerWidth * 0.875;
-        var height = 150;
-
         if (device == "pc") {
+          var width = window.innerWidth * 0.750;
           var margin = {
             top: 30,
             right: 20,
@@ -147,6 +160,7 @@
             left: 20
           };
         } else {
+          var width = window.innerWidth * 0.875;
           var margin = {
             top: 50,
             right: 10,
@@ -154,6 +168,7 @@
             left: 10
           };
         };
+        var height = 150;
         var eventData = [{
           key: 1,
           name: "<%= @event.name %>",
@@ -347,6 +362,9 @@
         this.$refs.cautionarySeeMore.style.display = "block";
         this.$refs.cautionaryCloseSeeMore.style.display = "none";
       },
+    },
+    created: function() {
+      this.judgeColumn();
     },
     mounted: function() {
       this.makeEventDetailsMap();
