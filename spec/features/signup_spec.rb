@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.feature "SignUp", type: :feature do
   context "sign up" do
-    # 新規登録に成功する
     it "user successfully signs up" do
       visit root_path
       click_link "新規登録"
@@ -19,7 +18,6 @@ RSpec.feature "SignUp", type: :feature do
       expect(current_path).to eq events_path
     end
 
-    # 新規登録に失敗する
     it "user fails to sign up" do
       visit root_path
       click_link "新規登録"

@@ -4,7 +4,6 @@ RSpec.describe UserMailer, type: :mailer do
   let(:mail) { UserMailer.password_reset(user) }
 
   context "password_reset" do
-    # メール送信のテスト
     it "renders the headers" do
       user.reset_token = User.new_token
       expect(mail.to).to eq ["m-fukaya@gmail.com"]
@@ -12,7 +11,6 @@ RSpec.describe UserMailer, type: :mailer do
       expect(mail.subject).to eq "パスワードの再設定"
     end
 
-    # メールプレビューのテスト
     it "renders the body" do
       user.reset_token = User.new_token
       expect(mail.body.encoded).to match user.reset_token
