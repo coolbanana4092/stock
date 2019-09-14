@@ -8,7 +8,7 @@ RSpec.describe InquiryMailer, type: :mailer do
     # メール送信のテスト
     it "renders the headers" do
       expect(mail.to).to eq ["fukaya@gmail.com"]
-      expect(mail.from).to eq ["from@example.com"]
+      expect(mail.from).to eq ["sc0085hx@ed.ritsumei.ac.jp"]
       expect(mail.subject).to eq "お問い合わせ通知"
     end
 
