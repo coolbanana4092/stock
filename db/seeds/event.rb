@@ -1,7 +1,6 @@
 event1 = Event.create(
   user_id: '1',
   name: 'Xデザイン学校公開講座+第6回フューチャー・エクスペリエンスフォーラム 「ソーシャルとイノベーション」',
-  genre: 'ウェブ/テクノロジー',
   organizer: 'Xデザイン学校',
   place: 'ウシオ電機・本社',
   ticket_name: '参加チケット',
@@ -40,7 +39,6 @@ event1 = Event.create(
 event2 = Event.create(
   user_id: '1',
   name: '観覧券×びん焼き菓子×びんドリンク付いて500円！レアなビンテージガラスびんを300本以上展示！！ ガラスびんテージハウス@渋谷 古民家',
-  genre: 'デザイン',
   organizer: '日本ガラスびん協会',
   place: '渋谷区東１丁目２６−３２',
   ticket_name: 'お得な割引チケット',
@@ -108,7 +106,6 @@ event2 = Event.create(
 event3 = Event.create(
   user_id: '2',
   name: '中継会場開設＆遠方オンライン参加可！モンテソーリ・レッジョエミリアを知り尽くした研究者が語る 誘導しない子育て',
-  genre: '健康',
   organizer: 'GaiaxCommunity',
   place: '埼玉県越谷市南越谷1-2876-1',
   ticket_name: '通常チケット',
