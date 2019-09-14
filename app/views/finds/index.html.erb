@@ -36,6 +36,9 @@
 </div>
 
 <script>
+  var geocoder = new google.maps.Geocoder();
+  var map;
+
   var dateContent = {
     data: function() {
       return { buttonColumn: "" };
@@ -140,10 +143,8 @@
       },
       makeFindMap: function() {
         <% @events.each do |event| %>
-          var geocoder = new google.maps.Geocoder();
           var pos;
           var markerData;
-          var map;
           var markerDataArray = [];
           var markerLatLng;
           var marker = [];
@@ -270,6 +271,21 @@
 
         this.$parent.$refs.loading.style.display = "block"
       },
+      search: function() {
+        var inputAddress = this.$refs.address.value;
+
+        geocoder.geocode({
+          "address": inputAddress,
+          "region": "jp"
+        },function(results, status) {
+            if (status == "OK" && results[0]) {
+              map.setCenter(results[0].geometry.location);
+            } else {
+              alert("住所検索に失敗しました。住所が正しいか確認してください。");
+            }
+          }
+        );
+      },
     },
     created: function() {
       this.judgeDateColumn();
@@ -283,7 +299,7 @@
           <div class="fourteen wide column">
             <div class="ui center aligned grid">
               <div class="wide column">
-                <div class="find-events-from-location-info">位置情報から探す</div>
+                <div class="find-events-from-location-info">場所から探す</div>
               </div>
             </div>
             <div class="ui left aligned grid">
@@ -302,6 +318,17 @@
               </div>
             </div>
             <div id="find-events-page-map" ref="findEventsPageMap"></div>
+            <div class="ui center aligned grid">
+              <div class="fourteen wide columm" id="search-address">
+                <div class="item">
+                  <div class="ui icon input">
+                    <input id="address" type="text" name="address" placeholder="例：東京都渋谷区" ref="address">
+                    <i class="search link icon" @click="search()"></i>
+                    <input type="button" id="search" value="検索" @click="search()">
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
