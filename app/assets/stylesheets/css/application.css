@@ -1071,6 +1071,12 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
 .tabs-content .marker_place {
   text-align: left;
 }
+.tabs-content #search-address {
+  margin-bottom: 30px;
+}
+.tabs-content #search-address #address {
+  width: 100%;
+}
 
 @media screen and (max-width: 768px) {
   .tabs-menu li {
@@ -1086,6 +1092,9 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
   .tabs-content #find-events-page-map {
     width: 100%;
     height: 300px;
+  }
+  .tabs-content #search-address {
+    margin-top: 35px;
   }
 }
 @media screen and (min-width: 769px) {
@@ -1119,6 +1128,9 @@ form .ui.grid .fourteen.wide.column .ui.form .ui.grid #event-update-page-frame-o
   .tabs-content #find-events-page-map {
     width: 60%;
     height: 500px;
+  }
+  .tabs-content #search-address {
+    margin-top: 40px;
   }
 }
 #please-diagnose-events {
