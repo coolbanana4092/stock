@@ -15,7 +15,7 @@
         <% if event.picture? %>
           <%= image_tag event.picture.url, :class => "events-list-image" %>
         <% else %>
-          <img class="events-list-image" src="/img/no-image.png">
+          <img class="events-list-image" src="/img/no-image/no-image.png">
         <% end %>
         <li class="sp event-name"><%= event.name.truncate(65, omission: "・・・") %></li>
         <li class="pc event-name"><%= event.name.truncate(40, omission: "・・・") %></li>
