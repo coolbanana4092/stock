@@ -380,6 +380,11 @@ footer {
   margin-bottom: 10px;
 }
 
+.ui.dropdown .menu {
+  max-height: 210px !important;
+  height: 210px;
+}
+
 .various-events-list {
   margin-top: 20px;
   margin-bottom: 40px;
