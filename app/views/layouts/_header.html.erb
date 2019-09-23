@@ -33,7 +33,7 @@
   <div class="ui modal">
     <div id="modal-header">このアプリの使い方</div>
     <div class="ui center aligned grid" id="frame-of-carousel-image">
-      <div class="carousel-image content center aligned fourteen wide column">
+      <div class="carousel-image image content center aligned fourteen wide column">
         <img class="operation-image" src="/img/no-image2.png"/>
         <img class="operation-image" src="/img/no-image2.png"/>
         <img class="operation-image" src="/img/no-image2.png"/>
@@ -56,7 +56,7 @@
     <div class="ui grid actions">
       <div class="ui center aligned grid">
         <div class="center aligned seven wide column">
-          <button class="ui fluid red button">
+          <button class="ui fluid red button" @click="closeModal">
             OK
           </button>
         </div>
@@ -79,6 +79,9 @@
       showModal: function() {
         $(".ui.modal").modal("show");
         this.navToggle();
+      },
+      closeModal: function() {
+        $(".ui.modal").modal("hide");
       },
       carousel: function() {
         $(".carousel-image").not('.slick-initialized').slick({
