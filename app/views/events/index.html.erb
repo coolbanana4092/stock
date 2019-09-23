@@ -20,13 +20,14 @@
   </div>
   <div class="ui center aligned grid">
     <div class="right aligned fourteen wide column" id="select-box">
-      <select class="select-box-show-events" v-eventchange>
+      <select class="ui dropdown select-box-show-events" v-eventchange>
+        <option value="">イベント分類</option>
         <option value="all-events">イベント一覧</option>
-        <option value="my-events">自分の投稿したイベント</option>
-        <option value="favorite-events">お気に入りしたイベント</option>
-        <option value="before-events">{{ thisYear - 1 }}年以前のイベント</option>
-        <option value="current-events">{{ thisYear }}年のイベント</option>
-        <option value="after-events">{{ thisYear + 1 }}年以降のイベント</option>
+        <option value="my-events">投稿したイベント</option>
+        <option value="favorite-events">お気に入りのイベント</option>
+        <option value="before-events">去年以前のイベント</option>
+        <option value="current-events">今年のイベント</option>
+        <option value="after-events">来年以降のイベント</option>
       </select>
     </div>
   </div>
@@ -146,6 +147,9 @@
           };
         <% end %>
       },
+      makeDropdownMenu: function() {
+        $('.ui.dropdown').dropdown();
+      },
       selectDisplay: function(className, display) {
         var elements = document.getElementsByClassName(className);
         for(i=0;i<elements.length;i++){
@@ -185,6 +189,7 @@
       this.judgeNumberofEvents();
     },
     mounted: function() {
+      this.makeDropdownMenu();
       this.initialDisplay();
       this.appearanceAnimation();
       this.showBacktoTop();
