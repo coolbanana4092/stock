@@ -4,7 +4,7 @@
       <% if @event.picture? %>
         <%= image_tag @event.picture.url, :id => "event-details-image" %>
       <% else %>
-        <img class="ui segment" id="event-details-image" src="/img/no-image.png">
+        <img class="ui segment" id="event-details-image" src="/img/no-image/no-image.png">
       <% end %>
     </div>
     <div :class="eventDetailsColumn">
