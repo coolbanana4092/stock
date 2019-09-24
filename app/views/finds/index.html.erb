@@ -36,16 +36,16 @@
 </div>
 
 <script>
-  var geocoder = new google.maps.Geocoder();
-  var map;
+  const geocoder = new google.maps.Geocoder();
+  let map;
 
-  var dateContent = {
+  const dateContent = {
     data: function() {
       return { buttonColumn: "" };
     },
     methods: {
       getDevice: function() {
-        var ua = navigator.userAgent;
+        const ua = navigator.userAgent;
         if (ua.indexOf("iPhone") > 0 || ua.indexOf("iPod") > 0 || ua.indexOf("Android") > 0 && ua.indexOf("Mobile") > 0) {
           return "sp";
         } else if (ua.indexOf("iPad") > 0 || ua.indexOf("Android") > 0) {
@@ -55,7 +55,7 @@
         };
       },
       judgeColumn: function() {
-        var device = this.getDevice();
+        const device = this.getDevice();
         if (device == "pc") {
           this.buttonColumn = "four wide column";
         } else {
@@ -119,10 +119,10 @@
     `,
   };
 
-  var placeContent = {
+  const placeContent = {
     methods: {
       getDevice: function() {
-        var ua = navigator.userAgent;
+        const ua = navigator.userAgent;
         if (ua.indexOf("iPhone") > 0 || ua.indexOf("iPod") > 0 || ua.indexOf("Android") > 0 && ua.indexOf("Mobile") > 0) {
           return "sp";
         } else if (ua.indexOf("iPad") > 0 || ua.indexOf("Android") > 0) {
@@ -132,7 +132,7 @@
         };
       },
       judgeDateColumn: function() {
-        var device = this.getDevice();
+        const device = this.getDevice();
         if (device == "pc") {
           this.judgeCenterColumn = "ten wide column";
           this.judgeSurroundingColumn = "three wide column";
@@ -142,19 +142,20 @@
         };
       },
       makeFindMap: function() {
-        <% @events.each do |event| %>
-          var pos;
-          var markerData;
-          var markerDataArray = [];
-          var markerLatLng;
-          var marker = [];
-          var infoWindow = [];
-          var currentInfoWindow = null;
+        const markerDataArray = [];
+        const marker = [];
+        const infoWindow = [];
+        let mapLatLng;
+        let pos;
+        let markerData;
+        let markerLatLng;
+        let currentInfoWindow = null;
 
+        <% @events.each do |event| %>
           <% if @latitude && @longitude %>
-            var mapLatLng = new google.maps.LatLng(<%= @latitude %>, <%= @longitude %>);
+            mapLatLng = new google.maps.LatLng(<%= @latitude %>, <%= @longitude %>);
           <% else %>
-            var mapLatLng = new google.maps.LatLng(35.681236,139.767125);
+            mapLatLng = new google.maps.LatLng(35.681236,139.767125);
           <% end %>
 
           geocoder.geocode({
@@ -203,7 +204,7 @@
 
                 markerDataArray.push(markerData);
 
-                for (var i = 0; i < markerDataArray.length; i++) {
+                for (i = 0; i < markerDataArray.length; i++) {
                   markerLatLng = new google.maps.LatLng({lat: markerDataArray[i][0].lat, lng: markerDataArray[i][0].lng});
                   marker[i] = new google.maps.Marker({
                     map: map,
@@ -243,10 +244,10 @@
         <% end %>
       },
       getLocationInfo: function() {
-        var lat;
-        var lng;
-        var errorMessage;
-        var errorInfo = [
+        let lat;
+        let lng;
+        let errorMessage;
+        let errorInfo = [
           "原因不明のエラーが発生しました。",
           "位置情報の利用が許可されていません。",
           "現在位置が取得できませんでした。",
@@ -272,7 +273,7 @@
         this.$parent.$refs.loading.style.display = "block"
       },
       search: function() {
-        var inputAddress = this.$refs.address.value;
+        let inputAddress = this.$refs.address.value;
 
         geocoder.geocode({
           "address": inputAddress,
@@ -335,7 +336,7 @@
     `
   };
 
-  var vm = new Vue({
+  const vm = new Vue({
     el: "#find-events",
     components: {
       "date-content": dateContent,
