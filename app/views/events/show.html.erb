@@ -110,7 +110,7 @@
 </div>
 
 <script>
-  var vm = new Vue({
+  const vm = new Vue({
     el: "#event-details",
     data: {
       eventDetailsColumn: "",
@@ -119,7 +119,7 @@
     },
     methods: {
       getDevice: function() {
-        var ua = navigator.userAgent;
+        const ua = navigator.userAgent;
         if (ua.indexOf("iPhone") > 0 || ua.indexOf("iPod") > 0 || ua.indexOf("Android") > 0 && ua.indexOf("Mobile") > 0) {
           return "sp";
         } else if (ua.indexOf("iPad") > 0 || ua.indexOf("Android") > 0) {
@@ -129,7 +129,7 @@
         };
       },
       judgeColumn: function() {
-        var device = this.getDevice();
+        const device = this.getDevice();
         if (device == "pc") {
           this.eventDetailsColumn = "left aligned twelve wide column";
           this.normalButtonColumn = "ui button six wide column";
@@ -141,14 +141,14 @@
         };
       },
       makeTimeChart: function() {
-        var device = this.getDevice();
+        const device = this.getDevice();
 
-        var eventStartingTime = new Date(<%= @event.starting_year %>, <%= @event.starting_month %>, <%= @event.starting_day %>, <%= @event.starting_hour %>, <%= @event.starting_minute %>);
-        var eventEndingTime = new Date(<%= @event.ending_year %>, <%= @event.ending_month %>, <%= @event.ending_day %>, <%= @event.ending_hour %>, <%= @event.ending_minute %>);
+        const eventStartingTime = new Date(<%= @event.starting_year %>, <%= @event.starting_month %>, <%= @event.starting_day %>, <%= @event.starting_hour %>, <%= @event.starting_minute %>);
+        const eventEndingTime = new Date(<%= @event.ending_year %>, <%= @event.ending_month %>, <%= @event.ending_day %>, <%= @event.ending_hour %>, <%= @event.ending_minute %>);
 
-        var eventStartingDay = new Date(<%= @event.starting_year %>, <%= @event.starting_month %>, <%= @event.starting_day %>);
-        var eventStartingNextDay = new Date(<%= @event.starting_year %>, <%= @event.starting_month %>, <%= @event.starting_day %>);
-        var eventStartingRealNextDay = eventStartingNextDay.getDate() + 1;
+        const eventStartingDay = new Date(<%= @event.starting_year %>, <%= @event.starting_month %>, <%= @event.starting_day %>);
+        const eventStartingNextDay = new Date(<%= @event.starting_year %>, <%= @event.starting_month %>, <%= @event.starting_day %>);
+        const eventStartingRealNextDay = eventStartingNextDay.getDate() + 1;
         eventStartingNextDay.setDate(eventStartingRealNextDay);
 
         if (device == "pc") {
@@ -168,24 +168,24 @@
             left: 10
           };
         };
-        var height = 150;
-        var eventData = [{
+        const height = 150;
+        const eventData = [{
           key: 1,
           name: "<%= @event.name %>",
           start: eventStartingTime,
           end: eventEndingTime
         }];
-        var labels = d3.nest()
+        const labels = d3.nest()
           .key(function(d) {
             return d.key;
           })
           .entries(eventData);
-        var svg = d3.select("#time-chart")
+        const svg = d3.select("#time-chart")
           .attr({
             width: width,
             height: height
           });
-        var x = d3.time.scale()
+        const x = d3.time.scale()
           .domain([
             eventStartingDay,
             eventStartingNextDay
@@ -209,12 +209,12 @@
             .innerTickSize(-(height - (margin.top + margin.bottom)))
             .outerTickSize(0);
         };
-        var y = d3.scale.ordinal()
+        const y = d3.scale.ordinal()
           .domain(labels.map(function(d) {
             return d.key;
           }))
           .rangeRoundBands([margin.top, height - margin.bottom], 0.5);
-        var yAxis = d3.svg.axis()
+        const yAxis = d3.svg.axis()
           .scale(y)
           .orient("left")
           .innerTickSize(0)
@@ -244,8 +244,8 @@
           .call(yAxis)
           .selectAll("text")
           .each(function(d, i) {
-            var el = d3.select(this);
-            var parent = d3.select(this.parentNode);
+            const el = d3.select(this);
+            const parent = d3.select(this.parentNode);
             parent.append("foreignObject")
               .attr({
                 x: -margin.left,
@@ -283,11 +283,11 @@
           });
       },
       redrawTimeChart: function() {
-        var currentWidth = window.innerWidth;
+        let currentWidth = window.innerWidth;
 
         window.addEventListener("resize", function() {
           if (currentWidth !== window.innerWidth) {
-            var timer;
+            let timer;
 
             if (timer !== false) {
               clearTimeout(timer);
@@ -303,22 +303,17 @@
         });
       },
       makeEventDetailsMap: function() {
-        var geocoder = new google.maps.Geocoder();
-        var eventLocation;
-        var mapLatLng;
-        var markerLatLng;
-        var map;
-        var marker;
+        const geocoder = new google.maps.Geocoder();
 
         geocoder.geocode({
           "address": "<%= @event.place %>",
           "region": "jp"
         },function(results, status) {
             if (status == "OK" && results[0]){
-              eventLocation = results[0].geometry.location;
-              mapLatLng = new google.maps.LatLng(eventLocation.lat(), eventLocation.lng());
-              markerLatLng = new google.maps.LatLng({lat: eventLocation.lat(), lng: eventLocation.lng()});
-              map = new google.maps.Map(vm.$refs.eventDetailPageMap, {
+              const eventLocation = results[0].geometry.location;
+              const mapLatLng = new google.maps.LatLng(eventLocation.lat(), eventLocation.lng());
+              const markerLatLng = new google.maps.LatLng({lat: eventLocation.lat(), lng: eventLocation.lng()});
+              const map = new google.maps.Map(vm.$refs.eventDetailPageMap, {
                 center: mapLatLng,
                 zoom: 10,
                 mapTypeControl: false,
@@ -326,7 +321,7 @@
                 fullscreenControl: false,
                 zoomControl: false,
               });
-              marker = new google.maps.Marker({
+              const marker = new google.maps.Marker({
                 map: map,
                 position: markerLatLng
               });

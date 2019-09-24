@@ -70,8 +70,8 @@
     el: "#header",
     methods: {
       navToggle: function() {
-        var hamburgerClass = this.$refs.hamburger.classList;
-        var wrapperClass = this.$refs.wrapper.classList;
+        const hamburgerClass = this.$refs.hamburger.classList;
+        const wrapperClass = this.$refs.wrapper.classList;
 
         hamburgerClass.toggle("is-active");
         wrapperClass.contains("nav-open") ? wrapperClass.remove("nav-open") : wrapperClass.add("nav-open");
