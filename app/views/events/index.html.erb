@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="ui center aligned grid">
-    <div class="right aligned fourteen wide column" id="select-box">
+    <div :class="selectBoxColumn" id="select-box">
       <select class="ui dropdown select-box-show-events" v-eventchange>
         <option value="">イベント分類</option>
         <option value="all-events">イベント一覧</option>
@@ -123,6 +123,7 @@
   const vm = new Vue({
     el: "#events-list",
     data: {
+      selectBoxColumn: "",
       thisYear: new Date().getFullYear(),
       beforeEventsArray: [],
       currentEventsArray: [],
@@ -132,6 +133,24 @@
       isAfterEvents: "",
     },
     methods: {
+      getDevice: function() {
+        const ua = navigator.userAgent;
+        if (ua.indexOf("iPhone") > 0 || ua.indexOf("iPod") > 0 || ua.indexOf("Android") > 0 && ua.indexOf("Mobile") > 0) {
+          return "sp";
+        } else if (ua.indexOf("iPad") > 0 || ua.indexOf("Android") > 0) {
+          return "tab";
+        } else {
+          return "pc";
+        };
+      },
+      judgeColumn: function() {
+        const device = this.getDevice();
+        if (device == "pc") {
+          this.selectBoxColumn = "right aligned thirteen wide column";
+        } else {
+          this.selectBoxColumn = "right aligned fourteen wide column";
+        };
+      },
       judgeNumberofEvents: function() {
         <% @all_events.each do |event| %>
           var startingYear = new Date("<%= event.starting_year %>").getFullYear();
@@ -187,6 +206,7 @@
     },
     created: function() {
       this.judgeNumberofEvents();
+      this.judgeColumn();
     },
     mounted: function() {
       this.makeDropdownMenu();
