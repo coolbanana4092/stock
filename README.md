@@ -1,4 +1,4 @@
-### ◆最終更新日:2019年11月18日
+### ◆最終更新日:2019年12月8日
 
 ## 概要
 地元のイベントを活性化させるためのWebサービス
@@ -9,10 +9,10 @@ https://eventnavi.tk
 パスワード：1234Asdf
 
 ## 使用している技術一覧
+### フロントエンド
+HTML, CSS(Sass), Vue.js(JavaScript), SemanticUI
 ### バックエンド
 Ruby, Ruby on Rails
-### フロントエンド
-HTML, CSS(Sass), SemanticUI, Vue.js(JavaScript)
 ### テスト
 RSpec
 ### インフラ
